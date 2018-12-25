@@ -1,0 +1,6 @@
+{
+	"DBHost" : "mongodb://localhost:27017/rc-bd",
+  "server" : {
+    "port": 3000
+  }
+}

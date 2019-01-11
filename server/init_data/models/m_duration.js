@@ -1,4 +1,4 @@
-const M_Duration = require('../../models/all/m_duration');
+const M_Duration = require('../../services/crud_services/m_duration.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

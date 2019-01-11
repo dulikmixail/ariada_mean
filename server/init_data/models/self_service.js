@@ -1,4 +1,4 @@
-const Self_Service = require('../../models/all/m_treatment');
+const Self_Service = require('../../services/crud_services/m_treatment.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

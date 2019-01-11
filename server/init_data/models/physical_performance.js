@@ -1,5 +1,5 @@
-const Physical_Performance = require('../../models/all/physical_performance');
-const Mode_Of_Motor_Activity = require('../../models/all/mode_of_motor_activity');
+const Physical_Performance = require('../../services/crud_services/physical_performance.service');
+const Mode_Of_Motor_Activity = require('../../services/crud_services/mode_of_motor_activity.service');
 
 module.exports = new Promise((resolve, reject) => {
     let createPhysicalPerformance = function (physicalPerformance) {

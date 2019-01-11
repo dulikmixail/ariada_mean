@@ -2,8 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const config = require('config');
+const errorHandler = require('./helpers/error-handler');
+const jwtMiddleware = require('./helpers/jwt');
 const mongoose = require('./mongoose-connection');
-const indexRouter = require('./routes/index.router');
+const mainRouter = require('./routes/main.router');
 const authRouter = require('./routes/auth.router');
 
 
@@ -26,26 +28,12 @@ if (config.util.getEnv('NODE_ENV') !== 'test') {
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+app.use('/', mainRouter);
+app.use('/auth', authRouter);
+app.use('/api', jwtMiddleware);
+app.use('/api', require('./routes/crud_builder.router'));
+app.use(errorHandler);
 
-function getRouters() {
-  const crudRouters = [
-    'assessment_of_functional_capability', '/assessment_of_functional_capabilities',
-    'branch', '/branches',
-    'employee', '/employees',
-    'post', '/posts',
-    'exercise_therapy_and_mechanotherapy_item', '/exercise_therapy_and_mechanotherapy_items',
-    'user', '/users'
-  ];
-  const routers = [];
-  for (let i = 0; i < crudRouters.length; i += 2) {
-    routers.push(require('./routes/crud.router')(crudRouters[i], crudRouters[i + 1]));
-  }
-  return routers;
-}
-
-app.use('/', indexRouter);
-app.use('/api', getRouters());
-app.use('/api/auth', authRouter);
 
 app.listen(app.get('port'), () => {
   console.log('Server is running localhost:' + app.get('port') + '. Go go next!');

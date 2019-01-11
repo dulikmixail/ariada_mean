@@ -1,6 +1,6 @@
-const M_Allowed = require('../../models/all/m_allowed');
-const M_Allowed_Contraindications = require('../../models/all/m_allowed_contraindications');
-const M_Allowed_Level = require('../../models/all/m_allowed_level');
+const M_Allowed = require('../../services/crud_services/m_allowed.service');
+const M_Allowed_Contraindications = require('../../services/crud_services/m_allowed_contraindications.service');
+const M_Allowed_Level = require('../../services/crud_services/m_allowed_level.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = new Promise((resolve, reject) => {

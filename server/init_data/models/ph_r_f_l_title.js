@@ -1,4 +1,4 @@
-const Ph_R_F_L_Title = require('../../models/all/ph_r_f_l_title');
+const Ph_R_F_L_Title = require('../../services/crud_services/ph_r_f_l_title.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

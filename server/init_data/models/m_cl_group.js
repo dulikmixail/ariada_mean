@@ -1,5 +1,5 @@
-const M_Cl_Group = require('../../models/all/m_cl_group');
-const M_Classifier = require('../../models/all/m_classifier');
+const M_Cl_Group = require('../../services/crud_services/m_cl_group.service');
+const M_Classifier = require('../../services/crud_services/m_classifier.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-const M_Scheme = require('../../models/all/m_scheme');
+const M_Scheme = require('../../services/crud_services/m_scheme.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

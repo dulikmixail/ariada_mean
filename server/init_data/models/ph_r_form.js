@@ -1,10 +1,10 @@
-const Ph_R_Form = require('../../models/all/ph_r_form');
-const Ph_R_F_Level = require('../../models/all/ph_r_f_level');
-const Ph_R_F_L_Info = require('../../models/all/ph_r_f_l_info');
-const Ph_R_F_L_I_Title = require('../../models/all/ph_r_f_l_i_title');
-const Ph_R_F_L_I_Value = require('../../models/all/ph_r_f_l_i_value');
-const Ph_R_F_L_Title = require('../../models/all/ph_r_f_l_title');
-const Mode_Of_Motor_Activity = require('../../models/all/mode_of_motor_activity');
+const Ph_R_Form = require('../../services/crud_services/ph_r_form.service');
+const Ph_R_F_Level = require('../../services/crud_services/ph_r_f_level.service');
+const Ph_R_F_L_Info = require('../../services/crud_services/ph_r_f_l_info.service');
+const Ph_R_F_L_I_Title = require('../../services/crud_services/ph_r_f_l_i_title.service');
+const Ph_R_F_L_I_Value = require('../../services/crud_services/ph_r_f_l_i_value.service');
+const Ph_R_F_L_Title = require('../../services/crud_services/ph_r_f_l_title.service');
+const Mode_Of_Motor_Activity = require('../../services/crud_services/mode_of_motor_activity.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = new Promise((resolve, reject) => {

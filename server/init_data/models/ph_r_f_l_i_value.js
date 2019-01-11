@@ -1,4 +1,4 @@
-const Ph_R_F_L_I_Value = require('../../models/all/ph_r_f_l_i_value');
+const Ph_R_F_L_I_Value = require('../../services/crud_services/ph_r_f_l_i_value.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

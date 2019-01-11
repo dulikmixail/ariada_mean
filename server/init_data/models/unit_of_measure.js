@@ -1,4 +1,4 @@
-const Unit_Of_Measure = require('../../models/all/unit_of_measure');
+const Unit_Of_Measure = require('../../services/crud_services/unit_of_measure.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

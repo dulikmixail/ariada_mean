@@ -1,4 +1,4 @@
-const M_Cl_Value = require('../../models/all/m_cl_value');
+const M_Cl_Value = require('../../services/crud_services/m_cl_value.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

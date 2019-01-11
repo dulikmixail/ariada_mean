@@ -1,8 +1,8 @@
-const Employee = require('../../models/all/employee');
-const Post = require('../../models/all/post');
+const employeeService = require('../../services/crud_services/employee.service');
+const postService = require('../../services/crud_services/post.service');
 
 module.exports = new Promise((resolve, reject) => {
-  Post.find({}, (err, posts) => {
+  postService.find({}, (err, posts) => {
     let employees = [];
     for (let i = 0; i < 10; i++) {
       employees.push(
@@ -22,7 +22,7 @@ module.exports = new Promise((resolve, reject) => {
       )
     }
 
-    Employee.create(employees, (err, result)=>{
+    employeeService.create(employees, (err, result)=>{
       !!err ? reject(err): resolve(result)
     });
   });

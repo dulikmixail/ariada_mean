@@ -1,4 +1,4 @@
-const Criterion = require('../../models/all/criterion');
+const Criterion = require('../../services/crud_services/criterion.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

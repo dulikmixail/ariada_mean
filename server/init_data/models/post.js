@@ -1,4 +1,4 @@
-const Post = require('../../models/all/post');
+const Post = require('../../services/crud_services/post.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

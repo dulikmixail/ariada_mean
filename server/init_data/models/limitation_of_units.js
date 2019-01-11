@@ -1,4 +1,4 @@
-const Limitation_Of_Units = require('../../models/all/limitation_of_units');
+const Limitation_Of_Units = require('../../services/crud_services/limitation_of_units.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

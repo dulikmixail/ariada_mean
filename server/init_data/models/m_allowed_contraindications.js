@@ -1,5 +1,5 @@
-const M_Allowed_Contraindications = require('../../models/all/m_allowed_contraindications');
-const M_Allowed_Sub_Contraindications = require('../../models/all/m_allowed_sub_contraindications');
+const M_Allowed_Contraindications = require('../../services/crud_services/m_allowed_contraindications.service');
+const M_Allowed_Sub_Contraindications = require('../../services/crud_services/m_allowed_sub_contraindications.service');
 const promiseHelper = require('../promise_helper');
 
 let arr = [

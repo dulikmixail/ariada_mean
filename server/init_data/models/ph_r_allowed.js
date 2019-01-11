@@ -1,4 +1,4 @@
-const Ph_R_Allowed = require('../../models/all/ph_r_allowed');
+const Ph_R_Allowed = require('../../services/crud_services/ph_r_allowed.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

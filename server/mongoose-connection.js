@@ -7,4 +7,4 @@ db.once('open', ()=>{
 });
 db.on('error', console.error.bind(console, 'connection error:'));
 
-module.exports = mongooseConnection.connect(config.get('DBHost'), {useNewUrlParser: true, keepAlive: 1, connectTimeoutMS: 30000});
+module.exports = mongooseConnection.connect(config.get('DBHost'), {useNewUrlParser: true, useCreateIndex: true, keepAlive: 1, connectTimeoutMS: 30000});

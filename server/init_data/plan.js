@@ -1,12 +1,4 @@
-require('./delete_all_model');
-
-let rejectErr = function (values, reject, resolve) {
-  if (values.length === 0) {
-    reject("Error init data. Values: " + JSON.stringify(values))
-  } else {
-    resolve(values)
-  }
-};
+const promiseHelper = require('./promise_helper');
 
 module.exports = new Promise((resolve, reject) => {
   Promise.all(
@@ -34,7 +26,7 @@ module.exports = new Promise((resolve, reject) => {
               require('./models/ph_r_form'),
             ]
           ).then((values) => {
-            rejectErr(values, reject, resolve)
+            promiseHelper.rejectErr('init data',values, reject, resolve)
           });
 
         });
@@ -50,7 +42,7 @@ module.exports = new Promise((resolve, reject) => {
               require('./models/m_allowed')
             ]
           ).then((values) => {
-            rejectErr(values, reject, resolve)
+            promiseHelper.rejectErr('init data',values, reject, resolve)
           });
         });
       }),
@@ -70,7 +62,7 @@ module.exports = new Promise((resolve, reject) => {
                 require('./models/m_cl_group')
               ]
             ).then(values => {
-              rejectErr(values, reject, resolve)
+              promiseHelper.rejectErr('init data',values, reject, resolve)
             })
           })
         });
@@ -86,7 +78,7 @@ module.exports = new Promise((resolve, reject) => {
               require('./models/physical_performance')
             ]
           ).then((values) => {
-            rejectErr(values, reject, resolve)
+            promiseHelper.rejectErr('init data',values, reject, resolve)
           });
         });
       }),
@@ -102,12 +94,12 @@ module.exports = new Promise((resolve, reject) => {
               require('./models/exercise_therapy_and_mechanotherapy_item')
             ]
           ).then((values) => {
-            rejectErr(values, reject, resolve)
+            promiseHelper.rejectErr('init data',values, reject, resolve)
           });
         });
       })
     ]
   ).then((values) => {
-    rejectErr(values, reject, resolve)
+    promiseHelper.rejectErr('init data',values, reject, resolve)
   });
 });

@@ -1,6 +1,6 @@
-const Ph_R_F_L_I_Title_And_Values = require('../../models/all/ph_r_f_l_i_title_and_values');
-const Ph_R_F_L_I_Value = require('../../models/all/ph_r_f_l_i_value');
-const Ph_R_F_L_I_Title = require('../../models/all/ph_r_f_l_i_title');
+const Ph_R_F_L_I_Title_And_Values = require('../../services/crud_services/ph_r_f_l_i_title_and_values.service');
+const Ph_R_F_L_I_Value = require('../../services/crud_services/ph_r_f_l_i_value.service');
+const Ph_R_F_L_I_Title = require('../../services/crud_services/ph_r_f_l_i_title.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = new Promise((resolve, reject) => {

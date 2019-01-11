@@ -1,4 +1,4 @@
-const Indeks_Skibinskoy_Measurement = require('../../models/all/indeks_skibinskoy_measurement');
+const Indeks_Skibinskoy_Measurement = require('../../services/crud_services/indeks_skibinskoy_measurement.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

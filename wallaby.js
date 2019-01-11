@@ -7,7 +7,8 @@ module.exports = function () {
     ],
 
     tests: [
-      'server/test/**/*.js'
+      'server/test/**/*.js',
+      {pattern: 'server/test/helpers/*.js', ignore: true}
     ],
     env: {type: 'node'},
     testFramework: 'mocha',

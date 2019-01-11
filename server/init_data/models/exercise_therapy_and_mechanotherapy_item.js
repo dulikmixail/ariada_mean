@@ -1,7 +1,7 @@
-const Exercise_Therapy_And_Mechanotherapy_Item = require('../../models/all/exercise_therapy_and_mechanotherapy_item');
-const Number_Unit = require('../../models/all/number_unit');
-const Unit_Of_Measure = require('../../models/all/unit_of_measure');
-const Limitation_Of_Units = require('../../models/all/limitation_of_units');
+const Exercise_Therapy_And_Mechanotherapy_Item = require('../../services/crud_services/exercise_therapy_and_mechanotherapy_item.service');
+const Number_Unit = require('../../services/crud_services/number_unit.service');
+const Unit_Of_Measure = require('../../services/crud_services/unit_of_measure.service');
+const Limitation_Of_Units = require('../../services/crud_services/limitation_of_units.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = new Promise((mainResolve, mainReject) => {

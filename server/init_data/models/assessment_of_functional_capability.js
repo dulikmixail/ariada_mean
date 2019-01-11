@@ -1,4 +1,4 @@
-const Assessment_Of_Functional_Capability = require('../../models/all/assessment_of_functional_capability');
+const Assessment_Of_Functional_Capability = require('../../services/crud_services/assessment_of_functional_capability.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

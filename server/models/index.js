@@ -1,4 +1,4 @@
-module.exports.getAllModel = function () {
+module.exports.getAllModels = function () {
     let normalizedPath = require("path").join(__dirname, "all");
     let requiredModels = [];
 

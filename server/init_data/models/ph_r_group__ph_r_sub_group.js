@@ -1,5 +1,5 @@
-const Ph_R_Sub_Group = require('../../models/all/ph_r_sub_group');
-const Ph_R_Group = require('../../models/all/ph_r_group');
+const Ph_R_Sub_Group = require('../../services/crud_services/ph_r_sub_group.service');
+const Ph_R_Group = require('../../services/crud_services/ph_r_group.service');
 
 module.exports = new Promise((resolve, reject) => {
     Promise.all([

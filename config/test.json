@@ -1,6 +1,16 @@
 {
-	"DBHost": "mongodb://localhost:27017/rc-bd",
+	"DBHost": "mongodb://localhost:27017/rc-bd_test",
   "server" : {
     "port": 0
+  },
+  "auth": {
+    "salt": "salt",
+    "iterations": 10000,
+    "keylen": 512,
+    "digest": "sha512",
+    "encoding": "base64",
+    "tokenlen": 128,
+    "secret": "TEST",
+    "expiresIn": "7d"
   }
 }

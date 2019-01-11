@@ -1,6 +1,6 @@
 module.exports = function (MongooseModel, populateFieldsName) {
 //Create
-  let exportObject = {};
+  const exportObject = {};
   exportObject.create = function (data, callback) {
     MongooseModel
       .create(data, callback);
@@ -15,14 +15,18 @@ module.exports = function (MongooseModel, populateFieldsName) {
     populate(MongooseModel.findById(id, callback))
   };
 
+  exportObject.findOne = function (filter, callback) {
+    populate(MongooseModel.findOne(filter, callback))
+  };
+
 //Update
   exportObject.update = function (filter, data, callback) {
     populate(MongooseModel.update(filter, data, callback))
   };
 
 //Delete
-  exportObject.delete = function (id, callback) {
-    populate(MongooseModel.findOneAndDelete(id, callback))
+  exportObject.delete = function (filter, callback) {
+    populate(MongooseModel.findOneAndDelete(filter, callback))
   };
 
   exportObject.deleteAll = function (callback) {

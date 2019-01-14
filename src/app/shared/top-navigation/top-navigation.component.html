@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/patients">Робота з пацієнтами</a>
+      <a mat-list-item routerLink="/statistics">Статистика</a>
+      <a mat-list-item routerLink="/calendar">Календар</a>
+      <a mat-list-item routerLink="/informations">Особиста інформація</a>
+      <a mat-list-item>
+        <mat-icon>exit_to_app</mat-icon>
+        Вийти
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        Ariada</a>
+        <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/patients" routerLinkActive="active">Робота з пацієнтами</a>
+        <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/statistics">Статистика</a>
+        <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/calendar">Календар</a>
+        <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/informations">Особиста інформація</a>
+        <div class="flex-spacer"></div>
+        <!--<a routerLink="#">Test1</a>-->
+        <a mat-button>
+          <mat-icon>exit_to_app</mat-icon>
+          Вийти
+        </a>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

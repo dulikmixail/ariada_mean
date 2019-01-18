@@ -12,9 +12,15 @@ body {
 .flex-spacer {
   flex: 1 1 auto;
 }
+
 .text-center {
   text-align: center;
 }
-.full-width{
+
+.full-width {
   width: 100%;
+}
+
+mat-icon {
+  cursor: pointer;
 }

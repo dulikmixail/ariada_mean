@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ariada-mean",
+            "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +24,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/theme.scss"
+              "src/theme.scss",
+              "src/assets/fonts/material-icons/material-icons.css"
             ],
             "scripts": []
           },
@@ -58,7 +59,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ariada-mean:build"
+            "browserTarget": "ariada-mean:build",
+            "host": "0.0.0.0",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

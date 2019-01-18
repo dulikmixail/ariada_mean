@@ -72,10 +72,20 @@ router.post('/refresh', function (req, res) {
 });
 
 router.post('/logout', jwtMiddleware, function (req, res) {
-  const id = req.user._id;
-  refreshTokenService.delete({user: {_id: id}}, (refreshTokenErr) => {
-    refreshTokenErr ? res.status(404).end() : res.end();
-  })
+  const {refreshToken} = req.body;
+  if (!refreshToken) {
+    res
+      .status(400)
+      .send({message: 'Refresh token not present'});
+  } else {
+    refreshTokenService.delete({token: refreshToken}, (refreshTokenErr, deletedRefreshToken) => {
+      refreshTokenErr
+        ? res.status(500).send({message: JSON.stringify(refreshTokenErr)})
+        : !deletedRefreshToken
+        ? res.status(400).send({message: 'Refresh token not valid'})
+        : res.end();
+    })
+  }
 });
 
 module.exports = router;

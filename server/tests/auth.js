@@ -139,9 +139,9 @@ describe('Authorization', function () {
     chai.request(app)
       .post(authUrl + '/logout')
       .set('Authorization', `Bearer ${issueToken({_id: noLoginUsers[2].user._id})}`)
+      .send({refreshToken: noLoginUsers[2].tokens[0]})
       .end((err, res) => {
         expect(res).to.have.status(200);
-
         chai.request(app)
           .post(authUrl + '/refresh')
           .send({

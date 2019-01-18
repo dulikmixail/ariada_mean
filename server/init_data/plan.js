@@ -3,6 +3,7 @@ const promiseHelper = require('./promise_helper');
 module.exports = new Promise((resolve, reject) => {
   Promise.all(
     [
+      require('./models/user'),
       require('./models/post'),
       require('./models/ph_r_group__ph_r_sub_group'),
       require('./models/assessment_of_functional_capability'),

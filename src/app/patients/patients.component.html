@@ -1,0 +1,5 @@
+<mat-tab-group routerTabs>
+  <mat-tab *ngFor="let link of navLinks" label="{{link.label}}" routerLink="{{link.routerLink}}"></mat-tab>
+</mat-tab-group>
+
+<router-outlet></router-outlet>

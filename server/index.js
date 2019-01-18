@@ -46,7 +46,7 @@ app.use(errorHandler);
 
 
 app.listen(app.get('port'), () => {
-  console.log('Server (' + process.env.NODE_ENV.toUpperCase() + ' MODE) is running  localhost:' + app.get('port'));
+  console.log(`Server  is running  localhost:${app.get('port')}. (${process.env.NODE_ENV ? process.env.NODE_ENV.toUpperCase() : 'DEFAULT'} MODE);`);
 });
 
 module.exports = app; // for testing

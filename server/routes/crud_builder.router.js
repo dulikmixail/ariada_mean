@@ -26,6 +26,14 @@ const crudRouters = [
   {
     service: 'refresh_token.service',
     path: '/refresh_tokens'
+  },
+  {
+    service: 'ph_r_group.service',
+    path: '/ph_r_groups'
+  },
+  {
+    service: 'ph_r_sub_group.service',
+    path: '/ph_r_sub_groups'
   }
 ];
 

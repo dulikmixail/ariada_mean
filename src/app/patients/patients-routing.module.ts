@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AnamnesisComponent} from './anamnesis/anamnesis.component';
-import {AuthGuard} from '../_guards';
 import {PatientsComponent} from './patients.component';
 
 const routes: Routes = [

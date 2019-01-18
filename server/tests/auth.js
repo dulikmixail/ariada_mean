@@ -12,9 +12,7 @@ const issueToken = require('./helpers/issueToken');
 const userService = require('../services/crud_services/user.service');
 const refreshTokenService = require('../services/crud_services/refresh_token.service');
 
-
-const authUrl = '/auth';
-
+const authUrl = '/api/auth';
 
 chai.use(chaiHttp);
 const expect = chai.expect;

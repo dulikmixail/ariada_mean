@@ -1,4 +1,5 @@
 const express = require('express');
+const unless = require('express-unless');
 const compression = require('compression')
 const path = require('path');
 const morgan = require('morgan');
@@ -25,7 +26,6 @@ if (config.util.getEnv('NODE_ENV') !== 'production') {
 }
 if (app.get("env") === "production" || config.util.getEnv('NODE_ENV') === 'production') {
   app.use(express.static(path.join(__dirname, "../dist/client")));
-  app.use('/app/*', express.static(path.join(__dirname, "../dist/client")));
 }
 
 app.use(compression())
@@ -39,6 +39,7 @@ app.use(express.json());
 // });
 
 // app.use('/', mainRouter);
+
 app.use('/auth', authRouter);
 app.use('/api', jwtMiddleware);
 app.use('/api', require('./routes/crud_builder.router'));

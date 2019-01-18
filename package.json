@@ -9,7 +9,7 @@
     "dev-back": "nodemon server",
     "init-data": "node server/init_data",
     "test-data": "SET NODE_ENV=test&&node server/init_data&&node server/test_data",
-    "build": "ng build --prod",
+    "build": "ng build --prod --progress",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

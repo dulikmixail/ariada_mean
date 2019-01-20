@@ -1,5 +1,5 @@
 const express = require('express');
-const compression = require('compression')
+const compression = require('compression');
 const path = require('path');
 const morgan = require('morgan');
 const helmet = require('helmet');
@@ -7,7 +7,6 @@ const app = express();
 const config = require('config');
 const errorHandler = require('./helpers/error-handler');
 const responseHandler = require('./helpers/response-handler');
-const jwtMiddleware = require('./helpers/jwt');
 const mongoose = require('./mongoose-connection');
 const router = require('./routes/index.router');
 
@@ -27,7 +26,7 @@ if (config.util.getEnv('NODE_ENV') !== 'production') {
 }
 
 
-app.use(compression())
+app.use(compression());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 // secure apps by setting various HTTP headers

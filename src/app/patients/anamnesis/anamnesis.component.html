@@ -1,11 +1,8 @@
-<mat-vertical-stepper linear #stepper>
+<mat-vertical-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Ознаки хворого</ng-template>
       <app-step-one></app-step-one>
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
       <div>
         <button mat-button matStepperNext>Далі</button>
       </div>
@@ -14,10 +11,6 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Протипоказання</ng-template>
-      <app-step-one></app-step-one>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Назад</button>
         <button mat-button matStepperNext>Далі</button>

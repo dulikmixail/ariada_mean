@@ -12,7 +12,6 @@ import {PhRSubGroupService} from '../../../_services/api/ph_r_sub_group/ph-r-sub
   styleUrls: ['./step-one.component.css']
 })
 export class StepOneComponent implements OnInit {
-  visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
@@ -20,7 +19,6 @@ export class StepOneComponent implements OnInit {
   fruitCtrl = new FormControl();
   filteredFruits: Observable<string[]>;
   fruits: string[] = [];
-  allFruits: string[] = [];
 
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
@@ -43,10 +41,11 @@ export class StepOneComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.fruits.push(event.option.viewValue);
-    this.filteredFruits = this.filteredFruits.pipe(map(items => {
-      return items.filter(item => item !== event.option.viewValue);
-    }));
+    // this.filteredFruits = this.filteredFruits.pipe(map(items => {
+    //   return items.filter(item => item !== event.option.viewValue);
+    // }));
     this.fruitInput.nativeElement.value = '';
+    this.fruitInput.nativeElement.blur();
     this.fruitCtrl.setValue(null);
   }
 

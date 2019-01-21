@@ -1,20 +1,21 @@
 import {Injectable} from '@angular/core';
 import {PhRSubGroupService} from '../api/ph_r_sub_group/ph-r-sub-group.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AnamnesisService {
-  anamnesisData: {
-    stepOne: string[]
-  };
+  anamnesisData: any = {};
 
   constructor(private phRSubGroupService: PhRSubGroupService) {
-    phRSubGroupService.getAll().subscribe(phRSubGroups => {
+    this.anamnesisData.stepOne = ['1'];
+    console.log('Constructor PhRSubGroupService');
+    phRSubGroupService.getAll().pipe(map(phRSubGroups => {
       this.anamnesisData.stepOne = phRSubGroups.map(phRSubGroup => {
         return phRSubGroup.title;
       });
-    });
+    }));
   }
 
   public getAnamnesisData() {

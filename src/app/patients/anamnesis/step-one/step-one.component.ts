@@ -2,9 +2,9 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
-import {map, startWith} from 'rxjs/operators';
-import {AnamnesisService} from '../../../_services/anamnesis/anamnesis.service';
+import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material';
+import {map} from 'rxjs/operators';
+import {PhRSubGroupService} from '../../../_services/api/ph_r_sub_group/ph-r-sub-group.service';
 
 @Component({
   selector: 'app-step-one',
@@ -25,32 +25,12 @@ export class StepOneComponent implements OnInit {
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
-  constructor(private anamnesisService: AnamnesisService) {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-      startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
-    this.fruits = anamnesisService.getAnamnesisData().stepOne;
-  }
-
-  add(event: MatChipInputEvent): void {
-    // Add fruit only when MatAutocomplete is not open
-    // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) {
-      const input = event.input;
-      const value = event.value;
-
-      // Add our fruit
-      if ((value || '').trim()) {
-        this.fruits.push(value.trim());
-      }
-
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
-
-      this.fruitCtrl.setValue(null);
-    }
+  constructor(private phRSubGroupService: PhRSubGroupService) {
+    this.filteredFruits = phRSubGroupService.getAll().pipe(map(phRSubGroups => {
+      return phRSubGroups.map(phRSubGroup => {
+        return phRSubGroup.title;
+      });
+    }));
   }
 
   remove(fruit: string): void {
@@ -63,15 +43,18 @@ export class StepOneComponent implements OnInit {
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.fruits.push(event.option.viewValue);
+    this.filteredFruits = this.filteredFruits.pipe(map(items => {
+      return items.filter(item => item !== event.option.viewValue);
+    }));
     this.fruitInput.nativeElement.value = '';
     this.fruitCtrl.setValue(null);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
-  }
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //
+  //   return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+  // }
 
   ngOnInit() {
   }

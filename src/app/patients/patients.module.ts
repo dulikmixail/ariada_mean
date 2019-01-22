@@ -4,9 +4,7 @@ import {CommonModule} from '@angular/common';
 import {PatientsRoutingModule} from './patients-routing.module';
 import {
   MatAutocompleteModule,
-  MatButtonModule,
-  MatChipsModule,
-  MatFormFieldModule,
+  MatButtonModule, MatChipsModule,
   MatIconModule,
   MatInputModule,
   MatStepperModule,
@@ -18,6 +16,8 @@ import {RehabilitationComponent} from './rehabilitation/rehabilitation.component
 import {RouterTabModule} from '@zerohouse/router-tab';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StepOneComponent} from './anamnesis/step-one/step-one.component';
+import {StepTwoComponent} from './anamnesis/step-two/step-two.component';
+import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,8 @@ import {StepOneComponent} from './anamnesis/step-one/step-one.component';
     AnamnesisComponent,
     RehabilitationComponent,
     StepOneComponent,
+    StepTwoComponent,
+    ChipsListComponent
   ],
   imports: [
     CommonModule,
@@ -32,14 +34,14 @@ import {StepOneComponent} from './anamnesis/step-one/step-one.component';
     RouterTabModule,
     MatTabsModule,
     MatStepperModule,
-    MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    ReactiveFormsModule,
     MatChipsModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule
+    MatAutocompleteModule
   ],
+
   bootstrap: [
     PatientsComponent
   ]

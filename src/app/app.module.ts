@@ -12,17 +12,17 @@ import {
   MatSidenavModule,
   MatIconModule,
   MatListModule,
-  MatMenuModule
+  MatMenuModule,
+  MatFormFieldModule
 } from '@angular/material';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import {JwtInterceptor, ErrorInterceptor, fakeBackendProvider} from './_helpers';
-
+import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,14 +35,12 @@ import {JwtInterceptor, ErrorInterceptor, fakeBackendProvider} from './_helpers'
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-
-    // provider used to create fake backend
-    // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

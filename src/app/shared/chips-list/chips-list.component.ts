@@ -1,17 +1,19 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material';
+import {PhRSubGroupService} from '../../_services/api/ph_r_sub_group/ph-r-sub-group.service';
 import {map} from 'rxjs/operators';
-import {PhRSubGroupService} from '../../../_services/api/ph_r_sub_group/ph-r-sub-group.service';
 
 @Component({
-  selector: 'app-step-one',
-  templateUrl: './step-one.component.html',
-  styleUrls: ['./step-one.component.css']
+  selector: 'app-chips-list',
+  templateUrl: './chips-list.component.html',
+  styleUrls: ['./chips-list.component.css']
 })
-export class StepOneComponent implements OnInit {
+export class ChipsListComponent implements OnInit {
+  @Input() required = false;
+  @Input() placeholder = '';
   selectable = true;
   removable = true;
   addOnBlur = true;
@@ -57,5 +59,6 @@ export class StepOneComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

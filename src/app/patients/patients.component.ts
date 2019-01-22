@@ -7,11 +7,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class PatientsComponent implements OnInit {
   navLinks = [
-    { routerLink: './anamnesis', label: 'Анамнез' },
-    { routerLink: './rehabilitation', label: 'Критерії реабілітації' },
-    { routerLink: './efficiency', label: 'Оцінка ефективності' },
-    { routerLink: './', label: 'Робота з біосигналами' },
-    { routerLink: './', label: 'Звіти' },
+    {routerLink: './anamnesis', label: 'Анамнез', active: true},
+    {routerLink: './rehabilitation', label: 'Критерії реабілітації', active: false},
+    {routerLink: './efficiency', label: 'Оцінка ефективності', active: false},
+    {routerLink: './', label: 'Робота з біосигналами', active: false},
+    {routerLink: './', label: 'Звіти', active: false},
   ];
 
   constructor() {

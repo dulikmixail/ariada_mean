@@ -34,6 +34,10 @@ const crudRouters = [
   {
     service: 'ph_r_sub_group.service',
     path: '/ph_r_sub_groups'
+  },
+  {
+    service: 'ph_r_allowed.service',
+    path: '/ph_r_alloweds'
   }
 ];
 

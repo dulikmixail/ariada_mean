@@ -1,4 +1,4 @@
-// export class phRAllowed
-//     isAllowed: {
-//     },
-//     description:
+export class PhRAllowed {
+  isAllowed: boolean;
+  description: string;
+}

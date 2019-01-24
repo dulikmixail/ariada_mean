@@ -1,1 +1,7 @@
-<app-chips-list></app-chips-list>
+<app-chips-list
+  required="true"
+  placeholder="Виберіте одну або більше ознак ..."
+  [source]="source"
+  selectableName="description"
+  (itemsEvent)="receiveItems($event)">
+</app-chips-list>

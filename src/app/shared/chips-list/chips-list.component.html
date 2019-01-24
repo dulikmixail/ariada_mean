@@ -18,11 +18,11 @@
       [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      [matChipInputAddOnBlur]="addOnBlur">
+      [matChipInputAddOnBlur]="addOnBlur" (click)="click()">
   </mat-chip-list>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let filteredItem of filteredItems | async" [value]="filteredItem">
-      {{filteredItem}}
+    <mat-option *ngFor="let filteredItem of filteredItems | async;  let i = index" [attr.data-index]="i" [value]="i">
+      {{filteredItem[selectableName]}}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

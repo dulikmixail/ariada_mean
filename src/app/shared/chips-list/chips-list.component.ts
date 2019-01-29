@@ -1,9 +1,9 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from '@angular/material';
-import {map, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-chips-list',
@@ -15,9 +15,9 @@ export class ChipsListComponent implements OnInit {
   @Input() placeholder = '';
   @Input() selectableName: string;
   @Input() source: Observable<any[]>;
+  @Input() sendOutputEvent = true;
   selectable = true;
   removable = true;
-  addOnBlur = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   formControl = new FormControl();
   items: any[] = [];
@@ -33,14 +33,8 @@ export class ChipsListComponent implements OnInit {
   }
 
   sendItems() {
-    this.itemsEvent.emit(this.items);
-  }
-
-  click(): void {
-    if (this.allItems.length > 0) {
-      this.filteredItems = this.formControl.valueChanges.pipe(
-        startWith(null),
-        map((item: string | null) => typeof item === 'string' ? this._filter(item) : this.allItems.slice()));
+    if (this.sendOutputEvent) {
+      this.itemsEvent.emit(this.items);
     }
   }
 
@@ -50,22 +44,24 @@ export class ChipsListComponent implements OnInit {
     if (index >= 0) {
       this.items.splice(index, 1);
     }
+    this.sendItems();
+    this._filter();
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.items.push(event.option.viewValue);
+    this.items.push(this.allItems.filter(item => item[this.selectableName] === event.option.viewValue)[0]);
     this.sendItems();
     this.itemInput.nativeElement.value = '';
     this.itemInput.nativeElement.blur();
-    this.formControl.setValue(null);
+    this._filter();
   }
 
-  private _filter(value: string): any[] {
-    const itemValue = value.toLowerCase();
-
-    return this.allItems.filter((item) => {
-      return item[this.selectableName].toLowerCase().indexOf(itemValue) >= 0;
-    });
+  private _filter() {
+    this.filteredItems = from([this.allItems]).pipe(
+      map(arr => arr.filter((item) => {
+        return this.items.indexOf(item) === -1;
+      }))
+    );
   }
 
   ngOnInit() {

@@ -10,7 +10,8 @@ import {Observable} from 'rxjs';
 })
 export class StepTwoComponent implements OnInit {
   source: Observable<PhRAllowed[]>;
-  items: any[];
+  items: PhRAllowed[];
+  isAllowPhysicalRahabilitation;
 
   constructor(private phRAllowedService: PhRAllowedService) {
     this.source = phRAllowedService.getAll();
@@ -18,8 +19,16 @@ export class StepTwoComponent implements OnInit {
 
   receiveItems($event) {
     this.items = $event;
-    console.log(this.items);
+    this.calcAllowPhysicalRahabilitation();
   }
+
+  calcAllowPhysicalRahabilitation() {
+    this.isAllowPhysicalRahabilitation = true;
+    this.items.forEach(item => {
+      this.isAllowPhysicalRahabilitation = this.isAllowPhysicalRahabilitation && item.isAllowed;
+    });
+  }
+
 
   ngOnInit() {
   }

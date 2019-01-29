@@ -5,3 +5,6 @@
   selectableName="description"
   (itemsEvent)="receiveItems($event)">
 </app-chips-list>
+<div *ngIf="items && items.length>0">Фізична реабілітація<span *ngIf="!isAllowPhysicalRahabilitation"> не </span>
+  показана
+</div>

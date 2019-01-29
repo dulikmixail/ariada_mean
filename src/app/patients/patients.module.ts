@@ -6,7 +6,7 @@ import {
   MatAutocompleteModule,
   MatButtonModule, MatChipsModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatSelectModule,
   MatStepperModule,
   MatTabsModule
 } from '@angular/material';
@@ -18,6 +18,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StepOneComponent} from './anamnesis/step-one/step-one.component';
 import {StepTwoComponent} from './anamnesis/step-two/step-two.component';
 import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
+import { StepThreeComponent } from './anamnesis/step-three/step-three.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
     RehabilitationComponent,
     StepOneComponent,
     StepTwoComponent,
-    ChipsListComponent
+    ChipsListComponent,
+    StepThreeComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
     MatInputModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule
   ],
 
   bootstrap: [

@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class StepOneComponent implements OnInit {
   source: Observable<PhRSubGroup[]>;
-  items: any[];
+  items: PhRSubGroup[];
 
   constructor(private phRSubGroupService: PhRSubGroupService) {
     this.source = phRSubGroupService.getAll();

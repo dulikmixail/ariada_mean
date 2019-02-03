@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <p *ngFor="let item of DB.tasks; let i=index;"><i>{{DB.defaultTask}} {{i + 1}}: </i>{{item}}</p>
+  <div #efficiencynav>
+    <div>
+      <div id="efficiencynav" fragment="efficiencynav" class="efficiencynav">
+        <p><a routerLink="./robinson-index" fragment="robinson-index"
+              routerLinkActive="active">{{DB.robinsonIndexNav}}</a></p>
+        <p><a routerLink="./baevsky-test" fragment="baevsky-test" routerLinkActive="active">{{DB.baevskyTestNav}}</a>
+        </p>
+        <p><a routerLink="./sbp-hr" fragment="sbp-hr" routerLinkActive="active">{{DB.sbpHrNav}}</a></p>
+        <p><a routerLink="./orthostatic-test" fragment="orthostatic-test"
+              routerLinkActive="active">{{DB.orthostaticTestNav}}</a></p>
+        <p><a routerLink="./kerdo-index" fragment="kerdo-index" routerLinkActive="active">{{DB.kerdoIndexNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./physical-capacity" fragment="physical-capacity"
+                                             routerLinkActive="active">{{DB.physicalCapacityNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./martine-kushelevsky-test" fragment="martine-kushelevsky-test"
+                                             routerLinkActive="active">{{DB.martineKushelevskyTestNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./ruffie-test" fragment="ruffie-test"
+                                             routerLinkActive="active">{{DB.ruffieTestNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./apanasenko-test" fragment="apanasenko-test"
+                                             routerLinkActive="active">{{DB.apanasenkoTestNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./skibinskaya-index" fragment="skibinskaya-index"
+                                             routerLinkActive="active">{{DB.skibinskayaIndexNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a routerLink="./klabchuk-index" fragment="klabchuk-index"
+                                             routerLinkActive="active">{{DB.klabchukIndexNav}}</a></p>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

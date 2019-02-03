@@ -1,0 +1,91 @@
+<div id="morning-gymnastics" class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+  <div *ngIf="DB.modeOfMotionActivityChecked && DB.LFK[1]">
+    <div class="gwt-HTML">
+      <!-- <p class="gwt-Label"><b>{{DB.stepThreeStep}}</b>{{DB.stepThreeTitle}}</p> -->
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-bordered">
+          <tbody>
+          <ng-container *ngIf="4>=DB.modeOfMotionActivityChecked">
+            <tr *ngFor="let item of DB.stepThreeTableSick; let i=index">
+              <!-- {{i}}{{DB.modeOfMotionActivityChecked}} -->
+              <ng-container *ngIf="i==0 || i==DB.modeOfMotionActivityChecked">
+                <td *ngFor="let td of item.td">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="DB.modeOfMotionActivityChecked>4">
+            <tr *ngFor="let item of DB.stepThreeTableHealth; let i=index">
+              <ng-container *ngIf="i==0 || i==DB.modeOfMotionActivityChecked-4">
+                <td *ngFor="let td of item.td">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="4>=DB.modeOfMotionActivityChecked" class="gwt-HTML">
+    <p class="gwt-Label">{{DB.formsOfProcedureSickTitle}}</p>
+    <div class="gwt-Table-Wrapper">
+      <table class="gwt-Table gwt-Table-Bold table table-bordered">
+        <tbody>
+          <tr *ngFor="let item of DB.formsOfProcedureSickTable">
+            <td>{{item.td[0]}}</td>
+            <td>{{item.td[1]}}</td>
+            <td>{{item.td[2]}}</td>
+            <td>{{item.td[3]}}</td>
+            <td>{{item.td[4]}}</td>
+            <td>{{item.td[5]}}</td>
+            <td>{{item.td[6]}}</td>
+            <td>{{item.td[7]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="gwt-Label" *ngFor="let item of DB.formsOfProcedureSickNote">{{item}}</p>
+  </div> -->
+    <!-- {{DB.modeOfMotionActivityChecked>4}}
+    {{DB.formsOfProcedureHealthTableActive}} -->
+    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML"><!-- && DB.formsOfProcedureHealthTableActive-->
+      <p class="gwt-Label gwt-Label-Centered">{{DB.formsOfProcedureHealthSubTitle}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <ng-container *ngFor="let item of DB.formsOfProcedureHealthTable; let i=index">
+            <tr *ngIf="i===0 || item.td[3] || item.td[5] || item.td[7] || item.td[9]">
+              <td>{{item.td[0] || item.tr0}}</td>
+              <td>{{item.td[1]}}</td>
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==1">{{item.td[2]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==1">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[3]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==2">{{item.td[4]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==2">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[5]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==3">{{item.td[6]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==3">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[7]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==4">{{item.td[8]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==4">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[9]">
+              </span>
+            </td>
+          </tr> -->
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

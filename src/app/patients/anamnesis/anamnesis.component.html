@@ -1,29 +1,126 @@
-<mat-vertical-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+<mat-vertical-stepper linear #stepper>
+  <mat-step [stepControl]="formGroupOne">
+    <form [formGroup]="formGroupOne">
       <ng-template matStepLabel>Ознаки хворого</ng-template>
-      <app-step-one></app-step-one>
+      <div>
+        <p>Ознайомтесь із загальними протипоказаннями до призначення фізичної реабілітації та зробіть висновки щодо
+          можливості
+          призначення фізичної реабілітації залежно від наявності чи відсутності протипоказань для призначення фізичної
+          реабілітації.</p>
+        <p>Виберіть з переліку основного контингенту хворих (присутня одна або більше ознак). <em>ТГ-терапевтична група.
+          НГ-неврологічна. ОТіХГ-Ортопедо-травматологічна і хірургічна.</em></p>
+      </div>
+      <mat-form-field *ngIf="(phRSubGroups$ | async) as phRSubGroups; else loadingPhRSubGroups" class="full-width">
+        <mat-select placeholder="Виберіте одну або більше ознак ..." multiple required
+                    formControlName="phRSubGroupsSelected">
+          <mat-option *ngFor="let phRSubGroup of phRSubGroups" [value]="phRSubGroup">
+            {{phRSubGroup.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingPhRSubGroups>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
       <div>
         <button mat-button matStepperNext>Далі</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+  <mat-step [stepControl]="formGroupTwo">
+    <form [formGroup]="formGroupTwo">
       <ng-template matStepLabel>Протипоказання</ng-template>
-      <app-step-two></app-step-two>
+      <mat-form-field *ngIf="(phRAlloweds$ | async) as phRAlloweds; else loadingPhRAlloweds" class="full-width">
+        <mat-select placeholder="Виберіте одну або більше ознак ..." formControlName="phRAllowedsSelected"
+                    (ngModelChange)="calcAllowPhysicalRahabilitation()" multiple required>
+          <mat-option *ngFor="let phRAllowed of phRAlloweds" [value]="phRAllowed">
+            {{phRAllowed.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingPhRAlloweds>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+      <div *ngIf="phRAllowedsSelected && phRAllowedsSelected.length>0">Фізична реабілітація<span
+        *ngIf="!isAllowPhysicalRahabilitation"> не </span>
+        показана
+      </div>
       <div>
         <button mat-button matStepperPrevious>Назад</button>
         <button mat-button matStepperNext>Далі</button>
       </div>
     </form>
   </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Вихідний стан хворого</ng-template>
-    <app-step-three></app-step-three>
-    <div>
-      <button mat-button matStepperPrevious>Назад</button>
-      <button mat-button (click)="stepper.reset()">Скинути</button>
-    </div>
+  <mat-step [stepControl]="formGroupThree">
+    <form [formGroup]="formGroupThree">
+      <ng-template matStepLabel>Вихідний стан хворого</ng-template>
+      <mat-form-field *ngIf="(treatments$ | async) as treatments; else loadingTreatments" class="full-width">
+        <mat-select placeholder="Режим лікування:" formControlName="treatmentsSelected" required>
+          <mat-option *ngFor="let treatment of treatments" [value]="treatment.title">
+            {{treatment.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingTreatments>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+      <h4>Основні категорії життєдіяльності:</h4>
+      <mat-form-field *ngIf="(selfServices$ | async) as selfServices; else loadingSelfServices" class="full-width">
+        <mat-select placeholder="Здатність до самообслуговування:" formControlName="selfServicesSelected" required>
+          <mat-option *ngFor="let selfService of selfServices" [value]="selfService.title">
+            {{selfService.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingSelfServices>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+
+      <mat-form-field
+        *ngIf="(psychologicalStatuses$ | async) as psychologicalStatuses; else loadingPsychologicalStatuses"
+        class="full-width">
+        <mat-select placeholder="Психоемоціний статус та мотивація щодо участі в реабілітаційній програмі:"
+                    formControlName="psychologicalStatusesSelected" required>
+          <mat-option *ngFor="let psychologicalStatus of psychologicalStatuses"
+                      [value]="psychologicalStatus.title">
+            {{psychologicalStatus.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingPsychologicalStatuses>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+
+      <mat-form-field *ngIf="(criteria$ | async) as criteria; else loadingCriteria" class="full-width">
+        <mat-select placeholder="Критерій для призначення реабілітаційних програм:" formControlName="criteriaSelected" required>
+          <mat-option *ngFor="let criterion of criteria" [value]="criterion.title">
+            {{criterion.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingCriteria>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+
+      <mat-form-field
+        *ngIf="(assessmentOfFunctionalCapabilities$ | async) as assessmentOfFunctionalCapabilities; else loadingAssessmentOfFunctionalCapabilities"
+        class="full-width">
+        <mat-select placeholder="Оцінка хворим функціональних можливостей організму:"
+                    formControlName="assessmentOfFunctionalCapabilitiesSelected" required>
+          <mat-option *ngFor="let assessmentOfFunctionalCapability of assessmentOfFunctionalCapabilities"
+                      [value]="assessmentOfFunctionalCapability.title">
+            {{assessmentOfFunctionalCapability.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-template #loadingAssessmentOfFunctionalCapabilities>
+        <app-small-progress-spinner></app-small-progress-spinner>
+      </ng-template>
+
+      <div>
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button (click)="stepper.reset()">Скинути</button>
+      </div>
+    </form>
   </mat-step>
 </mat-vertical-stepper>

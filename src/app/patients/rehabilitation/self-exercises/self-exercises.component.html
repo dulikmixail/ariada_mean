@@ -1,0 +1,167 @@
+<div class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+  <div *ngIf="DB.modeOfMotionActivityChecked && DB.LFK[3]">
+    <div class="gwt-HTML">
+      <!-- <p class="gwt-Label"><b>{{DB.stepThreeStep}}</b>{{DB.stepThreeTitle}}</p> -->
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold  table table-bordered">
+          <tbody>
+          <ng-container *ngIf="4>=DB.modeOfMotionActivityChecked">
+            <tr *ngFor="let item of DB.stepThreeTableSick; let i=index">
+              <!-- {{i}}{{DB.modeOfMotionActivityChecked}} -->
+              <ng-container *ngIf="i==0 || i==DB.modeOfMotionActivityChecked">
+                <td *ngFor="let td of item.td">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="DB.modeOfMotionActivityChecked>4">
+            <tr *ngFor="let item of DB.stepThreeTableHealth; let i=index">
+              <ng-container *ngIf="i==0 || i==DB.modeOfMotionActivityChecked-4">
+                <td *ngFor="let td of item.td">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button (click)="addSelfExercisesPatientCardTableRow()">{{DB.selfExercises.patientCardTableAddRow}}</button>
+    <button (click)="removeSelfExercisesPatientCardTableRow()">{{DB.selfExercises.patientCardTableRemoveRow}}</button>
+    <div class="gwt-Table-Wrapper" style="margin:0 0 15px 0;">
+      <table class="gwt-Table table table-bordered">
+        <tbody>
+        <tr *ngFor="let item of DB.selfExercises.patientCardTable; let i=index;">
+          <ng-container *ngFor="let td of item.td; let j=index;">
+            <td *ngIf="2>j">{{td}}</td>
+            <td *ngIf="j>=2 && i==0">
+              <input type="date" [(ngModel)]="item.td[j]" class="gwt-Table-Input">
+            </td>
+            <td *ngIf="j>=2 && i!=0">
+              <input type="edit" [(ngModel)]="item.td[j]" class="gwt-Table-Input">
+            </td>
+          </ng-container>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML">
+      <!-- && DB.formsOfProcedureHealthTableActive-->
+      <p class="gwt-Label gwt-Label-Centered">{{DB.formsOfProcedureHealthSubTitle}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <ng-container *ngFor="let item of DB.formsOfProcedureHealthTable; let i=index">
+            <tr *ngIf="i===0 || item.td[3] || item.td[5] || item.td[7] || item.td[9]">
+              <td>{{item.td[0] || item.tr0}}</td>
+              <td>{{item.td[1]}}</td>
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==1">{{item.td[2]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==1">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[3]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==2">{{item.td[4]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==2">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[5]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==3">{{item.td[6]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==3">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[7]">
+              </span>
+            </td> -->
+              <td *ngIf="(DB.modeOfMotionActivityChecked-4)==4">{{item.td[8]}}</td>
+              <!-- <td *ngIf="(DB.modeOfMotionActivityChecked-4)==4">
+              <span class="gwt-CheckBox">
+                <input type="checkbox" [checked]="item.td[9]">
+              </span>
+            </td>
+          </tr> -->
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.selfExercises.patientTrainingAlgorithmTitle}}</p>
+    <p *ngFor="let item of DB.selfExercises.patientTrainingAlgorithmNote; let i=index;">
+      <i *ngIf="i==0">{{DB.defaultNote}}</i>{{item}}</p>
+    <div class="gwt-Table-Wrapper">
+      <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+        <tbody>
+        <ng-container *ngFor="let item of DB.selfExercises.patientTrainingAlgorithmTable; let i=index">
+          <tr>
+            <ng-container *ngFor="let td of item.td; let j=index">
+              <td *ngIf="j==0 || !item.edit">{{td}}</td>
+              <td *ngIf="j!=0 && item.edit"><input type="edit" [(ngModel)]="td.name" class="gwt-Table-Input"></td>
+            </ng-container>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.selfExercises.reactionToProcedureTitle}}</p>
+    <div class="gwt-Table-Wrapper">
+      <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+        <tbody>
+        <ng-container *ngFor="let item of DB.selfExercises.reactionToProcedureTable; let i=index">
+          <tr *ngIf="i===0">
+            <td>{{item.td[0]}}</td>
+            <td>{{item.td[1]}}</td>
+            <td>{{item.td[2]}}</td>
+          </tr>
+          <tr *ngIf="i!==0">
+            <td>{{item.td[0]}}</td>
+            <td>{{item.td[1]}}</td>
+            <td>
+              <select class="gwt-ListBox" [(ngModel)]="item.selected.name">
+                <option *ngFor="let o of item.td[2]; let j=index" [ngValue]="o.name">{{o.name}}</option>
+              </select>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <i>{{DB.defaultNote}}</i>{{DB.selfExercises.reactionToProcedureNote}}</p>
+
+
+    <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.selfExercises.adequacyConclusionsTitle}}</p>
+    <div class="gwt-Table-Wrapper">
+      <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+        <tbody>
+        <ng-container *ngFor="let item of DB.selfExercises.adequacyConclusionsTable; let i=index">
+          <tr>
+            <td>{{item.td[0]}}</td>
+            <td>{{item.td[1]}}</td>
+            <td>{{item.td[2]}}</td>
+            <td *ngIf="i==0">{{item.td[3]}}</td>
+            <td *ngIf="i!=0">
+                  <span class="gwt-CheckBox">
+                    <input type="checkbox" [(ngModel)]="item.checked">
+                  </span>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <i>{{DB.defaultNote}}</i>{{DB.selfExercises.adequacyConclusionsNote}}</p>
+
+
+  </div>
+
+
+</div>

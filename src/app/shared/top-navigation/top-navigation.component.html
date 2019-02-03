@@ -7,7 +7,7 @@
       Ariada
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/patients">
+      <a mat-list-item routerLink="/patients" [matMenuTriggerFor]="patients">
         <mat-icon>people</mat-icon>
         Робота з пацієнтами
       </a>
@@ -28,6 +28,15 @@
         Вийти
       </a>
     </mat-nav-list>
+
+    <mat-menu #patients="matMenu">
+      <button mat-menu-item routerLink="/patients/anamnesis">Анамнез</button>
+      <button mat-menu-item routerLink="/patients/rehabilitation">Критерії реабілітації</button>
+      <button mat-menu-item>Оцінка ефективності</button>
+      <button mat-menu-item>Робота з біосигналами</button>
+      <button mat-menu-item>Звіти</button>
+    </mat-menu>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">

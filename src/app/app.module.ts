@@ -13,7 +13,7 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
-  MatFormFieldModule
+  MatFormFieldModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
@@ -22,7 +22,7 @@ import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavigationComponent,
+    TopNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +37,7 @@ import {JwtInterceptor, ErrorInterceptor} from './_helpers';
     MatListModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

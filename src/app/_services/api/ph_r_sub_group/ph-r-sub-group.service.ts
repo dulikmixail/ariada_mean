@@ -1,17 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../environments/environment';
 import {PhRSubGroup} from '../../../_models/api/ph-r-sub-group';
+import {CrudService} from '../../crud/crud.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PhRSubGroupService {
+export class PhRSubGroupService extends CrudService<PhRSubGroup> {
 
-  constructor(private http: HttpClient) {
-  }
-
-  getAll() {
-    return this.http.get<PhRSubGroup[]>(`${environment.apiUrl}/ph_r_sub_groups`);
+  constructor(http: HttpClient) {
+    super('ph_r_sub_groups', http);
   }
 }

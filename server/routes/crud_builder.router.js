@@ -38,6 +38,26 @@ const crudRouters = [
   {
     service: 'ph_r_allowed.service',
     path: '/ph_r_alloweds'
+  },
+  {
+    service: 'treatment.service',
+    path: '/treatments'
+  },
+  {
+    service: 'self_service.service',
+    path: '/self_services'
+  },
+  {
+    service: 'psychological_status.service',
+    path: '/psychological_statuses'
+  },
+  {
+    service: 'criterion.service',
+    path: '/criteria'
+  },
+  {
+    service: 'assessment_of_functional_capability.service',
+    path: '/assessment_of_functional_capabilities'
   }
 ];
 

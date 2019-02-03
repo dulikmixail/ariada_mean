@@ -1,0 +1,326 @@
+<div class="col-md-12"
+     style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+  <div *ngIf="DB.modeOfMotionActivityChecked && DB.LFK[4]">
+
+    <!-- <p *ngFor="let item of DB.massage.tasks; let i=index;"><i>{{DB.defaultTask}} {{i+1}}: </i>{{item}}</p> -->
+    <p class="gwt-Label">
+      <i>{{DB.defaultTask}} 1: </i>{{DB.massage.taskOne}}</p>
+    <p class="gwt-Label">
+      <i>{{DB.defaultTask}} 2: </i>{{DB.massage.taskTwo}}</p>
+
+    <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.massage.stepOne}}</p>
+    <p class="gwt-Label">
+      <i>{{DB.massage.stepOneContraindicationsNote}}</i>
+    </p>
+
+    <select #select class="gwt-ListBox" multiple="" size="5" (change)="updateContraindications($event.target.value)">
+      <!-- <select #select class="gwt-ListBox" [ngModel]="DB.massage.stepOneContraindications.selected" (ngModelChange)="updateContraindications($event.target)" multiple="" size="5"> -->
+      <ng-container *ngFor="let item of DB.massage.stepOneContraindications.items; let j=index">
+        <ng-container *ngIf="j==0">
+          <option [ngValue]="item" selected>{{item}}</option>
+        </ng-container>
+        <ng-container *ngIf="j!=0">
+          <option [ngValue]="item">{{item}}</option>
+        </ng-container>
+      </ng-container>
+    </select>
+
+    <ng-container *ngFor="let item of DB.massage.stepOneContraindications.radiobuttons; let i=index">
+      <label class="radio-inline"><input name="options" ng-control="options" type="radio" [value]="item.value"
+                                         [(ngModel)]="DB.massage.stepOneContraindications.checked"
+                                         disabled>{{item.name}}</label>
+    </ng-container>
+
+    <div class="gwt-HTML">
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold-First-Col table table-bordered">
+          <tbody>
+          <tr *ngFor="let tr of DB.massage.mainTable">
+            <td>{{tr.label}}</td>
+            <td>
+              <select class="gwt-ListBox selec-100" [(ngModel)]="tr.type.selected" (change)="setCalmingOrStimulating()">
+                <option *ngFor="let c of tr.type.values; let j=index" [ngValue]="c.value">{{c.name}}</option>
+              </select>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p style="margin: 25px 0;"></p>
+    <!-- <hr></hr> -->
+
+    <div *ngIf="DB.massage.mainTable[3].type.selected && DB.massage.mainTable[4].type.selected">
+
+      <!-- сегментарно-рефлекторний масаж -->
+      <div *ngIf="DB.massage.mainTable[3].type.selected===2">
+        <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.massage.stepTwo}}</p>
+        <p class="gwt-Label">
+          <i>{{DB.defaultTask}} 6: </i>{{DB.massage.taskSix}}</p>
+        <p class="gwt-Label">
+          <i>{{DB.defaultNote}}</i>{{DB.massage.noteSix}}</p>
+        <div class="gwt-Table-Wrapper">
+          <table class="gwt-Table gwt-Table-Bold gwt-Table-Bold-First-Col table table-hover table-bordered">
+            <tbody>
+            <tr *ngFor="let tr of DB.massage.tableSix; let i=index">
+              <ng-container *ngFor="let td of tr.td; let j=index">
+                <td *ngIf="td.type=='text'">{{td.value}}</td>
+                <td *ngIf="td.type=='select'">
+                  <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected">
+                    <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
+                  </select>
+                </td>
+              </ng-container>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="gwt-Label">
+          <i>{{DB.defaultTask}} 7. </i>
+        </p>
+        <label class="checkbox-inline">
+          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSeven.ckecked">{{DB.massage.checkboxSeven.name}}
+        </label>
+        <div *ngIf="DB.massage.checkboxSeven.ckecked">
+          <img src="./assets/images/segmentInervation.jpg" class="gwt-Image" style="width: 50%;">
+        </div>
+        <p class="gwt-Label">
+          <i>{{DB.defaultTask}} 7-1. </i>
+        </p>
+        <label class="checkbox-inline">
+          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSevenOne.ckecked">{{DB.massage.checkboxSevenOne.name}}
+        </label>
+        <div *ngIf="DB.massage.checkboxSevenOne.ckecked">
+          <p class="gwt-Label gwt-Label-Centered">{{DB.massage.titleSevenOne}}</p>
+          <div class="gwt-Table-Wrapper">
+            <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+              <tbody>
+              <ng-container *ngFor="let item of DB.massage.tableSevenOne; let i=index">
+                <tr>
+                  <ng-container *ngFor="let td of item.td; let j=index">
+                    <td *ngIf="j==item.td.length-1 && i!=0">
+                        <span class="gwt-CheckBox">
+                          <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked">
+                        </span>
+                    </td>
+                    <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <p class="gwt-Label">
+            <i>{{DB.defaultNote}}</i>{{DB.massage.noteSevenOne}}</p>
+        </div>
+        <p class="gwt-Label">
+          <i>{{DB.defaultTask}} 7-2. </i>
+        </p>
+        <label class="checkbox-inline">
+          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSevenTwo.ckecked">{{DB.massage.checkboxSevenTwo.name}}
+        </label>
+        <div *ngIf="DB.massage.checkboxSevenTwo.ckecked">
+          <p class="gwt-Label gwt-Label-Centered">{{DB.massage.titleSevenTwo}}</p>
+          <div class="gwt-Table-Wrapper">
+            <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+              <tbody>
+              <ng-container *ngFor="let item of DB.massage.tableSevenTwo; let i=index">
+                <tr>
+                  <ng-container *ngFor="let td of item.td; let j=index">
+                    <td *ngIf="j==item.td.length-1 && i!=0">
+                        <span class="gwt-CheckBox">
+                          <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked">
+                        </span>
+                    </td>
+                    <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <p class="gwt-Label">
+            <i>{{DB.defaultNote}}</i>{{DB.massage.noteSevenTwo}}</p>
+        </div>
+        <p class="gwt-Label">
+          <i>{{DB.defaultTask}} 7-3. </i>{{DB.massage.checkboxSevenThree.name}}</p>
+      </div>
+
+
+      <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.massage.stepThree}}</p>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 8: </i>{{DB.massage.taskEight}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <tr *ngFor="let tr of DB.massage.tableEight; let i=index">
+            <ng-container *ngFor="let td of tr.td; let j=index">
+              <td *ngIf="td.type=='text'">{{td.value}}</td>
+              <td *ngIf="td.type=='select'">
+                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
+                        (change)="updateCalmingOrStimulatingCount()">
+                  <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
+                </select>
+              </td>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 9: </i>{{DB.massage.taskNine}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <tr *ngFor="let tr of DB.massage.tableNine; let i=index">
+            <ng-container *ngFor="let td of tr.td; let j=index">
+              <td *ngIf="td.type=='text'">{{td.value}}</td>
+              <td *ngIf="td.type=='select'">
+                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
+                        (change)="updateCalmingOrStimulatingCount()">
+                  <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
+                </select>
+              </td>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.massage.stepFour}}</p>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 10: </i>{{DB.massage.taskTen}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold gwt-Table-Bold-Last-Row table table-hover table-bordered">
+          <tbody>
+          <ng-container *ngFor="let item of DB.massage.tableTen; let i=index">
+            <tr *ngIf="i==DB.massage.tableTen.length-1">
+              <td *ngFor="let td of item.td">{{td}}</td>
+            </tr>
+            <tr *ngIf="i!=DB.massage.tableTen.length-1">
+              <ng-container *ngFor="let td of item.td; let j=index">
+                <td *ngIf="j==item.td.length-1 && i!=0">
+                    <span class="gwt-CheckBox">
+                      <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked"
+                             (change)="calculateTableTenSelectedItems()">
+                    </span>
+                </td>
+                <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <i>{{DB.defaultNote}}</i>{{DB.massage.noteTen}}</p>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 11: </i>{{DB.massage.taskEleven}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold gwt-Table-Bold-First-Col table table-hover table-bordered">
+          <tbody>
+          <ng-container *ngFor="let item of DB.massage.tableEleven; let i=index">
+            <tr>
+              <ng-container *ngFor="let td of item.td; let j=index">
+                <td *ngIf="j==item.td.length-1 && i!=0">
+                    <span class="gwt-CheckBox">
+                      <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked"
+                             (change)="calculateTableTenSelectedItems()">
+                    </span>
+                </td>
+                <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.massage.stepFive}}</p>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 12: </i>{{DB.massage.taskTwelve}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <tr *ngFor="let item of DB.massage.tableTwelve;">
+            <td *ngFor="let td of item">{{td}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 13: </i>{{DB.massage.taskThirteen}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold gwt-Table-Bold-First-Col table table-hover table-bordered">
+          <tbody>
+          <tr *ngFor="let tr of DB.massage.tableThirteen; let i=index">
+            <ng-container *ngFor="let td of tr.td; let j=index">
+              <td *ngIf="td.type=='text'">{{td.value}}</td>
+              <td *ngIf="td.type=='select'">
+                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
+                        (change)="updateCalmingOrStimulatingCount()">
+                  <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
+                </select>
+              </td>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 14: </i>{{DB.massage.taskFourteen}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
+          <tbody>
+          <tr *ngFor="let tr of DB.massage.tableFourteen; let i=index">
+            <ng-container *ngFor="let td of tr.td; let j=index">
+              <td *ngIf="td.type=='text'">{{td.value}}</td>
+              <td *ngIf="td.type=='select'">
+                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
+                        (change)="updateCalmingOrStimulatingCount()">
+                  <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
+                </select>
+              </td>
+            </ng-container>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 15: </i>{{DB.massage.taskFiveteen}}</p>
+      <div class="gwt-Table-Wrapper">
+        <table class="gwt-Table gwt-Table-Bold gwt-Table-Bold-Last-Row table table-hover table-bordered">
+          <tbody>
+          <tr>
+            <td *ngFor="let td of DB.massage.tableFiveteen.header">{{td}}</td>
+          </tr>
+          <ng-container *ngFor="let item of DB.massage.tableFiveteen.body">
+            <tr *ngFor="let tr of item; let i=index">
+              <ng-container *ngIf="i==0">
+                <td [attr.rowspan]="item.length">{{tr[i]}}</td>
+              </ng-container>
+              <ng-container *ngFor="let td of tr; let j=index">
+                <td *ngIf="j!=0">{{td}}</td>
+              </ng-container>
+            </tr>
+          </ng-container>
+          <tr>
+            <td *ngFor="let td of DB.massage.tableFiveteen.footer">{{td}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gwt-Label">
+        <i>{{DB.defaultTask}} 16: </i>{{DB.massage.taskSixteen}}</p>
+      <ng-container *ngFor="let item of DB.massage.radiogroupSixteen.radiobuttons; let i=index">
+        <label class="radio-inline">
+          <input name="options" ng-control="options" type="radio" [value]="item.value"
+                 [(ngModel)]="DB.massage.radiogroupSixteen.checked"
+                 disabled>{{item.name}}</label>
+      </ng-container>
+      <p>
+        <i>{{DB.defaultNote}}</i>{{DB.massage.noteSixteen}}</p>
+    </div>
+
+  </div>
+</div>

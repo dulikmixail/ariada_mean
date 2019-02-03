@@ -13,6 +13,8 @@ module.exports = new Promise((resolve, reject) => {
       require('./models/m_duration'),
       require('./models/m_treatment'),
       require('./models/indeks_skibinskoy_measurement'),
+      require('./models/self_service'),
+      require('./models/psychological_status'),
       new Promise((resolve, reject) => {
         Promise.all(
           [

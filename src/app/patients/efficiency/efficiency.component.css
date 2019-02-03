@@ -1,0 +1,73 @@
+/* .router-outlet-wrapper{
+  background:#eee;
+} */
+
+div.efficiencynav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #20ab9a;
+  border-top: 1px #fff solid;
+  /* border-bottom: 1px #fff solid; */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.efficiencynav p {
+  /* float: left; */
+  margin: 0;
+  padding: 0px 10px;
+  background-color: #20ab9a;
+}
+
+div.efficiencynav p a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 4px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+div.efficiencynav p a:hover {
+  background-color: #777;
+}
+
+div.efficiencynav p a.active {
+  background-color: #777;
+}
+
+div.efficiencynav p.icon {
+  display: none;
+}
+
+/*
+@media screen and (max-width:680px) {
+  div.efficiencynav li:not(:first-child) {display: none;}
+  div.efficiencynav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:680px) {
+  div.efficiencynav.responsive {position: relative;}
+  div.efficiencynav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  div.efficiencynav.responsive li {
+    float: none;
+    display: inline;
+  }
+  div.efficiencynav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+} */

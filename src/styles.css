@@ -9,6 +9,21 @@ body {
   margin: 0;
 }
 
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+}
+
 .flex-spacer {
   flex: 1 1 auto;
 }
@@ -24,3 +39,213 @@ body {
 mat-icon {
   cursor: pointer;
 }
+
+/*Styles from old project - START*/ /*REFACTORING NEEDED*/
+/*---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------*/
+
+/*FROM BOOTSTRAP - START*/
+.col-md-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+/*FROM BOOTSTRAP - END*/
+
+/*FIX MATERIAL TABLE - START*/
+table,
+table > tbody > tr > td,
+table > tbody > tr > th,
+table > tfoot > tr > td,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > thead > tr > th {
+  padding: 8px !important;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+/*FIX MATERIAL TABLE - END*/
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.gwt-Big-Label {
+  font-size: 130%;
+  margin: 10px 5px 5px 5px;
+}
+
+.gwt-Label-Centered {
+  text-align: center;
+}
+
+.gwt-Label {
+  margin: 10px 0px 2px 0px;
+}
+
+.gwt-ListBox {
+  max-width: 100%;
+  min-width: 50px;
+}
+
+select[multiple], select[size] {
+  max-width: 100%;
+}
+
+.gwt-Pointer {
+  cursor: pointer;
+}
+
+.gwt-RadioButton-disabled {
+  color: #888;
+}
+
+/* .gwt-RadioButton {
+  margin: 5px 0;
+} */
+
+.gwt-Like-Link {
+  text-decoration: none;
+}
+
+.gwt-Like-Link:hover {
+  text-decoration: underline;
+}
+
+.gwt-Table-Wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 15px 0;
+}
+
+.gwt-Table {
+  /* border: 1px #000 solid; */
+  margin: auto;
+  margin-bottom: 1px;
+}
+
+.gwt-Table td, .gwt-Table th {
+  padding: 2px !important;
+}
+
+.gwt-Table-Bold tr:nth-child(1) {
+  font-weight: bold;
+  background: #eee;
+}
+
+.gwt-Table-Bold tr:nth-child(1) td {
+  /* text-align: center; */
+  vertical-align: middle !important;
+}
+
+.gwt-Table-Bold-First-Col tr td:nth-child(1) {
+  font-weight: bold;
+  background: #eee;
+}
+
+.gwt-Table-Bold-Last-Row tr:last-child {
+  font-weight: bold;
+  background: #eee;
+}
+
+.gwt-Table-Input {
+  width: 100%;
+  min-width: 50px;
+  padding: 0;
+  border: 0;
+  line-height: inherit;
+}
+
+.selec-100 {
+  width: 100%;
+}
+
+svg {
+  font-size: 10px;
+}
+
+path, line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.axis text {
+  fill: #000;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke-width: 1px;
+}
+
+.medicine, .comment, .small-input-text {
+  border-width: 0;
+  padding: 0;
+  height: 22px;
+  width: 100%;
+}
+
+
+/* MODAL STYLES
+-------------------------------*/
+#modal-info,
+modal {
+  /* modals are hidden by default */
+  display: none;
+}
+
+.modal {
+  /* modal container fixed across whole screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* z-index must be higher than .modal-background */
+  z-index: 1000;
+  /* enables scrolling for tall modals */
+  overflow: auto;
+  display: block !important;
+}
+
+.modal .modal-body {
+  padding: 20px;
+  background: #fff;
+  /* margin exposes part of the modal background */
+  margin: 40px;
+}
+
+.modal-background {
+  /* modal background fixed across whole screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* semi-transparent black  */
+  background-color: #000;
+  opacity: 0.75;
+  /* z-index must be below .modal and above everything else  */
+  z-index: 900;
+}
+
+body.modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: hidden;
+}
+
+
+/*Styles from old project - END*/
+/*---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------*/

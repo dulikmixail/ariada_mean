@@ -1,0 +1,36 @@
+<div class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+
+  <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.apanasenkoTest.title}}</p>
+
+  <button (click)="addColumns()">{{DB.apanasenkoTest.addColumns}}</button>
+  <button (click)="removeColumns()">{{DB.apanasenkoTest.removeColumns}}</button>
+  <button (click)="calculateColumns()">{{DB.apanasenkoTest.calculateColumns}}</button>
+  <div class="gwt-Table-Wrapper">
+    <table class="gwt-Table table table-hover table-bordered">
+      <tbody>
+      <ng-container *ngFor="let item of DB.apanasenkoTest.table; let i=index">
+        <tr>
+          <ng-container *ngFor="let td of item.td; let j=index">
+            <td *ngIf="td.type=='text' && td.type!='select'">{{td.value}}</td>
+            <td *ngIf="td.type!='text' && td.type!='select'"><input type="{{td.type}}" [(ngModel)]="td.value" class="gwt-Table-Input"></td>
+            <td *ngIf="td.type=='select'">
+              <select class="gwt-ListBox" [(ngModel)]="td.value"><!--(change)="updateSex(i, j, $event.target.value)"-->
+                <!-- <ng-container *ngFor="let o of td.values; let j=index"> -->
+                <option *ngFor="let o of td.values; let j=index" [ngValue]="o.value">{{o.value}}</option>
+                <!-- <ng-container *ngIf="o.value===td.value">
+                  <option [ngValue]="o.value" selected>{{o.value}}</option>
+                </ng-container>
+                <ng-container *ngIf="o.value!==td.value">
+                  <option [ngValue]="o.value">{{o.value}}</option>
+                </ng-container> -->
+                <!-- </ng-container> -->
+              </select>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+</div>

@@ -1,4 +1,4 @@
-const Psychological_Status = require('../../services/crud_services/m_treatment.service');
+const Psychological_Status = require('../../services/crud_services/psychological_status.service');
 const promiseHelper = require('../promise_helper');
 
 module.exports = promiseHelper.getPromiseCreateModel(

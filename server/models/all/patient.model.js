@@ -43,16 +43,7 @@ let patientSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Gender',
         required: true
-    },
-    login: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        select: false,
-        required: true
-    },
+    }
 }, {versionKey: false});
 
 module.exports = mongoose.model('Patient', patientSchema);

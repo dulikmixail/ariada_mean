@@ -1,11 +1,14 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TopNavigationComponent} from './shared/top-navigation/top-navigation.component';
+import {BrowserModule} from '@angular/platform-browser';
 import {LayoutModule} from '@angular/cdk/layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {EffectsModule} from '@ngrx/effects';
+
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -15,9 +18,14 @@ import {
   MatMenuModule,
   MatFormFieldModule, MatProgressSpinnerModule
 } from '@angular/material';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {TopNavigationComponent} from './shared/top-navigation/top-navigation.component';
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
+import {reducers, metaReducers} from './store';
+import {environment} from '../environments/environment';
+import {AppEffects} from './app.effects';
 
 @NgModule({
   declarations: [
@@ -37,7 +45,11 @@ import {JwtInterceptor, ErrorInterceptor} from './_helpers';
     MatListModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects]),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

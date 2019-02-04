@@ -140,5 +140,8 @@
     "@schematics/angular:component": {
       "styleext": "css"
     }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
   }
 }

@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../crud/crud.service';
-import {PsychologicalStatusModel} from '../../../_models/api/psychological-status.model';
+import {SelfServiceModel} from '../../../_models/api/self-service.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PsychologicalStatusService extends CrudService<PsychologicalStatusModel> {
+export class SelfServiceService extends CrudService<SelfServiceModel> {
 
   constructor(http: HttpClient) {
-    super('psychological_statuses', http);
+    super('self_services', http);
   }
 }

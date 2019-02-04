@@ -25,8 +25,8 @@ import {TopNavigationComponent} from './shared/top-navigation/top-navigation.com
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {reducers, metaReducers} from './store';
 import {environment} from '../environments/environment';
-import {AppEffects} from './app.effects';
-import { PatientComponent } from './shared/patient/patient.component';
+import {PatientEffects} from './store/patient/patient.effects';
+import {UserEffects} from './store/user/user.effects';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { PatientComponent } from './shared/patient/patient.component';
     MatProgressSpinnerModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([PatientEffects, UserEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [

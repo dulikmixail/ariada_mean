@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {PhRSubGroupService} from '../api/ph_r_sub_group/ph-r-sub-group.service';
+import {PhRSubGroupService} from '../api/ph-r-sub-group/ph-r-sub-group.service';
 import {map} from 'rxjs/operators';
 
 @Injectable({

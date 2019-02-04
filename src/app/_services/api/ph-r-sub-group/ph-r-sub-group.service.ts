@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {PhRSubGroupModel} from '../../../_models/api/ph-r-sub-group.model';
 import {CrudService} from '../../crud/crud.service';
-import {PsychologicalStatusModel} from '../../../_models/api/psychological-status.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PsychologicalStatusService extends CrudService<PsychologicalStatusModel> {
+export class PhRSubGroupService extends CrudService<PhRSubGroupModel> {
 
   constructor(http: HttpClient) {
-    super('psychological_statuses', http);
+    super('ph_r_sub_groups', http);
   }
 }

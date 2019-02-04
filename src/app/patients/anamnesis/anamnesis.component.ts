@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {PhRSubGroup} from '../../_models/api/ph-r-sub-group';
-import {PhRSubGroupService} from '../../_services/api/ph_r_sub_group/ph-r-sub-group.service';
-import {PhRAllowed} from '../../_models/api/ph-r-allowed';
-import {PhRAllowedService} from '../../_services/api/ph_r_allowed/ph-r-allowed.service';
+import {PhRSubGroupModel} from '../../_models/api/ph-r-sub-group.model';
+import {PhRSubGroupService} from '../../_services/api/ph-r-sub-group/ph-r-sub-group.service';
+import {PhRAllowedModel} from '../../_models/api/ph-r-allowed.model';
+import {PhRAllowedService} from '../../_services/api/ph-r-allowed/ph-r-allowed.service';
 import {TreatmentService} from '../../_services/api/treatment/treatment.service';
-import {SelfServiceService} from '../../_services/api/self_service/self-service.service';
+import {SelfServiceService} from '../../_services/api/self-service/self-service.service';
 import {PsychologicalStatusService} from '../../_services/api/psychological_status/psychological-status.service';
 import {CriterionService} from '../../_services/api/criterion/criterion.service';
-import {AssessmentOfFunctionalCapabilityService} from '../../_services/api/assessment_of_functional_capability/assessment-of-functional-capability.service';
-import {Treatment} from '../../_models/api/treatment';
-import {SelfService} from '../../_models/api/self-service';
-import {PsychologicalStatus} from '../../_models/api/psychological-status';
-import {Criterion} from '../../_models/api/criterion';
-import {AssessmentOfFunctionalCapability} from '../../_models/api/assessment-of-functional-capability';
+import {AssessmentOfFunctionalCapabilityService} from '../../_services/api/assessment-of-functional-capability/assessment-of-functional-capability.service';
+import {TreatmentModel} from '../../_models/api/treatment.model';
+import {SelfServiceModel} from '../../_models/api/self-service.model';
+import {PsychologicalStatusModel} from '../../_models/api/psychological-status.model';
+import {CriterionModel} from '../../_models/api/criterion.model';
+import {AssessmentOfFunctionalCapabilityModel} from '../../_models/api/assessment-of-functional-capability.model';
 
 @Component({
   selector: 'app-anamnesis',
@@ -23,17 +23,17 @@ import {AssessmentOfFunctionalCapability} from '../../_models/api/assessment-of-
 })
 export class AnamnesisComponent implements OnInit {
   // Step one
-  phRSubGroups$: Observable<PhRSubGroup[]>;
+  phRSubGroups$: Observable<PhRSubGroupModel[]>;
   // Step two
-  phRAlloweds$: Observable<PhRAllowed[]>;
-  phRAllowedsSelected: PhRAllowed[];
+  phRAlloweds$: Observable<PhRAllowedModel[]>;
+  phRAllowedsSelected: PhRAllowedModel[];
   isAllowPhysicalRahabilitation;
   // Step three
-  treatments$: Observable<Treatment[]>;
-  selfServices$: Observable<SelfService[]>;
-  psychologicalStatuses$: Observable<PsychologicalStatus[]>;
-  criteria$: Observable<Criterion[]>;
-  assessmentOfFunctionalCapabilities$: Observable<AssessmentOfFunctionalCapability[]>;
+  treatments$: Observable<TreatmentModel[]>;
+  selfServices$: Observable<SelfServiceModel[]>;
+  psychologicalStatuses$: Observable<PsychologicalStatusModel[]>;
+  criteria$: Observable<CriterionModel[]>;
+  assessmentOfFunctionalCapabilities$: Observable<AssessmentOfFunctionalCapabilityModel[]>;
 
   formGroupOne: FormGroup;
   formGroupTwo: FormGroup;

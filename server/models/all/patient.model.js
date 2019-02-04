@@ -28,7 +28,7 @@ let patientSchema = new mongoose.Schema({
         required: true
     },
     medicalCardNumber: {
-        type: Number
+        type: String
     },
     workplace: {
         type: String

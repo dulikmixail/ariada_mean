@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PhRAllowedService } from './ph-r-allowed.service';
+import { GenderService } from './gender.service';
 
-describe('PhRAllowedService', () => {
+describe('GenderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PhRAllowedService = TestBed.get(PhRAllowedService);
+    const service: GenderService = TestBed.get(GenderService);
     expect(service).toBeTruthy();
   });
 });

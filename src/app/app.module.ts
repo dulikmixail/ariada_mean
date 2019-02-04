@@ -26,11 +26,12 @@ import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {reducers, metaReducers} from './store';
 import {environment} from '../environments/environment';
 import {AppEffects} from './app.effects';
+import { PatientComponent } from './shared/patient/patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
   ],
   imports: [
     BrowserModule,

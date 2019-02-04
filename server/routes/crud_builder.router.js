@@ -58,6 +58,10 @@ const crudRouters = [
   {
     service: 'assessment_of_functional_capability.service',
     path: '/assessment_of_functional_capabilities'
+  },
+  {
+    service: 'gender.service',
+    path: '/genders'
   }
 ];
 

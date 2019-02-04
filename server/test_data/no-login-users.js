@@ -24,5 +24,13 @@ module.exports = [
       password: 'password2',
     },
     tokens: ['REFRESH_TOKEN_2', 'REFRESH_TOKEN_3']
+  },
+  {
+    user: {
+      _id: id('5c3884966f236419447d5e63'),
+      login: 'test',
+      password: 'test',
+    },
+    tokens: ['REFRESH_TOKEN_4']
   }
 ];

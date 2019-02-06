@@ -2,12 +2,21 @@ import {Action} from '@ngrx/store';
 import {PatientModel} from '../../_models/api/patient.model';
 
 export enum PatientActionTypes {
-  LoadPatients = '[Patient] Load Patients',
+  GetAllPatients = '[Patient] Get All Patients',
+  GetAllPatientsSuccess = '[Patient] Get All Patients Success',
   AddPatient = '[Patient] Add Patient',
+  AddPatientSuccess = '[Patient] Add Patient Success',
 }
 
-export class LoadPatients implements Action {
-  readonly type = PatientActionTypes.LoadPatients;
+export class GetAllPatients implements Action {
+  readonly type = PatientActionTypes.GetAllPatients;
+}
+
+export class GetAllPatientsSuccess implements Action {
+  readonly type = PatientActionTypes.GetAllPatientsSuccess;
+
+  constructor(public payload: PatientModel[]) {
+  }
 }
 
 export class AddPatient implements Action {
@@ -17,7 +26,15 @@ export class AddPatient implements Action {
   }
 }
 
+export class AddPatientSuccess implements Action {
+  readonly type: PatientActionTypes.AddPatientSuccess;
+
+  constructor(public payload: PatientModel) {
+  }
+}
 
 export type PatientActions =
-  | LoadPatients
-  | AddPatient;
+  | GetAllPatients
+  | GetAllPatientsSuccess
+  | AddPatient
+  | AddPatientSuccess;

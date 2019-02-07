@@ -1,0 +1,8 @@
+<mat-form-field class="full-width">
+  <mat-select placeholder="Стать">
+    <mat-option *ngFor="let gender of genders$ | async" [value]="gender">
+      {{gender.title}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+

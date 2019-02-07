@@ -47,7 +47,6 @@ export class AnamnesisComponent implements OnInit {
               private criterionService: CriterionService,
               private assessmentOfFunctionalCapabilityService: AssessmentOfFunctionalCapabilityService,
               private _formBuilder: FormBuilder) {
-    console.log('Anamnesis constructor');
     // Load data from API
 
     this.phRSubGroups$ = this.phRSubGroupService.getAll();
@@ -72,7 +71,6 @@ export class AnamnesisComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Anamnesis ngOnInit');
     // Form validation
     this.formGroupOne = this._formBuilder.group({
       phRSubGroupsSelected: ['', Validators.required]

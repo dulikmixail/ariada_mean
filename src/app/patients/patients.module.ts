@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {PatientsRoutingModule} from './patients-routing.module';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatChipsModule,
+  MatButtonModule, MatCardModule, MatChipsModule,
   MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
@@ -19,23 +19,26 @@ import {RouterTabModule} from '@zerohouse/router-tab';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
 import {SmallProgressSpinnerComponent} from '../shared/small-progress-spinner/small-progress-spinner.component';
-import { MassageComponent } from './rehabilitation/massage/massage.component';
-import { MedicalGymnasticsComponent } from './rehabilitation/medical-gymnastics/medical-gymnastics.component';
-import { MorningGymnasticsComponent } from './rehabilitation/morning-gymnastics/morning-gymnastics.component';
-import { MultimediaComponent } from './rehabilitation/multimedia/multimedia.component';
-import { SelfExercisesComponent } from './rehabilitation/self-exercises/self-exercises.component';
-import { EfficiencyComponent } from './efficiency/efficiency.component';
-import { ApanasenkoTestComponent } from './efficiency/apanasenko-test/apanasenko-test.component';
-import { BaevskyTestComponent } from './efficiency/baevsky-test/baevsky-test.component';
-import { KerdoIndexComponent } from './efficiency/kerdo-index/kerdo-index.component';
-import { KlabchukIndexComponent } from './efficiency/klabchuk-index/klabchuk-index.component';
-import { MartineKushelevskyTestComponent } from './efficiency/martine-kushelevsky-test/martine-kushelevsky-test.component';
-import { OrthostaticTestComponent } from './efficiency/orthostatic-test/orthostatic-test.component';
-import { PhysicalCapacityComponent } from './efficiency/physical-capacity/physical-capacity.component';
-import { RobinsonIndexComponent } from './efficiency/robinson-index/robinson-index.component';
-import { RuffieTestComponent } from './efficiency/ruffie-test/ruffie-test.component';
-import { SbpHrComponent } from './efficiency/sbp-hr/sbp-hr.component';
-import { SkibinskayaIndexComponent } from './efficiency/skibinskaya-index/skibinskaya-index.component';
+import {MassageComponent} from './rehabilitation/massage/massage.component';
+import {MedicalGymnasticsComponent} from './rehabilitation/medical-gymnastics/medical-gymnastics.component';
+import {MorningGymnasticsComponent} from './rehabilitation/morning-gymnastics/morning-gymnastics.component';
+import {MultimediaComponent} from './rehabilitation/multimedia/multimedia.component';
+import {SelfExercisesComponent} from './rehabilitation/self-exercises/self-exercises.component';
+import {EfficiencyComponent} from './efficiency/efficiency.component';
+import {ApanasenkoTestComponent} from './efficiency/apanasenko-test/apanasenko-test.component';
+import {BaevskyTestComponent} from './efficiency/baevsky-test/baevsky-test.component';
+import {KerdoIndexComponent} from './efficiency/kerdo-index/kerdo-index.component';
+import {KlabchukIndexComponent} from './efficiency/klabchuk-index/klabchuk-index.component';
+import {MartineKushelevskyTestComponent} from './efficiency/martine-kushelevsky-test/martine-kushelevsky-test.component';
+import {OrthostaticTestComponent} from './efficiency/orthostatic-test/orthostatic-test.component';
+import {PhysicalCapacityComponent} from './efficiency/physical-capacity/physical-capacity.component';
+import {RobinsonIndexComponent} from './efficiency/robinson-index/robinson-index.component';
+import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.component';
+import {SbpHrComponent} from './efficiency/sbp-hr/sbp-hr.component';
+import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
+import {PatientComponent} from '../shared/patient/patient.component';
+import {GenderComponent} from '../shared/gender/gender.component';
+import {EmcPatientComponent} from './emc-patient/emc-patient.component';
 
 @NgModule({
   declarations: [
@@ -61,22 +64,26 @@ import { SkibinskayaIndexComponent } from './efficiency/skibinskaya-index/skibin
     RuffieTestComponent,
     SbpHrComponent,
     SkibinskayaIndexComponent,
+    PatientComponent,
+    GenderComponent,
+    EmcPatientComponent
   ],
   imports: [
     CommonModule,
     PatientsRoutingModule,
     RouterTabModule,
-    MatTabsModule,
-    MatStepperModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatAutocompleteModule,
     MatButtonModule,
+    MatCardModule,
+    MatChipsModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule,
-    MatChipsModule,
-    MatAutocompleteModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
-    FormsModule,
-    MatProgressSpinnerModule
+    MatStepperModule,
+    MatTabsModule
   ],
 
   bootstrap: [

@@ -16,7 +16,8 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
-  MatFormFieldModule, MatProgressSpinnerModule
+  MatFormFieldModule,
+  MatProgressSpinnerModule, MatSelectModule
 } from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -27,6 +28,7 @@ import {reducers, metaReducers} from './store';
 import {environment} from '../environments/environment';
 import {PatientEffects} from './store/patient/patient.effects';
 import {UserEffects} from './store/user/user.effects';
+import {GenderEffects} from './store/gender/gender.effects';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {UserEffects} from './store/user/user.effects';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSelectModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
@@ -49,7 +52,7 @@ import {UserEffects} from './store/user/user.effects';
     MatProgressSpinnerModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([PatientEffects, UserEffects]),
+    EffectsModule.forRoot([PatientEffects, UserEffects, GenderEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [

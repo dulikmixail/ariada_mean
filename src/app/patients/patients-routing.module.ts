@@ -20,12 +20,14 @@ import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.componen
 import {ApanasenkoTestComponent} from './efficiency/apanasenko-test/apanasenko-test.component';
 import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
 import {KlabchukIndexComponent} from './efficiency/klabchuk-index/klabchuk-index.component';
+import {EmcPatientComponent} from './emc-patient/emc-patient.component';
 
 const routes: Routes = [
   {
     path: '', component: PatientsComponent,
     children: [
       {path: 'anamnesis', component: AnamnesisComponent},
+      {path: 'emc_patient', component: EmcPatientComponent},
       {
         path: 'rehabilitation', component: RehabilitationComponent,
         children: [

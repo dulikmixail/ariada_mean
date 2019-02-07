@@ -15,6 +15,7 @@ module.exports = new Promise((resolve, reject) => {
       require('./models/indeks_skibinskoy_measurement'),
       require('./models/self_service'),
       require('./models/psychological_status'),
+      require('./models/gender'),
       new Promise((resolve, reject) => {
         Promise.all(
           [

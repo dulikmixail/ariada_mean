@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PatientsNavLink, PatientsNavLinkModule} from './patients-nav-link.module';
 
 @Component({
   selector: 'app-patients',
@@ -6,16 +7,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./patients.component.css']
 })
 export class PatientsComponent implements OnInit {
-  navLinks = [
-    {routerLink: './anamnesis', label: 'Анамнез', active: true},
-    {routerLink: './emc_patient', label: 'ЕМК пацієнта', active: false},
-    {routerLink: './rehabilitation', label: 'Критерії реабілітації', active: false},
-    {routerLink: './efficiency', label: 'Оцінка ефективності', active: false},
-    {routerLink: './', label: 'Робота з біосигналами', active: false},
-    {routerLink: './', label: 'Звіти', active: false},
-  ];
+  navLinks: PatientsNavLink[];
 
-  constructor() {
+  constructor(public patientsNavLinkModule: PatientsNavLinkModule) {
+    this.navLinks = patientsNavLinkModule.navLinks;
   }
 
   ngOnInit() {

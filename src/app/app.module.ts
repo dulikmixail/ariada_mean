@@ -29,11 +29,12 @@ import {environment} from '../environments/environment';
 import {PatientEffects} from './store/patient/patient.effects';
 import {UserEffects} from './store/user/user.effects';
 import {GenderEffects} from './store/gender/gender.effects';
+import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavigationComponent,
+    TopNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +51,7 @@ import {GenderEffects} from './store/gender/gender.effects';
     MatMenuModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    PatientsNavLinkModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([PatientEffects, UserEffects, GenderEffects]),

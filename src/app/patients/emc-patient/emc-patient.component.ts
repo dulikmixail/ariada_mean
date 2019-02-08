@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {InfoModalComponent} from '../../shared/info-modal/info-modal.component';
 
 @Component({
   selector: 'app-emc-patient',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmcPatientComponent implements OnInit {
 
-  constructor() { }
+  avatar;
+
+  constructor(public dialog: MatDialog) {
+    this.avatar = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
+  }
 
   ngOnInit() {
+
+  }
+
+  openDialog(): void {
+    this.dialog.open(InfoModalComponent);
   }
 
 }

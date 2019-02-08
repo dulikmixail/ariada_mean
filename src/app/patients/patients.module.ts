@@ -4,7 +4,10 @@ import {CommonModule} from '@angular/common';
 import {PatientsRoutingModule} from './patients-routing.module';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatChipsModule,
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDialogModule,
   MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
@@ -39,6 +42,8 @@ import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinsk
 import {PatientComponent} from '../shared/patient/patient.component';
 import {GenderComponent} from '../shared/gender/gender.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
+import {InfoModalComponent} from '../shared/info-modal/info-modal.component';
+import {PatientsNavLinkModule} from './patients-nav-link.module';
 
 @NgModule({
   declarations: [
@@ -66,7 +71,8 @@ import {EmcPatientComponent} from './emc-patient/emc-patient.component';
     SkibinskayaIndexComponent,
     PatientComponent,
     GenderComponent,
-    EmcPatientComponent
+    EmcPatientComponent,
+    InfoModalComponent
   ],
   imports: [
     CommonModule,
@@ -83,11 +89,13 @@ import {EmcPatientComponent} from './emc-patient/emc-patient.component';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
 
   bootstrap: [
-    PatientsComponent
+    PatientsComponent,
+    InfoModalComponent
   ]
 })
 export class PatientsModule {

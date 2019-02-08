@@ -30,11 +30,8 @@
     </mat-nav-list>
 
     <mat-menu #patients="matMenu">
-      <button mat-menu-item routerLink="/patients/anamnesis">Анамнез</button>
-      <button mat-menu-item routerLink="/patients/rehabilitation">Критерії реабілітації</button>
-      <button mat-menu-item>Оцінка ефективності</button>
-      <button mat-menu-item>Робота з біосигналами</button>
-      <button mat-menu-item>Звіти</button>
+      <button *ngFor="let patientNavLink of patientNavLinks" mat-menu-item
+              routerLink="/patients/{{patientNavLink.routerLink}}">{{patientNavLink.label}}</button>
     </mat-menu>
 
   </mat-sidenav>

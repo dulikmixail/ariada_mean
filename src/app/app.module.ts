@@ -53,9 +53,9 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
     MatProgressSpinnerModule,
     PatientsNavLinkModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
     EffectsModule.forRoot([PatientEffects, UserEffects, GenderEffects]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

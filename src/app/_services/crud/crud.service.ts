@@ -14,7 +14,7 @@ export class CrudService<T> {
     return this.http.get<T[]>(`${environment.apiUrl}/${this.path}`);
   }
 
-  create(model: T) {
+  create(model: T | FormData) {
     return this.http.post<T>(`${environment.apiUrl}/${this.path}`, model);
   }
 

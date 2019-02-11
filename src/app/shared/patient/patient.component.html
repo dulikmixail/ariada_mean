@@ -1,33 +1,63 @@
-<form>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Прізвище">
-  </mat-form-field >
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Ім'я">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="По батькові">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Дата народження">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Постійне місце проживання">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Телефоны">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="№ карти стац. хворого">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Місце роботи">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="Посада">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input matInput type="file" placeholder="Фото">
-  </mat-form-field>
-  <app-gender></app-gender>
-</form>
+<mat-card class="example-card">
+  <mat-card-header>
+    <img mat-card-avatar src="{{avatar}}" alt="Avatar" class="avatar" (click)="openDialog()"/>
+    <mat-card-title class="mat-card-title">Shiba Inu</mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle">Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Фото" readonly value="{{!fileInput.files.length ? '' : fileInput.files[0].name}}">
+        <button mat-button class="upload-button" (click)="fileInput.click()">
+          <mat-icon>add_a_photo</mat-icon>
+          <span> Додати фото</span>
+          <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)" style="display:none;"/>
+        </button>
+        <!--</button>-->
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="surname" placeholder="Прізвище">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="name" placeholder="Ім'я">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="middleName" placeholder="По батькові">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="birthDate" placeholder="Дата народження">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="phoneNumbers" placeholder="Телефоны">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="workplace" placeholder="Місце роботи">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="workPost" placeholder="Посада">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Стать" formControlName="gender">
+          <mat-option *ngFor="let gender of genders$ | async" [value]="gender._id">
+            {{gender.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="center" class="button-row">
+    <button mat-stroked-button color="primary" (click)="onSubmit()">Сохранить</button>
+    <button mat-stroked-button>Сбросить</button>
+  </mat-card-actions>
+</mat-card>
+
+

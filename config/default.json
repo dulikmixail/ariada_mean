@@ -1,6 +1,6 @@
 {
-	"DBHost" : "mongodb://localhost:27017/rc-bd",
-  "server" : {
+  "DBHost": "mongodb://localhost:27017/rc-bd",
+  "server": {
     "port": 3000
   },
   "auth": {
@@ -12,5 +12,15 @@
     "tokenlen": 128,
     "secret": "RbBQqA6uF#msRF8s7h*?@=95HUm&DgMDd6zLFn4XzWQ6dtwXSJwBX#?gL2JWf!",
     "expiresIn": "7d"
+  },
+  "router": {
+    "messages": {
+      "1": "Entity not found",
+      "2": "Entity not found and not update",
+      "3": "Not valid body request",
+      "4": "Empty body request",
+      "5": "Entity not found and not deleted",
+      "6": "Entities not deleted"
+    }
   }
 }

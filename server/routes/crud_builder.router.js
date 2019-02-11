@@ -188,10 +188,6 @@ const crudRouters = [
     path: '/nutritionists'
   },
   {
-    service: 'patient.service',
-    path: '/patients'
-  },
-  {
     service: 'ph_r_allowed.service',
     path: '/ph_r_alloweds'
   },
@@ -307,13 +303,13 @@ const crudRouters = [
     service: 'water_therapy.service',
     path: '/water_therapies'
   },
-
-
 ];
 
 const routers = [];
 crudRouters.forEach(value => {
   routers.push(require('./crud.router')(value.service, value.path));
 });
+
+routers.push(require('./patient.router')('patient.service', '/patients'));
 
 module.exports = routers;

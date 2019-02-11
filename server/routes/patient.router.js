@@ -2,14 +2,24 @@ const express = require('express');
 const router = express.Router();
 const jwtMiddleware = require('../helpers/jwt');
 const config = require('config');
+const upload = require('multer')();
+const mongoose = require('mongoose');
 
 module.exports = function (requireServiceName, routePath) {
   const service = require('../services/crud_services/' + requireServiceName);
 
-  router.post(routePath, jwtMiddleware, function (req, res) {
-    service.create(req.body, function (err, result) {
-      err ? res.status(400).send(err) : res.send(result);
-    })
+  router.post(routePath, jwtMiddleware, upload.single('photo'), function (req, res, next) {
+    let patient = new mongoose.model('Patient')();
+    patient = Object.assign(patient, req.body);
+    console.log(req.file);
+    patient.attach('photo', req.file)
+      .then(() => patient.save())
+      .then(() => res.send('Post has been saved with file!'))
+      .catch(err => next(err));
+
+    // service.create(req.body, req.files.image, function (err, result) {
+    //   err ? res.status(400).send(err) : res.send(result);
+    // })
   });
 
   router.get(routePath, jwtMiddleware, function (req, res) {

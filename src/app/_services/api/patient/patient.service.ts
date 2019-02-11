@@ -6,7 +6,7 @@ import {PatientModel} from '../../../_models/api/patient.model';
 @Injectable({
   providedIn: 'root'
 })
-export class PatientService extends CrudService<PatientModel> {
+export class PatientService extends CrudService<any> {
 
   constructor(http: HttpClient) {
     super('patients', http);

@@ -54,7 +54,7 @@ const routes: Routes = [
           {path: 'klabchuk-index', component: KlabchukIndexComponent}
         ]
       },
-      {path: '', pathMatch: 'full', redirectTo: 'anamnesis'},
+      {path: '', pathMatch: 'full', redirectTo: 'emc_patient'},
     ]
   }
 ];

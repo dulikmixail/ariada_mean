@@ -1,6 +1,6 @@
 {
-	"DBHost": "mongodb://localhost:27017/rc-bd_test",
-  "server" : {
+  "DBHost": "mongodb://localhost:27017/rc-bd_test",
+  "server": {
     "port": 0
   },
   "auth": {
@@ -12,5 +12,15 @@
     "tokenlen": 128,
     "secret": "TEST",
     "expiresIn": "7d"
+  },
+  "router": {
+    "messages": {
+      "1": "Entity not found",
+      "2": "Entity not found and not update",
+      "3": "Not valid body request",
+      "4": "Empty body request",
+      "5": "Entity not found and not deleted",
+      "6": "Entities not deleted"
+    }
   }
 }

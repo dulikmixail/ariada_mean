@@ -14,28 +14,5 @@ export class PatientModel extends StaticFields {
   workPost: string;
   isDelete: boolean;
   gender: GenderModel;
+  photo: any;
 }
-
-// surname: {
-// },
-// name: {
-// },
-// middleName: {
-// },
-// birthDate:
-// permanentResidence:
-// addressOfRelativesAndFamily:
-// phoneNumbers: {
-// },
-// medicalCardNumber:
-// workplace:
-// workPost:
-// isDeexport classe:
-// gender: {        ref: 'Gender',
-//
-// },
-// login: {
-// },
-// password: {        select: false,
-//
-// }

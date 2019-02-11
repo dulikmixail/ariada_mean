@@ -1,0 +1,24 @@
+.avatar-input {
+  width: 87%;
+}
+
+.avatar {
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+}
+
+.mat-card-title {
+  font-size: 28px !important;
+  margin-bottom: 16px !important;
+}
+
+.mat-card-subtitle {
+  font-size: 18px;
+}
+
+.upload-button {
+  position: absolute;
+  right: 0;
+  top: -50%;
+}

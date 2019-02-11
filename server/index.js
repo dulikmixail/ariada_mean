@@ -27,8 +27,8 @@ if (config.util.getEnv('NODE_ENV') !== 'production') {
 
 
 app.use(compression());
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+app.use(express.urlencoded({extended: false, limit: '50mb'}));
+app.use(express.json({limit: '50mb'}));
 // secure apps by setting various HTTP headers
 app.use(helmet());
 
@@ -44,8 +44,9 @@ app.use(responseHandler);
 app.use(errorHandler);
 
 
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log(`Server  is running  localhost:${app.get('port')}. (${process.env.NODE_ENV ? process.env.NODE_ENV.toUpperCase() : 'DEFAULT'} MODE);`);
 });
+server.setTimeout(5000);
 
 module.exports = app; // for testing

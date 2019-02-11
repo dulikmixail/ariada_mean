@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {map, switchMap} from 'rxjs/operators';
 
-import {AddPatient, AddPatientSuccess, GetAllPatients, GetAllPatientsSuccess, PatientActionTypes} from './patient.actions';
+import {AddPatient, AddPatientSuccess, GetAllPatientsSuccess, PatientActionTypes} from './patient.actions';
 import {PatientService} from '../../_services/api/patient/patient.service';
 
 @Injectable()

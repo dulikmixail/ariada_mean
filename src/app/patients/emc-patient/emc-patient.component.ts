@@ -9,18 +9,12 @@ import {InfoModalComponent} from '../../shared/info-modal/info-modal.component';
 })
 export class EmcPatientComponent implements OnInit {
 
-  avatar;
-
-  constructor(public dialog: MatDialog) {
-    this.avatar = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
+  constructor() {
   }
 
   ngOnInit() {
 
   }
 
-  openDialog(): void {
-    this.dialog.open(InfoModalComponent);
-  }
 
 }

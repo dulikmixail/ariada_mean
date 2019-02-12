@@ -3,11 +3,8 @@ const Patient = require('../../models/all/patient.model');
 
 //Create
 const exportObject = {};
-exportObject.create = function (data, photo, callback) {
-  let patient = new mongoose.model('Patient')();
-  patient = Object.assign(patient,data);
-  patient.attach('photo', photo)
-    .then(()=>patient.save(callback));
+exportObject.create = function (data, callback) {
+  Patient.create(data, callback);
 };
 
 //Read

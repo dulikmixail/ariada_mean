@@ -34,12 +34,16 @@ app.use(helmet());
 
 
 if (app.get('env') === 'production' || config.util.getEnv('NODE_ENV') === 'production') {
+  console.log('Static files: ', path.join(__dirname, distDir));
   app.use(express.static(path.join(__dirname, distDir)));
   app.use(/^((?!(api)).)*/, (req, res) => {
     res.sendFile(path.join(__dirname, distDir + '/index.html'));
   });
+
 }
 app.use('/api', router);
+app.use(express.static(path.join(__dirname, 'uploads')));
+console.log('Static files: ', path.join(__dirname, 'uploads'));
 app.use(responseHandler);
 app.use(errorHandler);
 

@@ -67,6 +67,7 @@ export class PatientComponent implements OnInit {
     const fd = new FormData();
     fd.append('photo', this.form.get('photo').value);
     fd.append('surname', this.form.get('surname').value);
+    fd.append('name', this.form.get('name').value);
     fd.append('middleName', this.form.get('middleName').value);
     fd.append('birthDate', this.form.get('birthDate').value);
     fd.append('permanentResidence', this.form.get('permanentResidence').value);

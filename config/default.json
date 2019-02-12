@@ -15,6 +15,7 @@
   },
   "router": {
     "messages": {
+      "0": "Unknown error",
       "1": "Entity not found",
       "2": "Entity not found and not update",
       "3": "Not valid body request",

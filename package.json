@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod --progress&&NODE_ENV=production node server\"",
+    "start": "ng build --prod --progress&&NODE_ENV=production node server",
     "start-front": "ng serve",
     "dev-all": "concurrently \"nodemon server \" \"ng serve\"",
     "dev-all2": "concurrently \"node server \" \"ng serve\"",
@@ -67,6 +67,7 @@
     "mongoose": "^5.4.3",
     "mongoose-crate": "^1.1.0",
     "mongoose-crate-gm": "^1.0.2",
+    "mongoose-crate-imagemagick": "^1.0.6",
     "mongoose-crate-localfs": "^1.1.4",
     "mongoose-deep-populate": "^3.1.1",
     "morgan": "^1.9.1",

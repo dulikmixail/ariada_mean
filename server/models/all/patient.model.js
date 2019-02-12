@@ -51,8 +51,8 @@ let patientSchema = new mongoose.Schema({
 
 patientSchema.plugin(crate, {
   storage: new LocalFS({
-    directory: path.join(__dirname, 'uploads', 'patients', 'photos'),
-    path: '/path/to/file'
+    directory: '/files/patients/',
+    path: (attachment) => `/${path.basename(attachment.path)}`
   }),
   fields: {
     photo: {}

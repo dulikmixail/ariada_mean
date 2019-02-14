@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'test';
 const mongoose = require('../mongoose-connection');
-mongoose.then(() => {
+mongoose.connect.then(() => {
   Promise.all(
     [
       require('./models/employee'),

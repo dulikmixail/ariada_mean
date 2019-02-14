@@ -1,6 +1,6 @@
 const mongoose = require('../mongoose-connection');
 
-mongoose.then(() => {
+mongoose.connect.then(() => {
   require('./delete_all_model').then(() => {
     Promise.all(
       [

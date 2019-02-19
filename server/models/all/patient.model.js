@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
-const crate = require('mongoose-crate');
-const LocalFS = require('mongoose-crate-localfs');
+
 const path = require('path');
 
 let patientSchema = new mongoose.Schema({
@@ -49,14 +48,5 @@ let patientSchema = new mongoose.Schema({
   }
 }, {versionKey: false});
 
-patientSchema.plugin(crate, {
-  storage: new LocalFS({
-    directory: '/files/patients/',
-    path: (attachment) => `/${path.basename(attachment.path)}`
-  }),
-  fields: {
-    photo: {}
-  }
-});
 
 module.exports = mongoose.model('Patient', patientSchema);

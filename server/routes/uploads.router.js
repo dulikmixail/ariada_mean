@@ -102,7 +102,24 @@ router.get('/images/:filename', (req, res) => {
 // @route DELETE /files/:id
 // @desc  Delete file
 router.delete('/files/:id', (req, res) => {
+  const uploadStream = gridFSBucket.openUploadStream('test.dat');
+  const id = uploadStream.id;
   gridFSBucket.delete(req.params.id, (err) => {
+    if (err) {
+      return res.status(404).json({message: err.message});
+    }
+    res.status(200).json({
+      message: 'File deleted'
+    })
+  });
+});
+
+// @route DELETE /files/:id
+// @desc  Delete file
+router.delete('/files/name/:name', (req, res) => {
+  const uploadStream = gridFSBucket.openUploadStream(req.params.name);
+  const id = uploadStream.id;
+  gridFSBucket.delete(id, (err) => {
     if (err) {
       return res.status(404).json({message: err.message});
     }

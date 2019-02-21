@@ -42,8 +42,6 @@ if (app.get('env') === 'production' || config.util.getEnv('NODE_ENV') === 'produ
 
 app.use(uploadRouter);
 app.use('/api', router);
-app.use(express.static(path.join(__dirname, 'uploads')));
-console.log('Static files: ', path.join(__dirname, 'uploads'));
 app.use(responseHandler);
 app.use(errorHandler);
 

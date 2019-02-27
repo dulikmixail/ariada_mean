@@ -23,5 +23,8 @@
       "5": "Entity not found and not deleted",
       "6": "Entities not deleted"
     }
+  },
+  "mongo": {
+    "bucketName": "uploads"
   }
 }

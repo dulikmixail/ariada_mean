@@ -1,6 +1,6 @@
 {
-	"DBHost": "mongodb://localhost:27017/rc-bd",
-  "server" : {
+  "DBHost": "mongodb://localhost:27017/rc-bd",
+  "server": {
     "port": 3000
   },
   "auth": {
@@ -23,5 +23,8 @@
       "5": "Entity not found and not deleted",
       "6": "Entities not deleted"
     }
+  },
+  "mongo": {
+    "bucketName": "uploads"
   }
 }

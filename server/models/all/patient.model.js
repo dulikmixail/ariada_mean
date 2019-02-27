@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
 
-const path = require('path');
-
 let patientSchema = new mongoose.Schema({
   surname: {
     type: String,
@@ -45,6 +43,9 @@ let patientSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: 'Gender',
     required: true
+  },
+  photo: {
+    type: String
   }
 }, {versionKey: false});
 

@@ -1,5 +1,30 @@
-const mongoose = require('../mongoose-connection');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const crypto = require('crypto');
+const path = require('path');
 const config = require('config');
+
+const mongoose = require('../mongoose-connection');
+
+
+const storage = new GridFsStorage({
+  db: mongoose.connect,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: config.get('mongo.bucketName')
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
 
 let gridFSBucket;
 // Init gridFSBucket
@@ -7,6 +32,7 @@ mongoose.connect.then(() => {
   gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {bucketName: config.get('mongo.bucketName')})
 });
 
+module.exports.upload = multer({storage});
 
 module.exports.getAll = function () {
   return new Promise((resolve, reject) => {
@@ -39,7 +65,7 @@ module.exports.getOneByName = function (filename) {
   })
 };
 
-module.exports.getImageByName = function (filename) {
+module.exports.getImageByNameWithDownloadStream = function (filename) {
   return new Promise((resolve, reject) => {
     gridFSBucket.find({filename: filename}).toArray((err, files) => {
       if (err) reject(err);
@@ -52,7 +78,13 @@ module.exports.getImageByName = function (filename) {
 
       // Check if image
       if (files[0].contentType === 'image/jpeg' || files[0].contentType === 'image/png') {
-        resolve(files[0]);
+        // Read output to browser
+        const downloadStream = gridFSBucket.openDownloadStreamByName(files[0].filename);
+        resolve(
+          {
+            image: files[0],
+            downloadStream: downloadStream
+          });
       } else {
         reject({
           message: 'Not an image'

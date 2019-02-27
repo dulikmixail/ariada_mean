@@ -1,39 +1,12 @@
 const express = require('express');
-const multer = require('multer');
-const crypto = require('crypto');
-const path = require('path');
-const GridFsStorage = require('multer-gridfs-storage');
-const config = require('config');
-const mongoose = require('../mongoose-connection');
 const uploadFilesService = require('../services/upload-files.service');
 
 const router = express.Router();
 
-// Create storage engine
-const storage = new GridFsStorage({
-  db: mongoose.connect,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: config.get('mongo.bucketName')
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-
-const upload = multer({storage});
 
 // @route POST /upload
 // @desc  Uploads file to DB
-router.post('/upload', upload.single('file'), (req, res) => {
+router.post('/upload', uploadFilesService.upload.single('file'), (req, res) => {
   res.json({file: req.file});
 });
 
@@ -56,8 +29,11 @@ router.get('/files/:filename', (req, res) => {
 // @route GET /image/:filename
 // @desc Display Image
 router.get('/images/:filename', (req, res) => {
-  uploadFilesService.getImageByName(req.params.filename)
-    .then(image => res.json(image))
+  uploadFilesService.getImageByNameWithDownloadStream(req.params.filename)
+    .then(data => {
+      res.writeHead(200, {'Content-Type': data.image.contentType});
+      data.downloadStream.pipe(res);
+    })
     .catch(err => res.status(404).json({message: err.message}));
 });
 

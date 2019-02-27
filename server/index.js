@@ -14,7 +14,6 @@ const uploadRouter = require('./routes/uploads.router');
 
 const distDir = '../dist/client';
 
-
 app.set('port', config.get('server.port') || process.env.PORT || 3000);
 
 // не показывать логи в тестовом окружении
@@ -22,7 +21,6 @@ if (config.util.getEnv('NODE_ENV') !== 'production') {
   // morgan для вывода логов в консоль
   app.use(morgan('combined')); // 'combined' выводит логи в стиле apache
 }
-
 
 app.use(compression());
 app.use(express.urlencoded({extended: false, limit: '50mb'}));
@@ -37,14 +35,12 @@ if (app.get('env') === 'production' || config.util.getEnv('NODE_ENV') === 'produ
   app.use(/^((?!(api)).)*/, (req, res) => {
     res.sendFile(path.join(__dirname, distDir + '/index.html'));
   });
-
 }
 
 app.use(uploadRouter);
 app.use('/api', router);
 app.use(responseHandler);
 app.use(errorHandler);
-
 
 mongoose.connect.then(() => {
   console.log('Database connected.');

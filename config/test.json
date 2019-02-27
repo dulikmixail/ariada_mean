@@ -21,7 +21,8 @@
       "3": "Not valid body request",
       "4": "Empty body request",
       "5": "Entity not found and not deleted",
-      "6": "Entities not deleted"
+      "6": "Entities not deleted",
+      "7": "Entity not create"
     }
   },
   "mongo": {

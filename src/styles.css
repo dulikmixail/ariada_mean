@@ -45,6 +45,10 @@ mat-icon {
   cursor: pointer;
 }
 
+.default-component {
+  margin: 10px;
+}
+
 /*Styles from old project - START*/ /*REFACTORING NEEDED*/
 /*---------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------*/
@@ -93,7 +97,7 @@ table > thead > tr > th {
 }
 
 .gwt-Label {
-  margin: 10px 0px 2px 0px;
+  margin: 10px 0 2px 0;
 }
 
 .gwt-ListBox {
@@ -204,11 +208,11 @@ path, line {
 
 /* MODAL STYLES
 -------------------------------*/
-#modal-info,
-modal {
-  /* modals are hidden by default */
-  display: none;
-}
+/*#modal-info,*/
+/*modal {*/
+  /*!* modals are hidden by default *!*/
+  /*display: none;*/
+/*}*/
 
 .modal {
   /* modal container fixed across whole screen */

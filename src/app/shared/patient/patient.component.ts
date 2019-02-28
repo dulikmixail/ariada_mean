@@ -61,6 +61,10 @@ export class PatientComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+
     const fd = new FormData();
     fd.append('photo', this.form.get('photo').value);
     fd.append('surname', this.form.get('surname').value);
@@ -78,4 +82,7 @@ export class PatientComponent implements OnInit {
     this.store.dispatch(new AddPatient(fd));
   }
 
+  resetForm() {
+    this.form.reset();
+  }
 }

@@ -1,7 +1,13 @@
 {
   "DBHost": "mongodb://localhost:27017/rc-bd",
   "server": {
-    "port": 8082
+    "port": 8082,
+    "uploadFile" : {
+      "sizeLimit": "50mb"
+    },
+    "request": {
+      "timeoutMsecs": 5000
+    }
   },
   "auth": {
     "salt": "salt",

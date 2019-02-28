@@ -1,7 +1,13 @@
 {
   "DBHost": "mongodb://localhost:27017/rc-bd_test",
   "server": {
-    "port": 0
+    "port": 0,
+    "uploadFile" : {
+      "sizeLimit": "50mb"
+    },
+    "request": {
+      "timeoutMsecs": 5000
+    }
   },
   "auth": {
     "salt": "salt",

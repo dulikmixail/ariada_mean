@@ -1,28 +1,29 @@
-<mat-card class="example-card">
+<mat-card class="default-component example-card">
   <mat-card-header>
     <img mat-card-avatar src="{{avatar}}" alt="Avatar" class="avatar" (click)="openDialog()"/>
-    <mat-card-title class="mat-card-title">Shiba Inu</mat-card-title>
-    <mat-card-subtitle class="mat-card-subtitle">Dog Breed</mat-card-subtitle>
+    <mat-card-title class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()">
       <mat-form-field class="full-width">
         <input matInput placeholder="Фото" readonly value="{{!fileInput.files.length ? '' : fileInput.files[0].name}}">
         <button mat-button class="upload-button" (click)="fileInput.click()">
           <mat-icon>add_a_photo</mat-icon>
           <span> Додати фото</span>
-          <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)" style="display:none;"/>
+          <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
+                 style="display:none;"/>
         </button>
         <!--</button>-->
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="surname" placeholder="Прізвище">
+        <input matInput formControlName="surname" placeholder="Прізвище" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="name" placeholder="Ім'я">
+        <input matInput formControlName="name" placeholder="Ім'я" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="middleName" placeholder="По батькові">
+        <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="birthDate" placeholder="Дата народження">
@@ -34,7 +35,7 @@
         <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="phoneNumbers" placeholder="Телефоны">
+        <input matInput formControlName="phoneNumbers" placeholder="Телефоны" required>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
@@ -52,12 +53,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-card-actions align="center" class="button-row">
+        <button type="submit" mat-stroked-button color="primary">Сохранить</button>
+        <button type="reset" mat-stroked-button>Сбросить</button>
+      </mat-card-actions>
     </form>
   </mat-card-content>
-  <mat-card-actions align="center" class="button-row">
-    <button mat-stroked-button color="primary" (click)="onSubmit()">Сохранить</button>
-    <button mat-stroked-button>Сбросить</button>
-  </mat-card-actions>
 </mat-card>
 
 

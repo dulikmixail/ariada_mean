@@ -23,8 +23,8 @@ if (config.util.getEnv('NODE_ENV') !== 'production') {
 }
 
 app.use(compression());
-app.use(express.urlencoded({extended: false, limit: '50mb'}));
-app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({extended: false, limit: config.get('server.uploadFile.sizeLimit')}));
+app.use(express.json({limit: config.get('server.uploadFile.sizeLimit')}));
 // secure apps by setting various HTTP headers
 app.use(helmet());
 
@@ -47,7 +47,7 @@ mongoose.connect.then(() => {
   const server = app.listen(app.get('port'), () => {
     console.log(`Server  is running  localhost:${app.get('port')}. (${process.env.NODE_ENV ? process.env.NODE_ENV.toUpperCase() : 'DEFAULT'} MODE);`);
   });
-  server.setTimeout(5000);
+  server.setTimeout(config.get('server.request.timeoutMsecs'));
 });
 
 

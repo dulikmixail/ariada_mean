@@ -1,0 +1,6 @@
+<h3>Список пациентов</h3>
+<ul>
+  <li *ngFor="let patient of patients$ | async; let i = index">
+    {{i}} {{patient.name + ' ' + patient.surname}}
+  </li>
+</ul>

@@ -34,7 +34,7 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
   ],
   imports: [
     BrowserModule,

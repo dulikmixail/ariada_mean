@@ -7,7 +7,8 @@ import {
   MatButtonModule,
   MatCardModule,
   MatChipsModule,
-  MatDialogModule, MatGridListModule,
+  MatDialogModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
@@ -42,8 +43,8 @@ import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinsk
 import {PatientComponent} from '../shared/patient/patient.component';
 import {GenderComponent} from '../shared/gender/gender.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
-import {InfoModalComponent} from '../shared/info-modal/info-modal.component';
-import {PatientsNavLinkModule} from './patients-nav-link.module';
+import {PatientAvatarModalComponent} from '../shared/patient-avatar-modal/patient-avatar-modal.component';
+import {PatientListComponent} from '../shared/patient-list/patient-list.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {PatientsNavLinkModule} from './patients-nav-link.module';
     PatientComponent,
     GenderComponent,
     EmcPatientComponent,
-    InfoModalComponent
+    PatientAvatarModalComponent,
+    PatientListComponent
   ],
   imports: [
     CommonModule,
@@ -96,7 +98,8 @@ import {PatientsNavLinkModule} from './patients-nav-link.module';
 
   bootstrap: [
     PatientsComponent,
-    InfoModalComponent
+    PatientAvatarModalComponent,
+    PatientListComponent
   ]
 })
 export class PatientsModule {

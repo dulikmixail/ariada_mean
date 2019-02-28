@@ -4,7 +4,7 @@ import {GenderModel} from '../../_models/api/gender.model';
 import {AppState} from '../../store';
 import {select, Store} from '@ngrx/store';
 import {selectGenderList} from '../../store/gender/gender.selector';
-import {GetAllGenders} from '../../store/gender/gender.actions';
+import {LoadGenders} from '../../store/gender/gender.actions';
 
 @Component({
   selector: 'app-gender',
@@ -20,7 +20,7 @@ export class GenderComponent implements OnInit {
 
   ngOnInit() {
     this.genders$ = this.store.pipe(select(selectGenderList));
-    this.store.dispatch(new GetAllGenders());
+    this.store.dispatch(new LoadGenders());
   }
 
 }

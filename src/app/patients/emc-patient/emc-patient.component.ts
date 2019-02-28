@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
-import {InfoModalComponent} from '../../shared/info-modal/info-modal.component';
+
 
 @Component({
   selector: 'app-emc-patient',

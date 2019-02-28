@@ -2,39 +2,60 @@ import {Action} from '@ngrx/store';
 import {PatientModel} from '../../_models/api/patient.model';
 
 export enum PatientActionTypes {
-  GetAllPatients = '[Patient] Get All Patients',
-  GetAllPatientsSuccess = '[Patient] Get All Patients Success',
+  LoadPatients = '[Patient] Get All Patients',
+  LoadPatientsSuccess = '[Patient] Get All Patients Success',
   AddPatient = '[Patient] Add Patient',
   AddPatientSuccess = '[Patient] Add Patient Success',
+  AddSelectedPatient = '[Patient] Add Selected Patient',
+  AddSelectedPatientSuccess = '[Patient] Add Selected Patient Success '
 }
 
-export class GetAllPatients implements Action {
-  readonly type = PatientActionTypes.GetAllPatients;
+// LoadPatients
+export class LoadPatients implements Action {
+  readonly type = PatientActionTypes.LoadPatients;
 }
 
-export class GetAllPatientsSuccess implements Action {
-  readonly type = PatientActionTypes.GetAllPatientsSuccess;
+export class LoadPatientsSuccess implements Action {
+  readonly type = PatientActionTypes.LoadPatientsSuccess;
 
   constructor(public payload: PatientModel[]) {
   }
 }
 
+// AddPatient
 export class AddPatient implements Action {
-  readonly type: PatientActionTypes.AddPatient;
+  readonly type = PatientActionTypes.AddPatient;
+
+  constructor(public payload: PatientModel | FormData) {
+  }
+}
+
+export class AddPatientSuccess implements Action {
+  readonly type = PatientActionTypes.AddPatientSuccess;
 
   constructor(public payload: PatientModel) {
   }
 }
 
-export class AddPatientSuccess implements Action {
-  readonly type: PatientActionTypes.AddPatientSuccess;
+// AddSelectedPatient
+export class AddSelectedPatient implements Action {
+  readonly type = PatientActionTypes.AddSelectedPatient;
+
+  constructor(public payload: PatientModel) {
+  }
+}
+
+export class AddSelectedPatientSuccess implements Action {
+  readonly type = PatientActionTypes.AddSelectedPatientSuccess;
 
   constructor(public payload: PatientModel) {
   }
 }
 
 export type PatientActions =
-  | GetAllPatients
-  | GetAllPatientsSuccess
   | AddPatient
-  | AddPatientSuccess;
+  | AddPatientSuccess
+  | LoadPatients
+  | LoadPatientsSuccess
+  | AddSelectedPatient
+  | AddSelectedPatientSuccess;

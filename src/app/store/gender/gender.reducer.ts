@@ -11,7 +11,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: GenderActions): State {
   switch (action.type) {
-    case GenderActionTypes.GetAllGendersSuccess:
+    case GenderActionTypes.LoadGendersSuccess:
       return {genders: action.payload};
     default:
       return state;

@@ -8,13 +8,13 @@ module.exports = function (requireServiceName, routePath) {
   const patientService = require('../services/crud_services/' + requireServiceName);
 
   router.post(routePath, jwtMiddleware, uploadFilesService.upload.single('photo'), function (req, res) {
+    let patientModel = req.body;
     if (req.file) {
-      patientService.create(Object.assign(req.body, {photo: req.file.filename}), function (err, doc) {
-        err || !doc ? res.status(404).send({message: config.get('router.messages.7')}) : res.send(doc);
-      })
-    } else {
-      res.status(404).send({message: config.get('router.messages.0')})
+      patientModel = Object.assign(patientModel, {photo: req.file.filename});
     }
+    patientService.create(patientModel, function (err, doc) {
+      err || !doc ? res.status(400).send({message: config.get('router.messages.7')}) : res.send(doc);
+    })
   });
 
   router.get(routePath, jwtMiddleware, function (req, res) {

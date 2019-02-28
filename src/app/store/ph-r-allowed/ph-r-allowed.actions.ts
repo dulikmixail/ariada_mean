@@ -2,8 +2,6 @@ import { Action } from '@ngrx/store';
 
 export enum PhRAllowedActionTypes {
   LoadPhRAlloweds = '[PhRAllowed] Load PhRAlloweds',
-  
-  
 }
 
 export class LoadPhRAlloweds implements Action {

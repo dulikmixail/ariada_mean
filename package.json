@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build --prod --progress&&NODE_ENV=production node server",
-    "start-front": "ng serve",
     "dev-all": "concurrently \"nodemon server \" \"ng serve\"",
     "dev-all2": "concurrently \"node server \" \"ng serve\"",
+    "dev-front": "ng serve",
     "dev-back": "nodemon server",
     "init-data": "node server/init_data",
     "test-data": "NODE_ENV=test node server/init_data&&NODE_ENV=test node server/test_data",

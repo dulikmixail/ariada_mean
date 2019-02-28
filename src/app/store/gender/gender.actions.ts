@@ -2,16 +2,16 @@ import {Action} from '@ngrx/store';
 import {GenderModel} from '../../_models/api/gender.model';
 
 export enum GenderActionTypes {
-  GetAllGenders = '[Gender] Get All Genders',
-  GetAllGendersSuccess = '[Gender] Get All Genders Success'
+  LoadGenders = '[Gender] Load Genders',
+  LoadGendersSuccess = '[Gender] Load Genders Success'
 }
 
-export class GetAllGenders implements Action {
-  readonly type = GenderActionTypes.GetAllGenders;
+export class LoadGenders implements Action {
+  readonly type = GenderActionTypes.LoadGenders;
 }
 
-export class GetAllGendersSuccess implements Action {
-  readonly type = GenderActionTypes.GetAllGendersSuccess;
+export class LoadGendersSuccess implements Action {
+  readonly type = GenderActionTypes.LoadGendersSuccess;
 
   constructor(public payload: GenderModel[]) {
   }
@@ -19,5 +19,5 @@ export class GetAllGendersSuccess implements Action {
 
 
 export type GenderActions =
-  | GetAllGenders
-  | GetAllGendersSuccess;
+  | LoadGenders
+  | LoadGendersSuccess;

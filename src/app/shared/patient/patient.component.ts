@@ -1,16 +1,14 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {InfoModalComponent} from '../info-modal/info-modal.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
 import {select, Store} from '@ngrx/store';
 import {selectGenderList} from '../../store/gender/gender.selector';
-import {GetAllGenders} from '../../store/gender/gender.actions';
+import {LoadGenders} from '../../store/gender/gender.actions';
 import {AppState} from '../../store';
-import {PatientService} from '../../_services/api/patient/patient.service';
-import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {PatientAvatarModalComponent} from '../patient-avatar-modal/patient-avatar-modal.component';
+import {AddPatient} from '../../store/patient/patient.actions';
 
 @Component({
   selector: 'app-patient',
@@ -26,15 +24,14 @@ export class PatientComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private formBuilder: FormBuilder,
-              private store: Store<AppState>,
-              private patientService: PatientService) {
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
     this.avatar = '/assets/images/test/shiba1.jpg';
     this.createForm();
     this.genders$ = this.store.pipe(select(selectGenderList));
-    this.store.dispatch(new GetAllGenders());
+    this.store.dispatch(new LoadGenders());
   }
 
   createForm() {
@@ -50,7 +47,7 @@ export class PatientComponent implements OnInit {
       medicalCardNumber: '9',
       workplace: '10',
       workPost: '11',
-      gender: '5c5eee395d30073a0b249a6a'
+      gender: '5c6daa07833b661aba4a4287'
     });
   }
 
@@ -60,7 +57,7 @@ export class PatientComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(InfoModalComponent);
+    this.dialog.open(PatientAvatarModalComponent);
   }
 
   onSubmit() {
@@ -78,9 +75,7 @@ export class PatientComponent implements OnInit {
     fd.append('workPost', this.form.get('workPost').value);
     fd.append('gender', this.form.get('gender').value);
 
-    this.patientService.create(fd).subscribe(value => {
-      console.log(value);
-    });
+    this.store.dispatch(new AddPatient(fd));
   }
 
 }

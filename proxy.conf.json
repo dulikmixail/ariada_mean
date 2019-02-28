@@ -3,7 +3,15 @@
     "target": "http://localhost:3000",
     "secure": false
   },
-  "/uploads/*": {
+  "/upload": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/files/*": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/images/*": {
     "target": "http://localhost:3000",
     "secure": false
   }

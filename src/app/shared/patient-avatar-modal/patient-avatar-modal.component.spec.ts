@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoModalComponent } from './info-modal.component';
+import { PatientAvatarModalComponent } from './patient-avatar-modal.component';
 
-describe('InfoModalComponent', () => {
-  let component: InfoModalComponent;
-  let fixture: ComponentFixture<InfoModalComponent>;
+describe('PatientAvatarModalComponent', () => {
+  let component: PatientAvatarModalComponent;
+  let fixture: ComponentFixture<PatientAvatarModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoModalComponent ]
+      declarations: [ PatientAvatarModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoModalComponent);
+    fixture = TestBed.createComponent(PatientAvatarModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

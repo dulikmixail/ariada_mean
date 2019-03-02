@@ -26,9 +26,8 @@ import {TopNavigationComponent} from './shared/top-navigation/top-navigation.com
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {reducers, metaReducers} from './store';
 import {environment} from '../environments/environment';
-import {PatientEffects} from './store/patient/patient.effects';
-import {UserEffects} from './store/user/user.effects';
-import {GenderEffects} from './store/gender/gender.effects';
+import {PatientServiceEffects} from './store/services/patient-service/patient-service.effects';
+import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 
 @NgModule({
@@ -53,8 +52,8 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
     MatProgressSpinnerModule,
     PatientsNavLinkModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
-    EffectsModule.forRoot([PatientEffects, UserEffects, GenderEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
+    EffectsModule.forRoot([PatientServiceEffects, GenderServiceEffects]),
     StoreRouterConnectingModule
   ],
   providers: [

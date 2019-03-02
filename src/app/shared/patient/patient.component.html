@@ -8,13 +8,12 @@
     <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()">
       <mat-form-field class="full-width">
         <input matInput placeholder="Фото" readonly value="{{!fileInput.files.length ? '' : fileInput.files[0].name}}">
-        <button mat-button class="upload-button" (click)="fileInput.click()">
-          <mat-icon>add_a_photo</mat-icon>
-          <span> Додати фото</span>
-          <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
-                 style="display:none;"/>
-        </button>
-        <!--</button>-->
+        <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
+               style="display:none;"/>
+        <a mat-button type="button" class="upload-button" (click)="fileInput.click()">
+        <mat-icon>add_a_photo</mat-icon>
+        <span> Додати фото</span>
+        </a>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="surname" placeholder="Прізвище" required>
@@ -47,7 +46,7 @@
         <input matInput formControlName="workPost" placeholder="Посада">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-select placeholder="Стать" formControlName="gender">
+        <mat-select placeholder="Стать" formControlName="gender" required>
           <mat-option *ngFor="let gender of genders$ | async" [value]="gender._id">
             {{gender.title}}
           </mat-option>

@@ -1,33 +1,20 @@
 import {
-  ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
   MetaReducer
 } from '@ngrx/store';
 import {environment} from '../../environments/environment';
-import * as fromPatient from './patient/patient.reducer';
-import * as fromUser from './user/user.reducer';
-import * as fromPhRAllowed from './ph-r-allowed/ph-r-allowed.reducer';
-import * as fromGender from './gender/gender.reducer';
-import * as fromEmcPatient from './emc-patient/emc-patient.reducer';
+import * as fromGenderService from './services/gender-service/gender-service.reducer';
+import * as fromPatientService from './services/patient-service/patient-service.reducer';
+
 
 export interface AppState {
-
-  patient: fromPatient.State;
-  user: fromUser.State;
-  phRAllowed: fromPhRAllowed.State;
-  gender: fromGender.State;
-  emcPatient: fromEmcPatient.State;
+  genderService: fromGenderService.State;
+  patientService: fromPatientService.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-
-  patient: fromPatient.reducer,
-  user: fromUser.reducer,
-  phRAllowed: fromPhRAllowed.reducer,
-  gender: fromGender.reducer,
-  emcPatient: fromEmcPatient.reducer,
+  genderService: fromGenderService.reducer,
+  patientService: fromPatientService.reducer,
 };
 
 

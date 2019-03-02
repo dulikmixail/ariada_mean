@@ -1,14 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {GenderModel} from '../../_models/api/gender.model';
 import {select, Store} from '@ngrx/store';
-import {selectGenderList} from '../../store/gender/gender.selector';
-import {LoadGenders} from '../../store/gender/gender.actions';
-import {AppState} from '../../store';
+import {Observable} from 'rxjs';
+
+import {GenderModel} from '../../_models/api/gender.model';
+import {FormGroupConverter} from '../../_helpers';
 import {PatientAvatarModalComponent} from '../patient-avatar-modal/patient-avatar-modal.component';
-import {AddPatient} from '../../store/patient/patient.actions';
+import {AppState} from '../../store';
+import {LoadGenders} from '../../store/services/gender-service/gender-service.actions';
+import {selectGenderList} from '../../store/services/gender-service/gender-service.selector';
+import {AddPatient} from '../../store/services/patient-service/patient-service.actions';
 
 @Component({
   selector: 'app-patient',
@@ -18,12 +20,12 @@ import {AddPatient} from '../../store/patient/patient.actions';
 export class PatientComponent implements OnInit {
   form: FormGroup;
   avatar;
-  selectedFile;
 
   genders$: Observable<GenderModel[]>;
 
   constructor(public dialog: MatDialog,
               private formBuilder: FormBuilder,
+              private formGroupConverter: FormGroupConverter,
               private store: Store<AppState>) {
   }
 
@@ -40,19 +42,18 @@ export class PatientComponent implements OnInit {
       surname: ['1', Validators.required],
       name: ['2', Validators.required],
       middleName: ['3', Validators.required],
-      birthDate: '5',
-      permanentResidence: '6',
-      addressOfRelativesAndFamily: '7',
-      phoneNumbers: ['8', Validators.required],
-      medicalCardNumber: '9',
-      workplace: '10',
-      workPost: '11',
-      gender: '5c6daa07833b661aba4a4287'
+      birthDate: '4',
+      permanentResidence: '5',
+      addressOfRelativesAndFamily: '6',
+      phoneNumbers: ['7', Validators.required],
+      medicalCardNumber: '8',
+      workplace: '9',
+      workPost: '10',
+      gender: ['5c6daa07833b661aba4a4286', Validators.required]
     });
   }
 
   onFileChange(event) {
-    this.selectedFile = <File>event.target.files[0];
     this.form.get('photo').setValue(<File>event.target.files[0]);
   }
 
@@ -65,20 +66,7 @@ export class PatientComponent implements OnInit {
       return;
     }
 
-    const fd = new FormData();
-    fd.append('photo', this.form.get('photo').value);
-    fd.append('surname', this.form.get('surname').value);
-    fd.append('name', this.form.get('name').value);
-    fd.append('middleName', this.form.get('middleName').value);
-    fd.append('birthDate', this.form.get('birthDate').value);
-    fd.append('permanentResidence', this.form.get('permanentResidence').value);
-    fd.append('addressOfRelativesAndFamily', this.form.get('addressOfRelativesAndFamily').value);
-    fd.append('phoneNumbers', this.form.get('phoneNumbers').value);
-    fd.append('medicalCardNumber', this.form.get('medicalCardNumber').value);
-    fd.append('workplace', this.form.get('workplace').value);
-    fd.append('workPost', this.form.get('workPost').value);
-    fd.append('gender', this.form.get('gender').value);
-
+    const fd = this.formGroupConverter.load(this.form).toFormData();
     this.store.dispatch(new AddPatient(fd));
   }
 

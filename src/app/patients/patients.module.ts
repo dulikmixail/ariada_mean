@@ -41,7 +41,6 @@ import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.componen
 import {SbpHrComponent} from './efficiency/sbp-hr/sbp-hr.component';
 import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
 import {PatientComponent} from '../shared/patient/patient.component';
-import {GenderComponent} from '../shared/gender/gender.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
 import {PatientAvatarModalComponent} from '../shared/patient-avatar-modal/patient-avatar-modal.component';
 import {PatientListComponent} from '../shared/patient-list/patient-list.component';
@@ -71,7 +70,6 @@ import {PatientListComponent} from '../shared/patient-list/patient-list.componen
     SbpHrComponent,
     SkibinskayaIndexComponent,
     PatientComponent,
-    GenderComponent,
     EmcPatientComponent,
     PatientAvatarModalComponent,
     PatientListComponent

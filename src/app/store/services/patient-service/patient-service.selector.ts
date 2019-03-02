@@ -1,9 +1,9 @@
 import {createSelector} from '@ngrx/store';
 
-import {AppState} from '../index';
-import {State} from './patient.reducer';
+import {AppState} from '../..';
+import {State} from './patient-service.reducer';
 
-const selectPatients = (state: AppState) => state.patient;
+const selectPatients = (state: AppState) => state.patientService;
 
 export const selectPatientList = createSelector(
   selectPatients,

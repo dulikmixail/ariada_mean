@@ -2,17 +2,17 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 
-import {GenderActionTypes, LoadGendersSuccess} from './gender.actions';
+import {GenderServiceActionTypes, LoadGendersSuccess} from './gender-service.actions';
+import {GenderService} from '../../../_services/api/gender/gender.service';
 import {map, switchMap} from 'rxjs/operators';
-import {GenderService} from '../../_services/api/gender/gender.service';
 
 @Injectable()
-export class GenderEffects {
+export class GenderServiceEffects {
 
 
   @Effect()
   loadGenders$ = this.actions$.pipe(
-    ofType(GenderActionTypes.LoadGenders),
+    ofType(GenderServiceActionTypes.LoadGenders),
     switchMap(() => this.genderService.getAll().pipe(
       map(genders => new LoadGendersSuccess(genders))
     ))

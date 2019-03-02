@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-
 import {map, switchMap} from 'rxjs/operators';
 
 import {
@@ -8,17 +7,17 @@ import {
   AddPatientSuccess,
   LoadPatients,
   LoadPatientsSuccess,
-  PatientActionTypes
-} from './patient.actions';
-import {PatientService} from '../../_services/api/patient/patient.service';
+  PatientServiceActionTypes
+} from './patient-service.actions';
+import {PatientService} from '../../../_services/api/patient/patient.service';
 
 @Injectable()
-export class PatientEffects {
+export class PatientServiceEffects {
 
 
   @Effect()
   loadPatients$ = this.actions$.pipe(
-    ofType(PatientActionTypes.LoadPatients),
+    ofType(PatientServiceActionTypes.LoadPatients),
     switchMap(() => this.patientService.getAll().pipe(
       map(patients => new LoadPatientsSuccess(patients))
     ))
@@ -26,7 +25,7 @@ export class PatientEffects {
 
   @Effect()
   addPatients$ = this.actions$.pipe(
-    ofType(PatientActionTypes.AddPatient),
+    ofType(PatientServiceActionTypes.AddPatient),
     switchMap((action: AddPatient) => this.patientService.create(action.payload).pipe(
       map(patient => new AddPatientSuccess(patient))
     ))
@@ -34,7 +33,7 @@ export class PatientEffects {
 
   @Effect()
   addPatientsSuccess$ = this.actions$.pipe(
-    ofType(PatientActionTypes.AddPatientSuccess),
+    ofType(PatientServiceActionTypes.AddPatientSuccess),
     map(() => new LoadPatients())
   );
 

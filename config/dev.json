@@ -6,7 +6,7 @@
       "sizeLimit": "50mb"
     },
     "request": {
-      "timeoutMsecs": 5000
+      "timeoutMsecs": 100000
     }
   },
   "auth": {

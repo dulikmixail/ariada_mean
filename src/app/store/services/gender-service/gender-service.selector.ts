@@ -1,9 +1,9 @@
 import {createSelector} from '@ngrx/store';
 
-import {AppState} from '../index';
-import {State} from './gender.reducer';
+import {AppState} from '../..';
+import {State} from './gender-service.reducer';
 
-const selectGenders = (state: AppState) => state.gender;
+const selectGenders = (state: AppState) => state.genderService;
 
 export const selectGenderList = createSelector(
   selectGenders,

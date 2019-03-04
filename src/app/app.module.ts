@@ -17,7 +17,8 @@ import {
   MatListModule,
   MatMenuModule,
   MatFormFieldModule,
-  MatProgressSpinnerModule, MatSelectModule
+  MatProgressSpinnerModule,
+  MatSelectModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -43,6 +44,7 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatSnackBarModule,
     MatSelectModule,
     MatSidenavModule,
     MatIconModule,
@@ -59,6 +61,7 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: environment.matSnackBar.duration}}
   ],
   bootstrap: [AppComponent]
 })

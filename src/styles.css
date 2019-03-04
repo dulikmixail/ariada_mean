@@ -45,8 +45,12 @@ mat-icon {
   cursor: pointer;
 }
 
-.default-component {
+.card-component {
   margin: 10px;
+}
+
+.card-mini-component {
+  margin: 5px;
 }
 
 /*Styles from old project - START*/ /*REFACTORING NEEDED*/
@@ -60,6 +64,7 @@ mat-icon {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 /*FROM BOOTSTRAP - END*/
 
 /*FIX MATERIAL TABLE - START*/
@@ -76,6 +81,7 @@ table > thead > tr > th {
   border-spacing: 0;
   border-collapse: collapse;
 }
+
 /*FIX MATERIAL TABLE - END*/
 
 @keyframes spin {
@@ -210,8 +216,8 @@ path, line {
 -------------------------------*/
 /*#modal-info,*/
 /*modal {*/
-  /*!* modals are hidden by default *!*/
-  /*display: none;*/
+/*!* modals are hidden by default *!*/
+/*display: none;*/
 /*}*/
 
 .modal {

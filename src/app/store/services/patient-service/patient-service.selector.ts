@@ -3,14 +3,14 @@ import {createSelector} from '@ngrx/store';
 import {AppState} from '../..';
 import {State} from './patient-service.reducer';
 
-const selectPatients = (state: AppState) => state.patientService;
+const selectPatientService = (state: AppState) => state.patientService;
 
 export const selectPatientList = createSelector(
-  selectPatients,
+  selectPatientService,
   (state: State) => state.patients
 );
 
 export const selectSelectedPatient = createSelector(
-  selectPatients,
+  selectPatientService,
   (state: State) => state.selectedPatient
 );

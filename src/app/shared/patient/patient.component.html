@@ -1,18 +1,21 @@
-<mat-card class="default-component example-card">
+<mat-card class="card-component">
   <mat-card-header>
-    <img mat-card-avatar src="{{avatar}}" alt="Avatar" class="avatar" (click)="openDialog()"/>
+    <img *ngIf="srcAvatar" mat-card-avatar src="{{srcAvatar}}" alt="Avatar" class="avatar pointer"
+         (click)="openDialog()"/>
+    <img *ngIf="!srcAvatar" mat-card-avatar src="{{srcNotHaveAvatar}}" alt="Avatar"
+         class="avatar"/>
     <mat-card-title class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Фото" readonly value="{{!fileInput.files.length ? '' : fileInput.files[0].name}}">
+        <input matInput placeholder="Фото" readonly value="{{selectedFileName}}">
         <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
                style="display:none;"/>
         <a mat-button type="button" class="upload-button" (click)="fileInput.click()">
-        <mat-icon>add_a_photo</mat-icon>
-        <span> Додати фото</span>
+          <mat-icon>add_a_photo</mat-icon>
+          <span> Додати фото</span>
         </a>
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -25,7 +28,9 @@
         <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="birthDate" placeholder="Дата народження">
+        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">

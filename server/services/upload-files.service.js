@@ -14,13 +14,14 @@ const storage = new GridFsStorage({
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err);
+        } else {
+          const filename = buf.toString('hex') + path.extname(file.originalname);
+          const fileInfo = {
+            filename: filename,
+            bucketName: config.get('mongo.bucketName')
+          };
+          resolve(fileInfo);
         }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: config.get('mongo.bucketName')
-        };
-        resolve(fileInfo);
       });
     });
   }
@@ -43,8 +44,9 @@ module.exports.getAll = function () {
         reject({
           message: 'No files exist'
         });
+      } else {
+        resolve(files);
       }
-      resolve(files);
     });
   });
 };
@@ -59,8 +61,9 @@ module.exports.getOneByName = function (filename) {
         reject({
           message: 'No file exist'
         });
+      } else {
+        resolve(files[0]);
       }
-      resolve(files[0]);
     });
   })
 };
@@ -74,21 +77,21 @@ module.exports.getImageByNameWithDownloadStream = function (filename) {
         reject({
           message: 'No image exist'
         });
-      }
-
-      // Check if image
-      if (files[0].contentType === 'image/jpeg' || files[0].contentType === 'image/png') {
-        // Read output to browser
-        const downloadStream = gridFSBucket.openDownloadStreamByName(files[0].filename);
-        resolve(
-          {
-            image: files[0],
-            downloadStream: downloadStream
-          });
       } else {
-        reject({
-          message: 'Not an image'
-        });
+        // Check if image
+        if (files[0].contentType === 'image/jpeg' || files[0].contentType === 'image/png') {
+          // Read output to browser
+          const downloadStream = gridFSBucket.openDownloadStreamByName(files[0].filename);
+          resolve(
+            {
+              image: files[0],
+              downloadStream: downloadStream
+            });
+        } else {
+          reject({
+            message: 'Not an image'
+          });
+        }
       }
     });
 
@@ -100,10 +103,11 @@ module.exports.deleteById = function (id) {
     gridFSBucket.delete(new mongoose.mongo.ObjectID(id), (err) => {
       if (err) {
         reject(err);
+      } else {
+        resolve({
+          message: 'File deleted'
+        })
       }
-      resolve({
-        message: 'File deleted'
-      })
     });
 
   })

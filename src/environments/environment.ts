@@ -5,7 +5,16 @@
 export const environment = {
   production: false,
   apiUrl: '/api',
-  authUrl: '/api/auth'
+  authUrl: '/api/auth',
+  srcImages: '/api/images',
+  matSnackBar: {
+    duration: 5000
+  },
+  source: {
+    images: {
+      notHaveAvatar: '/assets/images/icon/baseline-portrait-24px.svg'
+    }
+  }
 };
 
 /*

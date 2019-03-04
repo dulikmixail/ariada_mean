@@ -3,9 +3,12 @@
 }
 
 .avatar {
-  cursor: pointer;
   height: 65px;
   width: 65px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .mat-card-title {

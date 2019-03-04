@@ -5,6 +5,9 @@ import {Observable} from 'rxjs';
 import {PatientModel} from '../../_models/api/patient.model';
 import {selectPatientList} from '../../store/services/patient-service/patient-service.selector';
 import {LoadPatients} from '../../store/services/patient-service/patient-service.actions';
+import {environment} from '../../../environments/environment';
+import {PatientAvatarModalComponent} from '../patient-avatar-modal/patient-avatar-modal.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-patient-list',
@@ -13,13 +16,29 @@ import {LoadPatients} from '../../store/services/patient-service/patient-service
 })
 export class PatientListComponent implements OnInit {
   patients$: Observable<PatientModel[]>;
+  srcImages: string;
+  srcNotHaveAvatar: string;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<AppState>) {
   }
 
   ngOnInit() {
+    this.srcImages = environment.srcImages;
     this.patients$ = this.store.pipe(select(selectPatientList));
     this.store.dispatch(new LoadPatients());
+    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
+  }
+
+  openDialog(patient: PatientModel): void {
+    this.dialog.open(PatientAvatarModalComponent, {
+      data: {srcImage: this.buildSrcAvatar(patient)}
+    });
+  }
+
+  buildSrcAvatar(patient: PatientModel): string {
+    return `${this.srcImages}/${patient.photo}`;
   }
 
 }

@@ -28,9 +28,9 @@
         <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker" (click)="datePicker.open()">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">
@@ -39,7 +39,7 @@
         <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="phoneNumbers" placeholder="Телефоны" required>
+        <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">

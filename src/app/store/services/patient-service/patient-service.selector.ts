@@ -9,8 +9,3 @@ export const selectPatientList = createSelector(
   selectPatientService,
   (state: State) => state.patients
 );
-
-export const selectSelectedPatient = createSelector(
-  selectPatientService,
-  (state: State) => state.selectedPatient
-);

@@ -4,7 +4,7 @@ import {map, switchMap} from 'rxjs/operators';
 
 import {
   AddPatient,
-  AddPatientSuccess,
+  AddPatientSuccess, DeletePatient, DeletePatientSuccess,
   LoadPatients,
   LoadPatientsSuccess,
   PatientServiceActionTypes
@@ -34,6 +34,20 @@ export class PatientServiceEffects {
   @Effect()
   addPatientsSuccess$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.AddPatientSuccess),
+    map(() => new LoadPatients())
+  );
+
+  @Effect()
+  deletePatients$ = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.DeletePatient),
+    switchMap((action: DeletePatient) => this.patientService.delete(action.payload._id).pipe(
+      map(patient => new DeletePatientSuccess(patient))
+    ))
+  );
+
+  @Effect()
+  deletePatientsSuccess$ = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.DeletePatientSuccess),
     map(() => new LoadPatients())
   );
 

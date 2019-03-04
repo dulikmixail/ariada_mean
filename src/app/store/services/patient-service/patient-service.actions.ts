@@ -8,11 +8,8 @@ export enum PatientServiceActionTypes {
   AddPatient = '[PatientService] Add Patient',
   AddPatientSuccess = '[PatientService] Add Patient Success',
 
-  AddSelectedPatient = '[PatientService] Add Selected Patient',
-  AddSelectedPatientSuccess = '[PatientService] Add Selected Patient Success ',
-
-  ResetSelectedPatient = '[PatientService] Reset Selected Patient',
-  ResetSelectedPatientSuccess = '[PatientService] Reset Selected Patient Success '
+  DeletePatient = '[PatientService] Delete Patient',
+  DeletePatientSuccess = '[PatientService] Delete Patient Success',
 }
 
 // LoadPatients
@@ -42,33 +39,18 @@ export class AddPatientSuccess implements Action {
   }
 }
 
-// AddSelectedPatient
-export class AddSelectedPatient implements Action {
-  readonly type = PatientServiceActionTypes.AddSelectedPatient;
+// DeletePatient
+export class DeletePatient implements Action {
+  readonly type = PatientServiceActionTypes.DeletePatient;
 
   constructor(public payload: PatientModel) {
   }
 }
 
-export class AddSelectedPatientSuccess implements Action {
-  readonly type = PatientServiceActionTypes.AddSelectedPatientSuccess;
+export class DeletePatientSuccess implements Action {
+  readonly type = PatientServiceActionTypes.DeletePatientSuccess;
 
   constructor(public payload: PatientModel) {
-  }
-}
-
-// ResetSelectedPatient
-export class ResetSelectedPatient implements Action {
-  readonly type = PatientServiceActionTypes.ResetSelectedPatient;
-
-  constructor() {
-  }
-}
-
-export class ResetSelectedPatientSuccess implements Action {
-  readonly type = PatientServiceActionTypes.ResetSelectedPatientSuccess;
-
-  constructor() {
   }
 }
 
@@ -77,7 +59,5 @@ export type PatientServiceActions =
   | AddPatientSuccess
   | LoadPatients
   | LoadPatientsSuccess
-  | AddSelectedPatient
-  | AddSelectedPatientSuccess
-  | ResetSelectedPatient
-  | ResetSelectedPatientSuccess;
+  | DeletePatient
+  | DeletePatientSuccess;

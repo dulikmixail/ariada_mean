@@ -4,7 +4,7 @@ import {AppState} from '../../store';
 import {Observable} from 'rxjs';
 import {PatientModel} from '../../_models/api/patient.model';
 import {selectPatientList} from '../../store/services/patient-service/patient-service.selector';
-import {LoadPatients} from '../../store/services/patient-service/patient-service.actions';
+import {DeletePatient, LoadPatients} from '../../store/services/patient-service/patient-service.actions';
 import {environment} from '../../../environments/environment';
 import {PatientAvatarModalComponent} from '../patient-avatar-modal/patient-avatar-modal.component';
 import {MatDialog} from '@angular/material';
@@ -41,4 +41,7 @@ export class PatientListComponent implements OnInit {
     return `${this.srcImages}/${patient.photo}`;
   }
 
+  deletePatient(patient: PatientModel) {
+    this.store.dispatch(new DeletePatient(patient));
+  }
 }

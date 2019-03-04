@@ -3,12 +3,10 @@ import {PatientModel} from '../../../_models/api/patient.model';
 
 export interface State {
   patients: PatientModel[];
-  selectedPatient: PatientModel;
 }
 
 export const initialState: State = {
   patients: [],
-  selectedPatient: new PatientModel()
 };
 
 export function reducer(state = initialState, action: PatientServiceActions): State {
@@ -18,10 +16,8 @@ export function reducer(state = initialState, action: PatientServiceActions): St
       return {...state, patients: action.payload};
     case PatientServiceActionTypes.AddPatientSuccess:
       return {...state, patients: [...state.patients, action.payload]};
-    case PatientServiceActionTypes.AddSelectedPatientSuccess:
-      return {...state, selectedPatient: action.payload};
-    case PatientServiceActionTypes.ResetSelectedPatientSuccess:
-      return {...state, selectedPatient: new PatientModel()};
+    case  PatientServiceActionTypes.DeletePatientSuccess:
+      return state;
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {BreakpointObserver} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {AuthenticationService} from '../../_services';
@@ -16,7 +16,7 @@ export class TopNavigationComponent {
   currentUser: User;
   patientNavLinks: PatientsNavLink[];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 780px)'])
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 850px)'])
     .pipe(
       map(result => result.matches)
     );

@@ -23,6 +23,10 @@
         <mat-icon>folder_special</mat-icon>
         Особиста інформація
       </a>
+      <a mat-list-item routerLink="/admin-panel">
+        <mat-icon>settings</mat-icon>
+        Адмін панель
+      </a>
       <a mat-list-item>
         <mat-icon>exit_to_app</mat-icon>
         Вийти
@@ -64,6 +68,10 @@
       <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/informations">
         <mat-icon>folder_special</mat-icon>
         Особиста інформація
+      </a>
+      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/admin-panel">
+        <mat-icon>settings</mat-icon>
+        Адмін панель
       </a>
         <div class="flex-spacer"></div>
       <!--<a routerLink="#">Test1</a>-->

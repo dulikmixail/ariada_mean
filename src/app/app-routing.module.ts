@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: './patients/patients.module#PatientsModule',
     canActivate: [AuthGuard],
   },
+  {
+    path: 'admin-panel',
+    loadChildren: './admin-panel/admin-panel.module#AdminPanelModule',
+    canActivate: [AuthGuard],
+  },
   {path: '**', redirectTo: ''}
 ];
 

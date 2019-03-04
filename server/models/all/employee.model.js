@@ -52,15 +52,6 @@ let employeeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Post',
         required: true
-    },
-    login: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        select: false,
-        required: true
     }
 }, {versionKey: false});
 

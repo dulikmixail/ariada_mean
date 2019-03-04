@@ -1,0 +1,16 @@
+.drawer-content a {
+  width: 100%;
+}
+
+.main-content {
+  min-height: 80vh;
+}
+
+mat-expansion-panel,
+mat-toolbar {
+  background: none;
+}
+
+mat-drawer {
+  background: whitesmoke;
+}

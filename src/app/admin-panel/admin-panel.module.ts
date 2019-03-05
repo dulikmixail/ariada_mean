@@ -11,9 +11,11 @@ import {
   MatInputModule,
   MatSidenavModule,
 } from '@angular/material';
+import { EmployeesComponent } from './employees/employees.component';
+import { PatientsComponent } from './patients/patients.component';
 
 @NgModule({
-  declarations: [AdminPanelComponent],
+  declarations: [AdminPanelComponent, EmployeesComponent, PatientsComponent],
   imports: [
     CommonModule,
     AdminPanelRoutingModule,

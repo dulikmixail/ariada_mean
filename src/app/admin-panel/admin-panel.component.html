@@ -4,16 +4,12 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Personal data
+            Робота з користувачами
           </mat-panel-title>
-          <mat-panel-description>
-            Type your name and age
-          </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <a mat-button href="#">First Row</a>
-        <a mat-button href="#">First Row</a>
-        <a mat-button href="#">First Row</a>
+        <a mat-button routerLink="./employees">Співробітники</a>
+        <a mat-button routerLink="./patients">Пациенты</a>
 
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -29,5 +25,7 @@
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>
-  <mat-drawer-content class="main-content">Main content</mat-drawer-content>
+  <mat-drawer-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
 </mat-drawer-container>

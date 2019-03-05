@@ -41,7 +41,7 @@ let employeeSchema = new Schema({
         type: String
     },
     branch: {
-        type: [Schema.Types.ObjectId],
+        type: Schema.Types.ObjectId,
         ref: 'Branch'
     },
     reviews: {

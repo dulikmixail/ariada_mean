@@ -1,13 +1,13 @@
 .drawer-content a {
   width: 100%;
+  text-align: left;
 }
 
 .main-content {
   min-height: 80vh;
 }
 
-mat-expansion-panel,
-mat-toolbar {
+mat-expansion-panel {
   background: none;
 }
 

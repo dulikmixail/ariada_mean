@@ -4,11 +4,12 @@ import {CommonModule} from '@angular/common';
 import {AdminPanelRoutingModule} from './admin-panel-routing.module';
 import {AdminPanelComponent} from './admin-panel.component';
 import {
+  MatButtonModule,
   MatExpansionModule,
   MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
   MatSidenavModule,
-  MatToolbarModule,
 } from '@angular/material';
 
 @NgModule({
@@ -16,11 +17,12 @@ import {
   imports: [
     CommonModule,
     AdminPanelRoutingModule,
+    MatButtonModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
-    MatSidenavModule,
-    MatToolbarModule
+    MatSidenavModule
   ],
   bootstrap: [
     AdminPanelComponent

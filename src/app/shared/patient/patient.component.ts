@@ -33,8 +33,8 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
     this.createForm();
+    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
     this.genders$ = this.store.pipe(select(selectGenderList));
     this.store.dispatch(new LoadGenders());
   }

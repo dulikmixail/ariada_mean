@@ -14,6 +14,10 @@ export const environment = {
     images: {
       notHaveAvatar: '/assets/images/icon/baseline-portrait-24px.svg'
     }
+  },
+  errors: {
+    1: 'Помилка',
+    2: 'Не вдалося відобразити аватар',
   }
 };
 

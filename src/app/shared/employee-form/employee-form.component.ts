@@ -5,6 +5,7 @@ import {FormGroupConverter} from '../../_helpers';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {environment} from '../../../environments/environment';
+import {FormFile, FormFiles} from '../../_helpers/form-files';
 
 @Component({
   selector: 'app-employee-form',
@@ -12,21 +13,20 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./employee-form.component.css']
 })
 export class EmployeeFormComponent implements OnInit {
-  srcAvatar: string | ArrayBuffer;
-  srcNotHaveAvatar: string;
   form: FormGroup;
-  selectedFileName: string;
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar,
               private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
-              private store: Store<AppState>) {
+              private formFiles: FormFiles,
+              private store: Store<AppState>,
+              private avatarFile: FormFile) {
   }
 
   ngOnInit() {
     this.createForm();
-    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
+    this.avatarFile.srcNotHave = environment.source.images.notHaveAvatar;
   }
 
   createForm() {
@@ -55,10 +55,18 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   onFileChange($event: Event) {
-
   }
 
   openDialog() {
 
+  }
+
+  resetAvatar() {
+    this.avatarFile.selectedName = '';
+    this.avatarFile.src = '';
+  }
+
+  previewAvatar(file) {
+    this.formFiles.loadSource(this.avatarFile, file);
   }
 }

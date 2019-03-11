@@ -41,10 +41,14 @@
         <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker" (click)="datePicker.open()">
-        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-        <mat-datepicker #datePicker startView="multi-year"></mat-datepicker>
+        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="dpBirthDate" (click)="dpBirthDate.open()">
+        <mat-datepicker-toggle matSuffix [for]="dpBirthDate"></mat-datepicker-toggle>
+        <mat-datepicker #dpBirthDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="residencePlace" placeholder="Постійне місце проживання">
+      </mat-form-field>
+
       <mat-form-field class="full-width">
         <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">
       </mat-form-field>

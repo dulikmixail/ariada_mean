@@ -1,8 +1,8 @@
 <mat-card class="card-component">
   <mat-card-header>
-    <img *ngIf="srcAvatar" mat-card-avatar src="{{srcAvatar}}" alt="Avatar" class="avatar pointer"
+    <img *ngIf="avatarFile.src" mat-card-avatar src="{{avatarFile.src}}" alt="Avatar" class="avatar pointer"
          (click)="openDialog()"/>
-    <img *ngIf="!srcAvatar" mat-card-avatar src="{{srcNotHaveAvatar}}" alt="Avatar"
+    <img *ngIf="!avatarFile.src" mat-card-avatar src="{{avatarFile.srcNotHave}}" alt="Avatar"
          class="avatar"/>
     <mat-card-title class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
@@ -10,7 +10,7 @@
   <mat-card-content>
     <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Фото" readonly value="{{selectedFileName}}">
+        <input matInput placeholder="Фото" readonly value="{{avatarFile.selectedName}}">
         <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
                style="display:none;"/>
         <a mat-button type="button" class="upload-button" (click)="fileInput.click()">

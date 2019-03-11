@@ -12,6 +12,7 @@ import {LoadGenders} from '../../store/services/gender-service/gender-service.ac
 import {selectGenderList} from '../../store/services/gender-service/gender-service.selector';
 import {AddPatient} from '../../store/services/patient-service/patient-service.actions';
 import {environment} from '../../../environments/environment';
+import {FormFile, FormFiles} from '../../_helpers/form-files';
 
 @Component({
   selector: 'app-patient',
@@ -19,22 +20,21 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  srcAvatar: string | ArrayBuffer;
-  srcNotHaveAvatar: string;
   form: FormGroup;
   genders$: Observable<GenderModel[]>;
-  selectedFileName: string;
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar,
               private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
-              private store: Store<AppState>) {
+              private formFiles: FormFiles,
+              private store: Store<AppState>,
+              private avatarFile: FormFile) {
   }
 
   ngOnInit() {
     this.createForm();
-    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
+    this.avatarFile.srcNotHave = environment.source.images.notHaveAvatar;
     this.genders$ = this.store.pipe(select(selectGenderList));
     this.store.dispatch(new LoadGenders());
   }
@@ -57,23 +57,20 @@ export class PatientComponent implements OnInit {
   }
 
   onFileChange(event) {
-    const files = event.target.files;
-    if (files && event.target.files.length > 0) {
-      const selectedFile: File = <File>files[0];
-      if (selectedFile.type.match(/image\/*/) == null) {
-        this.resetAvatar();
-        this.snackBar.open('Підтримуються лише зображення.', 'Помилка');
-      } else {
-        this.previewAvatar(files);
-        this.form.get('photo').setValue(selectedFile);
-        this.selectedFileName = selectedFile.name;
-      }
-    }
+    this.formFiles.loadImage({
+      images: event.target.files,
+      form: this.form,
+      formFile: this.avatarFile
+    }).catch(() => {
+      this.avatarFile.reset();
+    }).then((file: File) => {
+      this.previewAvatar(file);
+    });
   }
 
   openDialog(): void {
     this.dialog.open(PatientAvatarModalComponent, {
-      data: {srcImage: this.srcAvatar}
+      data: {srcImage: this.avatarFile.src}
     });
   }
 
@@ -88,20 +85,11 @@ export class PatientComponent implements OnInit {
   }
 
   resetForm() {
-    this.resetAvatar();
+    this.avatarFile.reset();
     this.createForm();
   }
 
-  resetAvatar() {
-    this.selectedFileName = '';
-    this.srcAvatar = '';
-  }
-
-  previewAvatar(files) {
-    const reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = () => {
-      this.srcAvatar = reader.result;
-    };
+  previewAvatar(file) {
+    this.formFiles.loadSource(this.avatarFile, file);
   }
 }

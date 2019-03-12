@@ -6,8 +6,8 @@ import {PatientModel} from '../../_models/api/patient.model';
 import {selectPatientList} from '../../store/services/patient-service/patient-service.selector';
 import {DeletePatient, LoadPatients} from '../../store/services/patient-service/patient-service.actions';
 import {environment} from '../../../environments/environment';
-import {PatientAvatarModalComponent} from '../patient-avatar-modal/patient-avatar-modal.component';
 import {MatDialog} from '@angular/material';
+import {ImageModalComponent} from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -32,7 +32,7 @@ export class PatientListComponent implements OnInit {
   }
 
   openDialog(patient: PatientModel): void {
-    this.dialog.open(PatientAvatarModalComponent, {
+    this.dialog.open(ImageModalComponent, {
       data: {srcImage: this.buildSrcAvatar(patient)}
     });
   }

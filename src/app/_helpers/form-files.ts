@@ -33,7 +33,7 @@ export class FormFiles {
   constructor(private snackBar: MatSnackBar) {
   }
 
-  loadImage(imageLoader: ImageLoader): Promise<File> {
+  loadImage(imageLoader: ImageLoader, controlName: string): Promise<File> {
     return new Promise((resolve, reject) => {
       const messageError = 'Підтримуються лише зображення.';
       const files = imageLoader.images;
@@ -43,7 +43,7 @@ export class FormFiles {
           this.snackBar.open(messageError, 'Помилка');
           reject(messageError);
         } else {
-          imageLoader.form.get('photo').setValue(firstFile);
+          imageLoader.form.get(controlName).setValue(firstFile);
           imageLoader.formFile.selectedName = firstFile.name;
           resolve(firstFile);
         }

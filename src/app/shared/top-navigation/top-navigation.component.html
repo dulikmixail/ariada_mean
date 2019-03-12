@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
-               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'">
+               [attr.role]="(isSmallScreen$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isSmallScreen$ | async) ? 'over' : 'side'">
     <mat-toolbar>
       <mat-icon>home</mat-icon>
       Ariada
@@ -46,30 +46,30 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isSmallScreen$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <a mat-button routerLink="/login">
         <mat-icon>home</mat-icon>
         Ariada
       </a>
-      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/patients" routerLinkActive="active">
+      <a *ngIf="!(isSmallScreen$ | async)" mat-button routerLink="/patients" routerLinkActive="active">
         <mat-icon>people</mat-icon>
         Робота з пацієнтами
       </a>
-      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/statistics">
+      <a *ngIf="!(isSmallScreen$ | async)" mat-button routerLink="/statistics">
         <mat-icon>assessment</mat-icon>
         Статистика
       </a>
-      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/calendar">
+      <a *ngIf="!(isSmallScreen$ | async)" mat-button routerLink="/calendar">
         <mat-icon>calendar_today</mat-icon>
         Календар
       </a>
-      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/informations">
+      <a *ngIf="!(isSmallScreen$ | async)" mat-button routerLink="/informations">
         <mat-icon>folder_special</mat-icon>
         Особиста інформація
       </a>
-      <a *ngIf="!(isHandset$ | async)" mat-button routerLink="/admin-panel">
+      <a *ngIf="!(isSmallScreen$ | async)" mat-button routerLink="/admin-panel">
         <mat-icon>settings</mat-icon>
         Адмін панель
       </a>

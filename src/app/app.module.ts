@@ -12,6 +12,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {
   MatToolbarModule,
   MatButtonModule,
+  MatDialogModule,
   MatSidenavModule,
   MatIconModule,
   MatListModule,
@@ -32,10 +33,12 @@ import {environment} from '../environments/environment';
 import {PatientServiceEffects} from './store/services/patient-service/patient-service.effects';
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
+import {ImageModalComponent} from './shared/image-modal/image-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ImageModalComponent,
     TopNavigationComponent
   ],
   imports: [
@@ -46,6 +49,7 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatSnackBarModule,
     MatSelectModule,
     MatSidenavModule,
@@ -65,7 +69,12 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: environment.matSnackBar.duration}},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ],
+  entryComponents: [
+    ImageModalComponent
+  ]
 })
 export class AppModule {
 }

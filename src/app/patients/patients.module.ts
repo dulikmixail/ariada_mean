@@ -8,7 +8,6 @@ import {
   MatCardModule,
   MatChipsModule,
   MatDatepickerModule,
-  MatDialogModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
@@ -44,11 +43,9 @@ import {RobinsonIndexComponent} from './efficiency/robinson-index/robinson-index
 import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.component';
 import {SbpHrComponent} from './efficiency/sbp-hr/sbp-hr.component';
 import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
-import {PatientComponent} from '../shared/patient/patient.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
-import {PatientAvatarModalComponent} from '../shared/patient-avatar-modal/patient-avatar-modal.component';
 import {PatientListComponent} from '../shared/patient-list/patient-list.component';
-import {FormFileInputComponent} from '../shared/form-file-input/form-file-input.component';
+import {PatientFormComponent} from '../shared/patient-form/patient-form.component';
 
 @NgModule({
   declarations: [
@@ -74,11 +71,9 @@ import {FormFileInputComponent} from '../shared/form-file-input/form-file-input.
     RuffieTestComponent,
     SbpHrComponent,
     SkibinskayaIndexComponent,
-    PatientComponent,
+    PatientFormComponent,
     EmcPatientComponent,
-    PatientAvatarModalComponent,
-    PatientListComponent,
-    FormFileInputComponent
+    PatientListComponent
   ],
   imports: [
     CommonModule,
@@ -92,7 +87,6 @@ import {FormFileInputComponent} from '../shared/form-file-input/form-file-input.
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -106,7 +100,6 @@ import {FormFileInputComponent} from '../shared/form-file-input/form-file-input.
 
   bootstrap: [
     PatientsComponent,
-    PatientAvatarModalComponent,
     PatientListComponent
   ]
 })

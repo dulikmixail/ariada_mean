@@ -16,7 +16,7 @@ export class TopNavigationComponent {
   currentUser: User;
   patientNavLinks: PatientsNavLink[];
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 850px)'])
+  isSmallScreen$: Observable<boolean> = this.breakpointObserver.observe(['(max-width: 850px)'])
     .pipe(
       map(result => result.matches)
     );

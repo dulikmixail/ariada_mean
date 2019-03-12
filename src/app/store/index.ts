@@ -7,6 +7,9 @@ import * as fromGenderService from './services/gender-service/gender-service.red
 import * as fromPatientService from './services/patient-service/patient-service.reducer';
 import * as fromEmcPatientComponent from './components/emc-patient-component/emc-patient-component.reducer';
 import * as fromPatientComponent from './components/patient-component/patient-component.reducer';
+import * as fromBranchService from './services/branch-service/branch-service.reducer';
+import * as fromPostService from './services/post-service/post-service.reducer';
+import * as fromEmployeeService from './services/employee-service/employee-service.reducer';
 
 
 export interface AppState {
@@ -14,6 +17,9 @@ export interface AppState {
   patientService: fromPatientService.State;
   emcPatientComponent: fromEmcPatientComponent.State;
   patientComponent: fromPatientComponent.State;
+  branchService: fromBranchService.State;
+  postService: fromPostService.State;
+  employeeService: fromEmployeeService.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -21,6 +27,9 @@ export const reducers: ActionReducerMap<AppState> = {
   patientService: fromPatientService.reducer,
   emcPatientComponent: fromEmcPatientComponent.reducer,
   patientComponent: fromPatientComponent.reducer,
+  branchService: fromBranchService.reducer,
+  postService: fromPostService.reducer,
+  employeeService: fromEmployeeService.reducer,
 };
 
 

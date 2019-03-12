@@ -10,13 +10,17 @@
   <mat-card-content>
     <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Фото" readonly value="{{avatarFile.selectedName}}">
+        <input matInput formControlName="photo" placeholder="Фото" readonly value="{{avatarFile.selectedName}}">
         <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
                style="display:none;"/>
         <a mat-button type="button" class="upload-button" (click)="fileInput.click()">
           <mat-icon>add_a_photo</mat-icon>
           <span> Додати фото</span>
         </a>
+      </mat-form-field>
+      <mat-form-field>
+        <app-form-file-input placeholder="Фото" formControlName="photo1" accept="image/*" buttonValue="Додати фото"
+                             matIcon="add_a_photo" [form]="form"></app-form-file-input>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput formControlName="surname" placeholder="Прізвище" required>
@@ -28,7 +32,8 @@
         <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker" (click)="datePicker.open()">
+        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker"
+               (click)="datePicker.open()">
         <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
         <mat-datepicker #datePicker startView="multi-year"></mat-datepicker>
       </mat-form-field>

@@ -31,18 +31,19 @@ export class EmployeeFormComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      photo: [''],
-      surname: ['', Validators.required],
-      name: ['', Validators.required],
-      middleName: ['', Validators.required],
+      itemNo: [''],
+      employmentDate: [''],
+      expirationDate: [''],
+      surname: [''],
+      name: [''],
+      middleName: [''],
       birthDate: [''],
-      permanentResidence: '',
-      addressOfRelativesAndFamily: '',
-      phoneNumbers: ['', Validators.required],
-      medicalCardNumber: '',
-      workplace: '',
-      workPost: '',
-      gender: ['', Validators.required]
+      residencePlace: [''],
+      educationFile: [''],
+      refresherCoursesDate: [''],
+      placeRefresherCoursesFile: [''],
+      branch: [''],
+      post: ['']
     });
   }
 

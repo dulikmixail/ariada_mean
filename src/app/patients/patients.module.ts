@@ -48,6 +48,7 @@ import {PatientComponent} from '../shared/patient/patient.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
 import {PatientAvatarModalComponent} from '../shared/patient-avatar-modal/patient-avatar-modal.component';
 import {PatientListComponent} from '../shared/patient-list/patient-list.component';
+import {FormFileInputComponent} from '../shared/form-file-input/form-file-input.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {PatientListComponent} from '../shared/patient-list/patient-list.componen
     PatientComponent,
     EmcPatientComponent,
     PatientAvatarModalComponent,
-    PatientListComponent
+    PatientListComponent,
+    FormFileInputComponent
   ],
   imports: [
     CommonModule,

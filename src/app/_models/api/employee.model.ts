@@ -18,4 +18,5 @@ export class EmployeeModel extends StaticFields {
   branch: BranchModel;
   reviews: ReviewsModel[];
   post: PostModel;
+  photo: any;
 }

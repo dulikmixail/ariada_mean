@@ -41,6 +41,7 @@ export class PatientComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
+      photo1: [''],
       photo: [''],
       surname: ['', Validators.required],
       name: ['', Validators.required],

@@ -8,20 +8,31 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-button routerLink="./employees">Співробітники</a>
-        <a mat-button routerLink="./patients">Пациенты</a>
+        <button mat-menu-item [matMenuTriggerFor]="subMenuEmployees">Співробітники</button>
+        <button mat-menu-item routerLink="./patients">Пациенты</button>
+        <mat-menu #subMenuEmployees="matMenu">
+          <button mat-menu-item routerLink="./employees/new">Створити</button>
+          <button mat-menu-item routerLink="./employees/search">Пошук</button>
+        </mat-menu>
 
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Self aware panel
+            Інші елементи
           </mat-panel-title>
-          <mat-panel-description>
-            Currently I am
-          </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
+
+        <button mat-menu-item [matMenuTriggerFor]="subMenuBranches">Відділення</button>
+        <button mat-menu-item [matMenuTriggerFor]="subMenuPosts">Посада</button>
+        <mat-menu #subMenuBranches="matMenu">
+          <button mat-menu-item routerLink="./branches/new">Створити</button>
+          <button mat-menu-item routerLink="./branches/search">Пошук</button>
+        </mat-menu>
+        <mat-menu #subMenuPosts="matMenu">
+          <button mat-menu-item routerLink="./posts/new">Створити</button>
+          <button mat-menu-item routerLink="./posts/search">Пошук</button>
+        </mat-menu>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>

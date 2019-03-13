@@ -8,7 +8,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatNativeDateModule,
+  MatInputModule, MatMenuModule, MatNativeDateModule,
   MatSelectModule,
   MatSidenavModule,
 } from '@angular/material';
@@ -34,6 +34,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatMenuModule,
     MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,

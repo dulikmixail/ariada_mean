@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminPanelComponent} from './admin-panel.component';
-import {PatientsComponent} from './patients/patients.component';
 import {EmployeeFormComponent} from '../shared/employee-form/employee-form.component';
+import {PatientFormComponent} from '../shared/patient-form/patient-form.component';
+import {PatientListComponent} from '../shared/patient-list/patient-list.component';
 
 const routes: Routes = [
   {
     path: '', component: AdminPanelComponent,
     children: [
       {path: 'employees/new', component: EmployeeFormComponent},
-      {path: 'patients', component: PatientsComponent},
+      {path: 'patients/new', component: PatientFormComponent},
+      {path: 'patients/search', component: PatientListComponent},
       {path: 'branches/new', component: EmployeeFormComponent}
     ]
   }

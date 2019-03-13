@@ -47,6 +47,7 @@ mat-icon {
 
 .card-component {
   margin: 10px;
+  text-align: center;
 }
 
 .card-mini-component {

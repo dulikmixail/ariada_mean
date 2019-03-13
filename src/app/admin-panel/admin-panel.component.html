@@ -8,13 +8,14 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <button mat-menu-item [matMenuTriggerFor]="subMenuEmployees">Співробітники</button>
-        <button mat-menu-item routerLink="./patients">Пациенты</button>
-        <mat-menu #subMenuEmployees="matMenu">
-          <button mat-menu-item routerLink="./employees/new">Створити</button>
-          <button mat-menu-item routerLink="./employees/search">Пошук</button>
-        </mat-menu>
-
+        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
+                (click)="setAddSearchSubMenuRouterLink('./employees')">
+          Співробітники
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
+                (click)="setAddSearchSubMenuRouterLink('./patients')">
+          Пациенты
+        </button>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -23,17 +24,26 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <button mat-menu-item [matMenuTriggerFor]="subMenuBranches">Відділення</button>
-        <button mat-menu-item [matMenuTriggerFor]="subMenuPosts">Посада</button>
-        <mat-menu #subMenuBranches="matMenu">
-          <button mat-menu-item routerLink="./branches/new">Створити</button>
-          <button mat-menu-item routerLink="./branches/search">Пошук</button>
-        </mat-menu>
-        <mat-menu #subMenuPosts="matMenu">
-          <button mat-menu-item routerLink="./posts/new">Створити</button>
-          <button mat-menu-item routerLink="./posts/search">Пошук</button>
-        </mat-menu>
+        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
+                (click)="setAddSearchSubMenuRouterLink('./branches')">
+          Відділення
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
+                (click)="setAddSearchSubMenuRouterLink('./posts')">
+          Посада
+        </button>
       </mat-expansion-panel>
+
+      <mat-menu #addSearchSubMenu="matMenu">
+        <button mat-menu-item routerLink="{{addSearchSubMenuRouterLink + '/new'}}">
+          <mat-icon>add</mat-icon>
+          <span>Створити</span>
+        </button>
+        <button mat-menu-item routerLink="{{addSearchSubMenuRouterLink + '/search'}}">
+          <mat-icon>search</mat-icon>
+          <span>Пошук</span>
+        </button>
+      </mat-menu>
     </mat-accordion>
   </mat-drawer>
   <mat-drawer-content class="main-content">

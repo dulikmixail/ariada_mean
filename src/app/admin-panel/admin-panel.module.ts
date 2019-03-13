@@ -4,41 +4,31 @@ import {CommonModule} from '@angular/common';
 import {AdminPanelRoutingModule} from './admin-panel-routing.module';
 import {AdminPanelComponent} from './admin-panel.component';
 import {
-  MatButtonModule, MatCardModule, MatDatepickerModule,
+  MatButtonModule,
   MatExpansionModule,
-  MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatMenuModule, MatNativeDateModule,
-  MatSelectModule,
+  MatMenuModule,
   MatSidenavModule,
 } from '@angular/material';
 import {EmployeesComponent} from './employees/employees.component';
 import {PatientsComponent} from './patients/patients.component';
-import {EmployeeFormComponent} from '../shared/employee-form/employee-form.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     AdminPanelComponent,
     EmployeesComponent,
-    EmployeeFormComponent,
     PatientsComponent,
   ],
   imports: [
     CommonModule,
     AdminPanelRoutingModule,
     MatButtonModule,
-    MatCardModule,
-    MatDatepickerModule,
     MatExpansionModule,
-    MatFormFieldModule,
     MatIconModule,
-    MatInputModule,
     MatMenuModule,
-    MatNativeDateModule,
-    MatSelectModule,
     MatSidenavModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   bootstrap: [
     AdminPanelComponent

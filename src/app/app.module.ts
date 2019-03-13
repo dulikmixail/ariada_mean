@@ -34,6 +34,7 @@ import {PatientServiceEffects} from './store/services/patient-service/patient-se
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 import {ImageModalComponent} from './shared/image-modal/image-modal.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [

@@ -5,7 +5,6 @@ import {PatientsRoutingModule} from './patients-routing.module';
 import {
   MatAutocompleteModule,
   MatButtonModule,
-  MatCardModule,
   MatChipsModule,
   MatDatepickerModule,
   MatGridListModule,
@@ -44,8 +43,7 @@ import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.componen
 import {SbpHrComponent} from './efficiency/sbp-hr/sbp-hr.component';
 import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
-import {PatientListComponent} from '../shared/patient-list/patient-list.component';
-import {PatientFormComponent} from '../shared/patient-form/patient-form.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -71,9 +69,7 @@ import {PatientFormComponent} from '../shared/patient-form/patient-form.componen
     RuffieTestComponent,
     SbpHrComponent,
     SkibinskayaIndexComponent,
-    PatientFormComponent,
-    EmcPatientComponent,
-    PatientListComponent
+    EmcPatientComponent
   ],
   imports: [
     CommonModule,
@@ -83,24 +79,20 @@ import {PatientFormComponent} from '../shared/patient-form/patient-form.componen
     FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatCardModule,
     MatChipsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
-    MatMenuModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedModule,
   ],
 
   bootstrap: [
-    PatientsComponent,
-    PatientListComponent
+    PatientsComponent
   ]
 })
 export class PatientsModule {

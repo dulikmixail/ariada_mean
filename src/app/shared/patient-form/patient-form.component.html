@@ -9,7 +9,7 @@
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form #formDirective="ngForm"  [formGroup]="form" (submit)="onSubmit(formDirective)" (reset)="resetForm()">
+    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit(ngForm)" (reset)="resetForm()">
       <mat-form-field class="full-width">
         <input matInput formControlName="photo" placeholder="Фото" readonly value="{{avatarFile.selectedName}}">
         <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"

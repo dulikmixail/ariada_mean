@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "src/theme.scss",
               "src/assets/fonts/material-icons/material-icons.css"
             ],
@@ -83,7 +83,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -138,7 +138,7 @@
   "defaultProject": "ariada-mean",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "css"
+      "styleext": "scss"
     }
   },
   "cli": {

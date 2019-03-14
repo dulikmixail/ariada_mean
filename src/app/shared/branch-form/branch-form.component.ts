@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {
   FormBuilder,
-  FormGroup, FormGroupDirective,
+  FormGroup,
+  NgForm,
   Validators
 } from '@angular/forms';
 import {FormGroupConverter} from '../../_helpers';
@@ -34,8 +35,8 @@ export class BranchFormComponent implements OnInit {
     });
   }
 
-  onSubmit(formDirective: FormGroupDirective) {
-    this.formService.submit(formDirective, this.form, AddBranch);
+  onSubmit(ngForm: NgForm) {
+    this.formService.submit(ngForm, this.form, AddBranch);
   }
 
   resetForm() {

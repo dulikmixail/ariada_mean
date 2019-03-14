@@ -1,7 +1,7 @@
 <mat-card class="card-component">
   <h1>Нове відділення</h1>
   <mat-card-content>
-    <form #formDirective="ngForm" [formGroup]="form" (submit)="onSubmit(formDirective)" (reset)="resetForm()">
+    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit(ngForm)" (reset)="resetForm()">
       <mat-form-field class="full-width">
         <input matInput formControlName="title" placeholder="Назва" required>
       </mat-form-field>

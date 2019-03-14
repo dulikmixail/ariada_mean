@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
 import {FormFile, FormFiles} from '../../_helpers/form-files';
@@ -42,7 +42,6 @@ export class PatientFormComponent implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      photo1: [''],
       photo: [''],
       surname: ['', Validators.required],
       name: ['', Validators.required],
@@ -79,8 +78,11 @@ export class PatientFormComponent implements OnInit {
     });
   }
 
-  onSubmit(formDirective: FormGroupDirective) {
-    this.formService.submit(formDirective, this.form, AddPatient);
+  onSubmit(ngForm: NgForm) {
+    this.formService.submitPromise(ngForm, this.form, AddPatient)
+      .then(() => this.resetForm())
+      .catch(() => {
+      });
   }
 
   resetForm() {

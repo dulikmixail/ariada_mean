@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {
   FormBuilder,
-  FormGroup,
+  FormGroup, FormGroupDirective,
   Validators
 } from '@angular/forms';
 import {FormGroupConverter} from '../../_helpers';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {AddPatient} from '../../store/services/patient-service/patient-service.actions';
+import {Form} from '../../_helpers/form';
+import {AddBranch} from '../../store/services/branch-service/branch-service.actions';
 
 @Component({
   selector: 'app-branch-form',
@@ -19,7 +20,8 @@ export class BranchFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private formService: Form) {
   }
 
   ngOnInit() {
@@ -32,17 +34,11 @@ export class BranchFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    if (this.form.invalid) {
-      return;
-    } else {
-      const fd = this.formGroupConverter.load(this.form).toFormData();
-      this.store.dispatch(new AddPatient(fd));
-      this.resetForm();
-    }
+  onSubmit(formDirective: FormGroupDirective) {
+    this.formService.submit(formDirective, this.form, AddBranch);
   }
 
   resetForm() {
-
+    this.form.reset();
   }
 }

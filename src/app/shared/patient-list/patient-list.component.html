@@ -1,5 +1,4 @@
-<h3>Список пациентов</h3>
-
+<h1>Список пацієнтів</h1>
 <mat-card class="card-mini-component" *ngFor="let patient of patients$ | async">
   <mat-card-header>
     <img mat-card-avatar *ngIf="patient.photo" src="{{buildSrcAvatar(patient)}}" alt="Avatar" class="avatar"
@@ -20,3 +19,4 @@
     </mat-menu>
   </mat-card-actions>
 </mat-card>
+

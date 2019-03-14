@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -14,6 +14,7 @@ import {LoadBranches} from '../../store/services/branch-service/branch-service.a
 import {LoadPosts} from '../../store/services/post-service/post-service.actions';
 import {AddEmployee} from '../../store/services/employee-service/employee-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
+import {SnackBar} from '../../_helpers/snack-bar';
 
 @Component({
   selector: 'app-employee-form',
@@ -29,7 +30,7 @@ export class EmployeeFormComponent implements OnInit {
   placeRefresherCoursesFile: FormFile;
 
   constructor(private dialog: MatDialog,
-              private snackBar: MatSnackBar,
+              private snackBar: SnackBar,
               private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,

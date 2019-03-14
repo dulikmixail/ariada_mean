@@ -1,7 +1,7 @@
 import {FormGroup} from '@angular/forms';
 import {Injectable} from '@angular/core';
-import {MatSnackBar} from '@angular/material';
 import {environment} from '../../environments/environment';
+import {SnackBar} from './snack-bar';
 
 export interface ImageLoader {
   form: FormGroup;
@@ -30,17 +30,17 @@ export class FormFile implements FormFile {
   providedIn: 'root'
 })
 export class FormFiles {
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: SnackBar) {
   }
 
   loadImage(imageLoader: ImageLoader, controlName: string): Promise<File> {
     return new Promise((resolve, reject) => {
-      const messageError = 'Підтримуються лише зображення.';
+      const messageError = environment.errors['6'];
       const files = imageLoader.images;
       if (files && files.length > 0) {
         const firstFile: File = <File>files[0];
         if (firstFile.type.match(/image\/*/) == null) {
-          this.snackBar.open(messageError, 'Помилка');
+          this.snackBar.error(messageError);
           reject(messageError);
         } else {
           imageLoader.form.get(controlName).setValue(firstFile);
@@ -71,7 +71,7 @@ export class FormFiles {
         formFile.src = result;
       })
       .catch(() => {
-        this.snackBar.open(environment.errors['2'], environment.errors['1']);
+        this.snackBar.error(environment.errors['2']);
       });
   }
 

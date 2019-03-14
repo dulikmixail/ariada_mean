@@ -14,7 +14,10 @@ export function reducer(state = initialState, action: BranchServiceActions): Sta
 
     case BranchServiceActionTypes.LoadBranchesSuccess:
       return {branches: action.payload};
-
+    case BranchServiceActionTypes.AddBranchSuccess:
+      return {...state, branches: [...state.branches, action.payload]};
+    case BranchServiceActionTypes.DeleteBranchSuccess:
+      return state;
     default:
       return state;
   }

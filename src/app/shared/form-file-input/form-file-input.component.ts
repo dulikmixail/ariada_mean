@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {MatSnackBar} from '@angular/material';
 import {FormGroup} from '@angular/forms';
+import {SnackBar} from '../../_helpers/snack-bar';
 
 @Component({
   selector: 'app-form-file-input',
@@ -18,7 +18,7 @@ export class FormFileInputComponent implements OnInit {
   @Input() buttonValue: string;
   @Output() formFileInput: FormFileInput;
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: SnackBar) {
   }
 
   ngOnInit() {
@@ -60,7 +60,7 @@ export class FormFileInputComponent implements OnInit {
         this.formFileInput.src = result;
       })
       .catch(() => {
-        this.snackBar.open(environment.errors['3'], environment.errors['1']);
+        this.snackBar.error(environment.errors['3']);
       });
   }
 
@@ -69,7 +69,7 @@ export class FormFileInputComponent implements OnInit {
       this.form.get(this.formControlName).setValue(file);
       this.formFileInput.selectedName = file.name;
     } else {
-      this.snackBar.open(environment.errors['4'], environment.errors['1']);
+      this.snackBar.error(environment.errors['4']);
       this.reset();
     }
   }

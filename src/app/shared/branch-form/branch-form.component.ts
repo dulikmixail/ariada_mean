@@ -38,7 +38,6 @@ export class BranchFormComponent implements OnInit {
     } else {
       const fd = this.formGroupConverter.load(this.form).toFormData();
       this.store.dispatch(new AddPatient(fd));
-      formDirective.resetForm();
       this.resetForm();
     }
   }

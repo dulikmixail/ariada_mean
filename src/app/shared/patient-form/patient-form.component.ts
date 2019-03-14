@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
 import {FormFile, FormFiles} from '../../_helpers/form-files';
-import {MatDialog, MatSnackBar} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -12,6 +12,7 @@ import {selectGenderList} from '../../store/services/gender-service/gender-servi
 import {LoadGenders} from '../../store/services/gender-service/gender-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {AddPatient} from '../../store/services/patient-service/patient-service.actions';
+import {Form} from '../../_helpers/form';
 
 @Component({
   selector: 'app-patient-form',
@@ -24,11 +25,11 @@ export class PatientFormComponent implements OnInit {
   avatarFile: FormFile;
 
   constructor(private dialog: MatDialog,
-              private snackBar: MatSnackBar,
               private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private formService: Form) {
   }
 
   ngOnInit() {
@@ -79,19 +80,12 @@ export class PatientFormComponent implements OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    if (this.form.invalid) {
-      return;
-    } else {
-      const fd = this.formGroupConverter.load(this.form).toFormData();
-      this.store.dispatch(new AddPatient(fd));
-      formDirective.resetForm();
-      this.resetForm();
-    }
+    this.formService.submit(formDirective, this.form, AddPatient);
   }
 
   resetForm() {
     this.avatarFile.reset();
-    this.createForm();
+    this.form.reset();
   }
 
   previewAvatar(file) {

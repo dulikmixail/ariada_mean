@@ -34,7 +34,8 @@ import {PatientServiceEffects} from './store/services/patient-service/patient-se
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 import {ImageModalComponent} from './shared/image-modal/image-modal.component';
-import {SharedModule} from './shared/shared.module';
+import {BranchServiceEffects} from './store/services/branch-service/branch-service.effects';
+import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,13 @@ import {SharedModule} from './shared/shared.module';
     PatientsNavLinkModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
-    EffectsModule.forRoot([PatientServiceEffects, GenderServiceEffects]),
+    EffectsModule.forRoot(
+      [
+        PatientServiceEffects,
+        GenderServiceEffects,
+        BranchServiceEffects,
+        PostServiceEffects
+      ]),
     StoreRouterConnectingModule
   ],
   providers: [

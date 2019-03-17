@@ -6,12 +6,14 @@ import {
   AddBranch,
   AddBranchSuccess,
   BranchServiceActionTypes,
-  DeleteBranch, DeleteBranchSuccess,
+  DeleteBranch,
+  DeleteBranchSuccess,
   LoadBranches,
-  LoadBranchesSuccess
+  LoadBranchesSuccess,
+  ResetBranchForm
 } from './branch-service.actions';
 import {BranchService} from '../../../_services/api/branch/branch.service';
-import {map, switchMap} from 'rxjs/operators';
+import {concatMapTo, map, mapTo, switchMap} from 'rxjs/operators';
 
 
 @Injectable()
@@ -21,9 +23,11 @@ export class BranchServiceEffects {
   @Effect()
   loadBranches$ = this.actions$.pipe(
     ofType(BranchServiceActionTypes.LoadBranches),
-    switchMap(() => this.branchService.getAll().pipe(
-      map(branches => new LoadBranchesSuccess(branches))
-    ))
+    switchMap(() => {
+      return this.branchService.getAll().pipe(
+        map(branches => new LoadBranchesSuccess(branches))
+      );
+    })
   );
 
   @Effect()
@@ -37,7 +41,10 @@ export class BranchServiceEffects {
   @Effect()
   addBranchSuccess$ = this.actions$.pipe(
     ofType(BranchServiceActionTypes.AddBranchSuccess),
-    map(() => new LoadBranches())
+    concatMapTo([
+      new ResetBranchForm(),
+      new LoadBranches()
+    ])
   );
 
   @Effect()
@@ -51,7 +58,7 @@ export class BranchServiceEffects {
   @Effect()
   deleteBranchSuccess$ = this.actions$.pipe(
     ofType(BranchServiceActionTypes.DeleteBranchSuccess),
-    map(() => new LoadBranches())
+    mapTo(new LoadBranches())
   );
 
   constructor(private actions$: Actions, private branchService: BranchService) {

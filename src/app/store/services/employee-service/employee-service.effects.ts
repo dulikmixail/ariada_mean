@@ -10,7 +10,7 @@ import {
   LoadEmployees,
   LoadEmployeesSuccess
 } from './employee-service.actions';
-import {map, switchMap} from 'rxjs/operators';
+import {map, mapTo, switchMap} from 'rxjs/operators';
 import {EmployeeService} from '../../../_services/api/employee/employee.service';
 
 @Injectable()
@@ -36,7 +36,7 @@ export class EmployeeServiceEffects {
   @Effect()
   addEmployeeSuccess$ = this.actions$.pipe(
     ofType(EmployeeServiceActionTypes.AddEmployeeSuccess),
-    map(() => new LoadEmployees())
+    mapTo(new LoadEmployees())
   );
 
   @Effect()
@@ -50,7 +50,7 @@ export class EmployeeServiceEffects {
   @Effect()
   deleteEmployeeSuccess$ = this.actions$.pipe(
     ofType(EmployeeServiceActionTypes.DeleteEmployeeSuccess),
-    map(() => new LoadEmployees())
+    mapTo(new LoadEmployees())
   );
 
 

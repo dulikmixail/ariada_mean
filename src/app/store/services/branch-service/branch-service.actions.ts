@@ -10,6 +10,8 @@ export enum BranchServiceActionTypes {
 
   DeleteBranch = '[BranchService] Delete Branch',
   DeleteBranchSuccess = '[BranchService] Delete Branch Success',
+
+  ResetBranchForm = '[BranchService] Reset Branch Form'
 }
 
 // LoadBranches
@@ -39,7 +41,7 @@ export class AddBranchSuccess implements Action {
   }
 }
 
-//
+// DeleteBranch
 export class DeleteBranch implements Action {
   readonly type = BranchServiceActionTypes.DeleteBranch;
 
@@ -54,10 +56,16 @@ export class DeleteBranchSuccess implements Action {
   }
 }
 
+// ResetForm
+export class ResetBranchForm implements Action {
+  readonly type = BranchServiceActionTypes.ResetBranchForm;
+}
+
 export type BranchServiceActions =
   | LoadBranches
   | LoadBranchesSuccess
   | AddBranch
   | AddBranchSuccess
   | DeleteBranch
-  | DeleteBranchSuccess;
+  | DeleteBranchSuccess
+  | ResetBranchForm;

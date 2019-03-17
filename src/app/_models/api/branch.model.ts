@@ -1,5 +1,4 @@
-import {StaticFields} from '../static-fields';
+import {TitleModel} from './title.model';
 
-export class BranchModel extends StaticFields {
-  title: string;
+export class BranchModel extends TitleModel {
 }

@@ -1,5 +1,4 @@
-import {StaticFields} from '../static-fields';
+import {TitleModel} from './title.model';
 
-export class PostModel extends StaticFields {
-  title: string;
+export class PostModel extends TitleModel {
 }

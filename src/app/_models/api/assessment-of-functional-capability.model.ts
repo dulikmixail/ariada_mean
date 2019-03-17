@@ -1,5 +1,4 @@
-import {StaticFields} from '../static-fields';
+import {TitleModel} from './title.model';
 
-export class AssessmentOfFunctionalCapabilityModel extends StaticFields {
-  title: string;
+export class AssessmentOfFunctionalCapabilityModel extends TitleModel {
 }

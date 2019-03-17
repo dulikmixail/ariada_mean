@@ -7,10 +7,6 @@
   width: 65px;
 }
 
-.pointer {
-  cursor: pointer;
-}
-
 mat-card-title {
   font-size: 24px !important;
   margin-bottom: 14px !important;

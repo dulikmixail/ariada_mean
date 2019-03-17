@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
                [attr.role]="(isSmallScreen$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isSmallScreen$ | async) ? 'over' : 'side'">
-    <mat-toolbar>
+    <mat-toolbar class="mat-elevation-z2">
       <mat-icon>home</mat-icon>
       Ariada
     </mat-toolbar>
@@ -40,7 +40,7 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="top-toolbar mat-elevation-z5" color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"

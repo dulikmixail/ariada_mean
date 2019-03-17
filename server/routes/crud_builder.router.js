@@ -40,10 +40,6 @@ const crudRouters = [
     path: '/diets'
   },
   {
-    service: 'employee.service',
-    path: '/employees'
-  },
-  {
     service: 'ev_eff_ad_p_b_measurement.service',
     path: '/ev_eff_ad_p_b_measurements'
   },
@@ -311,5 +307,6 @@ crudRouters.forEach(value => {
 });
 
 routers.push(require('./patient.router')('patient.service', '/patients'));
+routers.push(require('./employee.router')('employee.service', '/employees'));
 
 module.exports = routers;

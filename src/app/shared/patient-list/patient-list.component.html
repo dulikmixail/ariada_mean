@@ -1,22 +1,24 @@
-<h1>Список пацієнтів</h1>
-<mat-card class="card-mini-component" *ngFor="let patient of patients$ | async">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Список пацієнтів</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-card class="card-mini pointer hover" *ngFor="let patient of patients$ | async" matRipple>
   <mat-card-header>
-    <img mat-card-avatar *ngIf="patient.photo" src="{{buildSrcAvatar(patient)}}" alt="Avatar" class="avatar"
+    <img mat-card-avatar *ngIf="patient.photo" [src]="buildSrcAvatar(patient)" alt="Avatar" class="pointer"
          (click)="openDialog(patient)"/>
-    <img mat-card-avatar *ngIf="!patient.photo" src="{{srcNotHaveAvatar}}" alt="Not have avatar">
+    <img mat-card-avatar *ngIf="!patient.photo" [src]="srcNotHaveAvatar" alt="Not have avatar">
     <mat-card-title class="mat-card-title">{{patient.surname}} {{patient.name}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{patient.middleName}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-actions>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu">
-      <mat-icon>more_vert</mat-icon>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item (click)="deletePatient(patient)">
+      <mat-icon>delete</mat-icon>
+      <span>Видалити</span>
     </button>
-    <mat-menu #menu>
-      <button mat-menu-item (click)="deletePatient(patient)">
-        <mat-icon>delete</mat-icon>
-        <span>Видалити</span>
-      </button>
-    </mat-menu>
-  </mat-card-actions>
+  </mat-menu>
 </mat-card>
 

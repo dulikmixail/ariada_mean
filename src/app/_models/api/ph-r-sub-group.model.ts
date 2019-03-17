@@ -1,5 +1,4 @@
-import {StaticFields} from '../static-fields';
+import {TitleModel} from './title.model';
 
-export class PhRSubGroupModel extends StaticFields {
-  title: string;
+export class PhRSubGroupModel extends TitleModel {
 }

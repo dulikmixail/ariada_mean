@@ -7,15 +7,21 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule, MatNativeDateModule,
-  MatSelectModule
+  MatMenuModule,
+  MatNativeDateModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BranchFormComponent } from './branch-form/branch-form.component';
-import { PostFormComponent } from './post-form/post-form.component';
+import {BranchFormComponent} from './branch-form/branch-form.component';
+import {PostFormComponent} from './post-form/post-form.component';
+import {BranchListComponent} from './branch-list/branch-list.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +29,9 @@ import { PostFormComponent } from './post-form/post-form.component';
     PatientListComponent,
     EmployeeFormComponent,
     BranchFormComponent,
-    PostFormComponent
+    PostFormComponent,
+    BranchListComponent,
+    EmployeeListComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +44,9 @@ import { PostFormComponent } from './post-form/post-form.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatRippleModule,
     ReactiveFormsModule,
     FormsModule,
   ],

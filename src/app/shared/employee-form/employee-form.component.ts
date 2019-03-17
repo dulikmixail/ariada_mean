@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
@@ -15,6 +15,8 @@ import {LoadPosts} from '../../store/services/post-service/post-service.actions'
 import {AddEmployee} from '../../store/services/employee-service/employee-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {SnackBar} from '../../_helpers/snack-bar';
+import {selectBranchList} from '../../store/services/branch-service/branch-service.selector';
+import {Form} from '../../_helpers/form';
 
 @Component({
   selector: 'app-employee-form',
@@ -34,7 +36,8 @@ export class EmployeeFormComponent implements OnInit {
               private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,
-              private store: Store<AppState>) {
+              private store: Store<AppState>,
+              private formService: Form) {
   }
 
   ngOnInit() {
@@ -46,7 +49,7 @@ export class EmployeeFormComponent implements OnInit {
     this.placeRefresherCoursesFile = new FormFile();
     this.placeRefresherCoursesFile.srcNotHave = environment.source.images.notHaveAvatar;
 
-    this.branches$ = this.store.pipe(select(selectPostList));
+    this.branches$ = this.store.pipe(select(selectBranchList));
     this.store.dispatch(new LoadBranches());
     this.posts$ = this.store.pipe(select(selectPostList));
     this.store.dispatch(new LoadPosts());
@@ -56,35 +59,38 @@ export class EmployeeFormComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       photo: [''],
-      itemNo: [''],
-      employmentDate: [''],
-      expirationDate: [''],
-      surname: [''],
-      name: [''],
-      middleName: [''],
-      birthDate: [''],
-      residencePlace: [''],
+      surname: ['23'],
+      name: ['2312'],
+      middleName: ['23'],
+      itemNo: ['2'],
+      employmentDate: ['2012-04-23'],
+      expirationDate: ['2012-04-23'],
+      birthDate: ['2012-04-23'],
+      residencePlace: ['21123123'],
       educationFile: [''],
-      refresherCoursesDate: [''],
+      refresherCoursesDate: ['2012-04-23'],
       placeRefresherCoursesFile: [''],
-      branch: [''],
-      post: ['']
+      branch: ['5c8d0f152bd07d15b078c7f6'],
+      post: ['5c6daa07833b661aba4a4217']
     });
   }
 
-  onSubmit() {
-    if (this.form.invalid) {
-      return;
-    } else {
-      const fd = this.formGroupConverter.load(this.form).toFormData();
-      this.store.dispatch(new AddEmployee(fd));
-      this.resetForm();
-    }
+  onSubmit(ngForm: NgForm) {
+    this.formService.submitPromise(ngForm, this.form, AddEmployee)
+      .then(() => this.resetForm())
+      .catch(() => {
+      });
+  }
+
+  resetFormFiles() {
+    this.photoFile.reset();
+    this.educationFile.reset();
+    this.placeRefresherCoursesFile.reset();
   }
 
   resetForm() {
-    this.form.reset();
     this.resetFormFiles();
+    this.form.reset();
   }
 
   onFileChange(event, controlName: string, formFile: FormFile, loadSource: boolean) {
@@ -108,12 +114,6 @@ export class EmployeeFormComponent implements OnInit {
     this.dialog.open(ImageModalComponent, {
       data: {srcImage: this.photoFile.src}
     });
-  }
-
-  resetFormFiles() {
-    this.photoFile.reset();
-    this.educationFile.reset();
-    this.placeRefresherCoursesFile.reset();
   }
 
   loadSourceFormFile(file: File, formFile: FormFile) {

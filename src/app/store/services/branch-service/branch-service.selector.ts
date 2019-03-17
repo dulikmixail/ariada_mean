@@ -9,3 +9,8 @@ export const selectBranchList = createSelector(
   selectBranchService,
   (state: State) => state.branches
 );
+
+export const selectBranchFormIsReset = createSelector(
+  selectBranchService,
+  (state: State) => state.form.isReset
+);

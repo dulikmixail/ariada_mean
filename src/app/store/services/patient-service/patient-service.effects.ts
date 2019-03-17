@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {map, switchMap} from 'rxjs/operators';
+import {map, mapTo, switchMap} from 'rxjs/operators';
 
 import {
   AddPatient,
@@ -34,7 +34,7 @@ export class PatientServiceEffects {
   @Effect()
   addPatientsSuccess$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.AddPatientSuccess),
-    map(() => new LoadPatients())
+    mapTo(new LoadPatients())
   );
 
   @Effect()
@@ -48,7 +48,7 @@ export class PatientServiceEffects {
   @Effect()
   deletePatientsSuccess$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.DeletePatientSuccess),
-    map(() => new LoadPatients())
+    mapTo(new LoadPatients())
   );
 
 

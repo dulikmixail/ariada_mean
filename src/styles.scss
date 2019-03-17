@@ -46,14 +46,14 @@ mat-icon {
 }
 
 .card-component {
+  h1 {
+    text-align: center;
+
+  }
   margin: 10px;
 }
 
-.card-component h1 {
-  text-align: center;
-}
-
-.card-mini-component {
+mat-card.card-mini {
   margin: 5px;
 }
 
@@ -63,6 +63,20 @@ mat-icon {
 
 .info-snackbar button {
   color: green !important;
+}
+
+mat-card .more-vert-button {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+}
+
+mat-card:hover.hover{
+  background:rgba(0,0,0,.04);
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 

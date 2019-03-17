@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Patient = require('../../models/all/patient.model');
 
 //Create

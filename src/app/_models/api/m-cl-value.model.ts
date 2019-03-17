@@ -1,5 +1,4 @@
-import {StaticFields} from '../static-fields';
+import {TitleModel} from './title.model';
 
-export class MClValueModel extends StaticFields {
-  title: string;
+export class MClValueModel extends TitleModel {
 }

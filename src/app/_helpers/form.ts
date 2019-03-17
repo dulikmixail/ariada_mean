@@ -3,8 +3,6 @@ import {FormGroup, NgForm} from '@angular/forms';
 import {FormGroupConverter} from './form-group-converter';
 import {Store} from '@ngrx/store';
 import {AppState} from '../store';
-import {environment} from '../../environments/environment';
-import {SnackBar} from './snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +10,7 @@ import {SnackBar} from './snack-bar';
 export class Form {
 
   constructor(private formGroupConverter: FormGroupConverter,
-              private store: Store<AppState>,
-              private snackBar: SnackBar) {
+              private store: Store<AppState>) {
 
   }
 
@@ -26,7 +23,6 @@ export class Form {
         this.store.dispatch(new storeActionClass(fd));
         ngForm.resetForm();
         form.reset();
-        this.snackBar.info(environment.info['2']);
         resolve(false);
       }
     });

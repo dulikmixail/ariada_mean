@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,8 +8,9 @@ import {
 import {FormGroupConverter} from '../../_helpers';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {Form} from '../../_helpers/form';
 import {AddBranch} from '../../store/services/branch-service/branch-service.actions';
+import {BranchModel} from '../../_models/api/branch.model';
+import {selectBranchFormIsReset} from '../../store/services/branch-service/branch-service.selector';
 
 @Component({
   selector: 'app-branch-form',
@@ -18,14 +19,20 @@ import {AddBranch} from '../../store/services/branch-service/branch-service.acti
 })
 export class BranchFormComponent implements OnInit {
   form: FormGroup;
+  @ViewChild('ngForm') ngForm: NgForm;
 
   constructor(private formBuilder: FormBuilder,
               private formGroupConverter: FormGroupConverter,
-              private store: Store<AppState>,
-              private formService: Form) {
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
+    this.store.select(selectBranchFormIsReset).subscribe(isReset => {
+      if (isReset) {
+        this.form.reset();
+        this.ngForm.resetForm();
+      }
+    });
     this.createForm();
   }
 
@@ -35,8 +42,9 @@ export class BranchFormComponent implements OnInit {
     });
   }
 
-  onSubmit(ngForm: NgForm) {
-    this.formService.submit(ngForm, this.form, AddBranch);
+  onSubmit() {
+    const newBranch: BranchModel = this.form.value;
+    this.store.dispatch(new AddBranch(newBranch));
   }
 
   resetForm() {

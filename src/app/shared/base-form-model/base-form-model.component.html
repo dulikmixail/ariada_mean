@@ -1,0 +1,82 @@
+<mat-card class="card-component">
+  <h1>{{model.title}}</h1>
+  <mat-card-header>
+    <div *ngIf="model.avatar">
+      <img *ngIf="model.avatar.file.src" mat-card-avatar [src]="model.avatar.file.src" alt="Avatar"
+           class="avatar pointer"
+           (click)="openDialog()"/>
+      <img *ngIf="!model.avatar.file.src" mat-card-avatar [src]="model.avatar.file.srcNotHave" alt="Avatar"
+           class="avatar"/>
+    </div>
+    <mat-card-title *ngIf="model.headerTitle"
+                    class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
+    <mat-card-subtitle *ngIf="model.headerSubTitle"
+                       class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit(ngForm)" (reset)="resetForm()">
+
+      <mat-form-field *ngFor="let controlName of getControlNames()" class="full-width">
+        <div *ngIf="tryBuildFileInput(controlName)">
+          <input matInput formControlName="photo" placeholder="Фото" readonly value="{{avatarFile.selectedName}}">
+          <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
+                 style="display:none;"/>
+          <a mat-button type="button" class="upload-button" (click)="fileInput.click()">
+            <mat-icon>add_a_photo</mat-icon>
+            <span> Додати фото</span>
+          </a>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="surname" placeholder="Прізвище" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="name" placeholder="Ім'я" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="middleName" placeholder="По батькові" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker"
+               (click)="datePicker.open()">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker startView="multi-year"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="workplace" placeholder="Місце роботи">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput formControlName="workPost" placeholder="Посада">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Стать" formControlName="gender" required>
+          <mat-option *ngFor="let gender of genders$ | async" [value]="gender._id">
+            {{gender.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions align="center" class="button-row">
+        <button type="submit" mat-stroked-button color="primary">Сохранить</button>
+        <button type="reset" mat-stroked-button>Сбросить</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+

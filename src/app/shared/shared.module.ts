@@ -21,7 +21,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BranchFormComponent} from './branch-form/branch-form.component';
 import {PostFormComponent} from './post-form/post-form.component';
 import {BranchListComponent} from './branch-list/branch-list.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import {EmployeeListComponent} from './employee-list/employee-list.component';
+import {FormCardActionsComponent} from './form-card-actions/form-card-actions.component';
+import { FormUploadButtonComponent } from './form-upload-button/form-upload-button.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     BranchFormComponent,
     PostFormComponent,
     BranchListComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    FormCardActionsComponent,
+    FormUploadButtonComponent
   ],
   imports: [
     CommonModule,

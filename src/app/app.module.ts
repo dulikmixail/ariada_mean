@@ -36,6 +36,7 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 import {ImageModalComponent} from './shared/image-modal/image-modal.component';
 import {BranchServiceEffects} from './store/services/branch-service/branch-service.effects';
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
+import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,10 @@ import {PostServiceEffects} from './store/services/post-service/post-service.eff
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
     EffectsModule.forRoot(
       [
-        PatientServiceEffects,
-        GenderServiceEffects,
         BranchServiceEffects,
+        EmployeeServiceEffects,
+        GenderServiceEffects,
+        PatientServiceEffects,
         PostServiceEffects
       ]),
     StoreRouterConnectingModule

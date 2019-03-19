@@ -298,7 +298,7 @@ const crudRouters = [
   {
     service: 'water_therapy.service',
     path: '/water_therapies'
-  },
+  }
 ];
 
 const routers = [];

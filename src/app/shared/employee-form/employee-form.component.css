@@ -15,9 +15,3 @@ mat-card-title {
 mat-card-subtitle {
   font-size: 16px;
 }
-
-.upload-button {
-  position: absolute;
-  right: 0;
-  top: -50%;
-}

@@ -24,7 +24,6 @@ describe('/GET employees', () => {
   it('it should PUT and GET two employees', function (done) {
     const employeesReq = [
       {
-        "branch": [],
         "reviews": [],
         "_id": "5c2217decd419a080c7b0fc8",
         "itemNo": 2,
@@ -35,12 +34,9 @@ describe('/GET employees', () => {
         "birthDate": "2018-12-25T11:43:26.229Z",
         "residencePlace": "Постоянное место жительства2",
         "educationFile": "url/url/2.jpg",
-        "post": "5c2121ca70919e2df816336f",
-        "login": "employee2",
-        "password": "123456789"
+        "post": "5c90258d9086f1142bbdf44c"
       },
       {
-        "branch": [],
         "reviews": [],
         "_id": "5c2217decd419a080c7b0fca",
         "itemNo": 4,
@@ -51,14 +47,11 @@ describe('/GET employees', () => {
         "birthDate": "2018-12-25T11:43:26.229Z",
         "residencePlace": "Постоянное место жительства4",
         "educationFile": "url/url/4.jpg",
-        "post": "5c2121ca70919e2df816336f",
-        "login": "employee4",
-        "password": "123456789"
+        "post": "5c90258d9086f1142bbdf44d"
       }
     ];
     const employeesRes = [
       {
-        "branch": [],
         "reviews": [],
         "_id": "5c2217decd419a080c7b0fc8",
         "itemNo": 2,
@@ -69,11 +62,9 @@ describe('/GET employees', () => {
         "birthDate": "2018-12-25T11:43:26.229Z",
         "residencePlace": "Постоянное место жительства2",
         "educationFile": "url/url/2.jpg",
-        "post": "5c2121ca70919e2df816336f",
-        "login": "employee2"
+        "post": "5c90258d9086f1142bbdf44c"
       },
       {
-        "branch": [],
         "reviews": [],
         "_id": "5c2217decd419a080c7b0fca",
         "itemNo": 4,
@@ -84,8 +75,7 @@ describe('/GET employees', () => {
         "birthDate": "2018-12-25T11:43:26.229Z",
         "residencePlace": "Постоянное место жительства4",
         "educationFile": "url/url/4.jpg",
-        "post": "5c2121ca70919e2df816336f",
-        "login": "employee4"
+        "post": "5c90258d9086f1142bbdf44d"
       }
     ];
     chai.request(app)

@@ -9,98 +9,90 @@
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit(ngForm)" (reset)="resetForm()">
-      <mat-form-field class="full-width">
+    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit(ngForm)" (reset)="resetForm()" class="full-width">
+      <mat-form-field>
         <input matInput formControlName="photo" placeholder="Фото" readonly value="{{photoFile.selectedName}}">
         <input #fileInputPhoto type="file" accept="image/*" (change)="onFileChange($event,'photo', photoFile, true)"
                style="display:none;"/>
-        <a mat-button type="button" class="upload-button" (click)="fileInputPhoto.click()">
-          <mat-icon>add_a_photo</mat-icon>
-          <span> Додати фото</span>
-        </a>
+        <app-form-upload-button [fileInput]="fileInputPhoto" matIconName="add_a_photo" textButton="Додати фото">
+        </app-form-upload-button>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="surname" placeholder="Прізвище" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="name" placeholder="Ім'я" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="middleName" placeholder="По батькові" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="itemNo" type="number" placeholder="№ п/п" required>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="employmentDate" placeholder="Дата працевлаштування"
-        [matDatepicker]="dpEmploymentDate" (click)="dpEmploymentDate.open()" required>
+               [matDatepicker]="dpEmploymentDate" (click)="dpEmploymentDate.open()" required>
         <mat-datepicker-toggle matSuffix [for]="dpEmploymentDate"></mat-datepicker-toggle>
         <mat-datepicker #dpEmploymentDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="expirationDate" placeholder="Дата окончания" [matDatepicker]="dpExpirationDate"
-        (click)="dpExpirationDate.open()" required>
+               (click)="dpExpirationDate.open()" required>
         <mat-datepicker-toggle matSuffix [for]="dpExpirationDate"></mat-datepicker-toggle>
         <mat-datepicker #dpExpirationDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="dpBirthDate"
                (click)="dpBirthDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpBirthDate"></mat-datepicker-toggle>
         <mat-datepicker #dpBirthDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="residencePlace" placeholder="Постійне місце проживання">
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="educationFile" placeholder="Освіта (завантажити копію)" readonly
                value="{{educationFile.selectedName}}">
         <input #fileInputEducationFile type="file" accept="image/*"
                (change)="onFileChange($event,'educationFile', educationFile, false)"
                style="display:none;"/>
-        <a mat-button type="button" class="upload-button" (click)="fileInputEducationFile.click()">
-          <mat-icon>add_a_photo</mat-icon>
-          <span> Завантажити копію</span>
-        </a>
+        <app-form-upload-button [fileInput]="fileInputEducationFile" matIconName="add_a_photo"
+                                textButton="Завантажити копію">
+        </app-form-upload-button>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="refresherCoursesDate"
                placeholder="Дата проходження курсів підвищення кваліфікації " [matDatepicker]="dpRefresherCoursesDate"
                (click)="dpRefresherCoursesDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpRefresherCoursesDate"></mat-datepicker-toggle>
         <mat-datepicker #dpRefresherCoursesDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <input matInput formControlName="placeRefresherCoursesFile"
                placeholder="Місце проходження курсів підвищення кваліфікації (завантажити копію)" readonly
                value="{{placeRefresherCoursesFile.selectedName}}">
         <input #fileInputPlaceRefresherCoursesFile type="file" accept="image/*"
                (change)="onFileChange($event,'placeRefresherCoursesFile', placeRefresherCoursesFile, false)"
                style="display:none;"/>
-        <a mat-button type="button" class="upload-button" (click)="fileInputPlaceRefresherCoursesFile.click()">
-          <mat-icon>add_a_photo</mat-icon>
-          <span> Завантажити копію</span>
-        </a>
+        <app-form-upload-button [fileInput]="fileInputPlaceRefresherCoursesFile" matIconName="add_a_photo"
+                                textButton="Завантажити копію">
+        </app-form-upload-button>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <mat-select formControlName="branch" placeholder="Відділення" required>
           <mat-option *ngFor="let branch of branches$ | async" [value]="branch._id">
             {{branch.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field>
         <mat-select formControlName="post" placeholder="Посада" required>
           <mat-option *ngFor="let post of posts$ | async" [value]="post._id">
             {{post.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-card-actions align="center" class="button-row">
-        <button type="submit" mat-stroked-button color="primary">Сохранить</button>
-        <button type="reset" mat-stroked-button>Сбросить</button>
-      </mat-card-actions>
+      <app-form-card-actions></app-form-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

@@ -15,9 +15,7 @@ module.exports = new Promise((resolve, reject) => {
           birthDate: new Date,
           residencePlace: 'Постоянное место жительства' + i,
           educationFile: 'url/url/' + i + '.jpg',
-          post: posts[Math.floor(Math.random() * posts.length)],
-          login: 'employee' + i,
-          password: 'p' + i
+          post: posts[Math.floor(Math.random() * posts.length)]
         },
       )
     }

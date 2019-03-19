@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+let router = express.Router();
 const jwtMiddleware = require('../helpers/jwt');
 const config = require('config');
 const uploadFilesService = require('../services/upload-files.service');
@@ -42,15 +42,15 @@ module.exports = function (requireServiceName, routePath) {
     }
   });
 
-  router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
-    patientService.delete({_id: req.params.id}, (err, doc) => {
-      err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
-    })
-  });
-
   router.delete(routePath + '/all', jwtMiddleware, function (req, res) {
     patientService.deleteAll((err, doc) => {
       err ? res.status(404).send({message: config.get('router.messages.6')}) : res.send(doc);
+    })
+  });
+
+  router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
+    patientService.delete({_id: req.params.id}, (err, doc) => {
+      err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
     })
   });
 

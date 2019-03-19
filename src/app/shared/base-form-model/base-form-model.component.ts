@@ -1,49 +1,79 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {MemoizedSelector} from '@ngrx/store';
-import {AppState} from '../../store';
 import {TitleModel} from '../../_models/api/title.model';
 import {FormFile} from '../../_helpers/form-files';
+import {Observable} from 'rxjs';
 
 
 export class BaseFormModel {
   title: string;
-  form: FormGroup;
-  files: BaseFormModelFile[];
-  select: BaseFormModelSelect[];
-  avatar: BaseFormModelAvatar;
   headerTitle: BaseFormModelHeader;
   headerSubTitle: BaseFormModelHeader;
-}
-
-export class BaseFormModelFile {
-  control: BaseFormModelControl;
-  acceptTypes: AcceptFormTypes[];
+  controls: BaseFormModelControl[];
+  avatar: BaseFormModelAvatar;
 }
 
 export class BaseFormModelControl {
   name: string;
+  placeholder: string;
+  type: BaseFormModelTypes;
+  file: BaseFormModelFile;
+  select: BaseFormModelSelect;
 }
 
-export enum AcceptFormTypes {
+
+export class BaseFormModelFile {
+  acceptTypes: BaseFromAcceptTypes[];
+  file: FormFile;
+  icon: BaseFormIcon;
+  button: BaseFromUploadButton;
+}
+
+export class BaseFormIcon {
+  name: string;
+}
+
+export class BaseFromUploadButton {
+  text: string;
+}
+
+export class BaseFormModelSelect {
+  selector$: Observable<TitleModel>;
+}
+
+export class BaseFormControl {
+  name: string;
+}
+
+export enum BaseFromAcceptTypes {
   ImageAll = 'image/*',
   ImagePng = 'image/png',
   ImageJpeg = 'image/jpeg'
 }
 
-export class BaseFormModelSelect {
-  control: BaseFormModelControl;
-  selector: MemoizedSelector<AppState, TitleModel>;
-}
-
 export class BaseFormModelAvatar {
-  control: BaseFormModelControl;
   file: FormFile;
 }
 
 export class BaseFormModelHeader {
-  controls: BaseFormModelControl[];
+  controls: BaseFormControl[];
 }
+
+export enum BaseFormModelTypes {
+  Input,
+  File,
+  Select
+}
+
+export class BaseFormBuildModel {
+  controls: BaseFormModelControl [];
+}
+
+export class BaseFormBuildFile {
+  acceptTypes: BaseFromAcceptTypes[];
+  file: FormFile;
+}
+
 
 @Component({
   selector: 'app-base-form-model',
@@ -52,8 +82,8 @@ export class BaseFormModelHeader {
 })
 export class BaseFormModelComponent implements OnInit {
   @Input() model: BaseFormModel;
-  buildFile: BaseFormModelFile;
-  buildSelect: BaseFormModelSelect;
+  @Input() form: FormGroup;
+
 
   constructor() {
   }
@@ -62,20 +92,6 @@ export class BaseFormModelComponent implements OnInit {
 
   }
 
-  getControlNames(): string[] {
-    return Object.getOwnPropertyNames(this.model.form.controls);
-  }
-
-  tryBuildFileInput(controlName: string): boolean {
-    this.model.files.forEach(file => {
-      if (file.control.name === controlName) {
-        this.buildFile = file;
-        return true;
-      }
-    });
-    this.buildFile = undefined;
-    return false;
-  }
 
 
 }

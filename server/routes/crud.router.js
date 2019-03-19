@@ -37,15 +37,15 @@ module.exports = function (requireServiceName, routePath) {
     }
   });
 
-  router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
-    service.delete({_id: req.params.id}, (err, doc) => {
-      err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
-    })
-  });
-
   router.delete(routePath + '/all', jwtMiddleware, function (req, res) {
     service.deleteAll((err, doc) => {
       err ? res.status(404).send({message: config.get('router.messages.6')}) : res.send(doc);
+    })
+  });
+
+  router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
+    service.delete({_id: req.params.id}, (err, doc) => {
+      err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
     })
   });
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
 const deepPopulate = require('mongoose-deep-populate')(mongoose);
+const uploadFiles = require('../../services/upload-files.service');
 
 let employeeSchema = new Schema({
   itemNo: {
@@ -59,5 +60,17 @@ let employeeSchema = new Schema({
 }, {versionKey: false});
 
 employeeSchema.plugin(deepPopulate);
+
+employeeSchema.post('remove', function (doc) {
+  if (!!doc.educationFile) {
+    uploadFiles.deleteByName(doc.educationFile);
+  }
+  if (!!doc.placeRefresherCoursesFile) {
+    uploadFiles.deleteByName(doc.placeRefresherCoursesFile);
+  }
+  if (!!doc.photo) {
+    uploadFiles.deleteByName(doc.photo);
+  }
+});
 
 module.exports = mongoose.model('Employee', employeeSchema);

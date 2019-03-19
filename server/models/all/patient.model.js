@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
+const uploadFiles = require('../../services/upload-files.service');
 
 let patientSchema = new mongoose.Schema({
   surname: {
@@ -49,5 +50,10 @@ let patientSchema = new mongoose.Schema({
   }
 }, {versionKey: false});
 
+patientSchema.post('remove', function (doc) {
+  if (!!doc.photo) {
+    uploadFiles.deleteByName(doc.photo);
+  }
+});
 
 module.exports = mongoose.model('Patient', patientSchema);

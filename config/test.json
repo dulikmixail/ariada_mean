@@ -3,11 +3,14 @@
   "server": {
     "port": 0,
     "uploadFile" : {
-      "sizeLimit": "50mb"
+      "sizeLimit": "30mb"
     },
     "request": {
       "timeoutMsecs": 5000
     }
+  },
+  "multer": {
+    "fileSize": 30000000
   },
   "auth": {
     "salt": "salt",
@@ -28,7 +31,9 @@
       "4": "Empty body request",
       "5": "Entity not found and not deleted",
       "6": "Entities not deleted",
-      "7": "Entity not create"
+      "7": "Entity not create",
+      "8": "File not found and not delete",
+      "9": "File deleted"
     }
   },
   "mongo": {

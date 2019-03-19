@@ -43,17 +43,17 @@ export class PatientFormComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       photo: [''],
-      surname: ['', Validators.required],
-      name: ['', Validators.required],
-      middleName: ['', Validators.required],
+      surname: ['1', Validators.required],
+      name: ['2', Validators.required],
+      middleName: ['3', Validators.required],
       birthDate: [''],
       permanentResidence: '',
       addressOfRelativesAndFamily: '',
-      phoneNumbers: ['', Validators.required],
+      phoneNumbers: ['3', Validators.required],
       medicalCardNumber: '',
       workplace: '',
       workPost: '',
-      gender: ['', Validators.required]
+      gender: ['5c90293c45ef1416bb30febf', Validators.required]
     });
   }
 

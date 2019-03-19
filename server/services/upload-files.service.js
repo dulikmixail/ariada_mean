@@ -33,7 +33,7 @@ mongoose.connect.then(() => {
   gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {bucketName: config.get('mongo.bucketName')})
 });
 
-module.exports.upload = multer({storage});
+module.exports.upload = multer({storage, limits: {fileSize: config.get('multer.fileSize')}});
 
 module.exports.getAll = function () {
   return new Promise((resolve, reject) => {
@@ -98,18 +98,34 @@ module.exports.getImageByNameWithDownloadStream = function (filename) {
   })
 };
 
-module.exports.deleteById = function (id) {
+module.exports.getFileByNameWithDownloadStream = function (filename) {
   return new Promise((resolve, reject) => {
-    gridFSBucket.delete(new mongoose.mongo.ObjectID(id), (err) => {
-      if (err) {
-        reject(err);
+    gridFSBucket.find({filename: filename}).toArray((err, files) => {
+      if (err) reject(err);
+
+      if (!files || files.length === 0) {
+        reject({
+          message: 'No file exist'
+        });
       } else {
-        resolve({
-          message: 'File deleted'
-        })
+        const downloadStream = gridFSBucket.openDownloadStreamByName(files[0].filename);
+        resolve(
+          {
+            file: files[0],
+            downloadStream: downloadStream
+          });
       }
     });
+  })
+};
 
+
+module.exports.deleteById = function (id) {
+  return new Promise((resolve, reject) => {
+    console.log(typeof id);
+    gridFSBucket.delete(new mongoose.mongo.ObjectID(id), (err) => {
+      !!err ? reject(err) : resolve({message: config.get('router.messages.9')});
+    });
   })
 };
 

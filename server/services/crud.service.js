@@ -25,7 +25,10 @@ module.exports = function (MongooseModel) {
 
 //Delete
   exportObject.delete = function (filter, callback) {
-    MongooseModel.findOneAndDelete(filter, callback)
+    MongooseModel.findOneAndDelete(filter, (error, doc) => {
+      doc.remove();
+      callback(error, doc);
+    })
   };
 
   exportObject.deleteAll = function (callback) {

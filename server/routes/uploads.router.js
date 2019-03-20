@@ -70,16 +70,16 @@ router.get('/images/:filename', jwtMiddleware, (req, res) => {
 
 // @route DELETE /files/:id
 // @desc  Delete file
-router.delete('/files/:id', jwtMiddleware, (req, res) => {
-  uploadFilesService.deleteById(req.params.id)
+router.delete('/files/name/:filename', jwtMiddleware, (req, res) => {
+  uploadFilesService.deleteByName(req.params.filename)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).json({message: err.message}));
 });
 
 // @route DELETE /files/:id
 // @desc  Delete file
-router.delete('/files/name/:name', jwtMiddleware, (req, res) => {
-  uploadFilesService.deleteByName(req.params.name)
+router.delete('/files/:id', jwtMiddleware, (req, res) => {
+  uploadFilesService.deleteById(req.params.id)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).json({message: err.message}));
 });

@@ -32,7 +32,7 @@ router.post('/upload', jwtMiddleware, (req, res) => {
 
 // @route GET /download
 // @desc  Downloads file from DB
-router.get('/download/:filename', (req, res) => {
+router.get('/download/:filename', jwtMiddleware, (req, res) => {
   uploadFilesService.getFileByNameWithDownloadStream(req.params.filename)
     .then(data => {
       res.writeHead(200, {'Content-Type': data.file.contentType});

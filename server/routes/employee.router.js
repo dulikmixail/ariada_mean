@@ -17,14 +17,16 @@ module.exports = function (requireServiceName, routePath) {
     ]),
     function (req, res) {
       let employeeModel = req.body;
-      if (req.files['photo'][0]) {
-        employeeModel = Object.assign(employeeModel, {photo: req.files['photo'][0].filename});
-      }
-      if (req.files['educationFile'][0]) {
-        employeeModel = Object.assign(employeeModel, {educationFile: req.files['educationFile'][0].filename});
-      }
-      if (req.files['placeRefresherCoursesFile'][0]) {
-        employeeModel = Object.assign(employeeModel, {placeRefresherCoursesFile: req.files['placeRefresherCoursesFile'][0].filename});
+      if (!!req.files && req.files.length > 0) {
+        if (req.files['photo'][0]) {
+          employeeModel = Object.assign(employeeModel, {photo: req.files['photo'][0].filename});
+        }
+        if (req.files['educationFile'][0]) {
+          employeeModel = Object.assign(employeeModel, {educationFile: req.files['educationFile'][0].filename});
+        }
+        if (req.files['placeRefresherCoursesFile'][0]) {
+          employeeModel = Object.assign(employeeModel, {placeRefresherCoursesFile: req.files['placeRefresherCoursesFile'][0].filename});
+        }
       }
       employeeService.create(employeeModel, function (err, doc) {
         err || !doc ? res.status(400).send({message: config.get('router.messages.7')}) : res.send(doc);

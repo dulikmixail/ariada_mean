@@ -33,9 +33,9 @@ mongoose.connect.then(() => {
   gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {bucketName: config.get('mongo.bucketName')})
 });
 
-module.exports.upload = multer({storage, limits: {fileSize: config.get('multer.fileSize')}});
+const upload = multer({storage, limits: {fileSize: config.get('multer.fileSize')}});
 
-module.exports.getAll = function () {
+function getAll() {
   return new Promise((resolve, reject) => {
     gridFSBucket.find().toArray((err, files) => {
       if (err) reject(err);
@@ -49,10 +49,9 @@ module.exports.getAll = function () {
       }
     });
   });
-};
+}
 
-
-module.exports.getOneByName = function (filename) {
+function getOneByName(filename) {
   return new Promise((resolve, reject) => {
     gridFSBucket.find({filename: filename}).toArray((err, files) => {
       if (err) reject(err);
@@ -66,9 +65,9 @@ module.exports.getOneByName = function (filename) {
       }
     });
   })
-};
+}
 
-module.exports.getImageByNameWithDownloadStream = function (filename) {
+function getImageByNameWithDownloadStream(filename) {
   return new Promise((resolve, reject) => {
     gridFSBucket.find({filename: filename}).toArray((err, files) => {
       if (err) reject(err);
@@ -94,11 +93,10 @@ module.exports.getImageByNameWithDownloadStream = function (filename) {
         }
       }
     });
-
   })
-};
+}
 
-module.exports.getFileByNameWithDownloadStream = function (filename) {
+function getFileByNameWithDownloadStream(filename) {
   return new Promise((resolve, reject) => {
     gridFSBucket.find({filename: filename}).toArray((err, files) => {
       if (err) reject(err);
@@ -117,20 +115,43 @@ module.exports.getFileByNameWithDownloadStream = function (filename) {
       }
     });
   })
-};
+}
 
-
-module.exports.deleteById = function (id) {
+function deleteById(id) {
   return new Promise((resolve, reject) => {
-    console.log(typeof id);
     gridFSBucket.delete(new mongoose.mongo.ObjectID(id), (err) => {
       !!err ? reject(err) : resolve({message: config.get('router.messages.9')});
     });
   })
-};
+}
 
-module.exports.deleteByName = function (name) {
-  const uploadStream = gridFSBucket.openUploadStream(name);
-  const id = uploadStream.id;
-  return module.exports.deleteById(id)
-};
+function deleteByName(filename) {
+  return new Promise((resolve, reject) => {
+    getOneByName(filename)
+      .then(file => {
+        if (!!file && !!file._id) {
+          const fileId = file._id;
+          deleteById(fileId)
+            .then(value => {
+              resolve({message: value.message})
+            })
+            .catch(err => {
+              reject({message: err.message})
+            });
+        } else {
+          reject({message: config.get('router.messages.8')})
+        }
+      })
+      .catch(() => {
+        reject({message: config.get('router.messages.8')})
+      });
+  });
+}
+
+module.exports.upload = upload;
+module.exports.getAll = getAll;
+module.exports.getOneByName = getOneByName;
+module.exports.getImageByNameWithDownloadStream = getImageByNameWithDownloadStream;
+module.exports.getFileByNameWithDownloadStream = getFileByNameWithDownloadStream;
+module.exports.deleteById = deleteById;
+module.exports.deleteByName = deleteByName;

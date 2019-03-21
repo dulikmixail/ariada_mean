@@ -9,7 +9,7 @@ module.exports = function (requireServiceName, routePath) {
 
   router.post(routePath, jwtMiddleware, uploadFilesService.upload.single('photo'), function (req, res) {
     let patientModel = req.body;
-    if (req.file) {
+    if (!!req.file) {
       patientModel = Object.assign(patientModel, {photo: req.file.filename});
     }
     patientService.create(patientModel, function (err, doc) {

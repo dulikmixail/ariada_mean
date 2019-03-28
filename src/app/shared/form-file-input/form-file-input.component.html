@@ -1,8 +1,0 @@
-<input matInput formControlName="{{formControlName}}" placeholder="{{placeholder}}" readonly
-       value="{{formFileInput.selectedName}}">
-<input #fileInput type="file" accept="{{accept}}" (change)="onFileChange($event)"
-       style="display:none;"/>
-<a mat-button type="button" class="upload-button" (click)="fileInput.click()">
-  <mat-icon>{{matIcon}}</mat-icon>
-  <span> {{buttonValue}}</span>
-</a>

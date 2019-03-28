@@ -9,3 +9,8 @@ export const selectPostList = createSelector(
   selectPostService,
   (state: State) => state.posts
 );
+
+export const selectPostFormIsReset = createSelector(
+  selectPostService,
+  (state: State) => state.form.isReset
+);

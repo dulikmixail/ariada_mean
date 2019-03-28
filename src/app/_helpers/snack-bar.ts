@@ -10,10 +10,10 @@ export class SnackBar {
   }
 
   info(message: string) {
-    this.snackBar.open(message, environment.info['1'], {panelClass: environment.info.panelClass});
+    this.snackBar.open(message, environment.info.i1, {panelClass: environment.info.panelClass});
   }
 
   error(message: string) {
-    this.snackBar.open(message, environment.errors['1'], {panelClass: environment.errors.panelClass});
+    this.snackBar.open(message, environment.errors.e1, {panelClass: environment.errors.panelClass});
   }
 }

@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   apiUrl: '/api',
   authUrl: '/api/auth',
-  srcImages: '/api/images',
+  srcImages: '/api/download',
   matSnackBar: {
-    duration: 10000
+    duration: 6000
   },
   source: {
     images: {
@@ -17,17 +17,17 @@ export const environment = {
   },
   errors: {
     panelClass: ['error-snackbar'],
-    1: 'Помилка',
-    2: 'Не вдалося відобразити аватар',
-    3: 'Не вдалося відобразити зображення',
-    4: 'Обраний тип файлу не підтримується',
-    5: 'Не вдалося обробити форму',
-    6: 'Підтримуються лише зображення'
+    e1: 'Помилка',
+    e2: 'Не вдалося відобразити аватар',
+    e3: 'Не вдалося відобразити зображення',
+    e4: 'Обраний тип файлу не підтримується',
+    e5: 'Не вдалося обробити форму',
+    e6: 'Підтримуються лише зображення'
   },
   info: {
     panelClass: ['info-snackbar'],
-    1: 'Інформація',
-    2: 'Успіх'
+    i1: 'Інформація',
+    i2: 'Успіх'
   }
 };
 

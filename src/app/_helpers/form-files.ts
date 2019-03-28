@@ -35,7 +35,7 @@ export class FormFiles {
 
   loadImage(imageLoader: ImageLoader, controlName: string): Promise<File> {
     return new Promise((resolve, reject) => {
-      const messageError = environment.errors['6'];
+      const messageError = environment.errors.e6;
       const files = imageLoader.images;
       if (files && files.length > 0) {
         const firstFile: File = <File>files[0];
@@ -71,7 +71,7 @@ export class FormFiles {
         formFile.src = result;
       })
       .catch(() => {
-        this.snackBar.error(environment.errors['2']);
+        this.snackBar.error(environment.errors.e2);
       });
   }
 

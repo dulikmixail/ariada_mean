@@ -32,7 +32,7 @@ router.post('/upload', jwtMiddleware, (req, res) => {
 
 // @route GET /download
 // @desc  Downloads file from DB
-router.get('/download/:filename', jwtMiddleware, (req, res) => {
+router.get('/download/:filename', (req, res) => {
   uploadFilesService.getFileByNameWithDownloadStream(req.params.filename)
     .then(data => {
       res.writeHead(200, {'Content-Type': data.file.contentType});
@@ -49,15 +49,23 @@ router.get('/files', jwtMiddleware, (req, res) => {
     .catch(err => res.status(404).json({message: err.message}));
 });
 
-// @route GET /files/:filename
-// @desc  Display single file object
-router.get('/files/:filename', jwtMiddleware, (req, res) => {
+// @route GET /files/name/:filename
+// @desc  Display single file object in JSON by name
+router.get('/files/name/:filename', jwtMiddleware, (req, res) => {
   uploadFilesService.getOneByName(req.params.filename)
     .then(file => res.json(file))
     .catch(err => res.status(404).json({message: err.message}));
 });
 
-// @route GET /image/:filename
+// @route GET /files/:id
+// @desc  Display single file object in JSON by id
+router.get('/files/:id', jwtMiddleware, (req, res) => {
+  uploadFilesService.getOneById(req.params.id)
+    .then(file => res.json(file))
+    .catch(err => res.status(404).json({message: err.message}));
+});
+
+// @route GET /images/:filename
 // @desc Display Image
 router.get('/images/:filename', jwtMiddleware, (req, res) => {
   uploadFilesService.getImageByNameWithDownloadStream(req.params.filename)
@@ -68,8 +76,8 @@ router.get('/images/:filename', jwtMiddleware, (req, res) => {
     .catch(err => res.status(404).json({message: err.message}));
 });
 
-// @route DELETE /files/:id
-// @desc  Delete file
+// @route DELETE /files/name/:filename'
+// @desc  Delete file by name
 router.delete('/files/name/:filename', jwtMiddleware, (req, res) => {
   uploadFilesService.deleteByName(req.params.filename)
     .then(data => res.status(200).json(data))
@@ -77,7 +85,7 @@ router.delete('/files/name/:filename', jwtMiddleware, (req, res) => {
 });
 
 // @route DELETE /files/:id
-// @desc  Delete file
+// @desc  Delete file by id
 router.delete('/files/:id', jwtMiddleware, (req, res) => {
   uploadFilesService.deleteById(req.params.id)
     .then(data => res.status(200).json(data))

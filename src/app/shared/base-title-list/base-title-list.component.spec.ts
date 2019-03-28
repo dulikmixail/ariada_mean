@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormFileInputComponent } from './form-file-input.component';
+import { BaseTitleListComponent } from './base-title-list.component';
 
-describe('FormFileInputComponent', () => {
-  let component: FormFileInputComponent;
-  let fixture: ComponentFixture<FormFileInputComponent>;
+describe('BaseTitleListComponent', () => {
+  let component: BaseTitleListComponent;
+  let fixture: ComponentFixture<BaseTitleListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormFileInputComponent ]
+      declarations: [ BaseTitleListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormFileInputComponent);
+    fixture = TestBed.createComponent(BaseTitleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -24,6 +24,9 @@ import {BranchListComponent} from './branch-list/branch-list.component';
 import {EmployeeListComponent} from './employee-list/employee-list.component';
 import {FormCardActionsComponent} from './form-card-actions/form-card-actions.component';
 import { FormUploadButtonComponent } from './form-upload-button/form-upload-button.component';
+import { BaseTitleFormComponent } from './base-title-form/base-title-form.component';
+import { BaseTitleListComponent } from './base-title-list/base-title-list.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { FormUploadButtonComponent } from './form-upload-button/form-upload-butt
     BranchListComponent,
     EmployeeListComponent,
     FormCardActionsComponent,
-    FormUploadButtonComponent
+    FormUploadButtonComponent,
+    BaseTitleFormComponent,
+    BaseTitleListComponent,
+    PostListComponent
   ],
   imports: [
     CommonModule,
@@ -51,8 +57,8 @@ import { FormUploadButtonComponent } from './form-upload-button/form-upload-butt
     MatToolbarModule,
     MatExpansionModule,
     MatRippleModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     PatientFormComponent,

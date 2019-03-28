@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {TitleModel} from '../../_models/api/title.model';
-import {FormFile} from '../../_helpers/form-files';
+import {FormFile} from '../../_helpers';
 import {Observable} from 'rxjs';
 
 

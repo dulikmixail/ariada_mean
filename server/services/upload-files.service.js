@@ -67,6 +67,22 @@ function getOneByName(filename) {
   })
 }
 
+function getOneById(id) {
+  return new Promise((resolve, reject) => {
+    gridFSBucket.find({_id: new mongoose.mongo.ObjectID(id)}).toArray((err, files) => {
+      if (err) reject(err);
+
+      if (!files || files.length === 0) {
+        reject({
+          message: 'No file exist'
+        });
+      } else {
+        resolve(files[0]);
+      }
+    });
+  })
+}
+
 function getImageByNameWithDownloadStream(filename) {
   return new Promise((resolve, reject) => {
     gridFSBucket.find({filename: filename}).toArray((err, files) => {
@@ -151,6 +167,7 @@ function deleteByName(filename) {
 module.exports.upload = upload;
 module.exports.getAll = getAll;
 module.exports.getOneByName = getOneByName;
+module.exports.getOneById = getOneById;
 module.exports.getImageByNameWithDownloadStream = getImageByNameWithDownloadStream;
 module.exports.getFileByNameWithDownloadStream = getFileByNameWithDownloadStream;
 module.exports.deleteById = deleteById;

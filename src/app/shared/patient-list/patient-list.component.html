@@ -3,9 +3,10 @@
     <span>Список пацієнтів</span>
   </mat-toolbar-row>
 </mat-toolbar>
+
 <mat-card class="card-mini pointer hover" *ngFor="let patient of patients$ | async" matRipple>
   <mat-card-header>
-    <img mat-card-avatar *ngIf="patient.photo" [src]="buildSrcAvatar(patient)" alt="Avatar" class="pointer"
+    <img mat-card-avatar *ngIf="patient.photo" [src]="getSrcAvatar(patient)" alt="Avatar" class="pointer"
          (click)="openDialog(patient)"/>
     <img mat-card-avatar *ngIf="!patient.photo" [src]="srcNotHaveAvatar" alt="Not have avatar">
     <mat-card-title class="mat-card-title">{{patient.surname}} {{patient.name}}</mat-card-title>

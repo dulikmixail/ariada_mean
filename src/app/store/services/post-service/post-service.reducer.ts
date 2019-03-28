@@ -3,18 +3,29 @@ import {PostModel} from '../../../_models/api/post.model';
 
 export interface State {
   posts: PostModel[];
+  form: {
+    isReset: boolean;
+  };
 }
 
 export const initialState: State = {
-  posts: []
+  posts: [],
+  form: {
+    isReset: false
+  }
 };
 
 export function reducer(state = initialState, action: PostServiceActions): State {
   switch (action.type) {
 
     case PostServiceActionTypes.LoadPostsSuccess:
-      return {posts: action.payload};
-
+      return {...state, posts: action.payload};
+    case PostServiceActionTypes.AddPostSuccess:
+      return {...state, posts: [...state.posts, action.payload], form: {isReset: false}};
+    case PostServiceActionTypes.DeletePostSuccess:
+      return state;
+    case PostServiceActionTypes.ResetPostForm:
+      return {...state, form: {isReset: true}};
     default:
       return state;
   }

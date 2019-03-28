@@ -1,0 +1,16 @@
+<mat-card class="card-mini pointer hover" *ngFor="let titleModel of titleModels$ | async">
+  <mat-card-header>
+    {{titleModel.title}}
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-button">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu>
+      <button mat-menu-item (click)="deleteBranch(titleModel)">
+        <mat-icon>delete</mat-icon>
+        <span>Видалити</span>
+      </button>
+    </mat-menu>
+  </mat-card-actions>
+</mat-card>

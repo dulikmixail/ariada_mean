@@ -2,7 +2,6 @@ import {
   ActionReducerMap,
   MetaReducer
 } from '@ngrx/store';
-import {environment} from '../../environments/environment';
 import * as fromGenderService from './services/gender-service/gender-service.reducer';
 import * as fromPatientService from './services/patient-service/patient-service.reducer';
 import * as fromEmcPatientComponent from './components/emc-patient-component/emc-patient-component.reducer';
@@ -10,6 +9,7 @@ import * as fromPatientComponent from './components/patient-component/patient-co
 import * as fromBranchService from './services/branch-service/branch-service.reducer';
 import * as fromPostService from './services/post-service/post-service.reducer';
 import * as fromEmployeeService from './services/employee-service/employee-service.reducer';
+import {environment} from '../../environments/environment';
 
 
 export interface AppState {

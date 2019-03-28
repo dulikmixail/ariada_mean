@@ -33,11 +33,14 @@ export class PatientListComponent implements OnInit {
 
   openDialog(patient: PatientModel): void {
     this.dialog.open(ImageModalComponent, {
-      data: {srcImage: this.buildSrcAvatar(patient)}
+      data: {srcImage: this.getSrcAvatar(patient)}
     });
   }
 
-  buildSrcAvatar(patient: PatientModel): string {
+  getSrcAvatar(patient: PatientModel): string {
+    // const src = this.fileService.downloadByName(patient.photo).subscribe(blob => {
+    //   console.log(this._window.URL.createObjectURL(blob));
+    // });
     return `${this.srcImages}/${patient.photo}`;
   }
 

@@ -8,6 +8,7 @@ import {BranchFormComponent} from '../shared/branch-form/branch-form.component';
 import {PostFormComponent} from '../shared/post-form/post-form.component';
 import {BranchListComponent} from '../shared/branch-list/branch-list.component';
 import {EmployeeListComponent} from '../shared/employee-list/employee-list.component';
+import {PostListComponent} from '../shared/post-list/post-list.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
       {path: 'patients/search', component: PatientListComponent},
       {path: 'branches/new', component: BranchFormComponent},
       {path: 'branches/search', component: BranchListComponent},
-      {path: 'posts/new', component: PostFormComponent}
+      {path: 'posts/new', component: PostFormComponent},
+      {path: 'posts/search', component: PostListComponent}
     ]
   }
 ];

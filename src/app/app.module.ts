@@ -29,7 +29,6 @@ import {AppComponent} from './app.component';
 import {TopNavigationComponent} from './shared/top-navigation/top-navigation.component';
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {reducers, metaReducers} from './store';
-import {environment} from '../environments/environment';
 import {PatientServiceEffects} from './store/services/patient-service/patient-service.effects';
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
@@ -37,6 +36,7 @@ import {ImageModalComponent} from './shared/image-modal/image-modal.component';
 import {BranchServiceEffects} from './store/services/branch-service/branch-service.effects';
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [

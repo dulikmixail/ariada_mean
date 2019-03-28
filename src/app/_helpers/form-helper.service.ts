@@ -7,7 +7,7 @@ import {AppState} from '../store';
 @Injectable({
   providedIn: 'root'
 })
-export class Form {
+export class FormHelper {
 
   constructor(private formGroupConverter: FormGroupConverter,
               private store: Store<AppState>) {

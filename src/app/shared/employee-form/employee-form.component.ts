@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import {MatDialog} from '@angular/material';
-import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+
 import {AppState} from '../../store';
 import {environment} from '../../../environments/environment';
-import {FormFile, FormFiles} from '../../_helpers/form-files';
-import {Observable} from 'rxjs';
+import {FormFile, FormFiles, FormGroupConverter, SnackBar, FormHelper} from '../../_helpers';
 import {BranchModel} from '../../_models/api/branch.model';
 import {PostModel} from '../../_models/api/post.model';
 import {selectPostList} from '../../store/services/post-service/post-service.selector';
@@ -14,9 +14,7 @@ import {LoadBranches} from '../../store/services/branch-service/branch-service.a
 import {LoadPosts} from '../../store/services/post-service/post-service.actions';
 import {AddEmployee} from '../../store/services/employee-service/employee-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
-import {SnackBar} from '../../_helpers/snack-bar';
 import {selectBranchList} from '../../store/services/branch-service/branch-service.selector';
-import {Form} from '../../_helpers/form';
 
 @Component({
   selector: 'app-employee-form',
@@ -37,7 +35,7 @@ export class EmployeeFormComponent implements OnInit {
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,
               private store: Store<AppState>,
-              private formService: Form) {
+              private formService: FormHelper) {
   }
 
   ngOnInit() {

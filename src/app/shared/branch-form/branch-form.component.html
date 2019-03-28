@@ -1,11 +1,2 @@
-<mat-card class="card-component">
-  <h1>Нове відділення</h1>
-  <mat-card-content>
-    <form #ngForm="ngForm" [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()" class="full-width">
-      <mat-form-field>
-        <input matInput formControlName="title" placeholder="Назва" required>
-      </mat-form-field>
-      <app-form-card-actions></app-form-card-actions>
-    </form>
-  </mat-card-content>
-</mat-card>
+<app-base-title-form title="Нове відділення" [addModelActionClass]="addBranchActionClass"
+                     [addModelSuccessActionType]="addBranchSuccessActionType"></app-base-title-form>

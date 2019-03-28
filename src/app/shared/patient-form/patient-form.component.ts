@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
-import {FormFile, FormFiles} from '../../_helpers/form-files';
+import {FormFile, FormFiles, FormHelper} from '../../_helpers';
 import {MatDialog} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
@@ -12,7 +12,6 @@ import {selectGenderList} from '../../store/services/gender-service/gender-servi
 import {LoadGenders} from '../../store/services/gender-service/gender-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {AddPatient} from '../../store/services/patient-service/patient-service.actions';
-import {Form} from '../../_helpers/form';
 
 @Component({
   selector: 'app-patient-form',
@@ -29,7 +28,7 @@ export class PatientFormComponent implements OnInit {
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,
               private store: Store<AppState>,
-              private formService: Form) {
+              private formService: FormHelper) {
   }
 
   ngOnInit() {

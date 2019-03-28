@@ -71,7 +71,7 @@ export class AnamnesisComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Form validation
+    // FormHelper validation
     this.formGroupOne = this._formBuilder.group({
       phRSubGroupsSelected: ['', Validators.required]
     });

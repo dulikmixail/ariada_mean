@@ -50,6 +50,7 @@ mat-icon {
     text-align: center;
 
   }
+
   margin: 10px;
 }
 
@@ -71,9 +72,18 @@ mat-card .more-vert-button {
   top: 10px;
 }
 
-mat-card:hover.hover{
-  background:rgba(0,0,0,.04);
+mat-card:hover.hover {
+  background: rgba(0, 0, 0, .04);
 }
+
+.sh-w-element .sh-w-hover {
+  display: none !important;
+}
+
+.sh-w-element:hover .sh-w-hover {
+  display: inherit !important;
+}
+
 
 .pointer {
   cursor: pointer;

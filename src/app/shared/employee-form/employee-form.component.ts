@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -57,27 +57,29 @@ export class EmployeeFormComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
       photo: [''],
-      surname: ['23'],
-      name: ['2312'],
-      middleName: ['23'],
-      itemNo: ['2'],
-      employmentDate: ['2012-04-23'],
-      expirationDate: ['2012-04-23'],
+      surname: ['23', Validators.required],
+      name: ['2312', Validators.required],
+      middleName: ['23', Validators.required],
+      itemNo: ['2', Validators.required],
+      employmentDate: ['2012-04-23', Validators.required],
+      expirationDate: [''],
       birthDate: ['2012-04-23'],
       residencePlace: ['21123123'],
       educationFile: [''],
       refresherCoursesDate: ['2012-04-23'],
       placeRefresherCoursesFile: [''],
-      branch: ['5c8d0f152bd07d15b078c7f6'],
-      post: ['5c6daa07833b661aba4a4217']
+      branch: ['', Validators.required],
+      post: ['', Validators.required]
     });
   }
 
   onSubmit(ngForm: NgForm) {
-    this.formService.submitPromise(ngForm, this.form, AddEmployee)
-      .then(() => this.resetForm())
-      .catch(() => {
-      });
+    if (this.form.valid) {
+      this.formService.submitPromise(ngForm, this.form, AddEmployee)
+        .then(() => this.resetForm())
+        .catch(() => {
+        });
+    }
   }
 
   resetFormFiles() {

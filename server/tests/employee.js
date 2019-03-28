@@ -12,7 +12,8 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const authLine = `Bearer ${issueToken({_id: 1})}`;
 
-describe('/GET employees', () => {
+describe('/GET employees', function() {
+  this.timeout(5000);
   beforeEach((done) => {
     employeeService.deleteAll((err)=> {
       if(!err) {

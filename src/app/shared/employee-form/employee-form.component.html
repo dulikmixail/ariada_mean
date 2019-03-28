@@ -37,7 +37,7 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="expirationDate" placeholder="Дата окончания" [matDatepicker]="dpExpirationDate"
-               (click)="dpExpirationDate.open()" required>
+               (click)="dpExpirationDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpExpirationDate"></mat-datepicker-toggle>
         <mat-datepicker #dpExpirationDate startView="multi-year"></mat-datepicker>
       </mat-form-field>

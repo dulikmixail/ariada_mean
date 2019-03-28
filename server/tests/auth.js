@@ -18,6 +18,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 
 describe('/POST Sign Up', function () {
+  this.timeout(5000);
   it('User can successfully Sign Up', (done) => {
     chai.request(app)
       .post(authUrl + '/signup')

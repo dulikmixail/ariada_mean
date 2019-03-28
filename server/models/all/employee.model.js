@@ -25,6 +25,7 @@ let employeeSchema = new Schema({
   },
   middleName: {
     type: String,
+    required: true
   },
   birthDate: {
     type: Date,
@@ -43,7 +44,8 @@ let employeeSchema = new Schema({
   },
   branch: {
     type: Schema.Types.ObjectId,
-    ref: 'Branch'
+    ref: 'Branch',
+    required: true
   },
   reviews: {
     type: [Schema.Types.ObjectId],

@@ -6,7 +6,7 @@
       "sizeLimit": "30mb"
     },
     "request": {
-      "timeoutMsecs": 100000
+      "timeoutMsecs": 10000
     }
   },
   "multer": {

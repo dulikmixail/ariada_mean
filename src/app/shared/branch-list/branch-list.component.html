@@ -1,16 +1,7 @@
-<mat-card class="card-mini" *ngFor="let branch of branches$ | async">
-  <mat-card-header>
-    {{branch.title}}
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-button">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu>
-      <button mat-menu-item (click)="deleteBranch(branch)">
-        <mat-icon>delete</mat-icon>
-        <span>Видалити</span>
-      </button>
-    </mat-menu>
-  </mat-card-actions>
-</mat-card>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Список відділень</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-base-title-list [loadAction]="loadBranches" [deleteAction]="deleteBranch"
+                     [titleModels$]="branches$"></app-base-title-list>

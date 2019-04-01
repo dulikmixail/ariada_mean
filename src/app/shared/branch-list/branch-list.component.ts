@@ -12,18 +12,17 @@ import {DeleteBranch, LoadBranches} from '../../store/services/branch-service/br
   styleUrls: ['./branch-list.component.css']
 })
 export class BranchListComponent implements OnInit {
+  deleteBranch: any;
+  loadBranches: any;
   branches$: Observable<BranchModel[]>;
 
   constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
+    this.deleteBranch = DeleteBranch;
+    this.loadBranches = LoadBranches;
     this.branches$ = this.store.pipe(select(selectBranchList));
-    this.store.dispatch(new LoadBranches());
-  }
-
-  deleteBranch(branch: BranchModel) {
-    this.store.dispatch(new DeleteBranch(branch));
   }
 
 }

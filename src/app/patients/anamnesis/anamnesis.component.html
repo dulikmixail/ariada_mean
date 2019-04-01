@@ -22,7 +22,7 @@
         <app-small-progress-spinner></app-small-progress-spinner>
       </ng-template>
       <div>
-        <button mat-button matStepperNext>Далі</button>
+        <button mat-stroked-button matStepperNext>Далі</button>
       </div>
     </form>
   </mat-step>
@@ -45,9 +45,9 @@
         *ngIf="!isAllowPhysicalRahabilitation"> не </span>
         показана
       </div>
-      <div>
-        <button mat-button matStepperPrevious>Назад</button>
-        <button mat-button matStepperNext>Далі</button>
+      <div class="button-row">
+        <button mat-stroked-button matStepperPrevious>Назад</button>
+        <button mat-stroked-button matStepperNext>Далі</button>
       </div>
     </form>
   </mat-step>
@@ -115,9 +115,9 @@
         <app-small-progress-spinner></app-small-progress-spinner>
       </ng-template>
 
-      <div>
-        <button mat-button matStepperPrevious>Назад</button>
-        <button mat-button (click)="stepper.reset()">Скинути</button>
+      <div class="button-row">
+        <button mat-stroked-button matStepperPrevious>Назад</button>
+        <button mat-stroked-button (click)="stepper.reset()">Скинути</button>
       </div>
     </form>
   </mat-step>

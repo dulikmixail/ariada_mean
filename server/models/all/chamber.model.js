@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 
 
 let chamberSchema = new Schema({
-    number: {
-        type: Number,
+    title: {
+        type: String,
         required: true
     }
 }, {versionKey: false});

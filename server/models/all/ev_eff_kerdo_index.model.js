@@ -4,15 +4,15 @@ const mongoose = require('mongoose')
 let evEffKerdoIndexSchema = new Schema({
     after: {
         type: Schema.Types.ObjectId,
-        ref: ''
+        ref: 'Ev_Eff_K_Ind_Measurement'
     },
     before: {
         type: Schema.Types.ObjectId,
-        ref: ''
+        ref: 'Ev_Eff_K_Ind_Measurement'
     },
     afterSomeTime: {
         type: Schema.Types.ObjectId,
-        ref: ''
+        ref: 'Ev_Eff_K_Ind_Measurement'
     }
 }, {versionKey: false});
 

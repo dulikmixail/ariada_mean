@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {select, Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 import {AppState} from '../../store';
 import {environment} from '../../../environments/environment';
@@ -12,22 +12,26 @@ import {PostModel} from '../../_models/api/post.model';
 import {selectPostList} from '../../store/services/post-service/post-service.selector';
 import {LoadBranches} from '../../store/services/branch-service/branch-service.actions';
 import {LoadPosts} from '../../store/services/post-service/post-service.actions';
-import {AddEmployee} from '../../store/services/employee-service/employee-service.actions';
+import {AddEmployee, EmployeeServiceActionTypes} from '../../store/services/employee-service/employee-service.actions';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {selectBranchList} from '../../store/services/branch-service/branch-service.selector';
+import {Actions, ofType} from '@ngrx/effects';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.css']
 })
-export class EmployeeFormComponent implements OnInit {
+export class EmployeeFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   branches$: Observable<BranchModel[]>;
   posts$: Observable<PostModel[]>;
   photoFile: FormFile;
   educationFile: FormFile;
   placeRefresherCoursesFile: FormFile;
+  destroyed$ = new Subject<boolean>();
+  @ViewChild(FormGroupDirective) ngForm: FormGroupDirective;
 
   constructor(private dialog: MatDialog,
               private snackBar: SnackBar,
@@ -35,7 +39,8 @@ export class EmployeeFormComponent implements OnInit {
               private formGroupConverter: FormGroupConverter,
               private formFiles: FormFiles,
               private store: Store<AppState>,
-              private formService: FormHelper) {
+              private formService: FormHelper,
+              private actions: Actions) {
   }
 
   ngOnInit() {
@@ -51,6 +56,14 @@ export class EmployeeFormComponent implements OnInit {
     this.store.dispatch(new LoadBranches());
     this.posts$ = this.store.pipe(select(selectPostList));
     this.store.dispatch(new LoadPosts());
+
+    this.actions.pipe(
+      ofType(EmployeeServiceActionTypes.AddEmployeeSuccess),
+      takeUntil(this.destroyed$)
+    ).subscribe(() => {
+      this.resetForm();
+      this.snackBar.info(environment.info.i2);
+    });
 
   }
 
@@ -73,12 +86,10 @@ export class EmployeeFormComponent implements OnInit {
     });
   }
 
-  onSubmit(ngForm: NgForm) {
+  onSubmit() {
     if (this.form.valid) {
-      this.formService.submitPromise(ngForm, this.form, AddEmployee)
-        .then(() => this.resetForm())
-        .catch(() => {
-        });
+      const fd = this.formGroupConverter.load(this.form).toFormData();
+      this.store.dispatch(new AddEmployee(fd));
     }
   }
 
@@ -91,6 +102,7 @@ export class EmployeeFormComponent implements OnInit {
   resetForm() {
     this.resetFormFiles();
     this.form.reset();
+    this.ngForm.resetForm();
   }
 
   onFileChange(event, controlName: string, formFile: FormFile, loadSource: boolean) {
@@ -118,5 +130,10 @@ export class EmployeeFormComponent implements OnInit {
 
   loadSourceFormFile(file: File, formFile: FormFile) {
     this.formFiles.loadSource(formFile, file);
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }

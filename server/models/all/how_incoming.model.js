@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
-    , Schema = mongoose.Schema;
+  , Schema = mongoose.Schema;
 //Впервые / повторно
 let howIncomingSchema = new Schema({
-    title: {
-        type: String
-    }
+  title: {
+    type: String,
+    required: true
+  }
 }, {versionKey: false});
 
 module.exports = mongoose.model('How_Incoming', howIncomingSchema);

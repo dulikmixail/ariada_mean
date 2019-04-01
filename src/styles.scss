@@ -84,10 +84,15 @@ mat-card:hover.hover {
   display: inherit !important;
 }
 
-
 .pointer {
   cursor: pointer;
 }
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+}
+
 
 
 /*!*Styles from old project - START*! !*REFACTORING NEEDED*!*/

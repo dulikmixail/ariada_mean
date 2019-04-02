@@ -8,11 +8,11 @@ let mClGroupSchema = new Schema({
     },
     classifier:{
         type: [Schema.Types.ObjectId],
-        ref: 'M_Cl_Group'
+        ref: 'M_Classifier'
     },
     children: {
         type: [Schema.Types.ObjectId],
-        ref: 'M_Classifier'
+        ref: 'M_Cl_Group'
     }
 }, {versionKey: false});
 

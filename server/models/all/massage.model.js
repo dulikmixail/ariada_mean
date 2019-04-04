@@ -16,11 +16,11 @@ let massageSchema = new Schema({
     },
     influenceOfIndividualMassageTechniques: {
         type: Schema.Types.ObjectId,
-        ref: 'M_Influence_Of_Individual_Massage_Techniques'
+        ref: 'M_Classifier'
     },
     stimulatingAndCalmingEffects:{
         type: Schema.Types.ObjectId,
-        ref: 'M_Stimulating_And_Calming_Effects'
+        ref: 'M_Classifier'
     },
     scheme: {
         type: Schema.Types.ObjectId,

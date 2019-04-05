@@ -10,6 +10,9 @@ export enum PatientServiceActionTypes {
 
   DeletePatient = '[PatientService] Delete Patient',
   DeletePatientSuccess = '[PatientService] Delete Patient Success',
+
+  UpdatePatient = '[PatientService] Update Patient',
+  UpdatePatientSuccess = '[PatientService] Update Patient Success',
 }
 
 // LoadPatients
@@ -54,10 +57,27 @@ export class DeletePatientSuccess implements Action {
   }
 }
 
+// UpdatePatient
+export class UpdatePatient implements Action {
+  readonly type = PatientServiceActionTypes.UpdatePatient;
+
+  constructor(public payload: PatientModel) {
+  }
+}
+
+export class UpdatePatientSuccess implements Action {
+  readonly type = PatientServiceActionTypes.UpdatePatientSuccess;
+
+  constructor(public payload: PatientModel) {
+  }
+}
+
 export type PatientServiceActions =
   | AddPatient
   | AddPatientSuccess
   | LoadPatients
   | LoadPatientsSuccess
   | DeletePatient
-  | DeletePatientSuccess;
+  | DeletePatientSuccess
+  | UpdatePatient
+  | UpdatePatientSuccess;

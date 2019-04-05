@@ -57,7 +57,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <app-form-card-actions></app-form-card-actions>
+      <app-form-card-actions [isUpdate]="!!data" [dialogRef]="dialogRef"></app-form-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {Observable, Subject} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
 import {FormFile, FormFiles, SnackBar} from '../../_helpers';
-import {MatDialog} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -14,6 +14,7 @@ import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {AddPatient, PatientServiceActionTypes} from '../../store/services/patient-service/patient-service.actions';
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
+import {PatientModel} from '../../_models/api/patient.model';
 
 @Component({
   selector: 'app-patient-form',
@@ -33,7 +34,9 @@ export class PatientFormComponent implements OnInit, OnDestroy {
               private formFiles: FormFiles,
               private store: Store<AppState>,
               private actions: Actions,
-              private snackBar: SnackBar) {
+              private snackBar: SnackBar,
+              private dialogRef: MatDialogRef<PatientFormComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: PatientModel) {
   }
 
   ngOnInit() {

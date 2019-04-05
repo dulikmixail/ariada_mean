@@ -6,7 +6,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  patients: [],
+  patients: []
 };
 
 export function reducer(state = initialState, action: PatientServiceActions): State {
@@ -17,7 +17,17 @@ export function reducer(state = initialState, action: PatientServiceActions): St
     case PatientServiceActionTypes.AddPatientSuccess:
       return {...state, patients: [...state.patients, action.payload]};
     case  PatientServiceActionTypes.DeletePatientSuccess:
-      return state;
+      return {...state, patients: [...state.patients.filter(patient => patient._id !== action.payload._id)]};
+    case  PatientServiceActionTypes.UpdatePatientSuccess:
+      return {
+        ...state, patients: [...state.patients.map(patient => {
+          if (patient._id === action.payload._id) {
+            return action.payload;
+          } else {
+            return patient;
+          }
+        })]
+      };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 <div mat-dialog-content>
-  <img *ngIf="data.srcImage" src="{{data.srcImage}}" alt="big-avatar" class="mhVh60">
-  <img *ngIf="!data.srcImage" src="/assets/images/icon/baseline-portrait-24px.svg" alt="big-avatar" class="hVh60">
+  <img *ngIf="data.srcImage" [src]="data.srcImage" alt="big-avatar" class="mhVh60">
+  <img *ngIf="!data.srcImage" [src]="srcNotHaveAvatar" alt="big-avatar" class="hVh60">
 </div>
 <div mat-dialog-actions align="center">
   <button mat-button [mat-dialog-close]>Закрити</button>

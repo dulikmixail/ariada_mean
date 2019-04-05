@@ -41,7 +41,11 @@ export class EmployeeListComponent implements OnInit {
     return `${this.srcImages}/${employee.photo}`;
   }
 
-  deletePatient(employee: EmployeeModel) {
+  deleteEmployee(employee: EmployeeModel) {
     this.store.dispatch(new DeleteEmployee(employee));
+  }
+
+  editEmployee(employee: EmployeeModel) {
+
   }
 }

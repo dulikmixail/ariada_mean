@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {map, mapTo, switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 
 import {
   AddPatient,
   AddPatientSuccess, DeletePatient, DeletePatientSuccess,
-  LoadPatients,
   LoadPatientsSuccess,
-  PatientServiceActionTypes
+  PatientServiceActionTypes, UpdatePatient, UpdatePatientSuccess
 } from './patient-service.actions';
 import {PatientService} from '../../../_services/api/patient/patient.service';
 
@@ -24,33 +23,40 @@ export class PatientServiceEffects {
   );
 
   @Effect()
-  addPatients$ = this.actions$.pipe(
+  addPatient$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.AddPatient),
     switchMap((action: AddPatient) => this.patientService.create(action.payload).pipe(
       map(patient => new AddPatientSuccess(patient))
     ))
   );
 
-  @Effect()
-  addPatientsSuccess$ = this.actions$.pipe(
-    ofType(PatientServiceActionTypes.AddPatientSuccess),
-    mapTo(new LoadPatients())
-  );
+  // @Effect()
+  // addPatientSuccess$ = this.actions$.pipe(
+  //   ofType(PatientServiceActionTypes.AddPatientSuccess),
+  //   mapTo(new LoadPatients())
+  // );
 
   @Effect()
-  deletePatients$ = this.actions$.pipe(
+  deletePatient$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.DeletePatient),
     switchMap((action: DeletePatient) => this.patientService.delete(action.payload._id).pipe(
       map(patient => new DeletePatientSuccess(patient))
     ))
   );
 
-  @Effect()
-  deletePatientsSuccess$ = this.actions$.pipe(
-    ofType(PatientServiceActionTypes.DeletePatientSuccess),
-    mapTo(new LoadPatients())
-  );
+  // @Effect()
+  // deletePatientSuccess$ = this.actions$.pipe(
+  //   ofType(PatientServiceActionTypes.DeletePatientSuccess),
+  //   mapTo(new LoadPatients())
+  // );
 
+  @Effect()
+  updatePatient = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.UpdatePatient),
+    switchMap((action: UpdatePatient) => this.patientService.update(action.payload._id, action.payload).pipe(
+      map(patient => new UpdatePatientSuccess(patient))
+    ))
+  );
 
   constructor(private actions$: Actions, private patientService: PatientService) {
   }

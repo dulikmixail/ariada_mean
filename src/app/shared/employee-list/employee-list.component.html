@@ -15,7 +15,11 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu>
-    <button mat-menu-item (click)="deletePatient(employee)">
+    <button mat-menu-item (click)="editEmployee(employee)">
+      <mat-icon>edit</mat-icon>
+      <span>Редагувати</span>
+    </button>
+    <button mat-menu-item (click)="deleteEmployee(employee)">
       <mat-icon>delete</mat-icon>
       <span>Видалити</span>
     </button>

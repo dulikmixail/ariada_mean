@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {environment} from '../../../environments/environment';
 
 export interface ImageModalData {
   srcImage: string;
@@ -11,13 +12,13 @@ export interface ImageModalData {
   styleUrls: ['./image-modal.component.css']
 })
 export class ImageModalComponent implements OnInit {
+  srcNotHaveAvatar: string;
 
-  constructor(
-    public dialogRef: MatDialogRef<ImageModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ImageModalData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ImageModalData) {
   }
 
   ngOnInit() {
+    this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-form-card-actions',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-card-actions.component.css']
 })
 export class FormCardActionsComponent implements OnInit {
+  @Input() isUpdate: boolean;
+  @Input() dialogRef: MatDialogRef<any>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

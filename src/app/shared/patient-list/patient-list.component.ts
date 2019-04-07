@@ -8,8 +8,7 @@ import {DeletePatient, LoadPatients} from '../../store/services/patient-service/
 import {environment} from '../../../environments/environment';
 import {MatDialog} from '@angular/material';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
-import {PatientFormComponent} from '../patient-form/patient-form.component';
-import {Overlay} from '@angular/cdk/overlay';
+import {PatientFormModalComponent} from '../patient-form-modal/patient-form-modal.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -41,9 +40,6 @@ export class PatientListComponent implements OnInit {
   }
 
   getSrcAvatar(patient: PatientModel): string {
-    // const src = this.fileService.downloadByName(patient.photo).subscribe(blob => {
-    //   console.log(this._window.URL.createObjectURL(blob));
-    // });
     return `${this.srcImages}/${patient.photo}`;
   }
 
@@ -52,7 +48,7 @@ export class PatientListComponent implements OnInit {
   }
 
   editPatient(patient: PatientModel) {
-    this.dialog.open(PatientFormComponent, {
+    this.dialog.open(PatientFormModalComponent, {
       data: patient,
       maxHeight: '90vh',
       maxWidth: 600

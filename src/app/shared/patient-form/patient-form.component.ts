@@ -1,9 +1,9 @@
-import {Component, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {Observable, Subject} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
-import {FormFile, FormFiles, SnackBar} from '../../_helpers';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {CustomValidators, FormFile, FormFiles, SnackBar} from '../../_helpers';
+import {MatChipInputEvent, MatDialog, MatDialogRef} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -15,6 +15,8 @@ import {AddPatient, PatientServiceActionTypes} from '../../store/services/patien
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
 import {PatientModel} from '../../_models/api/patient.model';
+import {PatientFormModalComponent} from '../patient-form-modal/patient-form-modal.component';
+import {ENTER, MAC_ENTER, SPACE} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-patient-form',
@@ -27,6 +29,10 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   avatarFile: FormFile;
   destroyed$ = new Subject<boolean>();
   @ViewChild(FormGroupDirective) ngForm: FormGroupDirective;
+  patient: PatientModel;
+  @Input() editPatient: PatientModel;
+  @Input() dialogRef: MatDialogRef<PatientFormModalComponent>;
+  readonly separatorKeysCodes: number[] = [ENTER, MAC_ENTER, SPACE];
 
   constructor(private dialog: MatDialog,
               private formBuilder: FormBuilder,
@@ -34,13 +40,10 @@ export class PatientFormComponent implements OnInit, OnDestroy {
               private formFiles: FormFiles,
               private store: Store<AppState>,
               private actions: Actions,
-              private snackBar: SnackBar,
-              private dialogRef: MatDialogRef<PatientFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: PatientModel) {
+              private snackBar: SnackBar) {
   }
 
   ngOnInit() {
-    this.createForm();
     this.avatarFile = new FormFile();
     this.avatarFile.srcNotHave = environment.source.images.notHaveAvatar;
     this.genders$ = this.store.pipe(select(selectGenderList));
@@ -53,23 +56,30 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       this.resetForm();
       this.snackBar.info(environment.info.i2);
     });
+    this.patient = !this.editPatient ? new PatientModel() : this.editPatient;
+    this.createForm(this.patient);
   }
 
-  createForm() {
+  createForm(p: PatientModel) {
+    p.phoneNumbers = ['12312', '123123123'];
+    if (p.photo) {
+      this.avatarFile.src = `${environment.srcImages}/${p.photo}`;
+    }
     this.form = this.formBuilder.group({
       photo: [''],
-      surname: ['1', Validators.required],
-      name: ['2', Validators.required],
-      middleName: ['3', Validators.required],
-      birthDate: [''],
-      permanentResidence: '',
-      addressOfRelativesAndFamily: '',
-      phoneNumbers: ['3', Validators.required],
-      medicalCardNumber: '',
-      workplace: '',
-      workPost: '',
-      gender: ['5c90293c45ef1416bb30febf', Validators.required]
+      surname: [p.surname, Validators.required],
+      name: [p.name, Validators.required],
+      middleName: [p.middleName, Validators.required],
+      birthDate: [p.birthDate],
+      permanentResidence: p.permanentResidence,
+      addressOfRelativesAndFamily: p.addressOfRelativesAndFamily,
+      phoneNumbers: [p.phoneNumbers, [CustomValidators.arrayRequired]],
+      medicalCardNumber: p.medicalCardNumber,
+      workplace: p.workplace,
+      workPost: p.workPost,
+      gender: [p.gender, Validators.required]
     });
+    this.form.controls['emails'].setValue(p.phoneNumbers); // 2
   }
 
   onFileChange(event) {
@@ -104,6 +114,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     this.avatarFile.reset();
     this.form.reset();
     this.ngForm.resetForm();
+    this.patient = new PatientModel();
   }
 
   previewAvatar(file) {
@@ -113,5 +124,26 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroyed$.next(true);
     this.destroyed$.complete();
+  }
+
+  addPhoneNumberChip($event: MatChipInputEvent): void {
+    const input = $event.input;
+    const value = $event.value;
+
+    if ((value.trim() !== '')) {
+      this.patient.phoneNumbers.push(value.trim());
+      this.form.controls['phoneNumbers'].markAsDirty();
+      input.value = '';
+    }
+  }
+
+  removePhoneNumberChip(phoneNumberChip: string): void {
+    const controller = this.form.controls['phoneNumbers'];
+    const index = this.patient.phoneNumbers.indexOf(phoneNumberChip);
+
+    if (index >= 0) {
+      this.patient.phoneNumbers.splice(index, 1);
+    }
+    controller.markAsDirty();
   }
 }

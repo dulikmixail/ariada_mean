@@ -5,4 +5,4 @@ export * from './form-files';
 export * from './form-group-converter';
 export * from './jwt.interceptor';
 export * from './snack-bar';
-export * from './validator';
+export * from './custom-validators';

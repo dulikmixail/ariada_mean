@@ -5,7 +5,7 @@ import {PatientListComponent} from './patient-list/patient-list.component';
 import {EmployeeFormComponent} from './employee-form/employee-form.component';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatChipsModule,
   MatDatepickerModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -14,7 +14,7 @@ import {
   MatMenuModule,
   MatNativeDateModule,
   MatRippleModule,
-  MatSelectModule,
+  MatSelectModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -23,10 +23,11 @@ import {PostFormComponent} from './post-form/post-form.component';
 import {BranchListComponent} from './branch-list/branch-list.component';
 import {EmployeeListComponent} from './employee-list/employee-list.component';
 import {FormCardActionsComponent} from './form-card-actions/form-card-actions.component';
-import { FormUploadButtonComponent } from './form-upload-button/form-upload-button.component';
-import { BaseTitleFormComponent } from './base-title-form/base-title-form.component';
-import { BaseTitleListComponent } from './base-title-list/base-title-list.component';
-import { PostListComponent } from './post-list/post-list.component';
+import {FormUploadButtonComponent} from './form-upload-button/form-upload-button.component';
+import {BaseTitleFormComponent} from './base-title-form/base-title-form.component';
+import {BaseTitleListComponent} from './base-title-list/base-title-list.component';
+import {PostListComponent} from './post-list/post-list.component';
+import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +42,13 @@ import { PostListComponent } from './post-list/post-list.component';
     FormUploadButtonComponent,
     BaseTitleFormComponent,
     BaseTitleListComponent,
-    PostListComponent
+    PostListComponent,
+    PatientFormModalComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
+    MatChipsModule,
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -59,13 +62,18 @@ import { PostListComponent } from './post-list/post-list.component';
     MatRippleModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
   ],
   exports: [
     PatientFormComponent,
+    PatientFormModalComponent,
     PatientListComponent,
     EmployeeFormComponent,
     BranchFormComponent,
     PostFormComponent
+  ],
+  entryComponents: [
+    PatientFormModalComponent
   ]
 })
 export class SharedModule {

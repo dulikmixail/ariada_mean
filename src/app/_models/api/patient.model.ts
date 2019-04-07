@@ -15,4 +15,9 @@ export class PatientModel extends StaticFields {
   isDelete: boolean;
   gender: GenderModel;
   photo: any;
+
+  constructor() {
+    super();
+    this.phoneNumbers = [];
+  }
 }

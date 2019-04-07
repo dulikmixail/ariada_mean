@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
-import {SnackBar, Validator} from '../../_helpers';
+import {SnackBar, CustomValidators} from '../../_helpers';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {Subject} from 'rxjs';
@@ -25,7 +25,6 @@ export class BaseTitleFormComponent implements OnInit, OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<AppState>,
-              private validator: Validator,
               private actions: Actions,
               private snackBar: SnackBar) {
   }
@@ -35,8 +34,8 @@ export class BaseTitleFormComponent implements OnInit, OnDestroy {
     if (!this.placeholder) {
       this.placeholder = 'Назва';
     }
-    this.validator.checkRequiredFields(this.addModelSuccessActionType, 'addModelSuccessActionType');
-    this.validator.checkRequiredFields(this.addModelActionClass, 'addModelActionClass');
+    CustomValidators.inputFieldRequired(this.addModelSuccessActionType, 'addModelSuccessActionType');
+    CustomValidators.inputFieldRequired(this.addModelActionClass, 'addModelActionClass');
     this.actions.pipe(
       ofType(this.addModelSuccessActionType),
       takeUntil(this.destroyed$)

@@ -1,5 +1,5 @@
 <mat-card class="card-component">
-  <h1>Новий пацієнт</h1>
+<!--  <h1>Новий пацієнт</h1>-->
   <mat-card-header>
     <img *ngIf="avatarFile.src" mat-card-avatar [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
          (click)="openDialog()"/>
@@ -39,8 +39,23 @@
         <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>
+        <mat-chip-list #phoneNumberChipList required>
+          <mat-chip *ngFor="let phoneNumber of patient.phoneNumbers" removable (removed)="removePhoneNumberChip(phoneNumber)">
+            {{phoneNumber}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input matInput
+                 type="tel"
+                 placeholder="Телефоны"
+                 [matChipInputAddOnBlur]="true"
+                 [matChipInputFor]="phoneNumberChipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 (matChipInputTokenEnd)="addPhoneNumberChip($event)">
+        </mat-chip-list>
       </mat-form-field>
+<!--      <mat-form-field>-->
+<!--                <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>-->
+<!--      </mat-form-field>-->
       <mat-form-field>
         <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
       </mat-form-field>
@@ -57,7 +72,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <app-form-card-actions [isUpdate]="!!data" [dialogRef]="dialogRef"></app-form-card-actions>
+      <app-form-card-actions [isUpdate]="!!editPatient" [dialogRef]="dialogRef"></app-form-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

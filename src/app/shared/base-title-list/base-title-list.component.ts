@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {TitleModel} from '../../_models/api/title.model';
-import {Validator} from '../../_helpers';
+import {CustomValidators} from '../../_helpers';
 
 @Component({
   selector: 'app-base-title-list',
@@ -15,14 +15,13 @@ export class BaseTitleListComponent implements OnInit {
   @Input() loadAction: any;
   @Input() deleteAction: any;
 
-  constructor(private store: Store<AppState>,
-              private validator: Validator) {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
-    this.validator.checkRequiredFields(this.titleModels$, 'titleModels$');
-    this.validator.checkRequiredFields(this.loadAction, 'loadAction');
-    this.validator.checkRequiredFields(this.deleteAction, 'deleteAction');
+    CustomValidators.inputFieldRequired(this.titleModels$, 'titleModels$');
+    CustomValidators.inputFieldRequired(this.loadAction, 'loadAction');
+    CustomValidators.inputFieldRequired(this.deleteAction, 'deleteAction');
     this.store.dispatch(new this.loadAction());
   }
 

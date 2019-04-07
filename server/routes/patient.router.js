@@ -9,6 +9,9 @@ module.exports = function (requireServiceName, routePath) {
 
   router.post(routePath, jwtMiddleware, uploadFilesService.upload.single('photo'), function (req, res) {
     let patientModel = req.body;
+    if (!!patientModel.phoneNumbers) {
+      patientModel.phoneNumbers = patientModel.phoneNumbers.split(',');
+    }
     if (!!req.file) {
       patientModel = Object.assign(patientModel, {photo: req.file.filename});
     }

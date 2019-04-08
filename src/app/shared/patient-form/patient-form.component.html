@@ -1,5 +1,5 @@
 <mat-card class="card-component">
-<!--  <h1>Новий пацієнт</h1>-->
+  <!--  <h1>Новий пацієнт</h1>-->
   <mat-card-header>
     <img *ngIf="avatarFile.src" mat-card-avatar [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
          (click)="openDialog()"/>
@@ -19,6 +19,9 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="surname" placeholder="Прізвище" required>
+        <mat-error *ngIf="form.controls.surname.invalid">
+          surname required
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="name" placeholder="Ім'я" required>
@@ -40,24 +43,32 @@
       </mat-form-field>
       <mat-form-field>
         <mat-chip-list #phoneNumberChipList required>
-          <mat-chip *ngFor="let phoneNumber of patient.phoneNumbers" removable (removed)="removePhoneNumberChip(phoneNumber)">
+          <mat-chip *ngFor="let phoneNumber of patient.phoneNumbers" removable
+                    (removed)="removePhoneNumberChip(phoneNumber)">
             {{phoneNumber}}
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
           <input matInput
-                 type="tel"
                  placeholder="Телефоны"
                  [matChipInputAddOnBlur]="true"
                  [matChipInputFor]="phoneNumberChipList"
                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                  (matChipInputTokenEnd)="addPhoneNumberChip($event)">
+          <mat-error *ngIf="form.controls.phoneNumbers.invalid">
+            Введите телефон
+          </mat-error>
         </mat-chip-list>
+
+
       </mat-form-field>
-<!--      <mat-form-field>-->
-<!--                <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>-->
-<!--      </mat-form-field>-->
+      <!--      <mat-form-field>-->
+      <!--                <input matInput type="tel" formControlName="phoneNumbers" placeholder="Телефоны" required>-->
+      <!--      </mat-form-field>-->
       <mat-form-field>
         <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
+        <mat-error>
+          fdsfsdafa
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="workplace" placeholder="Місце роботи">

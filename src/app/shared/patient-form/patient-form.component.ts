@@ -61,7 +61,6 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   }
 
   createForm(p: PatientModel) {
-    p.phoneNumbers = ['12312', '123123123'];
     if (p.photo) {
       this.avatarFile.src = `${environment.srcImages}/${p.photo}`;
     }
@@ -73,13 +72,13 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       birthDate: [p.birthDate],
       permanentResidence: p.permanentResidence,
       addressOfRelativesAndFamily: p.addressOfRelativesAndFamily,
-      phoneNumbers: [p.phoneNumbers, [CustomValidators.arrayRequired]],
+      phoneNumbers: [p.phoneNumbers, CustomValidators.arrayRequired],
       medicalCardNumber: p.medicalCardNumber,
       workplace: p.workplace,
       workPost: p.workPost,
       gender: [p.gender, Validators.required]
     });
-    this.form.controls['emails'].setValue(p.phoneNumbers); // 2
+    this.form.controls['phoneNumbers'].setValue(p.phoneNumbers); // 2
   }
 
   onFileChange(event) {
@@ -104,6 +103,16 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    console.log(this.form.valid);
+    Object.keys(this.form.controls).forEach(key => {
+
+      const controlErrors = this.form.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
+    });
     if (this.form.valid) {
       const fd = this.formGroupConverter.load(this.form).toFormData();
       this.store.dispatch(new AddPatient(fd));

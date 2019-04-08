@@ -13,7 +13,7 @@ export class CustomValidators {
   }
 
   static arrayRequired(c: FormControl) {
-    if (c.value.length === 0) {
+    if (c.value && c.value.length === 0) {
       return {required: true};
     } else {
       return null;

@@ -2,8 +2,8 @@ import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {Observable, Subject} from 'rxjs';
 import {GenderModel} from '../../_models/api/gender.model';
-import {CustomValidators, FormFile, FormFiles, SnackBar} from '../../_helpers';
-import {MatChipInputEvent, MatDialog, MatDialogRef} from '@angular/material';
+import {FormFile, FormFiles, SnackBar} from '../../_helpers';
+import {MatChipInputEvent, MatChipList, MatDialog, MatDialogRef} from '@angular/material';
 import {FormGroupConverter} from '../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -29,6 +29,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   avatarFile: FormFile;
   destroyed$ = new Subject<boolean>();
   @ViewChild(FormGroupDirective) ngForm: FormGroupDirective;
+  @ViewChild('phoneNumberChipList') phoneNumberChipList: MatChipList;
   patient: PatientModel;
   @Input() editPatient: PatientModel;
   @Input() dialogRef: MatDialogRef<PatientFormModalComponent>;
@@ -56,11 +57,11 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       this.resetForm();
       this.snackBar.info(environment.info.i2);
     });
-    this.patient = !this.editPatient ? new PatientModel() : this.editPatient;
-    this.createForm(this.patient);
+    this.createForm();
   }
 
-  createForm(p: PatientModel) {
+  createForm() {
+    const p  = !this.editPatient ? new PatientModel() : this.editPatient;
     if (p.photo) {
       this.avatarFile.src = `${environment.srcImages}/${p.photo}`;
     }
@@ -72,13 +73,12 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       birthDate: [p.birthDate],
       permanentResidence: p.permanentResidence,
       addressOfRelativesAndFamily: p.addressOfRelativesAndFamily,
-      phoneNumbers: [p.phoneNumbers, CustomValidators.arrayRequired],
+      phoneNumbers: [p.phoneNumbers],
       medicalCardNumber: p.medicalCardNumber,
       workplace: p.workplace,
       workPost: p.workPost,
       gender: [p.gender, Validators.required]
     });
-    this.form.controls['phoneNumbers'].setValue(p.phoneNumbers); // 2
   }
 
   onFileChange(event) {
@@ -103,27 +103,18 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.form.valid);
-    Object.keys(this.form.controls).forEach(key => {
-
-      const controlErrors = this.form.get(key).errors;
-      if (controlErrors != null) {
-        Object.keys(controlErrors).forEach(keyError => {
-          console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
-        });
-      }
-    });
-    if (this.form.valid) {
+    if (this.validatePhoneNumberChip() && this.form.valid) {
       const fd = this.formGroupConverter.load(this.form).toFormData();
       this.store.dispatch(new AddPatient(fd));
     }
   }
 
   resetForm() {
+    this.phoneNumberChipList.errorState = false;
     this.avatarFile.reset();
     this.form.reset();
     this.ngForm.resetForm();
-    this.patient = new PatientModel();
+    this.createForm();
   }
 
   previewAvatar(file) {
@@ -138,21 +129,28 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   addPhoneNumberChip($event: MatChipInputEvent): void {
     const input = $event.input;
     const value = $event.value;
+    const control = this.form.get('phoneNumbers');
 
     if ((value.trim() !== '')) {
-      this.patient.phoneNumbers.push(value.trim());
-      this.form.controls['phoneNumbers'].markAsDirty();
+      control.value.push(value.trim());
       input.value = '';
     }
+    this.validatePhoneNumberChip();
   }
 
   removePhoneNumberChip(phoneNumberChip: string): void {
-    const controller = this.form.controls['phoneNumbers'];
-    const index = this.patient.phoneNumbers.indexOf(phoneNumberChip);
-
+    const control = this.form.get('phoneNumbers');
+    const index = control.value.indexOf(phoneNumberChip);
     if (index >= 0) {
-      this.patient.phoneNumbers.splice(index, 1);
+      control.value.splice(index, 1);
     }
-    controller.markAsDirty();
+    this.validatePhoneNumberChip();
+  }
+
+  validatePhoneNumberChip() {
+    const control = this.form.get('phoneNumbers');
+    const isValidate = !!control.value.length && control.value.length > 0;
+    this.phoneNumberChipList.errorState = !isValidate;
+    return isValidate;
   }
 }

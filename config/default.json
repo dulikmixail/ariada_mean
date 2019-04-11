@@ -2,11 +2,11 @@
   "DBHost": "mongodb://localhost:27017/rc-bd",
   "server": {
     "port": 3000,
-    "uploadFile" : {
+    "uploadFile": {
       "sizeLimit": "30mb"
     },
     "request": {
-      "timeoutMsecs": 5000
+      "timeoutMsecs": 10000
     }
   },
   "multer": {
@@ -37,6 +37,10 @@
     }
   },
   "mongo": {
-    "bucketName": "uploads"
+    "bucketName": "uploads",
+    "limit": {
+      "find": 500,
+      "filter": 10
+    }
   }
 }

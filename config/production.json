@@ -37,6 +37,10 @@
     }
   },
   "mongo": {
-    "bucketName": "uploads"
+    "bucketName": "uploads",
+    "limit": {
+      "find": 500,
+      "filter": 10
+    }
   }
 }

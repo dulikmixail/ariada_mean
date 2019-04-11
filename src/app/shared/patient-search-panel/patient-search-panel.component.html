@@ -1,0 +1,13 @@
+<form fxLayout="row" fxLayoutAlign="space-evenly center">
+  <mat-form-field fxFlex="80">
+    <input matInput placeholder="Введите имя пациента" aria-label="Введите имя пациента" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredPatient$ | async" [value]="state.name">
+        <img class="example-option-img" alt="Аватар" [src]="state.photo" height="25">
+        <span>{{state.name}} {{state.surname}} {{state.middleName}}</span> |
+        <small>Phone Numbers: {{state.phoneNumbers.join(', ')}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-button fxFlex="10">Найти</button>
+</form>

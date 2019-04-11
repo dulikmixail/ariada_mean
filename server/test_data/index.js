@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 const mongoose = require('../mongoose-connection');
 mongoose.connect.then(() => {
   Promise.all(

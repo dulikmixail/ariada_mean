@@ -6,13 +6,10 @@ import {
   MatAutocompleteModule,
   MatButtonModule,
   MatChipsModule,
-  MatDatepickerModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSelectModule,
   MatStepperModule,
@@ -24,7 +21,7 @@ import {RehabilitationComponent} from './rehabilitation/rehabilitation.component
 import {RouterTabModule} from '@zerohouse/router-tab';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
-import {SmallProgressSpinnerComponent} from '../shared/small-progress-spinner/small-progress-spinner.component';
+import {ProgressSpinnerComponent} from '../shared/progress-spinner/progress-spinner.component';
 import {MassageComponent} from './rehabilitation/massage/massage.component';
 import {MedicalGymnasticsComponent} from './rehabilitation/medical-gymnastics/medical-gymnastics.component';
 import {MorningGymnasticsComponent} from './rehabilitation/morning-gymnastics/morning-gymnastics.component';
@@ -51,7 +48,7 @@ import {SharedModule} from '../shared/shared.module';
     AnamnesisComponent,
     RehabilitationComponent,
     ChipsListComponent,
-    SmallProgressSpinnerComponent,
+    ProgressSpinnerComponent,
     MassageComponent,
     MedicalGymnasticsComponent,
     MorningGymnasticsComponent,

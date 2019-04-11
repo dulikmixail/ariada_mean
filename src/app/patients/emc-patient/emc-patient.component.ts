@@ -7,12 +7,12 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./emc-patient.component.css']
 })
 export class EmcPatientComponent implements OnInit {
-
+  loading = false;
   constructor() {
   }
 
   ngOnInit() {
-
+    this.loading = true;
   }
 
 

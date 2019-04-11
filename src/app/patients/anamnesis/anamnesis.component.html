@@ -19,7 +19,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingPhRSubGroups>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
       <div>
         <button mat-stroked-button matStepperNext>Далі</button>
@@ -39,7 +39,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingPhRAlloweds>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
       <div *ngIf="phRAllowedsSelected && phRAllowedsSelected.length>0">Фізична реабілітація<span
         *ngIf="!isAllowPhysicalRahabilitation"> не </span>
@@ -62,7 +62,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingTreatments>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
       <h4>Основні категорії життєдіяльності:</h4>
       <mat-form-field *ngIf="(selfServices$ | async) as selfServices; else loadingSelfServices">
@@ -73,7 +73,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingSelfServices>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
 
       <mat-form-field
@@ -87,7 +87,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingPsychologicalStatuses>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
 
       <mat-form-field *ngIf="(criteria$ | async) as criteria; else loadingCriteria">
@@ -98,7 +98,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingCriteria>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
 
       <mat-form-field
@@ -112,7 +112,7 @@
         </mat-select>
       </mat-form-field>
       <ng-template #loadingAssessmentOfFunctionalCapabilities>
-        <app-small-progress-spinner></app-small-progress-spinner>
+        <app-progress-spinner size="small"></app-progress-spinner>
       </ng-template>
 
       <div class="button-row">

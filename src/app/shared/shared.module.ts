@@ -4,6 +4,7 @@ import {PatientFormComponent} from './patient-form/patient-form.component';
 import {PatientListComponent} from './patient-list/patient-list.component';
 import {EmployeeFormComponent} from './employee-form/employee-form.component';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule, MatChipsModule,
   MatDatepickerModule,
@@ -28,6 +29,9 @@ import {BaseTitleFormComponent} from './base-title-form/base-title-form.componen
 import {BaseTitleListComponent} from './base-title-list/base-title-list.component';
 import {PostListComponent} from './post-list/post-list.component';
 import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal.component';
+import { PatientSearchPanelComponent } from './patient-search-panel/patient-search-panel.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { PatientCardComponent } from './patient-card/patient-card.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +47,14 @@ import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal
     BaseTitleFormComponent,
     BaseTitleListComponent,
     PostListComponent,
-    PatientFormModalComponent
+    PatientFormModalComponent,
+    PatientSearchPanelComponent,
+    PatientCardComponent
   ],
   imports: [
+    FlexLayoutModule,
     CommonModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
     MatIconModule,
@@ -70,7 +78,8 @@ import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal
     PatientListComponent,
     EmployeeFormComponent,
     BranchFormComponent,
-    PostFormComponent
+    PostFormComponent,
+    PatientSearchPanelComponent
   ],
   entryComponents: [
     PatientFormModalComponent

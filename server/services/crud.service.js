@@ -1,3 +1,4 @@
+const config = require('config');
 module.exports = function (MongooseModel) {
 //Create
   const exportObject = {};
@@ -6,8 +7,10 @@ module.exports = function (MongooseModel) {
   };
 
 //Read
-  exportObject.find = function (filter, callback) {
-    MongooseModel.find(filter, callback)
+  exportObject.find = function (filter, callback, limit) {
+    MongooseModel
+      .find(filter, callback)
+      .limit(limit || config.get('mongo.limit.find'))
   };
 
   exportObject.findById = function (id, callback) {

@@ -37,16 +37,20 @@ import {BranchServiceEffects} from './store/services/branch-service/branch-servi
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
 import {environment} from '../environments/environment';
+import {TestComponent} from './test/test.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageModalComponent,
-    TopNavigationComponent
+    TopNavigationComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
     LayoutModule,

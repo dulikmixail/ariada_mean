@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AuthGuard} from './_guards';
+import {TestComponent} from './test/test.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
     path: 'admin-panel',
     loadChildren: './admin-panel/admin-panel.module#AdminPanelModule',
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'test',
+    component: TestComponent
   },
   {path: '**', redirectTo: ''}
 ];

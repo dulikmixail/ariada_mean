@@ -29,9 +29,10 @@ import {BaseTitleFormComponent} from './base-title-form/base-title-form.componen
 import {BaseTitleListComponent} from './base-title-list/base-title-list.component';
 import {PostListComponent} from './post-list/post-list.component';
 import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal.component';
-import { PatientSearchPanelComponent } from './patient-search-panel/patient-search-panel.component';
+import {PatientSearchPanelComponent} from './patient-search-panel/patient-search-panel.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { PatientCardComponent } from './patient-card/patient-card.component';
+import {PatientCardComponent} from './patient-card/patient-card.component';
+import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PatientCardComponent } from './patient-card/patient-card.component';
     PostListComponent,
     PatientFormModalComponent,
     PatientSearchPanelComponent,
-    PatientCardComponent
+    PatientCardComponent,
+    PatientCardInfoComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -79,7 +81,8 @@ import { PatientCardComponent } from './patient-card/patient-card.component';
     EmployeeFormComponent,
     BranchFormComponent,
     PostFormComponent,
-    PatientSearchPanelComponent
+    PatientSearchPanelComponent,
+    PatientCardInfoComponent
   ],
   entryComponents: [
     PatientFormModalComponent

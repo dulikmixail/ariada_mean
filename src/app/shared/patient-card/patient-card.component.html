@@ -1,3 +1,22 @@
-<p>
-  patient-card works!
-</p>
+<mat-card class="card-mini pointer hover" matRipple>
+  <mat-card-header>
+    <img mat-card-avatar *ngIf="patient.photo" [src]="getSrcAvatar(patient)" alt="Avatar" class="pointer"
+         (click)="openDialog(patient)"/>
+    <img mat-card-avatar *ngIf="!patient.photo" [src]="srcNotHaveAvatar" alt="Not have avatar">
+    <mat-card-title class="mat-card-title">{{patient.surname}} {{patient.name}}</mat-card-title>
+    <mat-card-subtitle class="mat-card-subtitle">{{patient.middleName}}</mat-card-subtitle>
+  </mat-card-header>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item (click)="editPatient(patient)">
+      <mat-icon>edit</mat-icon>
+      <span>Редагувати</span>
+    </button>
+    <button mat-menu-item (click)="deletePatient(patient)">
+      <mat-icon>delete</mat-icon>
+      <span>Видалити</span>
+    </button>
+  </mat-menu>
+</mat-card>

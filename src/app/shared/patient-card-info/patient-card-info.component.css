@@ -1,0 +1,10 @@
+.photo {
+  width: 40px;
+}
+.row {
+  height: 40px;
+}
+.ib {
+  display: inline-block;
+  margin: 3px 6px;
+}

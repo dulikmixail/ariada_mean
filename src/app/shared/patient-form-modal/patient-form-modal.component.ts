@@ -9,7 +9,7 @@ import {PatientModel} from '../../_models/api/patient.model';
 })
 export class PatientFormModalComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<PatientFormModalComponent>,
+  constructor(public dialogRef: MatDialogRef<PatientFormModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PatientModel) {
   }
 

@@ -29,4 +29,8 @@ export class CrudService<T> {
   delete(id: string) {
     return this.http.delete<T>(`${environment.apiUrl}/${this.path}/${id}`);
   }
+
+  find(model: T) {
+    return this.http.post<T>(`${environment.apiUrl}/${this.path}/filter`, model);
+  }
 }

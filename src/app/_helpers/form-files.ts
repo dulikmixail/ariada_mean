@@ -10,8 +10,8 @@ export interface ImageLoader {
 }
 
 export interface FormFile {
-  src: string | ArrayBuffer;
-  srcNotHave: string | ArrayBuffer;
+  src: string;
+  srcNotHave: string;
   selectedName: string;
 }
 

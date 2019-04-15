@@ -75,13 +75,13 @@ module.exports = function (requireServiceName, routePath) {
   });
 
   router.post(routePath + '/filter', jwtMiddleware, function (req, res) {
-    employeeService.find(req.body, function (err, doc) {
+    employeeService.filter(req.body, function (err, doc) {
       err ? res.status(404).send(err) : res.send(doc);
     })
   });
 
   router.get(routePath + '/filter', jwtMiddleware, function (req, res) {
-    employeeService.find(req.query, function (err, doc) {
+    employeeService.filter(req.query, function (err, doc) {
       err ? res.status(404).send(err) : res.send(doc);
     })
   });

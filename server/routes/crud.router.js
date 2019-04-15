@@ -50,19 +50,17 @@ module.exports = function (requireServiceName, routePath) {
   });
 
   router.post(routePath + '/filter', jwtMiddleware, function (req, res) {
-    service.find(req.body, function (err, doc) {
+    service.filter(req.body, function (err, doc) {
       err ? res.status(404).send(err) : res.send(doc);
     })
   });
 
   router.get(routePath + '/filter', jwtMiddleware, function (req, res) {
-    service.find(
+    service.filter(
       req.query,
       function (err, doc) {
-      err ? res.status(404).send(err) : res.send(doc);
-    },
-      config.get('mongo.limit.filter')
-      )
+        err ? res.status(404).send(err) : res.send(doc);
+      })
   });
 
   return router;

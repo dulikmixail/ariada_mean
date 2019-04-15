@@ -20,7 +20,7 @@ export class PatientSearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.srcImage = `${environment.srcImages}/${this.srcImage}`;
+    this.srcImage = `${environment.srcImages}/${this.srcImage}`;
     this.form = this.formBuilder.group({
       surname: [''],
       name: [''],
@@ -29,6 +29,13 @@ export class PatientSearchPanelComponent implements OnInit {
   }
 
   filter() {
-    this.filteredPatient$ = this.patientService.find(this.form.value);
+    const filteredValue = {};
+    Object.entries(this.form.value).forEach(value => {
+      if (value[1]) {
+        filteredValue[value[0]] = value[1];
+      }
+    });
+    console.log(filteredValue);
+    this.filteredPatient$ = this.patientService.find(filteredValue);
   }
 }

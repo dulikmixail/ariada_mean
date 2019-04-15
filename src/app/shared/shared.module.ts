@@ -33,6 +33,7 @@ import {PatientSearchPanelComponent} from './patient-search-panel/patient-search
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {PatientCardComponent} from './patient-card/patient-card.component';
 import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.component';
+import { AvatarComponent } from './avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.
     PatientSearchPanelComponent,
     PatientCardComponent,
     PatientCardInfoComponent,
+    AvatarComponent,
   ],
   imports: [
     FlexLayoutModule,

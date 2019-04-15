@@ -11,8 +11,5 @@
   <button type="submit" mat-stroked-button color="primary">Знайти</button>
 </form>
 <mat-option *ngFor="let patient of filteredPatient$ | async" [value]="patient.name">
-  <div fxLayoutAlign="center" class="item">
-    <img *ngIf="srcImage" [src]="srcImage" alt="Photo" class="photo ib">
-    <div class="ib">{{patient.surname}} {{patient.name}} {{patient.middleName}}</div>
-  </div>
+  <app-patient-card-info [patient]="patient"></app-patient-card-info>
 </mat-option>

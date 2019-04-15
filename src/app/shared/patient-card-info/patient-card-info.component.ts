@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {environment} from '../../../environments/environment';
 import {PatientModel} from '../../_models/api/patient.model';
 
 @Component({
@@ -8,16 +7,16 @@ import {PatientModel} from '../../_models/api/patient.model';
   styleUrls: ['./patient-card-info.component.css']
 })
 export class PatientCardInfoComponent implements OnInit {
-  srcImage: string;
+  readonly DEFAULT_SIZE = 40;
   @Input() patient: PatientModel;
-
+  @Input() size: number;
 
   constructor() {
   }
 
   ngOnInit() {
-    if (this.patient.photo) {
-      this.srcImage = `${environment.srcImages}/${this.patient.photo}`;
+    if (!this.size) {
+      this.size = this.DEFAULT_SIZE;
     }
   }
 

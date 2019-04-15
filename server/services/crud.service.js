@@ -40,6 +40,13 @@ module.exports = function (MongooseModel) {
     MongooseModel.deleteMany({}, callback)
   };
 
+//Filter
+  exportObject.filter = function (filter, callback, limit) {
+    MongooseModel
+      .find(filter, callback)
+      .limit(limit || config.get('mongo.limit.filter'))
+  };
+
 
   return exportObject;
 };

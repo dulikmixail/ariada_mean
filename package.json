@@ -10,12 +10,12 @@
     "dev-front": "ng serve",
     "dev-back": "nodemon server",
     "init-data": "node server/init_data",
-    "test-data": "NODE_ENV=test node server/init_data&&NODE_ENV=test node server/test_data",
+    "test-data": "node server/test_data",
     "build": "ng build --prod --progress",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server:start": "SET NODE_ENV=production&&node server",
+    "server:start": "NODE_ENV=production node server",
     "httpserver": "http-server ./dist/client/"
   },
   "repository": {

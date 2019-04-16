@@ -1,12 +1,13 @@
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import {PatientModel} from '../../_models/api/patient.model';
 
 // @Injectable({
 //   providedIn: 'root'
 // })
 export class CrudService<T> {
 
-  constructor(private path: string, private http: HttpClient) {
+  constructor(public path: string, public http: HttpClient) {
   }
 
   getAll() {
@@ -30,7 +31,11 @@ export class CrudService<T> {
     return this.http.delete<T>(`${environment.apiUrl}/${this.path}/${id}`);
   }
 
-  find(model: T) {
+  filter(model: T) {
     return this.http.post<T>(`${environment.apiUrl}/${this.path}/filter`, model);
+  }
+
+  search(searchText: string) {
+    return this.http.post<PatientModel[]>(`${environment.apiUrl}/${this.path}/search`, {searchText: searchText});
   }
 }

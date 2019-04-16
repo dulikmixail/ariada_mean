@@ -1,12 +1,12 @@
 const config = require('config');
 module.exports = function (MongooseModel) {
-//Create
+// Create
   const exportObject = {};
   exportObject.create = function (data, callback) {
     MongooseModel.create(data, callback);
   };
 
-//Read
+// Read
   exportObject.find = function (filter, callback, limit) {
     MongooseModel
       .find(filter, callback)
@@ -21,12 +21,12 @@ module.exports = function (MongooseModel) {
     MongooseModel.findOne(filter, callback)
   };
 
-//Update
+// Update
   exportObject.update = function (filter, data, callback) {
     MongooseModel.update(filter, data, callback)
   };
 
-//Delete
+// Delete
   exportObject.delete = function (filter, callback) {
     MongooseModel.findOneAndDelete(filter, (error, doc) => {
       if (!error && !!doc) {
@@ -40,13 +40,19 @@ module.exports = function (MongooseModel) {
     MongooseModel.deleteMany({}, callback)
   };
 
-//Filter
+// Filter
   exportObject.filter = function (filter, callback, limit) {
     MongooseModel
       .find(filter, callback)
       .limit(limit || config.get('mongo.limit.filter'))
   };
 
+// Search
+  exportObject.search = function (searchText, callback, limit) {
+    MongooseModel
+      .find({$text: {$search: searchText}}, callback)
+      .limit(limit || config.get('mongo.limit.search'))
+  };
 
   return exportObject;
 };

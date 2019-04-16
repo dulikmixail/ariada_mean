@@ -69,5 +69,15 @@ module.exports = function (requireServiceName, routePath) {
     })
   });
 
+  router.post(routePath + '/search', jwtMiddleware, function (req, res) {
+    if (!req.body.searchText) {
+      res.status(400);
+    } else {
+      patientService.search(req.body.searchText, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    }
+  });
+
   return router;
 };

@@ -40,7 +40,8 @@
     "bucketName": "uploads",
     "limit": {
       "find": 500,
-      "filter": 5
+      "filter": 5,
+      "search": 5
     }
   }
 }

@@ -4,6 +4,10 @@ import {Observable} from 'rxjs';
 import {PatientService} from '../../_services/api/patient/patient.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {environment} from '../../../environments/environment';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {selectFilterPatients} from '../../store/services/patient-service/patient-service.selector';
+import {FilterPatients} from '../../store/services/patient-service/patient-service.actions';
 
 @Component({
   selector: 'app-patient-search-panel',
@@ -16,10 +20,12 @@ export class PatientSearchPanelComponent implements OnInit {
   filteredPatient$: Observable<PatientModel[]>;
 
   constructor(private patientService: PatientService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
+    this.filteredPatient$ = this.store.pipe(select(selectFilterPatients));
     this.srcImage = `${environment.srcImages}/${this.srcImage}`;
     this.form = this.formBuilder.group({
       surname: [''],
@@ -35,7 +41,7 @@ export class PatientSearchPanelComponent implements OnInit {
         filteredValue[value[0]] = value[1];
       }
     });
-    console.log(filteredValue);
-    this.filteredPatient$ = this.patientService.find(filteredValue);
+    this.store.dispatch(new FilterPatients(filteredValue));
+    // this.filteredPatient$ = this.patientService.filter(filteredValue);
   }
 }

@@ -9,3 +9,8 @@ export const selectPatientList = createSelector(
   selectPatientService,
   (state: State) => state.patients
 );
+
+export const selectFilterPatients = createSelector(
+  selectPatientService,
+  (state: State) => state.filterPatients
+);

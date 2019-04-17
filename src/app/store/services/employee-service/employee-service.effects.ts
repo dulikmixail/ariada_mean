@@ -7,10 +7,9 @@ import {
   AddEmployeeSuccess,
   DeleteEmployee, DeleteEmployeeSuccess,
   EmployeeServiceActionTypes,
-  LoadEmployees,
   LoadEmployeesSuccess
 } from './employee-service.actions';
-import {map, mapTo, switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {EmployeeService} from '../../../_services/api/employee/employee.service';
 
 @Injectable()
@@ -33,11 +32,11 @@ export class EmployeeServiceEffects {
     ))
   );
 
-  @Effect()
-  addEmployeeSuccess$ = this.actions$.pipe(
-    ofType(EmployeeServiceActionTypes.AddEmployeeSuccess),
-    mapTo(new LoadEmployees())
-  );
+  // @Effect()
+  // addEmployeeSuccess$ = this.actions$.pipe(
+  //   ofType(EmployeeServiceActionTypes.AddEmployeeSuccess),
+  //   mapTo(new LoadEmployees())
+  // );
 
   @Effect()
   deleteEmployee$ = this.actions$.pipe(
@@ -47,11 +46,11 @@ export class EmployeeServiceEffects {
     ))
   );
 
-  @Effect()
-  deleteEmployeeSuccess$ = this.actions$.pipe(
-    ofType(EmployeeServiceActionTypes.DeleteEmployeeSuccess),
-    mapTo(new LoadEmployees())
-  );
+  // @Effect()
+  // deleteEmployeeSuccess$ = this.actions$.pipe(
+  //   ofType(EmployeeServiceActionTypes.DeleteEmployeeSuccess),
+  //   mapTo(new LoadEmployees())
+  // );
 
 
   constructor(private actions$: Actions, private employeeService: EmployeeService) {

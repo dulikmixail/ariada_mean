@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate-v2');
 const deepPopulate = require('mongoose-deep-populate')(mongoose);
 const uploadFiles = require('../../services/upload-files.service');
 
@@ -62,16 +63,29 @@ let employeeSchema = new Schema({
 }, {versionKey: false});
 
 employeeSchema.plugin(deepPopulate);
+employeeSchema.plugin(mongoosePaginate);
 
 employeeSchema.post('remove', function (doc) {
   if (!!doc.educationFile) {
-    uploadFiles.deleteByName(doc.educationFile);
+    uploadFiles.deleteByName(doc.educationFile)
+      .then(() => {
+      })
+      .catch(() => {
+      });
   }
   if (!!doc.placeRefresherCoursesFile) {
-    uploadFiles.deleteByName(doc.placeRefresherCoursesFile);
+    uploadFiles.deleteByName(doc.placeRefresherCoursesFile)
+      .then(() => {
+      })
+      .catch(() => {
+      });
   }
   if (!!doc.photo) {
-    uploadFiles.deleteByName(doc.photo);
+    uploadFiles.deleteByName(doc.photo)
+      .then(() => {
+      })
+      .catch(() => {
+      });
   }
 });
 

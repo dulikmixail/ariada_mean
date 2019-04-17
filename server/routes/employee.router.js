@@ -6,6 +6,7 @@ const uploadFilesService = require('../services/upload-files.service');
 
 module.exports = function (requireServiceName, routePath) {
   const employeeService = require('../services/crud_services/' + requireServiceName);
+  // const crudRouter = require('../routes/crud.router')(requireServiceName, routePath);
 
   router.post(
     routePath,
@@ -37,54 +38,68 @@ module.exports = function (requireServiceName, routePath) {
       })
     });
 
-  router.get(routePath, jwtMiddleware, function (req, res) {
-    employeeService.find({}, function (err, doc) {
-      err ? res.status(404).send(err) : res.send(doc)
-    })
-  });
-
-  router.get(routePath + '/:id', jwtMiddleware, function (req, res) {
-    employeeService.findById(req.params.id, function (err, doc) {
-      err || !doc ? res.status(404).send({message: config.get('router.messages.1')}) : res.send(doc);
-    })
-  });
-
-  router.put(routePath + '/:id', jwtMiddleware, function (req, res) {
-    if (Object.keys(req.body).length !== 0) {
-      employeeService.update({_id: req.params.id}, req.body, function (err, doc) {
-        err ? res.status(404).send({message: config.get('router.messages.2')}) :
-          doc.n === 0 ? res.status(400).send({message: config.get('router.messages.3')}) : res.send(doc);
-      });
-    } else {
-      res.status(400).send({
-        message: config.get('router.messages.4')
-      })
-    }
-  });
-
-  router.delete(routePath + '/all', jwtMiddleware, function (req, res) {
-    employeeService.deleteAll((err, doc) => {
-      err ? res.status(404).send({message: config.get('router.messages.6')}) : res.send(doc);
-    })
-  });
-
-  router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
-    employeeService.delete({_id: req.params.id}, (err, doc) => {
-      err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
-    })
-  });
-
-  router.post(routePath + '/filter', jwtMiddleware, function (req, res) {
-    employeeService.filter(req.body, function (err, doc) {
-      err ? res.status(404).send(err) : res.send(doc);
-    })
-  });
-
-  router.get(routePath + '/filter', jwtMiddleware, function (req, res) {
-    employeeService.filter(req.query, function (err, doc) {
-      err ? res.status(404).send(err) : res.send(doc);
-    })
-  });
+  // Object.assign(router, crudRouter);
+  // router.get(routePath, jwtMiddleware, function (req, res) {
+  //   employeeService.find({}, function (err, doc) {
+  //     err ? res.status(404).send(err) : res.send(doc)
+  //   })
+  // });
+  //
+  // router.get(routePath + '/:id', jwtMiddleware, function (req, res) {
+  //   employeeService.findById(req.params.id, function (err, doc) {
+  //     err || !doc ? res.status(404).send({message: config.get('router.messages.1')}) : res.send(doc);
+  //   })
+  // });
+  //
+  // router.put(routePath + '/:id', jwtMiddleware, function (req, res) {
+  //   if (Object.keys(req.body).length !== 0) {
+  //     employeeService.update({_id: req.params.id}, req.body, function (err, doc) {
+  //       err ? res.status(404).send({message: config.get('router.messages.2')}) :
+  //         doc.n === 0 ? res.status(400).send({message: config.get('router.messages.3')}) : res.send(doc);
+  //     });
+  //   } else {
+  //     res.status(400).send({
+  //       message: config.get('router.messages.4')
+  //     })
+  //   }
+  // });
+  //
+  // router.delete(routePath + '/all', jwtMiddleware, function (req, res) {
+  //   employeeService.deleteAll((err, doc) => {
+  //     err ? res.status(404).send({message: config.get('router.messages.6')}) : res.send(doc);
+  //   })
+  // });
+  //
+  // router.delete(routePath + '/:id', jwtMiddleware, function (req, res) {
+  //   employeeService.delete({_id: req.params.id}, (err, doc) => {
+  //     err || !doc ? res.status(404).send({message: config.get('router.messages.5')}) : res.send(doc);
+  //   })
+  // });
+  //
+  // router.post(routePath + '/filter', jwtMiddleware, function (req, res) {
+  //   employeeService.filter(req.body, function (err, doc) {
+  //     err ? res.status(404).send(err) : res.send(doc);
+  //   })
+  // });
+  //
+  // router.get(routePath + '/filter', jwtMiddleware, function (req, res) {
+  //   employeeService.filter(req.query, function (err, doc) {
+  //     err ? res.status(404).send(err) : res.send(doc);
+  //   })
+  // });
+  //
+  // router.post(routePath + '/pagination', jwtMiddleware, function (req, res) {
+  //   if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+  //     const query = req.body.query ? req.body.query : {};
+  //     const options = req.body.options ? req.body.options : {};
+  //
+  //     employeeService.paginate(query, options, function (err, doc) {
+  //       err ? res.status(404).send(err) : res.send(doc);
+  //     })
+  //   } else {
+  //     res.status(400).send({message: config.get('router.messages.10')})
+  //   }
+  // });
 
   return router;
 };

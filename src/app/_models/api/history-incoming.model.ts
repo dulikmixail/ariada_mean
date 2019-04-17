@@ -1,20 +1,18 @@
-// export class historyIncoming
-//     hospitalizationDate: {
-//     },
-//     senderMedicalFacility: {
-//     },
-//     diagnosis: {
-//     },
-//     finalDiagnosis:
-//     howIncoming: {        ref: 'How_Incoming',
-//     },
-//     issuanceDate:
-//     typeIncoming: {        ref: 'Type_Incoming',
-//     },
-//     department: {        ref: 'Department',
-//     },
-//     chamber: {        ref: 'Сhamber',
-//     },
-//     note:
-//     examination: {        ref: 'Examination'
-//     }
+import {StaticFields} from '../static-fields';
+import {HowIncomingModel} from './how-incoming.model';
+import {TypeIncomingModel} from './type-incoming.model';
+import {ExaminationModel} from './examination.model';
+import {PlacementModel} from './placement.model';
+
+export class HistoryIncomingModel extends StaticFields {
+  hospitalizationDate: Date;
+  senderMedicalFacility: string;
+  diagnosis: string;
+  finalDiagnosis: string;
+  howIncoming: HowIncomingModel;
+  issuanceDate: Date;
+  typeIncoming: TypeIncomingModel;
+  note: string;
+  examination: ExaminationModel[];
+  placement: PlacementModel[];
+}

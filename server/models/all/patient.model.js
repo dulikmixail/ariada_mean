@@ -54,7 +54,11 @@ patientSchema.index({"$**": "text"}, {default_language: "russian"});
 
 patientSchema.post('remove', function (doc) {
   if (!!doc.photo) {
-    uploadFiles.deleteByName(doc.photo);
+    uploadFiles.deleteByName(doc.photo)
+      .then(() => {
+      })
+      .catch(() => {
+      });
   }
 });
 

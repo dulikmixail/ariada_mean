@@ -16,6 +16,9 @@ export enum PatientServiceActionTypes {
 
   FilterPatients = '[PatientService] Filter Patients',
   FilterPatientsSuccess = '[PatientService] Filter Patients Success',
+
+  SearchPatients = '[PatientService] Search Patients',
+  SearchPatientsSuccess = '[PatientService] Search Patients Success',
 }
 
 // LoadPatients
@@ -90,6 +93,21 @@ export class FilterPatientsSuccess implements Action {
   }
 }
 
+// SearchPatients
+export class SearchPatients implements Action {
+  readonly type = PatientServiceActionTypes.SearchPatients;
+
+  constructor(public payload: string) {
+  }
+}
+
+export class SearchPatientsSuccess implements Action {
+  readonly type = PatientServiceActionTypes.SearchPatientsSuccess;
+
+  constructor(public payload: PatientModel[]) {
+  }
+}
+
 export type PatientServiceActions =
   | AddPatient
   | AddPatientSuccess
@@ -100,4 +118,6 @@ export type PatientServiceActions =
   | UpdatePatient
   | UpdatePatientSuccess
   | FilterPatients
-  | FilterPatientsSuccess;
+  | FilterPatientsSuccess
+  | SearchPatients
+  | SearchPatientsSuccess;

@@ -33,7 +33,8 @@
       "6": "Entities not deleted",
       "7": "Entity not create",
       "8": "File not found and not delete",
-      "9": "File deleted"
+      "9": "File deleted",
+      "10": "The request body must be an object or empty"
     }
   },
   "mongo": {

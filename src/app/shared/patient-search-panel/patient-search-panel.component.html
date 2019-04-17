@@ -10,6 +10,17 @@
   </mat-form-field>
   <button type="submit" mat-stroked-button color="primary">Знайти</button>
 </form>
+
+
+<form [formGroup]="form2" (ngSubmit)="search()" fxLayout="row" fxLayoutAlign="space-evenly center">
+  <mat-form-field fxFlex="90">
+    <input matInput formControlName="searchText" placeholder="Введіть то що хочете знайти">
+  </mat-form-field>
+  <button type="submit" mat-stroked-button color="primary">Знайти</button>
+</form>
 <mat-option *ngFor="let patient of filteredPatient$ | async" [value]="patient.name">
+  <app-patient-card-info [patient]="patient"></app-patient-card-info>
+</mat-option>
+<mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">
   <app-patient-card-info [patient]="patient"></app-patient-card-info>
 </mat-option>

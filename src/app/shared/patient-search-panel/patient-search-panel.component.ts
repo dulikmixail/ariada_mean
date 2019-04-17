@@ -6,8 +6,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {environment} from '../../../environments/environment';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {selectFilterPatients} from '../../store/services/patient-service/patient-service.selector';
-import {FilterPatients} from '../../store/services/patient-service/patient-service.actions';
+import {selectFilterPatients, selectSearchPatients} from '../../store/services/patient-service/patient-service.selector';
+import {FilterPatients, SearchPatients} from '../../store/services/patient-service/patient-service.actions';
 
 @Component({
   selector: 'app-patient-search-panel',
@@ -17,7 +17,9 @@ import {FilterPatients} from '../../store/services/patient-service/patient-servi
 export class PatientSearchPanelComponent implements OnInit {
   srcImage: string;
   form: FormGroup;
+  form2: FormGroup;
   filteredPatient$: Observable<PatientModel[]>;
+  searchPatient$: Observable<PatientModel[]>;
 
   constructor(private patientService: PatientService,
               private formBuilder: FormBuilder,
@@ -26,11 +28,16 @@ export class PatientSearchPanelComponent implements OnInit {
 
   ngOnInit() {
     this.filteredPatient$ = this.store.pipe(select(selectFilterPatients));
+    this.searchPatient$ = this.store.pipe(select(selectSearchPatients));
     this.srcImage = `${environment.srcImages}/${this.srcImage}`;
     this.form = this.formBuilder.group({
       surname: [''],
       name: [''],
       middleName: ['']
+    });
+
+    this.form2 = this.formBuilder.group({
+      searchText: ['']
     });
   }
 
@@ -42,6 +49,9 @@ export class PatientSearchPanelComponent implements OnInit {
       }
     });
     this.store.dispatch(new FilterPatients(filteredValue));
-    // this.filteredPatient$ = this.patientService.filter(filteredValue);
+  }
+
+  search() {
+    this.store.dispatch(new SearchPatients(this.form2.get('searchText').value));
   }
 }

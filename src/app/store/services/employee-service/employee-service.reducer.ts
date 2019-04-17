@@ -17,7 +17,7 @@ export function reducer(state = initialState, action: EmployeeServiceActions): S
     case EmployeeServiceActionTypes.AddEmployeeSuccess:
       return {...state, employees: [...state.employees, action.payload]};
     case EmployeeServiceActionTypes.DeleteEmployeeSuccess:
-      return state;
+      return {...state, employees: [...state.employees.filter(employee => employee._id !== action.payload._id)]};
     default:
       return state;
   }

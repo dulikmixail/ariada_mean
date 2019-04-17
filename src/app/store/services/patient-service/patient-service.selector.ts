@@ -14,3 +14,8 @@ export const selectFilterPatients = createSelector(
   selectPatientService,
   (state: State) => state.filterPatients
 );
+
+export const selectSearchPatients = createSelector(
+  selectPatientService,
+  (state: State) => state.searchPatients
+);

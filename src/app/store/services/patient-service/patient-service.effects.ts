@@ -6,7 +6,7 @@ import {
   AddPatient,
   AddPatientSuccess, DeletePatient, DeletePatientSuccess, FilterPatients, FilterPatientsSuccess,
   LoadPatientsSuccess,
-  PatientServiceActionTypes, UpdatePatient, UpdatePatientSuccess
+  PatientServiceActionTypes, SearchPatients, SearchPatientsSuccess, UpdatePatient, UpdatePatientSuccess
 } from './patient-service.actions';
 import {PatientService} from '../../../_services/api/patient/patient.service';
 
@@ -63,6 +63,14 @@ export class PatientServiceEffects {
     ofType(PatientServiceActionTypes.FilterPatients),
     switchMap((action: FilterPatients) => this.patientService.filter(action.payload).pipe(
       map(patients => new FilterPatientsSuccess(patients))
+    ))
+  );
+
+  @Effect()
+  searchPatient = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.SearchPatients),
+    switchMap((action: SearchPatients) => this.patientService.search(action.payload).pipe(
+      map(patients => new SearchPatientsSuccess(patients))
     ))
   );
 

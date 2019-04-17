@@ -73,5 +73,18 @@ module.exports = function (requireServiceName, routePath) {
     }
   });
 
+  router.post(routePath + '/pagination', jwtMiddleware, function (req, res) {
+    if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+      const query = req.body.query ? req.body.query : {};
+      const options = req.body.options ? req.body.options : {};
+
+      service.paginate(query, options, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    } else {
+      res.status(400).send({message: config.get('router.messages.10')})
+    }
+  });
+
   return router;
 };

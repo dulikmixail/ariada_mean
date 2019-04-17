@@ -4,11 +4,13 @@ import {PatientModel} from '../../../_models/api/patient.model';
 export interface State {
   patients: PatientModel[];
   filterPatients: PatientModel[];
+  searchPatients: PatientModel[];
 }
 
 export const initialState: State = {
   patients: [],
-  filterPatients: []
+  filterPatients: [],
+  searchPatients: []
 };
 
 export function reducer(state = initialState, action: PatientServiceActions): State {
@@ -32,6 +34,8 @@ export function reducer(state = initialState, action: PatientServiceActions): St
       };
     case PatientServiceActionTypes.FilterPatientsSuccess:
       return {...state, filterPatients: action.payload};
+    case PatientServiceActionTypes.SearchPatientsSuccess:
+      return {...state, searchPatients: action.payload};
     default:
       return state;
   }

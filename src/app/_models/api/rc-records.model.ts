@@ -1,18 +1,15 @@
-// export class rCRecords
-//     date: {
-//     },
-//     program: {        ref: 'Physical_Rehabilitation'
-//     },
-//     complaints:
-//     alterLoad: {        ref: 'Measurement'
-//     },
-//     beforeLoad: {        ref: 'Measurement'
-//     },
-//     afterSomeTime: {        ref: 'Measurement'
-//     },
-//     fullRestoreTime:
-//     ECGAfterLoad:
-//     ECGBeforeLoad:
-//     conclusion:
-//     contraindications: {        ref: 'Contraindications'
-//     },
+import {StaticFields} from '../static-fields';
+
+export class RcRecordsModel extends StaticFields {
+  date: Date;
+  program: any[];
+  complaints: string[];
+  alterLoad: any[];
+  beforeLoad: any[];
+  afterSomeTime: any[];
+  fullRestoreTime: string;
+  ECGAfterLoad: string;
+  ECGBeforeLoad: string;
+  conclusion: string;
+  contraindications: any[];
+}

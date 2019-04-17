@@ -9,4 +9,4 @@ let treatmentProgramSchema = new Schema({
   }
 }, {versionKey: false});
 
-module.exports = mongoose.model('Treatment_Program Prescribed_Treatment', treatmentProgramSchema);
+module.exports = mongoose.model('Treatment_Program', treatmentProgramSchema);

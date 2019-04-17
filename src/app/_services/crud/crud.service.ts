@@ -1,6 +1,5 @@
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {PatientModel} from '../../_models/api/patient.model';
 
 // @Injectable({
 //   providedIn: 'root'
@@ -36,6 +35,6 @@ export class CrudService<T> {
   }
 
   search(searchText: string) {
-    return this.http.post<PatientModel[]>(`${environment.apiUrl}/${this.path}/search`, {searchText: searchText});
+    return this.http.post<T[]>(`${environment.apiUrl}/${this.path}/search`, {searchText: searchText});
   }
 }

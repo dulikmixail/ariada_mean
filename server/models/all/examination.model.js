@@ -24,6 +24,10 @@ let examinationSchema = new Schema({
   treatmentProgram: {
     type: Schema.Types.ObjectId,
     ref: 'Treatment_Program'
+  },
+  records: {
+    type: [Schema.Types.ObjectId],
+    ref: 'RC_Records'
   }
 }, {versionKey: false});
 

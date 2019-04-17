@@ -6,10 +6,6 @@ let rehabilitationCardSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Patient'
   },
-  records: {
-    type: [Schema.Types.ObjectId],
-    ref: 'RC_Records'
-  },
   historyIncoming: {
     type: [Schema.Types.ObjectId],
     ref: 'History_Incoming'

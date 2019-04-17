@@ -53,6 +53,11 @@ module.exports = function (MongooseModel) {
       .find({$text: {$search: searchText}}, callback)
       .limit(limit || config.get('mongo.limit.search'))
   };
+//Pagination
+  exportObject.paginate = function (query, options, callback) {
+    MongooseModel
+      .paginate(query, options, callback)
+  };
 
   return exportObject;
 };

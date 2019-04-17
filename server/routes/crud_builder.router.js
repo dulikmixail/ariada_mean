@@ -300,13 +300,32 @@ const crudRouters = [
     path: '/water_therapies'
   }
 ];
+const overrideCrudRouters = [
+  {
+    service: 'patient.service',
+    path: '/patients',
+    router: 'patient.router'
+  },
+  {
+    service: 'employee.service',
+    path: '/employees',
+    router: 'employee.router'
+  }
+];
 
 const routers = [];
 crudRouters.forEach(value => {
   routers.push(require('./crud.router')(value.service, value.path));
 });
 
-routers.push(require('./patient.router')('patient.service', '/patients'));
-routers.push(require('./employee.router')('employee.service', '/employees'));
+overrideCrudRouters.forEach(value => {
+  const overrideRouter = require(`./${value.router}`)(value.service, value.path);
+  const crudRouter = require('./crud.router')(value.service, value.path);
+  routers.push(overrideRouter);
+  routers.push(crudRouter);
+});
+
+// routers.push(require('./patient.router')('patient.service', '/patients'));
+// routers.push(require('./employee.router')('employee.service', '/employees'));
 
 module.exports = routers;

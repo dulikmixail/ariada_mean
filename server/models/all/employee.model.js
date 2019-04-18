@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
-const mongoosePaginate = require('mongoose-paginate-v2');
 const deepPopulate = require('mongoose-deep-populate')(mongoose);
+const mongoosePaginate = require('mongoose-paginate-v2');
+const config = require('config');
+
 const uploadFiles = require('../../services/upload-files.service');
 
 let employeeSchema = new Schema({
@@ -61,6 +63,8 @@ let employeeSchema = new Schema({
     type: String
   }
 }, {versionKey: false});
+
+employeeSchema.index({'$**': 'text'}, {default_language: config.get('mongo.index.defaultLanguage')});
 
 employeeSchema.plugin(deepPopulate);
 employeeSchema.plugin(mongoosePaginate);

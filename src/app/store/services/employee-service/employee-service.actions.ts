@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {EmployeeModel} from '../../../_models/api/employee.model';
+import {PageModel} from '../../../_models/api/page.model';
 
 export enum EmployeeServiceActionTypes {
   LoadEmployees = '[EmployeeService] Load Employees',
@@ -10,6 +11,8 @@ export enum EmployeeServiceActionTypes {
 
   DeleteEmployee = '[EmployeeService] Delete Employee',
   DeleteEmployeeSuccess = '[EmployeeService] Delete Employee Success',
+
+  SetPageSizeSuccess = '[EmployeeService] Set Page Size Success'
 }
 
 // LoadEmployees
@@ -20,7 +23,7 @@ export class LoadEmployees implements Action {
 export class LoadEmployeesSuccess implements Action {
   readonly type = EmployeeServiceActionTypes.LoadEmployeesSuccess;
 
-  constructor(public payload: EmployeeModel[]) {
+  constructor(public payload: PageModel<EmployeeModel>) {
   }
 }
 
@@ -54,10 +57,19 @@ export class DeleteEmployeeSuccess implements Action {
   }
 }
 
+// SetPageSize
+export class SetPageSizeSuccess implements Action {
+  readonly type = EmployeeServiceActionTypes.SetPageSizeSuccess;
+
+  constructor(public payload: number) {
+  }
+}
+
 export type EmployeeServiceActions =
   | LoadEmployees
   | LoadEmployeesSuccess
   | AddEmployee
   | AddEmployeeSuccess
   | DeleteEmployee
-  | DeleteEmployeeSuccess;
+  | DeleteEmployeeSuccess
+  | SetPageSizeSuccess;

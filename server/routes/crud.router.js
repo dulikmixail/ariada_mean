@@ -65,11 +65,24 @@ module.exports = function (requireServiceName, routePath) {
 
   router.post(routePath + '/search', jwtMiddleware, function (req, res) {
     if (!req.body.searchText) {
-      res.status(400);
+      res.status(400).send({message: config.get('router.messages.12')});
     } else {
       service.search(req.body.searchText, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
+    }
+  });
+
+  router.post(routePath + '/search/pagination', jwtMiddleware, function (req, res) {
+    if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+      const searchText = req.body.query && req.body.query.searchText ? req.body.query.searchText : '';
+      const options = req.body.options ? req.body.options : {};
+
+      service.searchPaginate(searchText, options, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    } else {
+      res.status(400).send({message: config.get('router.messages.10')})
     }
   });
 

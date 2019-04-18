@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
   , Schema = mongoose.Schema;
+const mongoosePaginate = require('mongoose-paginate-v2');
+const config = require('config');
+
 const uploadFiles = require('../../services/upload-files.service');
 
 let patientSchema = new mongoose.Schema({
@@ -50,7 +53,9 @@ let patientSchema = new mongoose.Schema({
   }
 }, {versionKey: false});
 
-patientSchema.index({"$**": "text"}, {default_language: "russian"});
+patientSchema.index({'$**': 'text'}, {default_language: config.get('mongo.index.defaultLanguage')});
+
+patientSchema.plugin(mongoosePaginate);
 
 patientSchema.post('remove', function (doc) {
   if (!!doc.photo) {

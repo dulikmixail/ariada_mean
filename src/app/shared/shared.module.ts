@@ -13,7 +13,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatMenuModule,
-  MatNativeDateModule,
+  MatNativeDateModule, MatPaginatorModule,
   MatRippleModule,
   MatSelectModule, MatTableModule,
   MatToolbarModule
@@ -34,6 +34,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {PatientCardComponent} from './patient-card/patient-card.component';
 import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.component';
 import { AvatarComponent } from './avatar/avatar.component';
+import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-modal.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AvatarComponent } from './avatar/avatar.component';
     PatientCardComponent,
     PatientCardInfoComponent,
     AvatarComponent,
+    EmployeeFormModalComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -69,6 +71,7 @@ import { AvatarComponent } from './avatar/avatar.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatPaginatorModule,
     MatToolbarModule,
     MatExpansionModule,
     MatRippleModule,
@@ -87,7 +90,8 @@ import { AvatarComponent } from './avatar/avatar.component';
     PatientCardInfoComponent
   ],
   entryComponents: [
-    PatientFormModalComponent
+    PatientFormModalComponent,
+    EmployeeFormModalComponent
   ]
 })
 export class SharedModule {

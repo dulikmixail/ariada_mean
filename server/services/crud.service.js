@@ -53,10 +53,22 @@ module.exports = function (MongooseModel) {
       .find({$text: {$search: searchText}}, callback)
       .limit(limit || config.get('mongo.limit.search'))
   };
+  exportObject.searchPaginate = function (searchText, options, callback) {
+    if (!MongooseModel.paginate) {
+      callback({message: config.get('router.messages.11')})
+    } else {
+      MongooseModel
+        .paginate({$text: {$search: searchText}}, options, callback)
+    }
+  };
 //Pagination
   exportObject.paginate = function (query, options, callback) {
-    MongooseModel
-      .paginate(query, options, callback)
+    if (!MongooseModel.paginate) {
+      callback({message: config.get('router.messages.11')})
+    } else {
+      MongooseModel
+        .paginate(query, options, callback)
+    }
   };
 
   return exportObject;

@@ -11,7 +11,7 @@ export interface PaginationOptions {
   customLabels: Object;
 }
 
-export class Pagination {
+export class PaginationModel {
   query: Object;
   options: PaginationOptions;
 }

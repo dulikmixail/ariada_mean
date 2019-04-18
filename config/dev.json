@@ -34,7 +34,9 @@
       "7": "Entity not create",
       "8": "File not found and not delete",
       "9": "File deleted",
-      "10": "The request body must be an object or empty"
+      "10": "The request body must be an object or empty",
+      "11": "Pagination not allowed",
+      "12": "Not found search text"
     }
   },
   "mongo": {
@@ -43,6 +45,9 @@
       "find": 500,
       "filter": 5,
       "search": 5
+    },
+    "index": {
+      "defaultLanguage": "russian"
     }
   }
 }

@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {select, Store} from '@ngrx/store';
 import {Observable, Subject} from 'rxjs';
 
@@ -17,6 +17,8 @@ import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {selectBranchList} from '../../store/services/branch-service/branch-service.selector';
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
+import {EmployeeModel} from '../../_models/api/employee.model';
+import {EmployeeFormModalComponent} from '../employee-form-modal/employee-form-modal.component';
 
 @Component({
   selector: 'app-employee-form',
@@ -32,6 +34,8 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   placeRefresherCoursesFile: FormFile;
   destroyed$ = new Subject<boolean>();
   @ViewChild(FormGroupDirective) ngForm: FormGroupDirective;
+  @Input() editEmployee: EmployeeModel;
+  @Input() dialogRef: MatDialogRef<EmployeeFormModalComponent>;
 
   constructor(private dialog: MatDialog,
               private snackBar: SnackBar,
@@ -44,7 +48,6 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.createForm();
     this.photoFile = new FormFile();
     this.photoFile.srcNotHave = environment.source.images.notHaveAvatar;
     this.educationFile = new FormFile();
@@ -64,25 +67,29 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       this.resetForm();
       this.snackBar.info(environment.info.i2);
     });
-
+    this.createForm();
   }
 
   createForm() {
+    const e  = !this.editEmployee ? new EmployeeModel() : this.editEmployee;
+    if (e.photo) {
+      this.photoFile.src = `${environment.srcImages}/${e.photo}`;
+    }
     this.form = this.formBuilder.group({
       photo: [''],
-      surname: ['23', Validators.required],
-      name: ['2312', Validators.required],
-      middleName: ['23', Validators.required],
-      itemNo: ['2', Validators.required],
-      employmentDate: ['2012-04-23', Validators.required],
-      expirationDate: [''],
-      birthDate: ['2012-04-23'],
-      residencePlace: ['21123123'],
-      educationFile: [''],
-      refresherCoursesDate: ['2012-04-23'],
-      placeRefresherCoursesFile: [''],
-      branch: ['', Validators.required],
-      post: ['', Validators.required]
+      surname: [e.surname, Validators.required],
+      name: [e.name, Validators.required],
+      middleName: [e.middleName, Validators.required],
+      itemNo: [e.itemNo, Validators.required],
+      employmentDate: [e.employmentDate, Validators.required],
+      expirationDate: [e.expirationDate],
+      birthDate: [e.birthDate],
+      residencePlace: [e.residencePlace],
+      educationFile: [e.educationFile],
+      refresherCoursesDate: [e.refresherCoursesDate],
+      placeRefresherCoursesFile: [e.placeRefresherCoursesFile],
+      branch: [e.branch, Validators.required],
+      post: [e.post, Validators.required]
     });
   }
 

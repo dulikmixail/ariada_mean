@@ -3,6 +3,11 @@
     <span>Список співробітників</span>
   </mat-toolbar-row>
 </mat-toolbar>
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event"></mat-paginator>
+
 <mat-card class="card-mini pointer hover" *ngFor="let employee of employees$ | async" matRipple>
   <mat-card-header>
     <img mat-card-avatar *ngIf="employee.photo" [src]="buildSrcAvatar(employee)" alt="Avatar" class="pointer"
@@ -25,3 +30,4 @@
     </button>
   </mat-menu>
 </mat-card>
+

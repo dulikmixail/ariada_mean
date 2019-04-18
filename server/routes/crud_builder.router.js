@@ -40,6 +40,10 @@ const crudRouters = [
     path: '/diets'
   },
   {
+    service: 'employee.service',
+    path: '/employees',
+  },
+  {
     service: 'ev_eff_ad_p_b_measurement.service',
     path: '/ev_eff_ad_p_b_measurements'
   },
@@ -184,6 +188,10 @@ const crudRouters = [
     path: '/nutritionists'
   },
   {
+    service: 'patient.service',
+    path: '/patients',
+  },
+  {
     service: 'ph_r_allowed.service',
     path: '/ph_r_alloweds'
   },
@@ -300,32 +308,10 @@ const crudRouters = [
     path: '/water_therapies'
   }
 ];
-const overrideCrudRouters = [
-  {
-    service: 'patient.service',
-    path: '/patients',
-    router: 'patient.router'
-  },
-  {
-    service: 'employee.service',
-    path: '/employees',
-    router: 'employee.router'
-  }
-];
 
 const routers = [];
 crudRouters.forEach(value => {
   routers.push(require('./crud.router')(value.service, value.path));
 });
-
-overrideCrudRouters.forEach(value => {
-  const overrideRouter = require(`./${value.router}`)(value.service, value.path);
-  const crudRouter = require('./crud.router')(value.service, value.path);
-  routers.push(overrideRouter);
-  routers.push(crudRouter);
-});
-
-// routers.push(require('./patient.router')('patient.service', '/patients'));
-// routers.push(require('./employee.router')('employee.service', '/employees'));
 
 module.exports = routers;

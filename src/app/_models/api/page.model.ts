@@ -1,5 +1,5 @@
-export class Page {
-  docs: Array<any>;
+export class PageModel<T> {
+  docs: T[];
   totalDocs: number;
   limit: number;
   hasPrevPage: boolean;

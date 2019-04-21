@@ -93,6 +93,11 @@ mat-card:hover.hover {
   align-items: flex-start !important;
 }
 
+.loading-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
 
 /*!*Styles from old project - START*! !*REFACTORING NEEDED*!*/

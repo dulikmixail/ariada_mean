@@ -1,8 +1,8 @@
 export const environment = {
-  production: true,
+  production: false,
   apiUrl: '/api',
   authUrl: '/api/auth',
-  srcImages: '/api/images',
+  srcImages: '/api/download',
   matSnackBar: {
     duration: 6000
   },
@@ -24,5 +24,11 @@ export const environment = {
     panelClass: ['info-snackbar'],
     i1: 'Інформація',
     i2: 'Успіх'
+  },
+  components: {
+    matPaginator: {
+      defaultPageSizeOptions: [5, 10, 25, 50, 100],
+      defaultPageSize: 50
+    }
   }
 };

@@ -5,7 +5,17 @@ import {State} from './employee-service.reducer';
 
 const selectEmployeeService = (state: AppState) => state.employeeService;
 
-export const selectEmployeeList = createSelector(
+export const selectEmployeePage = createSelector(
   selectEmployeeService,
-  (state: State) => state.employees
+  (state: State) => state.page
+);
+
+export const selectEmployeeDocs = createSelector(
+  selectEmployeeService,
+  (state: State) => state.page.docs
+);
+
+export const selectLoadingEmployeePage = createSelector(
+  selectEmployeeService,
+  (state: State) => state.loading
 );

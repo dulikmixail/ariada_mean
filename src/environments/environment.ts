@@ -28,6 +28,12 @@ export const environment = {
     panelClass: ['info-snackbar'],
     i1: 'Інформація',
     i2: 'Успіх'
+  },
+  components: {
+    matPaginator: {
+      defaultPageSizeOptions: [5, 10, 25, 50, 100],
+      defaultPageSize: 10
+    }
   }
 };
 

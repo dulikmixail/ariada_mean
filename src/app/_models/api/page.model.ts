@@ -10,4 +10,8 @@ export class PageModel<T> {
   prevPage: number;
   nextPage: number;
   pagingCounter: number;
+
+  constructor() {
+    this.docs = [];
+  }
 }

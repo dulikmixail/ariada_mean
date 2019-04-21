@@ -21,7 +21,8 @@ import {
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSnackBarModule,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatPaginatorIntl
 } from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -39,6 +40,7 @@ import {EmployeeServiceEffects} from './store/services/employee-service/employee
 import {environment} from '../environments/environment';
 import {TestComponent} from './test/test.component';
 import {SharedModule} from './shared/shared.module';
+import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
 
 @NgModule({
   declarations: [
@@ -82,6 +84,7 @@ import {SharedModule} from './shared/shared.module';
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: environment.matSnackBar.duration}},
+    {provide: MatPaginatorIntl, useValue: new MatPaginatorIntlUk}
   ],
   bootstrap: [
     AppComponent

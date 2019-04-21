@@ -13,7 +13,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatMenuModule,
-  MatNativeDateModule, MatPaginatorModule,
+  MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatRippleModule,
   MatSelectModule, MatTableModule,
   MatToolbarModule
@@ -35,6 +35,7 @@ import {PatientCardComponent} from './patient-card/patient-card.component';
 import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-modal.component';
+import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-
     PatientSearchPanelComponent,
     PatientCardComponent,
     PatientCardInfoComponent,
+    ProgressSpinnerComponent,
     AvatarComponent,
     EmployeeFormModalComponent,
   ],
@@ -75,6 +77,7 @@ import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-
     MatToolbarModule,
     MatExpansionModule,
     MatRippleModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
@@ -84,10 +87,12 @@ import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-
     PatientFormModalComponent,
     PatientListComponent,
     EmployeeFormComponent,
+    EmployeeFormModalComponent,
     BranchFormComponent,
     PostFormComponent,
     PatientSearchPanelComponent,
-    PatientCardInfoComponent
+    PatientCardInfoComponent,
+    ProgressSpinnerComponent
   ],
   entryComponents: [
     PatientFormModalComponent,

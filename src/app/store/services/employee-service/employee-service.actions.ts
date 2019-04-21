@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 import {EmployeeModel} from '../../../_models/api/employee.model';
 import {PageModel} from '../../../_models/api/page.model';
+import {PaginationModel} from '../../../_models/api/pagination.model';
 
 export enum EmployeeServiceActionTypes {
   LoadEmployees = '[EmployeeService] Load Employees',
@@ -11,13 +12,14 @@ export enum EmployeeServiceActionTypes {
 
   DeleteEmployee = '[EmployeeService] Delete Employee',
   DeleteEmployeeSuccess = '[EmployeeService] Delete Employee Success',
-
-  SetPageSizeSuccess = '[EmployeeService] Set Page Size Success'
 }
 
 // LoadEmployees
 export class LoadEmployees implements Action {
   readonly type = EmployeeServiceActionTypes.LoadEmployees;
+
+  constructor(public payload: PaginationModel<EmployeeModel>) {
+  }
 }
 
 export class LoadEmployeesSuccess implements Action {
@@ -57,19 +59,10 @@ export class DeleteEmployeeSuccess implements Action {
   }
 }
 
-// SetPageSize
-export class SetPageSizeSuccess implements Action {
-  readonly type = EmployeeServiceActionTypes.SetPageSizeSuccess;
-
-  constructor(public payload: number) {
-  }
-}
-
 export type EmployeeServiceActions =
   | LoadEmployees
   | LoadEmployeesSuccess
   | AddEmployee
   | AddEmployeeSuccess
   | DeleteEmployee
-  | DeleteEmployeeSuccess
-  | SetPageSizeSuccess;
+  | DeleteEmployeeSuccess;

@@ -10,7 +10,6 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatProgressSpinnerModule,
   MatSelectModule,
   MatStepperModule,
   MatTabsModule
@@ -21,7 +20,6 @@ import {RehabilitationComponent} from './rehabilitation/rehabilitation.component
 import {RouterTabModule} from '@zerohouse/router-tab';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
-import {ProgressSpinnerComponent} from '../shared/progress-spinner/progress-spinner.component';
 import {MassageComponent} from './rehabilitation/massage/massage.component';
 import {MedicalGymnasticsComponent} from './rehabilitation/medical-gymnastics/medical-gymnastics.component';
 import {MorningGymnasticsComponent} from './rehabilitation/morning-gymnastics/morning-gymnastics.component';
@@ -48,7 +46,6 @@ import {SharedModule} from '../shared/shared.module';
     AnamnesisComponent,
     RehabilitationComponent,
     ChipsListComponent,
-    ProgressSpinnerComponent,
     MassageComponent,
     MedicalGymnasticsComponent,
     MorningGymnasticsComponent,
@@ -66,7 +63,7 @@ import {SharedModule} from '../shared/shared.module';
     RuffieTestComponent,
     SbpHrComponent,
     SkibinskayaIndexComponent,
-    EmcPatientComponent
+    EmcPatientComponent,
   ],
   imports: [
     CommonModule,
@@ -81,13 +78,11 @@ import {SharedModule} from '../shared/shared.module';
     MatIconModule,
     MatInputModule,
     MatListModule,
-    MatProgressSpinnerModule,
     MatSelectModule,
     MatStepperModule,
     MatTabsModule,
     SharedModule,
   ],
-
   bootstrap: [
     PatientsComponent
   ]

@@ -1,32 +1,40 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
-import {MatDialog, PageEvent} from '@angular/material';
+import {MatDialog, MatPaginator} from '@angular/material';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {environment} from '../../../environments/environment';
 import {ImageModalComponent} from '../image-modal/image-modal.component';
 import {EmployeeModel} from '../../_models/api/employee.model';
-import {selectEmployeeList} from '../../store/services/employee-service/employee-service.selector';
+import {
+  selectEmployeeDocs,
+  selectEmployeePage,
+  selectLoadingEmployeePage
+} from '../../store/services/employee-service/employee-service.selector';
 import {DeleteEmployee, LoadEmployees} from '../../store/services/employee-service/employee-service.actions';
 import {EmployeeFormModalComponent} from '../employee-form-modal/employee-form-modal.component';
+import {PaginationModel} from '../../_models/api/pagination.model';
+import {PageModel} from '../../_models/api/page.model';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, AfterViewInit {
+  readonly defaultPageSize = environment.components.matPaginator.defaultPageSize;
+  readonly pageSizeOptions: number[] = environment.components.matPaginator.defaultPageSizeOptions;
+
   employees$: Observable<EmployeeModel[]>;
+  page$: Observable<PageModel<EmployeeModel>>;
+  loadingPage$: Observable<boolean>;
+
   srcImages: string;
   srcNotHaveAvatar: string;
 
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  paginationModel: PaginationModel<EmployeeModel>;
 
-  // MatPaginator Output
-  pageEvent: PageEvent;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private dialog: MatDialog,
@@ -35,9 +43,17 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.srcImages = environment.srcImages;
-    this.employees$ = this.store.pipe(select(selectEmployeeList));
-    this.store.dispatch(new LoadEmployees());
     this.srcNotHaveAvatar = environment.source.images.notHaveAvatar;
+    this.employees$ = this.store.pipe(select(selectEmployeeDocs));
+    this.page$ = this.store.pipe(select(selectEmployeePage));
+    this.loadingPage$ = this.store.pipe(select(selectLoadingEmployeePage));
+    this.paginationModel = new PaginationModel<EmployeeModel>();
+    this.paginationModel.setOptionsFromMatPaginator(this.paginator);
+    this.store.dispatch(new LoadEmployees(this.paginationModel));
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
   openDialog(employee: EmployeeModel): void {
@@ -60,5 +76,10 @@ export class EmployeeListComponent implements OnInit {
       maxHeight: '90vh',
       maxWidth: 600
     });
+  }
+
+  loadPage() {
+    this.paginationModel.setOptionsFromMatPaginator(this.paginator);
+    this.store.dispatch(new LoadEmployees(this.paginationModel));
   }
 }

@@ -4,23 +4,22 @@ import {PageModel} from '../../../_models/api/page.model';
 
 export interface State {
   page: PageModel<EmployeeModel>;
+  loading: boolean;
 }
 
 export const initialState: State = {
-  page: new PageModel()
+  page: new PageModel<EmployeeModel>(),
+  loading: false
 };
 
 export function reducer(state = initialState, action: EmployeeServiceActions): State {
   switch (action.type) {
-
+    case EmployeeServiceActionTypes.LoadEmployees:
+      return {...state, loading: true};
     case EmployeeServiceActionTypes.LoadEmployeesSuccess:
-      return {...state, employees: action.payload};
-    case EmployeeServiceActionTypes.AddEmployeeSuccess:
-      return {...state, employees: [...state.employees, action.payload]};
+      return {...state, page: action.payload, loading: false};
     case EmployeeServiceActionTypes.DeleteEmployeeSuccess:
-      return {...state, employees: [...state.employees.filter(employee => employee._id !== action.payload._id)]};
-    case EmployeeServiceActionTypes.SetPageSizeSuccess:
-
+      return {...state, page: {...state.page, docs: {...state.page.docs.filter(employee => employee._id !== action.payload._id)}}};
     default:
       return state;
   }

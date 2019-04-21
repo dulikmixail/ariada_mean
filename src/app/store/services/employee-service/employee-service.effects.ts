@@ -6,7 +6,7 @@ import {
   AddEmployee,
   AddEmployeeSuccess,
   DeleteEmployee, DeleteEmployeeSuccess,
-  EmployeeServiceActionTypes,
+  EmployeeServiceActionTypes, LoadEmployees,
   LoadEmployeesSuccess
 } from './employee-service.actions';
 import {map, switchMap} from 'rxjs/operators';
@@ -19,7 +19,7 @@ export class EmployeeServiceEffects {
   @Effect()
   loadEmployees$ = this.actions$.pipe(
     ofType(EmployeeServiceActionTypes.LoadEmployees),
-    switchMap(() => this.employeeService.getAll().pipe(
+    switchMap((action: LoadEmployees) => this.employeeService.getWithPagination(action.payload).pipe(
       map(employees => new LoadEmployeesSuccess(employees))
     ))
   );

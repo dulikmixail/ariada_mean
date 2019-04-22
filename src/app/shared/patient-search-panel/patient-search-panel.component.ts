@@ -14,7 +14,7 @@ import {SearchPatients} from '../../store/services/patient-service/patient-servi
   styleUrls: ['./patient-search-panel.component.css']
 })
 export class PatientSearchPanelComponent implements OnInit {
-  searchAction: any;
+  searchPatients: any;
   srcImage: string;
   searchPatient$: Observable<PatientModel[]>;
 
@@ -23,7 +23,7 @@ export class PatientSearchPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchAction = SearchPatients;
+    this.searchPatients = SearchPatients;
     this.searchPatient$ = this.store.pipe(select(selectSearchPatients));
     this.srcImage = `${environment.srcImages}/${this.srcImage}`;
   }

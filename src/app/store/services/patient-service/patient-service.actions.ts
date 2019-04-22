@@ -1,9 +1,15 @@
 import {Action} from '@ngrx/store';
 import {PatientModel} from '../../../_models/api/patient.model';
+import {PaginationModel} from '../../../_models/api/pagination.model';
+import {PageModel} from '../../../_models/api/page.model';
+import {EmployeeModel} from '../../../_models/api/employee.model';
 
 export enum PatientServiceActionTypes {
   LoadPatients = '[PatientService] Load Patients',
   LoadPatientsSuccess = '[PatientService] Load Patients Success',
+
+  SearchPatients = '[PatientService] Search Patients',
+  SearchPatientsSuccess = '[PatientService] Search Patients Success',
 
   AddPatient = '[PatientService] Add Patient',
   AddPatientSuccess = '[PatientService] Add Patient Success',
@@ -13,23 +19,35 @@ export enum PatientServiceActionTypes {
 
   UpdatePatient = '[PatientService] Update Patient',
   UpdatePatientSuccess = '[PatientService] Update Patient Success',
-
-  FilterPatients = '[PatientService] Filter Patients',
-  FilterPatientsSuccess = '[PatientService] Filter Patients Success',
-
-  SearchPatients = '[PatientService] Search Patients',
-  SearchPatientsSuccess = '[PatientService] Search Patients Success',
 }
 
 // LoadPatients
 export class LoadPatients implements Action {
   readonly type = PatientServiceActionTypes.LoadPatients;
+
+  constructor(public payload: PaginationModel<PatientModel>) {
+  }
 }
 
 export class LoadPatientsSuccess implements Action {
   readonly type = PatientServiceActionTypes.LoadPatientsSuccess;
 
-  constructor(public payload: PatientModel[]) {
+  constructor(public payload: PageModel<PatientModel>) {
+  }
+}
+
+// SearchPatients
+export class SearchPatients implements Action {
+  readonly type = PatientServiceActionTypes.SearchPatients;
+
+  constructor(public payload: PaginationModel<EmployeeModel>) {
+  }
+}
+
+export class SearchPatientsSuccess implements Action {
+  readonly type = PatientServiceActionTypes.SearchPatientsSuccess;
+
+  constructor(public payload: PageModel<PatientModel>) {
   }
 }
 
@@ -78,36 +96,6 @@ export class UpdatePatientSuccess implements Action {
   }
 }
 
-// FilterPatients
-export class FilterPatients implements Action {
-  readonly type = PatientServiceActionTypes.FilterPatients;
-
-  constructor(public payload: any) {
-  }
-}
-
-export class FilterPatientsSuccess implements Action {
-  readonly type = PatientServiceActionTypes.FilterPatientsSuccess;
-
-  constructor(public payload: PatientModel[]) {
-  }
-}
-
-// SearchPatients
-export class SearchPatients implements Action {
-  readonly type = PatientServiceActionTypes.SearchPatients;
-
-  constructor(public payload: string) {
-  }
-}
-
-export class SearchPatientsSuccess implements Action {
-  readonly type = PatientServiceActionTypes.SearchPatientsSuccess;
-
-  constructor(public payload: PatientModel[]) {
-  }
-}
-
 export type PatientServiceActions =
   | AddPatient
   | AddPatientSuccess
@@ -117,7 +105,5 @@ export type PatientServiceActions =
   | DeletePatientSuccess
   | UpdatePatient
   | UpdatePatientSuccess
-  | FilterPatients
-  | FilterPatientsSuccess
   | SearchPatients
   | SearchPatientsSuccess;

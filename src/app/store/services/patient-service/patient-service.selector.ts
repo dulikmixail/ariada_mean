@@ -5,17 +5,17 @@ import {State} from './patient-service.reducer';
 
 const selectPatientService = (state: AppState) => state.patientService;
 
-export const selectPatientList = createSelector(
+export const selectPatientPage = createSelector(
   selectPatientService,
-  (state: State) => state.patients
+  (state: State) => state.page
 );
 
-export const selectFilterPatients = createSelector(
+export const selectPatientDocs = createSelector(
   selectPatientService,
-  (state: State) => state.filterPatients
+  (state: State) => state.page.docs
 );
 
-export const selectSearchPatients = createSelector(
+export const selectLoadingPatientPage = createSelector(
   selectPatientService,
-  (state: State) => state.searchPatients
+  (state: State) => state.loading
 );

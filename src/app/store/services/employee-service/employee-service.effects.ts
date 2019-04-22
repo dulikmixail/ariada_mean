@@ -7,7 +7,7 @@ import {
   AddEmployeeSuccess,
   DeleteEmployee, DeleteEmployeeSuccess,
   EmployeeServiceActionTypes, LoadEmployees,
-  LoadEmployeesSuccess
+  LoadEmployeesSuccess, SearchEmployees, SearchEmployeesSuccess
 } from './employee-service.actions';
 import {map, switchMap} from 'rxjs/operators';
 import {EmployeeService} from '../../../_services/api/employee/employee.service';
@@ -21,6 +21,14 @@ export class EmployeeServiceEffects {
     ofType(EmployeeServiceActionTypes.LoadEmployees),
     switchMap((action: LoadEmployees) => this.employeeService.getWithPagination(action.payload).pipe(
       map(employees => new LoadEmployeesSuccess(employees))
+    ))
+  );
+
+  @Effect()
+  searchEmployees$ = this.actions$.pipe(
+    ofType(EmployeeServiceActionTypes.SearchEmployees),
+    switchMap((action: SearchEmployees) => this.employeeService.searchWithPagination(action.payload).pipe(
+      map(employees => new SearchEmployeesSuccess(employees))
     ))
   );
 

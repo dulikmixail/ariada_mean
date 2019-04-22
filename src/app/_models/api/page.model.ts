@@ -13,5 +13,6 @@ export class PageModel<T> {
 
   constructor() {
     this.docs = [];
+    this.limit = 0;
   }
 }

@@ -4,7 +4,3 @@
   </mat-form-field>
   <button type="submit" mat-stroked-button color="primary">Знайти</button>
 </form>
-<app-search-form [searchAction]=""></app-search-form>
-<mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">
-  <app-patient-card-info [patient]="patient"></app-patient-card-info>
-</mat-option>

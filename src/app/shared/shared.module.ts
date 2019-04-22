@@ -36,6 +36,7 @@ import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.
 import { AvatarComponent } from './avatar/avatar.component';
 import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-modal.component';
 import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.comp
     ProgressSpinnerComponent,
     AvatarComponent,
     EmployeeFormModalComponent,
+    SearchFormComponent,
   ],
   imports: [
     FlexLayoutModule,

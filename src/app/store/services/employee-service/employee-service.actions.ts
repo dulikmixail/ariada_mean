@@ -7,6 +7,9 @@ export enum EmployeeServiceActionTypes {
   LoadEmployees = '[EmployeeService] Load Employees',
   LoadEmployeesSuccess = '[EmployeeService] Load Employees Success',
 
+  SearchEmployees = '[EmployeeService] Search Employees',
+  SearchEmployeesSuccess = '[EmployeeService] Search Employees Success',
+
   AddEmployee = '[EmployeeService] Add Employee',
   AddEmployeeSuccess = '[EmployeeService] Add Employee Success',
 
@@ -44,6 +47,21 @@ export class AddEmployeeSuccess implements Action {
   }
 }
 
+// SearchEmployees
+export class SearchEmployees implements Action {
+  readonly type = EmployeeServiceActionTypes.SearchEmployees;
+
+  constructor(public payload: PaginationModel<EmployeeModel>) {
+  }
+}
+
+export class SearchEmployeesSuccess implements Action {
+  readonly type = EmployeeServiceActionTypes.SearchEmployeesSuccess;
+
+  constructor(public payload: PageModel<EmployeeModel>) {
+  }
+}
+
 // DeleteEmployee
 export class DeleteEmployee implements Action {
   readonly type = EmployeeServiceActionTypes.DeleteEmployee;
@@ -62,6 +80,8 @@ export class DeleteEmployeeSuccess implements Action {
 export type EmployeeServiceActions =
   | LoadEmployees
   | LoadEmployeesSuccess
+  | SearchEmployees
+  | SearchEmployeesSuccess
   | AddEmployee
   | AddEmployeeSuccess
   | DeleteEmployee

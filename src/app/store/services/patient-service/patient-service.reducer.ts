@@ -15,11 +15,7 @@ export const initialState: State = {
 export function reducer(state = initialState, action: PatientServiceActions): State {
   switch (action.type) {
 
-    case PatientServiceActionTypes.LoadPatients:
-      return {...state, loading: true};
-    case PatientServiceActionTypes.LoadPatientsSuccess:
-      return {...state, page: action.payload, loading: false};
-    case PatientServiceActionTypes.SearchPatients:
+    case PatientServiceActionTypes.SearchPatients || PatientServiceActionTypes.SearchPatientsSimply:
       return {...state, loading: true};
     case PatientServiceActionTypes.SearchPatientsSuccess:
       return {...state, page: action.payload, loading: false};

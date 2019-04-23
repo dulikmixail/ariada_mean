@@ -1,25 +1,46 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {map, switchMap} from 'rxjs/operators';
+import {map, switchMap, withLatestFrom} from 'rxjs/operators';
 
 import {
   AddPatient,
-  AddPatientSuccess, DeletePatient, DeletePatientSuccess, FilterPatients, FilterPatientsSuccess,
-  LoadPatientsSuccess,
-  PatientServiceActionTypes, SearchPatients, SearchPatientsSuccess, UpdatePatient, UpdatePatientSuccess
+  AddPatientSuccess, DeletePatient, DeletePatientSuccess,
+  PatientServiceActionTypes, SearchPatients, SearchPatientsSimply, SearchPatientsSuccess, UpdatePatient, UpdatePatientSuccess
 } from './patient-service.actions';
 import {PatientService} from '../../../_services/api/patient/patient.service';
+import {AppState} from '../../index';
+import {Store} from '@ngrx/store';
+import {PatientModel} from '../../../_models/api/patient.model';
+import {PaginationModel} from '../../../_models/api/pagination.model';
 
 @Injectable()
 export class PatientServiceEffects {
 
+  @Effect()
+  searchPatients$ = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.SearchPatients),
+    switchMap((action: SearchPatients) => this.patientService.searchWithPagination(action.payload).pipe(
+      map(patientsPage => new SearchPatientsSuccess(patientsPage))
+    ))
+  );
 
   @Effect()
-  loadPatients$ = this.actions$.pipe(
-    ofType(PatientServiceActionTypes.LoadPatients),
-    switchMap(() => this.patientService.getAll().pipe(
-      map(patients => new LoadPatientsSuccess(patients))
-    ))
+  searchPatientsSimply = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.SearchPatientsSimply),
+    map((action: SearchPatientsSimply) => action.payload),
+    withLatestFrom(this.store.select(state => state.patientService.page)),
+    switchMap(([payload, page]) => {
+      const pageModel = new PaginationModel<PatientModel>(
+        {
+          limit: page.limit,
+          page: page.page
+        },
+        payload
+      );
+      return this.patientService.searchWithPagination(pageModel).pipe(
+        map(patientsPage => new SearchPatientsSuccess(patientsPage))
+      );
+    })
   );
 
   @Effect()
@@ -58,23 +79,7 @@ export class PatientServiceEffects {
     ))
   );
 
-  @Effect()
-  filterPatient = this.actions$.pipe(
-    ofType(PatientServiceActionTypes.FilterPatients),
-    switchMap((action: FilterPatients) => this.patientService.filter(action.payload).pipe(
-      map(patients => new FilterPatientsSuccess(patients))
-    ))
-  );
-
-  @Effect()
-  searchPatient = this.actions$.pipe(
-    ofType(PatientServiceActionTypes.SearchPatients),
-    switchMap((action: SearchPatients) => this.patientService.search(action.payload).pipe(
-      map(patients => new SearchPatientsSuccess(patients))
-    ))
-  );
-
-  constructor(private actions$: Actions, private patientService: PatientService) {
+  constructor(private actions$: Actions, private store: Store<AppState>, private patientService: PatientService) {
   }
 
 }

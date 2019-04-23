@@ -30,5 +30,9 @@ export const environment = {
       defaultPageSizeOptions: [5, 10, 25, 50, 100],
       defaultPageSize: 50
     }
+  },
+  defaultPageModel: {
+    limit: 10,
+    page: 1
   }
 };

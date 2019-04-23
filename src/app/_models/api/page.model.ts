@@ -1,3 +1,5 @@
+import {environment} from '../../../environments/environment';
+
 export class PageModel<T> {
   docs: T[];
   totalDocs: number;
@@ -13,6 +15,7 @@ export class PageModel<T> {
 
   constructor() {
     this.docs = [];
-    this.limit = 0;
+    this.limit = environment.defaultPageModel.limit;
+    this.page = environment.defaultPageModel.page;
   }
 }

@@ -5,10 +5,8 @@ import {PageModel} from '../../../_models/api/page.model';
 import {EmployeeModel} from '../../../_models/api/employee.model';
 
 export enum PatientServiceActionTypes {
-  LoadPatients = '[PatientService] Load Patients',
-  LoadPatientsSuccess = '[PatientService] Load Patients Success',
-
   SearchPatients = '[PatientService] Search Patients',
+  SearchPatientsSimply = '[PatientService] Search Patients Simply',
   SearchPatientsSuccess = '[PatientService] Search Patients Success',
 
   AddPatient = '[PatientService] Add Patient',
@@ -21,26 +19,18 @@ export enum PatientServiceActionTypes {
   UpdatePatientSuccess = '[PatientService] Update Patient Success',
 }
 
-// LoadPatients
-export class LoadPatients implements Action {
-  readonly type = PatientServiceActionTypes.LoadPatients;
-
-  constructor(public payload: PaginationModel<PatientModel>) {
-  }
-}
-
-export class LoadPatientsSuccess implements Action {
-  readonly type = PatientServiceActionTypes.LoadPatientsSuccess;
-
-  constructor(public payload: PageModel<PatientModel>) {
-  }
-}
-
 // SearchPatients
 export class SearchPatients implements Action {
   readonly type = PatientServiceActionTypes.SearchPatients;
 
   constructor(public payload: PaginationModel<EmployeeModel>) {
+  }
+}
+
+export class SearchPatientsSimply implements Action {
+  readonly type = PatientServiceActionTypes.SearchPatientsSimply;
+
+  constructor(public payload: string) {
   }
 }
 
@@ -99,11 +89,10 @@ export class UpdatePatientSuccess implements Action {
 export type PatientServiceActions =
   | AddPatient
   | AddPatientSuccess
-  | LoadPatients
-  | LoadPatientsSuccess
   | DeletePatient
   | DeletePatientSuccess
   | UpdatePatient
   | UpdatePatientSuccess
   | SearchPatients
+  | SearchPatientsSimply
   | SearchPatientsSuccess;

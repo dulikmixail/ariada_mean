@@ -36,6 +36,8 @@ export const environment = {
     }
   },
   defaultPageModel: {
+    limit: 10,
+    page: 1
   }
 };
 

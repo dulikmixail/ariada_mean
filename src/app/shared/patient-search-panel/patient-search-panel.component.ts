@@ -5,8 +5,8 @@ import {FormBuilder} from '@angular/forms';
 import {environment} from '../../../environments/environment';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {selectSearchPatients} from '../../store/services/patient-service/patient-service.selector';
-import {SearchPatients} from '../../store/services/patient-service/patient-service.actions';
+import {SearchPatientsSimply} from '../../store/services/patient-service/patient-service.actions';
+import {selectLoadingPatientPage, selectPatientDocs} from '../../store/services/patient-service/patient-service.selector';
 
 @Component({
   selector: 'app-patient-search-panel',
@@ -14,17 +14,19 @@ import {SearchPatients} from '../../store/services/patient-service/patient-servi
   styleUrls: ['./patient-search-panel.component.css']
 })
 export class PatientSearchPanelComponent implements OnInit {
-  searchPatients: any;
+  searchPatientsSimply: any;
   srcImage: string;
   searchPatient$: Observable<PatientModel[]>;
+  loadingPage$: Observable<boolean>;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<AppState>) {
   }
 
   ngOnInit() {
-    this.searchPatients = SearchPatients;
-    this.searchPatient$ = this.store.pipe(select(selectSearchPatients));
+    this.searchPatientsSimply = SearchPatientsSimply;
+    this.searchPatient$ = this.store.pipe(select(selectPatientDocs));
+    this.loadingPage$ = this.store.pipe(select(selectLoadingPatientPage));
     this.srcImage = `${environment.srcImages}/${this.srcImage}`;
   }
 

@@ -37,6 +37,8 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-modal.component';
 import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { PatientCardInfoFullComponent } from './patient-card-info-full/patient-card-info-full.component';
+import { PatientCardInfoFullModalComponent } from './patient-card-info-full-modal/patient-card-info-full-modal.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
     AvatarComponent,
     EmployeeFormModalComponent,
     SearchFormComponent,
+    PatientCardInfoFullComponent,
+    PatientCardInfoFullModalComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -98,7 +102,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
   ],
   entryComponents: [
     PatientFormModalComponent,
-    EmployeeFormModalComponent
+    EmployeeFormModalComponent,
+    PatientCardInfoFullModalComponent
   ]
 })
 export class SharedModule {

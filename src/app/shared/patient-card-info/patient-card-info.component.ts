@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PatientModel} from '../../_models/api/patient.model';
+import {MatDialog} from '@angular/material';
+import {PatientCardInfoFullModalComponent} from '../patient-card-info-full-modal/patient-card-info-full-modal.component';
 
 @Component({
   selector: 'app-patient-card-info',
@@ -11,7 +13,7 @@ export class PatientCardInfoComponent implements OnInit {
   @Input() patient: PatientModel;
   @Input() size: number;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -20,4 +22,9 @@ export class PatientCardInfoComponent implements OnInit {
     }
   }
 
+  openDialog() {
+    this.dialog.open(PatientCardInfoFullModalComponent, {
+      data: this.patient
+    });
+  }
 }

@@ -75,7 +75,12 @@ module.exports = function (requireServiceName, routePath) {
 
   router.post(routePath + '/search/pagination', jwtMiddleware, function (req, res) {
     if (typeof req.body === 'object' && !Array.isArray(req.body)) {
-      const searchText = req.body.query && req.body.query.searchText ? req.body.query.searchText : '';
+      let searchText = '';
+      if (req.body.query && typeof req.body.query === 'string') {
+        searchText = req.body.query;
+      } else if (req.body.query.searchText && typeof req.body.query.searchText === 'string') {
+        searchText = req.body.query.searchText;
+      }
       const options = req.body.options ? req.body.options : {};
 
       service.searchPaginate(searchText, options, function (err, doc) {

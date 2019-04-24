@@ -1,6 +1,6 @@
-<form [formGroup]="form" (ngSubmit)="search()" fxLayout="row" fxLayoutAlign="space-evenly center">
-  <mat-form-field fxFlex="90">
+<form class="full-width" [formGroup]="form" (ngSubmit)="search()" fxLayout="row" fxLayoutAlign="space-between center">
+  <mat-form-field>
     <input matInput formControlName="searchText" placeholder="Пошук" required>
   </mat-form-field>
-  <button type="submit" mat-stroked-button color="primary">Знайти</button>
+  <button class="button" type="submit" mat-stroked-button color="primary">Знайти</button>
 </form>

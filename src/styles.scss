@@ -36,6 +36,10 @@ form.full-width mat-form-field {
   width: 100%;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .button-row button,
 .button-row a {
   margin-right: 8px;
@@ -89,7 +93,7 @@ mat-card:hover.hover {
 }
 
 .mat-grid-tile .mat-figure {
-  justify-content: flex-start !important ;
+  justify-content: flex-start !important;
   align-items: flex-start !important;
 }
 
@@ -97,6 +101,13 @@ mat-card:hover.hover {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.children-center-center {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
 }
 
 

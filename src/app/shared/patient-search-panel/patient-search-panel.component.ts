@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PatientModel} from '../../_models/api/patient.model';
 import {Observable} from 'rxjs';
 import {FormBuilder} from '@angular/forms';
@@ -18,6 +18,8 @@ export class PatientSearchPanelComponent implements OnInit {
   srcImage: string;
   searchPatient$: Observable<PatientModel[]>;
   loadingPage$: Observable<boolean>;
+
+  @Output() clickPatient = new EventEmitter<PatientModel>();
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<AppState>) {

@@ -12,9 +12,8 @@ export const initialState: State = {
 export function reducer(state = initialState, action: EmcPatientComponentActions): State {
   switch (action.type) {
 
-    case EmcPatientComponentActionTypes.EditPatient:
-      return state;
-
+    case EmcPatientComponentActionTypes.LoadPatient:
+      return {...state, patient: action.payload};
     default:
       return state;
   }

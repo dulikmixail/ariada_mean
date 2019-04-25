@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PatientModel} from '../../_models/api/patient.model';
 import {MatDialog} from '@angular/material';
 import {PatientCardInfoFullModalComponent} from '../patient-card-info-full-modal/patient-card-info-full-modal.component';
@@ -10,8 +10,11 @@ import {PatientCardInfoFullModalComponent} from '../patient-card-info-full-modal
 })
 export class PatientCardInfoComponent implements OnInit {
   readonly DEFAULT_SIZE = 40;
+
   @Input() patient: PatientModel;
   @Input() size: number;
+
+  @Output() clickPatient = new EventEmitter<PatientModel>();
 
   constructor(private dialog: MatDialog) {
   }

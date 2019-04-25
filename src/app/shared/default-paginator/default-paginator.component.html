@@ -1,0 +1,5 @@
+<mat-paginator [length]="(pageModel$ | async).totalDocs"
+               [pageSize]="defaultPageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="page.emit(paginator)"
+></mat-paginator>

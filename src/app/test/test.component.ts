@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PatientModel} from '../_models/api/patient.model';
 
 @Component({
@@ -8,7 +8,9 @@ import {PatientModel} from '../_models/api/patient.model';
 })
 export class TestComponent implements OnInit {
   patient: PatientModel;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     this.patient = new PatientModel();
@@ -18,4 +20,7 @@ export class TestComponent implements OnInit {
     this.patient.middleName = 'middleNamemiddleNamemiddleNamemiddleName';
   }
 
+  testClick($event: PatientModel) {
+    console.log($event);
+  }
 }

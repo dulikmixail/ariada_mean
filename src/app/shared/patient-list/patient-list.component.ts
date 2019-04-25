@@ -9,7 +9,6 @@ import {PatientModel} from '../../_models/api/patient.model';
 })
 export class PatientListComponent implements OnInit {
   patients$: Observable<PatientModel[]>;
-
   constructor() {
   }
 

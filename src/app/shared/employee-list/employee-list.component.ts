@@ -48,8 +48,8 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
     this.page$ = this.store.pipe(select(selectEmployeePage));
     this.loadingPage$ = this.store.pipe(select(selectLoadingEmployeePage));
     this.paginationModel = new PaginationModel<EmployeeModel>();
-    this.paginationModel.setOptionsFromMatPaginator(this.paginator);
-    this.store.dispatch(new LoadEmployees(this.paginationModel));
+    // this.paginationModel.setOptionsFromMatPaginator(this.paginator);
+    // this.store.dispatch(new LoadEmployees(this.paginationModel));
   }
 
   ngAfterViewInit(): void {
@@ -80,6 +80,11 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
 
   loadPage() {
     this.paginationModel.setOptionsFromMatPaginator(this.paginator);
+    this.store.dispatch(new LoadEmployees(this.paginationModel));
+  }
+
+  paging($event: MatPaginator) {
+    this.paginationModel.setOptionsFromMatPaginator($event);
     this.store.dispatch(new LoadEmployees(this.paginationModel));
   }
 }

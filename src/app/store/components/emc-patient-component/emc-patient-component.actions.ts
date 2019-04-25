@@ -9,7 +9,7 @@ export enum EmcPatientComponentActionTypes {
 export class LoadPatient implements Action {
   readonly type = EmcPatientComponentActionTypes.LoadPatient;
 
-  constructor(public payload: string) {
+  constructor(public payload: PatientModel) {
   }
 }
 
@@ -22,4 +22,5 @@ export class EditPatient implements Action {
 
 
 export type EmcPatientComponentActions =
+  | LoadPatient
   | EditPatient;

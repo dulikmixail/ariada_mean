@@ -1,2 +1,2 @@
 <app-avatar [patient]="patient" [size]="size"></app-avatar>
-<div class="fio full-width" (click)="openDialog()">{{patient.surname}} {{patient.name}} {{patient.middleName}}</div>
+<div class="fio full-width" (click)="clickPatient.emit(patient)">{{patient.surname}} {{patient.name}} {{patient.middleName}}</div>

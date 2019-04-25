@@ -39,6 +39,7 @@ import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.comp
 import { SearchFormComponent } from './search-form/search-form.component';
 import { PatientCardInfoFullComponent } from './patient-card-info-full/patient-card-info-full.component';
 import { PatientCardInfoFullModalComponent } from './patient-card-info-full-modal/patient-card-info-full-modal.component';
+import { DefaultPaginatorComponent } from './default-paginator/default-paginator.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PatientCardInfoFullModalComponent } from './patient-card-info-full-moda
     SearchFormComponent,
     PatientCardInfoFullComponent,
     PatientCardInfoFullModalComponent,
+    DefaultPaginatorComponent,
   ],
   imports: [
     FlexLayoutModule,

@@ -32,14 +32,13 @@ import {PatientFormModalComponent} from './patient-form-modal/patient-form-modal
 import {PatientSearchPanelComponent} from './patient-search-panel/patient-search-panel.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {PatientCardComponent} from './patient-card/patient-card.component';
-import { PatientCardInfoComponent } from './patient-card-info/patient-card-info.component';
-import { AvatarComponent } from './avatar/avatar.component';
-import { EmployeeFormModalComponent } from './employee-form-modal/employee-form-modal.component';
+import {PatientCardInfoComponent} from './patient-card-info/patient-card-info.component';
+import {AvatarComponent} from './avatar/avatar.component';
+import {EmployeeFormModalComponent} from './employee-form-modal/employee-form-modal.component';
 import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.component';
-import { SearchFormComponent } from './search-form/search-form.component';
-import { PatientCardInfoFullComponent } from './patient-card-info-full/patient-card-info-full.component';
-import { PatientCardInfoFullModalComponent } from './patient-card-info-full-modal/patient-card-info-full-modal.component';
-import { DefaultPaginatorComponent } from './default-paginator/default-paginator.component';
+import {SearchFormComponent} from './search-form/search-form.component';
+import {PatientCardInfoFullComponent} from './patient-card-info-full/patient-card-info-full.component';
+import {PatientCardInfoFullModalComponent} from './patient-card-info-full-modal/patient-card-info-full-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +64,6 @@ import { DefaultPaginatorComponent } from './default-paginator/default-paginator
     SearchFormComponent,
     PatientCardInfoFullComponent,
     PatientCardInfoFullModalComponent,
-    DefaultPaginatorComponent,
   ],
   imports: [
     FlexLayoutModule,

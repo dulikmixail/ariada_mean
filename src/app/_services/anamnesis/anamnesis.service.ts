@@ -10,7 +10,7 @@ export class AnamnesisService {
 
   constructor(private phRSubGroupService: PhRSubGroupService) {
     this.anamnesisData.stepOne = ['1'];
-    console.log('Constructor PhRSubGroupService');
+    // console.log('Constructor PhRSubGroupService');
     phRSubGroupService.getAll().pipe(map(phRSubGroups => {
       this.anamnesisData.stepOne = phRSubGroups.map(phRSubGroup => {
         return phRSubGroup.title;

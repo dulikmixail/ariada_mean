@@ -6,3 +6,4 @@ export * from './form-group-converter';
 export * from './jwt.interceptor';
 export * from './snack-bar';
 export * from './custom-validators';
+export * from './pagination';

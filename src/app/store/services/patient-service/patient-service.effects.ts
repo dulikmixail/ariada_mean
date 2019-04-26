@@ -4,7 +4,7 @@ import {map, switchMap, withLatestFrom} from 'rxjs/operators';
 
 import {
   AddPatient,
-  AddPatientSuccess, DeletePatient, DeletePatientSuccess,
+  AddPatientSuccess, DeletePatient, DeletePatientSuccess, LoadPatientPage, LoadPatientPageSuccess,
   PatientServiceActionTypes, SearchPatients, SearchPatientsSimply, SearchPatientsSuccess, UpdatePatient, UpdatePatientSuccess
 } from './patient-service.actions';
 import {PatientService} from '../../../_services/api/patient/patient.service';
@@ -12,6 +12,8 @@ import {AppState} from '../../index';
 import {Store} from '@ngrx/store';
 import {PatientModel} from '../../../_models/api/patient.model';
 import {PaginationModel} from '../../../_models/api/pagination.model';
+import {selectLastSearchPatientText, selectPatientPage} from './patient-service.selector';
+import {EMPTY} from 'rxjs';
 
 @Injectable()
 export class PatientServiceEffects {
@@ -19,7 +21,7 @@ export class PatientServiceEffects {
   @Effect()
   searchPatients$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.SearchPatients),
-    switchMap((action: SearchPatients) => this.patientService.searchWithPagination(action.payload).pipe(
+    switchMap((action: SearchPatients) => this.patientService.getWithPagination(action.payload).pipe(
       map(patientsPage => new SearchPatientsSuccess(patientsPage))
     ))
   );
@@ -38,8 +40,26 @@ export class PatientServiceEffects {
         payload
       );
       return this.patientService.searchWithPagination(pageModel).pipe(
-        map(patientsPage => new SearchPatientsSuccess(patientsPage))
+        map(patientPage => new SearchPatientsSuccess(patientPage))
       );
+    })
+  );
+
+  @Effect()
+  loadPatientPage = this.actions$.pipe(
+    ofType(PatientServiceActionTypes.LoadPatientPage),
+    map((action: LoadPatientPage) => action.payload),
+    withLatestFrom(this.store.select(selectLastSearchPatientText), this.store.select(selectPatientPage)),
+    switchMap(([payload, lastSearchText, page]) => {
+      if (page.docs && page.docs.length > 0) {
+        payload.query = lastSearchText;
+        return this.patientService.searchWithPagination(payload).pipe(
+          map(patientPage => new LoadPatientPageSuccess(patientPage))
+        );
+      } else {
+        this.store.dispatch(new LoadPatientPageSuccess(page));
+        return EMPTY;
+      }
     })
   );
 

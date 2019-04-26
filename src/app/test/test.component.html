@@ -1,2 +1,2 @@
-<app-patient-search-panel (clickPatient)="testClick($event)"></app-patient-search-panel>
-<!--<app-patient-card-info [patient]="patient"></app-patient-card-info>-->
+<app-patient-search-panel (clickPatient)="testClick($event)" [pageSize]="3"
+                          [pageSizeOptions]="[3,5,10]"></app-patient-search-panel>

@@ -19,3 +19,8 @@ export const selectLoadingPatientPage = createSelector(
   selectPatientService,
   (state: State) => state.loading
 );
+
+export const selectLastSearchPatientText = createSelector(
+  selectPatientService,
+  (state: State) => state.lastSearchText
+);

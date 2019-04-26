@@ -9,6 +9,9 @@ export enum PatientServiceActionTypes {
   SearchPatientsSimply = '[PatientService] Search Patients Simply',
   SearchPatientsSuccess = '[PatientService] Search Patients Success',
 
+  LoadPatientPage = '[PatientService] Load Patient Page',
+  LoadPatientPageSuccess = '[PatientService] Load Patient Page Success',
+
   AddPatient = '[PatientService] Add Patient',
   AddPatientSuccess = '[PatientService] Add Patient Success',
 
@@ -36,6 +39,21 @@ export class SearchPatientsSimply implements Action {
 
 export class SearchPatientsSuccess implements Action {
   readonly type = PatientServiceActionTypes.SearchPatientsSuccess;
+
+  constructor(public payload: PageModel<PatientModel>) {
+  }
+}
+
+// LoadPatientPage
+export class LoadPatientPage implements Action {
+  readonly type = PatientServiceActionTypes.LoadPatientPage;
+
+  constructor(public payload: PaginationModel<any>) {
+  }
+}
+
+export class LoadPatientPageSuccess implements Action {
+  readonly type = PatientServiceActionTypes.LoadPatientPageSuccess;
 
   constructor(public payload: PageModel<PatientModel>) {
   }
@@ -95,4 +113,6 @@ export type PatientServiceActions =
   | UpdatePatientSuccess
   | SearchPatients
   | SearchPatientsSimply
-  | SearchPatientsSuccess;
+  | SearchPatientsSuccess
+  | LoadPatientPage
+  | LoadPatientPageSuccess;

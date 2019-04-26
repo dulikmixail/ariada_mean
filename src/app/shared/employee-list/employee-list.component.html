@@ -30,12 +30,10 @@
   </mat-card>
 </div>
 
-<app-default-paginator [pageModel$]="page$" (page)="paging($event)"></app-default-paginator>
-
-<!--<mat-paginator [length]="(page$ | async).totalDocs"-->
-<!--               [pageSize]="defaultPageSize"-->
-<!--               [pageSizeOptions]="pageSizeOptions"-->
-<!--               (page)="loadPage()"-->
-<!--&gt;</mat-paginator>-->
+<mat-paginator [length]="(page$ | async).totalDocs"
+               [pageSize]="pagination.pageSize"
+               [pageSizeOptions]="pagination.pageSizeOptions"
+               (page)="loadPage()"
+></mat-paginator>
 
 

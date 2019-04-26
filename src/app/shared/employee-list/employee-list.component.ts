@@ -15,16 +15,14 @@ import {DeleteEmployee, LoadEmployees} from '../../store/services/employee-servi
 import {EmployeeFormModalComponent} from '../employee-form-modal/employee-form-modal.component';
 import {PaginationModel} from '../../_models/api/pagination.model';
 import {PageModel} from '../../_models/api/page.model';
+import {Page, Pagination} from '../../_helpers';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit, AfterViewInit {
-  readonly defaultPageSize = environment.components.matPaginator.defaultPageSize;
-  readonly pageSizeOptions: number[] = environment.components.matPaginator.defaultPageSizeOptions;
-
+export class EmployeeListComponent implements OnInit, AfterViewInit, Page {
   employees$: Observable<EmployeeModel[]>;
   page$: Observable<PageModel<EmployeeModel>>;
   loadingPage$: Observable<boolean>;
@@ -38,7 +36,8 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<AppState>) {
+    private store: Store<AppState>,
+    private pagination: Pagination) {
   }
 
   ngOnInit() {
@@ -48,8 +47,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
     this.page$ = this.store.pipe(select(selectEmployeePage));
     this.loadingPage$ = this.store.pipe(select(selectLoadingEmployeePage));
     this.paginationModel = new PaginationModel<EmployeeModel>();
-    // this.paginationModel.setOptionsFromMatPaginator(this.paginator);
-    // this.store.dispatch(new LoadEmployees(this.paginationModel));
+    this.loadPage();
   }
 
   ngAfterViewInit(): void {
@@ -80,11 +78,6 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
 
   loadPage() {
     this.paginationModel.setOptionsFromMatPaginator(this.paginator);
-    this.store.dispatch(new LoadEmployees(this.paginationModel));
-  }
-
-  paging($event: MatPaginator) {
-    this.paginationModel.setOptionsFromMatPaginator($event);
     this.store.dispatch(new LoadEmployees(this.paginationModel));
   }
 }

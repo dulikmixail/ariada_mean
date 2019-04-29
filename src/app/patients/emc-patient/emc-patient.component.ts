@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {PatientModel} from '../../_models/api/patient.model';
 
 
 @Component({
@@ -7,12 +8,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./emc-patient.component.css']
 })
 export class EmcPatientComponent implements OnInit {
+  patient: PatientModel;
   loading = false;
   constructor() {
   }
 
   ngOnInit() {
     this.loading = true;
+  }
+
+  testClick($event: PatientModel) {
+    this.patient = $event;
+    console.log($event);
   }
 
 

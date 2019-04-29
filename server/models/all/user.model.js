@@ -11,6 +11,10 @@ let userSchema = new Schema({
   key: {
     type: Buffer,
     required: true
+  },
+  userProfile: {
+    type: Schema.Types.ObjectId,
+    ref: 'User_Profile'
   }
 }, {versionKey: false});
 

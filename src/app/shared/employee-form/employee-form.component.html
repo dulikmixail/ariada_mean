@@ -14,7 +14,7 @@
         <input matInput formControlName="photo" placeholder="Фото" readonly value="{{photoFile.selectedName}}" (click)="fileInputPhoto.click()">
         <input #fileInputPhoto type="file" accept="image/*" (change)="onFileChange($event,'photo', photoFile, true)"
                style="display:none;"/>
-        <app-form-upload-button [fileInput]="fileInputPhoto" matIconName="add_a_photo" textButton="Додати фото">
+        <app-form-upload-button matSuffix [fileInput]="fileInputPhoto" matIconName="add_a_photo" textButton="Додати фото">
         </app-form-upload-button>
       </mat-form-field>
       <mat-form-field>
@@ -56,7 +56,7 @@
         <input #fileInputEducationFile type="file" accept="image/*"
                (change)="onFileChange($event,'educationFile', educationFile, false)"
                style="display:none;"/>
-        <app-form-upload-button [fileInput]="fileInputEducationFile" matIconName="add_a_photo"
+        <app-form-upload-button matSuffix [fileInput]="fileInputEducationFile" matIconName="add_a_photo"
                                 textButton="Завантажити копію">
         </app-form-upload-button>
       </mat-form-field>
@@ -74,7 +74,7 @@
         <input #fileInputPlaceRefresherCoursesFile type="file" accept="image/*"
                (change)="onFileChange($event,'placeRefresherCoursesFile', placeRefresherCoursesFile, false)"
                style="display:none;"/>
-        <app-form-upload-button [fileInput]="fileInputPlaceRefresherCoursesFile" matIconName="add_a_photo"
+        <app-form-upload-button matSuffix [fileInput]="fileInputPlaceRefresherCoursesFile" matIconName="add_a_photo"
                                 textButton="Завантажити копію">
         </app-form-upload-button>
       </mat-form-field>

@@ -35,4 +35,8 @@ export class FormHelper {
       .catch(() => {
       });
   }
+
+  fixEmpty(value: any) {
+    return !value ? '' : typeof value === 'string' ? value : '';
+  }
 }

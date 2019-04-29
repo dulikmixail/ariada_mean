@@ -1,0 +1,24 @@
+<mat-card>
+  <div>Прізвище:</div>
+  <div>{{formHelper.fixEmpty(patient.surname)}}</div>
+  <div>Ім'я:</div>
+  <div>{{formHelper.fixEmpty(patient.name)}}</div>
+  <div>По батькові:</div>
+  <div>{{formHelper.fixEmpty(patient.middleName)}}</div>
+  <div>Дата народження:</div>
+  <div>{{patient.birthDate ? patient.birthDate.toLocaleString() : ''}}</div>
+  <div>Постійне місце проживання:</div>
+  <div>{{formHelper.fixEmpty(patient.permanentResidence)}}</div>
+  <div>Адреса родичів і сім'ї:</div>
+  <div>{{formHelper.fixEmpty(patient.addressOfRelativesAndFamily)}}</div>
+  <div>Телефоны:</div>
+  <div>{{patient.phoneNumbers.join(';')}}</div>
+  <div>№ карти стац. хворого:</div>
+  <div>{{formHelper.fixEmpty(patient.medicalCardNumber)}}</div>
+  <div>Місце роботи:</div>
+  <div>{{formHelper.fixEmpty(patient.workplace)}}</div>
+  <div>Посада:</div>
+  <div>{{formHelper.fixEmpty(patient.workPost)}}</div>
+</mat-card>
+
+

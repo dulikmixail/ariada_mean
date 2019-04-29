@@ -1,8 +1,3 @@
-<mat-grid-list cols="2" rowHeight="900px">
-  <mat-grid-tile [colspan]="1" style="background: honeydew">
-    <app-patient-form></app-patient-form>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" style="background: azure">
-    <app-patient-list style="width: 100%;"></app-patient-list>
-  </mat-grid-tile>
-</mat-grid-list>
+<app-patient-search-panel (clickPatient)="testClick($event)" [pageSize]="3"
+                          [pageSizeOptions]="[3,5,10]"></app-patient-search-panel>
+<app-patient-card-info-full-compact [patient]="patient"></app-patient-card-info-full-compact>

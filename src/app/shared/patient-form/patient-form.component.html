@@ -16,7 +16,7 @@
                (click)="fileInput.click()">
         <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
                style="display:none;"/>
-        <app-form-upload-button [fileInput]="fileInput" matIconName="add_a_photo" textButton="Додати фото">
+        <app-form-upload-button matSuffix [fileInput]="fileInput" matIconName="add_a_photo" textButton="Додати фото">
         </app-form-upload-button>
       </mat-form-field>
       <mat-form-field>

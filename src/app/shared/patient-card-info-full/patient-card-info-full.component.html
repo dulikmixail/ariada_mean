@@ -11,13 +11,13 @@
   <mat-card-content>
     <form class="full-width">
       <mat-form-field>
-        <input matInput placeholder="Прізвище" [value]="fixEmpty(patient.surname)" readonly>
+        <input matInput placeholder="Прізвище" [value]="formHelper.fixEmpty(patient.surname)" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Ім'я" [value]="fixEmpty(patient.name)" readonly>
+        <input matInput placeholder="Ім'я" [value]="formHelper.fixEmpty(patient.name)" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="По батькові" [value]="fixEmpty(patient.middleName)" readonly>
+        <input matInput placeholder="По батькові" [value]="formHelper.fixEmpty(patient.middleName)" readonly>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Дата народження"
@@ -25,11 +25,11 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Постійне місце проживання"
-               [value]="fixEmpty(patient.permanentResidence)" readonly>
+               [value]="formHelper.fixEmpty(patient.permanentResidence)" readonly>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Адреса родичів і сім'ї"
-               [value]="fixEmpty(patient.addressOfRelativesAndFamily)" readonly>
+               [value]="formHelper.fixEmpty(patient.addressOfRelativesAndFamily)" readonly>
       </mat-form-field>
       <mat-form-field>
         <mat-chip-list>
@@ -40,13 +40,13 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="№ карти стац. хворого"
-               [value]="fixEmpty(patient.medicalCardNumber)" readonly>
+               [value]="formHelper.fixEmpty(patient.medicalCardNumber)" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Місце роботи" [value]="fixEmpty(patient.workplace)" readonly>
+        <input matInput placeholder="Місце роботи" [value]="formHelper.fixEmpty(patient.workplace)" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Посада" [value]="fixEmpty(patient.workPost)" readonly>
+        <input matInput placeholder="Посада" [value]="formHelper.fixEmpty(patient.workPost)" readonly>
       </mat-form-field>
       <!--      <mat-form-field>-->
       <!--        <mat-select placeholder="Стать" formControlName="gender" required>-->

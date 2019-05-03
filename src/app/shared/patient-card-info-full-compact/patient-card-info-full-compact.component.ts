@@ -10,7 +10,7 @@ import {FormHelper} from '../../_helpers';
 export class PatientCardInfoFullCompactComponent implements OnInit {
   @Input() patient: PatientModel;
 
-  constructor(private formHelper: FormHelper) { }
+  constructor(public formHelper: FormHelper) { }
 
   ngOnInit() {
     if (!this.patient) {

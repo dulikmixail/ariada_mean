@@ -38,7 +38,7 @@ export class PatientSearchPanelComponent implements OnInit, Page {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<AppState>,
-              private pagination: Pagination) {
+              public pagination: Pagination) {
   }
 
   ngOnInit() {

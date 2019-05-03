@@ -15,7 +15,7 @@ export class PatientCardInfoFullComponent implements OnInit {
   avatarFile: FormFile;
 
   constructor(private dialog: MatDialog,
-              private formHelper: FormHelper) {
+              public formHelper: FormHelper) {
   }
 
   ngOnInit() {

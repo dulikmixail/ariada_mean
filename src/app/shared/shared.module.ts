@@ -39,7 +39,9 @@ import {ProgressSpinnerComponent} from './progress-spinner/progress-spinner.comp
 import {SearchFormComponent} from './search-form/search-form.component';
 import {PatientCardInfoFullComponent} from './patient-card-info-full/patient-card-info-full.component';
 import {PatientCardInfoFullModalComponent} from './patient-card-info-full-modal/patient-card-info-full-modal.component';
-import { PatientCardInfoFullCompactComponent } from './patient-card-info-full-compact/patient-card-info-full-compact.component';
+import {PatientCardInfoFullCompactComponent} from './patient-card-info-full-compact/patient-card-info-full-compact.component';
+import {PatientCardInfoFullCompactModalComponent} from './patient-card-info-full-compact-modal/patient-card-info-full-compact-modal.component';
+import {CloseButtonComponent} from './close-button/close-button.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { PatientCardInfoFullCompactComponent } from './patient-card-info-full-co
     PatientCardInfoFullComponent,
     PatientCardInfoFullModalComponent,
     PatientCardInfoFullCompactComponent,
+    PatientCardInfoFullCompactModalComponent,
+    CloseButtonComponent,
   ],
   imports: [
     FlexLayoutModule,

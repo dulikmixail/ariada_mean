@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {PatientModel} from '../../_models/api/patient.model';
 import {Observable} from 'rxjs';
-import {FormBuilder} from '@angular/forms';
 import {environment} from '../../../environments/environment';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
@@ -36,8 +35,7 @@ export class PatientSearchPanelComponent implements OnInit, Page {
 
   @Output() clickPatient = new EventEmitter<PatientModel>();
 
-  constructor(private formBuilder: FormBuilder,
-              private store: Store<AppState>,
+  constructor(private store: Store<AppState>,
               public pagination: Pagination) {
   }
 

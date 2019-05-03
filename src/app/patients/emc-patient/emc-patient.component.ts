@@ -21,6 +21,4 @@ export class EmcPatientComponent implements OnInit {
     this.patient = $event;
     console.log($event);
   }
-
-
 }

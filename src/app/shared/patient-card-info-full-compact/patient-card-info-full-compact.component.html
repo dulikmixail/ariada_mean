@@ -1,24 +1,14 @@
 <mat-card>
-  <div>Прізвище:</div>
-  <div>{{formHelper.fixEmpty(patient.surname)}}</div>
-  <div>Ім'я:</div>
-  <div>{{formHelper.fixEmpty(patient.name)}}</div>
-  <div>По батькові:</div>
-  <div>{{formHelper.fixEmpty(patient.middleName)}}</div>
-  <div>Дата народження:</div>
-  <div>{{patient.birthDate ? patient.birthDate.toLocaleString() : ''}}</div>
-  <div>Постійне місце проживання:</div>
-  <div>{{formHelper.fixEmpty(patient.permanentResidence)}}</div>
-  <div>Адреса родичів і сім'ї:</div>
-  <div>{{formHelper.fixEmpty(patient.addressOfRelativesAndFamily)}}</div>
-  <div>Телефоны:</div>
-  <div>{{patient.phoneNumbers.join(';')}}</div>
-  <div>№ карти стац. хворого:</div>
-  <div>{{formHelper.fixEmpty(patient.medicalCardNumber)}}</div>
-  <div>Місце роботи:</div>
-  <div>{{formHelper.fixEmpty(patient.workplace)}}</div>
-  <div>Посада:</div>
-  <div>{{formHelper.fixEmpty(patient.workPost)}}</div>
+  <div *ngIf="patient.surname">Прізвище: {{formHelper.fixEmpty(patient.surname)}}</div>
+  <div *ngIf="patient.name">Ім'я: {{patient.name}}</div>
+  <div *ngIf="patient.middleName">По батькові: {{patient.middleName}}</div>
+  <div *ngIf="patient.birthDate">Дата народження: {{patient.birthDate.toLocaleString()}}</div>
+  <div *ngIf="patient.permanentResidence">Постійне місце проживання: {{patient.permanentResidence}}</div>
+  <div *ngIf="patient.addressOfRelativesAndFamily">Адреса родичів і сім'ї: {{patient.addressOfRelativesAndFamily}}</div>
+  <div *ngIf="patient.phoneNumbers.length>0">Телефоны: {{patient.phoneNumbers.join(';')}}</div>
+  <div *ngIf="patient.medicalCardNumber">№ карти стац. хворого: {{patient.medicalCardNumber}}</div>
+  <div *ngIf="patient.workplace">Місце роботи: {{patient.workplace}}</div>
+  <div *ngIf="patient.workPost">Посада: {{patient.workPost}}</div>
 </mat-card>
 
 

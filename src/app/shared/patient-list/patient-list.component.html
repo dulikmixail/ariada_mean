@@ -1,7 +1,23 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>Список пацієнтів</span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<!--<mat-toolbar color="primary">-->
+<!--  <mat-toolbar-row>-->
+<!--    <span>Список пацієнтів</span>-->
+<!--  </mat-toolbar-row>-->
+<!--</mat-toolbar>-->
 
-<app-patient-card *ngFor="let patient of patients$ | async" [patient]="patient"></app-patient-card>
+
+
+<app-search-form [searchAction]="searchPatientsSimply"></app-search-form>
+
+<div class="loading-container">
+  <app-progress-spinner *ngIf="loadingPage$ | async" size="big"></app-progress-spinner>
+  <app-patient-card *ngFor="let patient of searchPatient$ | async" [patient]="patient"></app-patient-card>
+<!--  <mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">-->
+<!--    <app-patient-card-info [patient]="patient" (clickPatient)="clickPatient.emit($event)"></app-patient-card-info>-->
+<!--  </mat-option>-->
+</div>
+
+<mat-paginator [length]="(page$ | async).totalDocs"
+               [pageSize]="pagination.pageSize"
+               [pageSizeOptions]="pagination.pageSizeOptions"
+               (page)="loadPage()"
+></mat-paginator>

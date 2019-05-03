@@ -1,4 +1,5 @@
 <app-patient-card-info-full [patient]="data"></app-patient-card-info-full>
-<div fxLayout="row" fxLayoutAlign="center center">
-  <button mat-stroked-button (click)="dialogRef.close()" color="warn">Закрити</button>
-</div>
+<app-close-button (close)="dialogRef.close()"></app-close-button>
+<!--<div fxLayout="row" fxLayoutAlign="center center">-->
+<!--  <button mat-stroked-button (click)="dialogRef.close()" color="warn">Закрити</button>-->
+<!--</div>-->

@@ -2,20 +2,11 @@
   "name": "ariada-mean",
   "version": "1.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng build --prod --progress&&NODE_ENV=production node server",
-    "start-back": "node server",
-    "dev-all": "concurrently \"nodemon server \" \"ng serve\"",
-    "dev-fron-start-back": "concurrently \"node server \" \"ng serve\"",
     "dev-front": "ng serve",
-    "dev-back": "nodemon server",
-    "init-data": "node server/init_data",
-    "test-data": "node server/test_data",
     "build": "ng build --prod --progress",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "server:start": "NODE_ENV=production node server"
+    "e2e": "ng e2e"
   },
   "repository": {
     "type": "git",
@@ -46,7 +37,6 @@
     "@ngrx/store": "^7.2.0",
     "@ngrx/store-devtools": "^7.2.0",
     "@zerohouse/router-tab": "0.0.7",
-    "concurrently": "^4.1.0",
     "core-js": "^2.6.5",
     "hammerjs": "^2.0.8",
     "rxjs": "^6.4.0",

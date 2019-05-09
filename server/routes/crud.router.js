@@ -7,7 +7,7 @@ function findSearchText(reqBody) {
   let searchText = undefined;
   if (reqBody.query && typeof reqBody.query === 'string') {
     searchText = reqBody.query;
-  } else if (reqBody.query.searchText && typeof reqBody.query.searchText === 'string') {
+  } else if (reqBody.query && reqBody.query.searchText && typeof reqBody.query.searchText === 'string') {
     searchText = reqBody.query.searchText;
   }
   return searchText;
@@ -59,47 +59,31 @@ module.exports = function (requireServiceName, routePath) {
     })
   });
 
-  router.post(routePath + '/filter', jwtMiddleware, function (req, res) {
-    service.filter(req.body, function (err, doc) {
-      err ? res.status(404).send(err) : res.send(doc);
-    })
-  });
-
-  router.get(routePath + '/filter', jwtMiddleware, function (req, res) {
-    service.filter(
-      req.query,
-      function (err, doc) {
-        err ? res.status(404).send(err) : res.send(doc);
-      })
-  });
-
   router.post(routePath + '/search', jwtMiddleware, function (req, res) {
-    if (!req.body.searchText) {
+    const searchText = findSearchText(req.body);
+    if (searchText) {
+      service.search(searchText, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    } else if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+      service.filter(req.body, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    } else {
       res.status(400).send({message: config.get('router.messages.12')});
-    } else {
-      service.search(findSearchText(req.body), function (err, doc) {
-        err ? res.status(404).send(err) : res.send(doc);
-      })
-    }
-  });
-
-  router.post(routePath + '/search/pagination', jwtMiddleware, function (req, res) {
-    if (typeof req.body === 'object' && !Array.isArray(req.body)) {
-      const options = req.body.options ? req.body.options : {};
-
-      service.searchPaginate(findSearchText(req.body), options, function (err, doc) {
-        err ? res.status(404).send(err) : res.send(doc);
-      })
-    } else {
-      res.status(400).send({message: config.get('router.messages.10')})
     }
   });
 
   router.post(routePath + '/pagination', jwtMiddleware, function (req, res) {
-    if (typeof req.body === 'object' && !Array.isArray(req.body)) {
-      const query = req.body.query ? req.body.query : {};
-      const options = req.body.options ? req.body.options : {};
+    const searchText = findSearchText(req.body);
+    const options = req.body.options ? req.body.options : {};
 
+    if (searchText) {
+      service.searchPaginate(searchText, options, function (err, doc) {
+        err ? res.status(404).send(err) : res.send(doc);
+      })
+    } else if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+      const query = req.body.query ? req.body.query : {};
       service.paginate(query, options, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })

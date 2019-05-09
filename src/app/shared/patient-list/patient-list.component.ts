@@ -10,7 +10,6 @@ import {
   selectPatientDocs
 } from '../../store/services/patient-service/patient-service.selector';
 import {MatPaginator} from '@angular/material';
-import {EmployeeModel} from '../../_models/api/employee.model';
 
 @Component({
   selector: 'app-patient-list',
@@ -32,7 +31,7 @@ export class PatientListComponent implements OnInit {
   ngOnInit() {
     this.searchPatient$ = this.store.pipe(select(selectPatientDocs));
     this.loadingPage$ = this.store.pipe(select(selectPatientLoadingPage));
-    this.store.dispatch(new SearchPatients(new PaginationModel<EmployeeModel>()));
+    this.store.dispatch(new SearchPatients(new PaginationModel<PatientModel>()));
   }
 
 }

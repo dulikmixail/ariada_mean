@@ -2,7 +2,6 @@ import {Action} from '@ngrx/store';
 import {PatientModel} from '../../../_models/api/patient.model';
 import {PaginationModel} from '../../../_models/api/pagination.model';
 import {PageModel} from '../../../_models/api/page.model';
-import {EmployeeModel} from '../../../_models/api/employee.model';
 
 export enum PatientServiceActionTypes {
   SearchPatients = '[PatientService] Search Patients',
@@ -25,7 +24,7 @@ export enum PatientServiceActionTypes {
 export class SearchPatients implements Action {
   readonly type = PatientServiceActionTypes.SearchPatients;
 
-  constructor(public payload: PaginationModel<EmployeeModel>) {
+  constructor(public payload: PaginationModel<PatientModel>) {
   }
 }
 

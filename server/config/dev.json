@@ -6,7 +6,7 @@
       "sizeLimit": "30mb"
     },
     "request": {
-      "timeoutMsecs": 10000
+      "timeoutMsecs": 100000
     }
   },
   "multer": {
@@ -36,7 +36,7 @@
       "9": "File deleted",
       "10": "The request body must be an object or empty",
       "11": "Pagination not allowed",
-      "12": "Not found search text"
+      "12": "Not found search text or search object"
     }
   },
   "mongo": {

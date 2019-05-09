@@ -19,7 +19,7 @@ export class EmployeeServiceEffects {
   @Effect()
   loadEmployees$ = this.actions$.pipe(
     ofType(EmployeeServiceActionTypes.LoadEmployees),
-    switchMap((action: LoadEmployees) => this.employeeService.getWithPagination(action.payload).pipe(
+    switchMap((action: LoadEmployees) => this.employeeService.pagination(action.payload).pipe(
       map(employees => new LoadEmployeesSuccess(employees))
     ))
   );
@@ -27,7 +27,7 @@ export class EmployeeServiceEffects {
   @Effect()
   searchEmployees$ = this.actions$.pipe(
     ofType(EmployeeServiceActionTypes.SearchEmployees),
-    switchMap((action: SearchEmployees) => this.employeeService.searchWithPagination(action.payload).pipe(
+    switchMap((action: SearchEmployees) => this.employeeService.pagination(action.payload).pipe(
       map(employees => new SearchEmployeesSuccess(employees))
     ))
   );

@@ -19,7 +19,7 @@ export class PatientServiceEffects {
   @Effect()
   searchPatients$ = this.actions$.pipe(
     ofType(PatientServiceActionTypes.SearchPatients),
-    switchMap((action: SearchPatients) => this.patientService.getWithPagination(action.payload).pipe(
+    switchMap((action: SearchPatients) => this.patientService.pagination(action.payload).pipe(
       map(patientsPage => new SearchPatientsSuccess(patientsPage))
     ))
   );
@@ -31,7 +31,7 @@ export class PatientServiceEffects {
     withLatestFrom(this.store.select(selectPatientPage)),
     switchMap(([payload, page]) => {
       if (page.docs && page.docs.length > 0) {
-        return this.patientService.searchWithPagination(payload).pipe(
+        return this.patientService.pagination(payload).pipe(
           map(patientPage => new LoadPatientPageSuccess(patientPage))
         );
       } else {

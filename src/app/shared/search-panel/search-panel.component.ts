@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material';
 import {Pagination} from '../../_helpers';
 
@@ -15,16 +15,24 @@ export class SearchPanelComponent implements OnInit {
   @Output() search = new EventEmitter<string>();
   @Output() page = new EventEmitter<MatPaginator>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(public pagination: Pagination) {
   }
 
   ngOnInit() {
-    if (this.pageSize) {
-      this.pagination.pageSize = this.pageSize;
-    }
-    if (this.pageSizeOptions) {
-      this.pagination.pageSizeOptions = this.pageSizeOptions;
-    }
+    this.paginator.pageSize = this.pageSize ? this.pageSize : this.paginator.pageSize;
+    this.paginator.pageSizeOptions = this.pageSizeOptions ? this.pageSizeOptions : this.paginator.pageSizeOptions;
+    this.paginator.length = this.length ? this.length : this.paginator.length;
+    this.pageEmit(this.paginator);
   }
 
+  pageEmit(matPaginator: MatPaginator) {
+    this.page.emit(matPaginator);
+  }
+
+  searchEmit(searchText: string) {
+    this.paginator.firstPage();
+    this.search.emit(searchText);
+  }
 }

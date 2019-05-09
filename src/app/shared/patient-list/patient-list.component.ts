@@ -1,10 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {PatientModel} from '../../_models/api/patient.model';
-import {PaginationModel} from '../../_models/api/pagination.model';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {SearchPatients} from '../../store/services/patient-service/patient-service.actions';
 import {
   selectPatientLoadingPage,
   selectPatientDocs
@@ -31,7 +29,7 @@ export class PatientListComponent implements OnInit {
   ngOnInit() {
     this.searchPatient$ = this.store.pipe(select(selectPatientDocs));
     this.loadingPage$ = this.store.pipe(select(selectPatientLoadingPage));
-    this.store.dispatch(new SearchPatients(new PaginationModel<PatientModel>()));
+    // this.store.dispatch(new SearchPatients(new PaginationModel<PatientModel>()));
   }
 
 }

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Список співробітників</span>
+    <span>Пошук співробітників</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -30,8 +30,8 @@
 </app-loading-container>
 
 <mat-paginator [length]="(page$ | async).totalDocs"
-               [pageSize]="pagination.pageSize"
-               [pageSizeOptions]="pagination.pageSizeOptions"
+               [pageSize]=""
+               [pageSizeOptions]=""
                (page)="loadPage()"
                showFirstLastButtons
 ></mat-paginator>

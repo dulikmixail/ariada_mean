@@ -28,7 +28,7 @@ export class PaginationModel<T> {
   query: T | SearchTextQuery;
   options: PaginationOptions;
 
-  constructor(options: PaginationOptions = {page: 1}, query: T | SearchTextQuery = new SearchTextQuery()) {
+  constructor(query: T | SearchTextQuery = new SearchTextQuery(), options: PaginationOptions = {page: 1}) {
     this.query = query;
     this.options = options;
   }

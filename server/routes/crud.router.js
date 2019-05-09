@@ -3,16 +3,6 @@ const router = express.Router();
 const jwtMiddleware = require('../helpers/jwt');
 const config = require('config');
 
-function findSearchText(reqBody) {
-  let searchText = undefined;
-  if (reqBody.query && typeof reqBody.query === 'string') {
-    searchText = reqBody.query;
-  } else if (reqBody.query && reqBody.query.searchText && typeof reqBody.query.searchText === 'string') {
-    searchText = reqBody.query.searchText;
-  }
-  return searchText;
-}
-
 module.exports = function (requireServiceName, routePath) {
   const service = require('../services/crud_services/' + requireServiceName);
 
@@ -60,12 +50,11 @@ module.exports = function (requireServiceName, routePath) {
   });
 
   router.post(routePath + '/search', jwtMiddleware, function (req, res) {
-    const searchText = findSearchText(req.body);
-    if (searchText) {
-      service.search(searchText, function (err, doc) {
+    if (req.body.hasOwnProperty('searchText') && typeof req.body.searchText === 'string') {
+      service.search(req.body.searchText, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
-    } else if (typeof req.body === 'object' && !Array.isArray(req.body)) {
+    } else if (typeof req.body === 'object' && !Array.isArray(req.body) && !req.body.hasOwnProperty('searchText')) {
       service.filter(req.body, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
@@ -75,11 +64,10 @@ module.exports = function (requireServiceName, routePath) {
   });
 
   router.post(routePath + '/pagination', jwtMiddleware, function (req, res) {
-    const searchText = findSearchText(req.body);
     const options = req.body.options ? req.body.options : {};
 
-    if (searchText) {
-      service.searchPaginate(searchText, options, function (err, doc) {
+    if (req.body.query && req.body.query.searchText && typeof req.body.query.searchText === 'string') {
+      service.searchPaginate(req.body.query.searchText, options, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
     } else if (typeof req.body === 'object' && !Array.isArray(req.body)) {

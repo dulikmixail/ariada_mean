@@ -36,8 +36,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, Page {
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<AppState>,
-    public pagination: Pagination) {
+    private store: Store<AppState>) {
   }
 
   ngOnInit() {

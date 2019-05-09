@@ -42,9 +42,9 @@
   "mongo": {
     "bucketName": "uploads",
     "limit": {
-      "find": 500,
-      "filter": 5,
-      "search": 5
+      "find": 1000,
+      "filter": 1000,
+      "search": 1000
     },
     "index": {
       "defaultLanguage": "russian"

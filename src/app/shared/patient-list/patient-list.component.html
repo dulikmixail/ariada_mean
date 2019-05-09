@@ -1,3 +1,9 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Пошук пацієнтів</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <app-patient-search-panel>
   <app-loading-container [loading]="loadingPage$">
     <app-patient-card *ngFor="let patient of searchPatient$ | async" [patient]="patient"></app-patient-card>

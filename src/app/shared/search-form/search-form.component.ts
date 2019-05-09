@@ -1,7 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '@ngrx/store';
-import {AppState} from '../../store';
 
 @Component({
   selector: 'app-search-form',
@@ -9,11 +7,10 @@ import {AppState} from '../../store';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-  @Input() searchAction: any;
   form: FormGroup;
+  @Output() search = new EventEmitter<string>();
 
-  constructor(private formBuilder: FormBuilder,
-              private store: Store<AppState>) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -22,9 +19,9 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
-  search() {
+  submit() {
     if (this.form.valid) {
-      this.store.dispatch(new this.searchAction(this.form.get('searchText').value));
+      this.search.emit(this.form.get('searchText').value);
     }
   }
 

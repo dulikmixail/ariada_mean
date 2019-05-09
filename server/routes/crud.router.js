@@ -3,6 +3,16 @@ const router = express.Router();
 const jwtMiddleware = require('../helpers/jwt');
 const config = require('config');
 
+function findSearchText(reqBody) {
+  let searchText = undefined;
+  if (reqBody.query && typeof reqBody.query === 'string') {
+    searchText = reqBody.query;
+  } else if (reqBody.query.searchText && typeof reqBody.query.searchText === 'string') {
+    searchText = reqBody.query.searchText;
+  }
+  return searchText;
+}
+
 module.exports = function (requireServiceName, routePath) {
   const service = require('../services/crud_services/' + requireServiceName);
 
@@ -67,7 +77,7 @@ module.exports = function (requireServiceName, routePath) {
     if (!req.body.searchText) {
       res.status(400).send({message: config.get('router.messages.12')});
     } else {
-      service.search(req.body.searchText, function (err, doc) {
+      service.search(findSearchText(req.body), function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
     }
@@ -75,15 +85,9 @@ module.exports = function (requireServiceName, routePath) {
 
   router.post(routePath + '/search/pagination', jwtMiddleware, function (req, res) {
     if (typeof req.body === 'object' && !Array.isArray(req.body)) {
-      let searchText = '';
-      if (req.body.query && typeof req.body.query === 'string') {
-        searchText = req.body.query;
-      } else if (req.body.query.searchText && typeof req.body.query.searchText === 'string') {
-        searchText = req.body.query.searchText;
-      }
       const options = req.body.options ? req.body.options : {};
 
-      service.searchPaginate(searchText, options, function (err, doc) {
+      service.searchPaginate(findSearchText(req.body), options, function (err, doc) {
         err ? res.status(404).send(err) : res.send(doc);
       })
     } else {

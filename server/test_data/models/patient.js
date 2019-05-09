@@ -9,7 +9,8 @@ module.exports = new Promise((resolve, reject) => {
           employees.push(
             {
               surname: 'Фамилия' + i,
-              name: 'Имя' + i,
+              // name: 'Имя' + i,
+              name: '1',
               middleName: 'Отчество' + i,
               birthDate: new Date,
               phoneNumbers: [Math.floor(Math.random() * 9000000), Math.floor(Math.random() * 9000000)],

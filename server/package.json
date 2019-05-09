@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node index.js",
-    "dev": "nodemon index.js",
+    "start-server": "node index.js",
+    "dev-server": "nodemon index.js",
     "init-data": "node init_data",
     "test-data": "node test_data",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -39,6 +40,7 @@
     "@types/node": "^11.13.9",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "mocha": "^6.1.4",
     "nodemon": "^1.19.0"
   }
 }

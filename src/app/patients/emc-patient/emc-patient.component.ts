@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PatientModel} from '../../_models/api/patient.model';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
+import {selectPatientDocs, selectPatientLoadingPage} from '../../store/services/patient-service/patient-service.selector';
+import {AppState} from '../../store';
 
 
 @Component({
@@ -8,13 +12,15 @@ import {PatientModel} from '../../_models/api/patient.model';
   styleUrls: ['./emc-patient.component.css']
 })
 export class EmcPatientComponent implements OnInit {
+  searchPatient$: Observable<PatientModel[]>;
+  loadingPage$: Observable<boolean>;
   patient: PatientModel;
-  loading = false;
-  constructor() {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
-    this.loading = true;
+    this.searchPatient$ = this.store.pipe(select(selectPatientDocs));
+    this.loadingPage$ = this.store.pipe(select(selectPatientLoadingPage));
   }
 
   testClick($event: PatientModel) {

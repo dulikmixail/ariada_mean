@@ -1,3 +1,9 @@
-<app-patient-search-panel (clickPatient)="testClick($event)" [pageSize]="3"
-                          [pageSizeOptions]="[3,5,10]"></app-patient-search-panel>
+<app-patient-search-panel [pageSize]="3" [pageSizeOptions]="[3,5,10]">
+  <div class="loading-container">
+    <app-progress-spinner *ngIf="loadingPage$ | async" size="big"></app-progress-spinner>
+    <mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">
+      <app-patient-card-info [patient]="patient" (clickPatient)="testClick($event)"></app-patient-card-info>
+    </mat-option>
+  </div>
+</app-patient-search-panel>
 <app-patient-card-info-full-compact [patient]="patient"></app-patient-card-info-full-compact>

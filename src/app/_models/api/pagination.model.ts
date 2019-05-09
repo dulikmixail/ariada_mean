@@ -1,6 +1,6 @@
-import {MatPaginator} from '@angular/material';
+export class PaginationOptions {
+  page: number;
 
-export interface PaginationOptions {
   select?: Object | string;
   collation?: Object;
   sort?: Object | string;
@@ -8,22 +8,28 @@ export interface PaginationOptions {
   lean?: boolean;
   leanWithId?: boolean;
   offset?: number;
-  page: number;
   limit?: number;
   customLabels?: Object;
+
+  constructor(page: number = 1) {
+    this.page = page;
+  }
+}
+
+export class SearchTextQuery {
+  searchText: string;
+
+  constructor(searchText: string = '') {
+    this.searchText = searchText;
+  }
 }
 
 export class PaginationModel<T> {
-  query: T | {};
+  query: T | SearchTextQuery;
   options: PaginationOptions;
 
-  constructor(options: PaginationOptions = {page: 1}, query: T | {} = {}) {
+  constructor(options: PaginationOptions = {page: 1}, query: T | SearchTextQuery = {}) {
     this.query = query;
     this.options = options;
-  }
-
-  setOptionsFromMatPaginator(matPaginator: MatPaginator) {
-    this.options.page = matPaginator.pageIndex + 1;
-    this.options.limit = matPaginator.pageSize;
   }
 }

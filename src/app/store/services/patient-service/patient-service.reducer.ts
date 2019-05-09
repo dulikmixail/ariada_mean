@@ -1,27 +1,27 @@
 import {PatientServiceActions, PatientServiceActionTypes} from './patient-service.actions';
 import {PatientModel} from '../../../_models/api/patient.model';
 import {PageModel} from '../../../_models/api/page.model';
+import {PaginationModel} from '../../../_models/api/pagination.model';
 
 export interface State {
   page: PageModel<PatientModel>;
   loading: boolean;
-  lastSearchText: string;
+  lastPaginationModel: PaginationModel<PatientModel>;
 }
 
 export const initialState: State = {
   page: new PageModel<PatientModel>(),
   loading: false,
-  lastSearchText: ''
+  lastPaginationModel: new PaginationModel<PatientModel>()
 };
 
 export function reducer(state = initialState, action: PatientServiceActions): State {
   switch (action.type) {
 
     case PatientServiceActionTypes.SearchPatients:
+      return {...state, loading: true, lastPaginationModel: {...state.lastPaginationModel, query: action.payload.query}};
     case PatientServiceActionTypes.LoadPatientPage:
-      return {...state, loading: true};
-    case PatientServiceActionTypes.SearchPatientsSimply:
-      return {...state, loading: true, lastSearchText: action.payload};
+      return {...state, loading: true, lastPaginationModel: {...state.lastPaginationModel, options: action.payload.options}};
     case PatientServiceActionTypes.SearchPatientsSuccess:
     case PatientServiceActionTypes.LoadPatientPageSuccess:
       return {...state, page: action.payload, loading: false};

@@ -42,6 +42,8 @@ import {PatientCardInfoFullModalComponent} from './patient-card-info-full-modal/
 import {PatientCardInfoFullCompactComponent} from './patient-card-info-full-compact/patient-card-info-full-compact.component';
 import {PatientCardInfoFullCompactModalComponent} from './patient-card-info-full-compact-modal/patient-card-info-full-compact-modal.component';
 import {CloseButtonComponent} from './close-button/close-button.component';
+import { LoadingContainerComponent } from './loading-container/loading-container.component';
+import { SearchPanelComponent } from './search-panel/search-panel.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import {CloseButtonComponent} from './close-button/close-button.component';
     PatientCardInfoFullCompactComponent,
     PatientCardInfoFullCompactModalComponent,
     CloseButtonComponent,
+    LoadingContainerComponent,
+    SearchPanelComponent,
   ],
   imports: [
     FlexLayoutModule,

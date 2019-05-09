@@ -6,7 +6,6 @@ import {EmployeeModel} from '../../../_models/api/employee.model';
 
 export enum PatientServiceActionTypes {
   SearchPatients = '[PatientService] Search Patients',
-  SearchPatientsSimply = '[PatientService] Search Patients Simply',
   SearchPatientsSuccess = '[PatientService] Search Patients Success',
 
   LoadPatientPage = '[PatientService] Load Patient Page',
@@ -27,13 +26,6 @@ export class SearchPatients implements Action {
   readonly type = PatientServiceActionTypes.SearchPatients;
 
   constructor(public payload: PaginationModel<EmployeeModel>) {
-  }
-}
-
-export class SearchPatientsSimply implements Action {
-  readonly type = PatientServiceActionTypes.SearchPatientsSimply;
-
-  constructor(public payload: string) {
   }
 }
 
@@ -112,7 +104,6 @@ export type PatientServiceActions =
   | UpdatePatient
   | UpdatePatientSuccess
   | SearchPatients
-  | SearchPatientsSimply
   | SearchPatientsSuccess
   | LoadPatientPage
   | LoadPatientPageSuccess;

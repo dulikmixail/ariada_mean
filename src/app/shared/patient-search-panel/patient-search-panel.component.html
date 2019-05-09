@@ -1,22 +1,7 @@
-<!--<form [formGroup]="form" (ngSubmit)="search()" fxLayout="row" fxLayoutAlign="space-evenly center">-->
-<!--  <mat-form-field fxFlex="90">-->
-<!--    <input matInput formControlName="searchText" placeholder="Пошук" required>-->
-<!--  </mat-form-field>-->
-<!--  <button type="submit" mat-stroked-button color="primary">Знайти</button>-->
-<!--</form>-->
-<app-search-form [searchAction]="searchPatientsSimply"></app-search-form>
-
-<div class="loading-container">
-  <app-progress-spinner *ngIf="loadingPage$ | async" size="big"></app-progress-spinner>
-  <mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">
-    <app-patient-card-info [patient]="patient" (clickPatient)="clickPatient.emit($event)"></app-patient-card-info>
-  </mat-option>
-</div>
-
-<mat-paginator [length]="(page$ | async).totalDocs"
-               [pageSize]="pagination.pageSize"
-               [pageSizeOptions]="pagination.pageSizeOptions"
-               (page)="loadPage()"
-></mat-paginator>
-
-
+<app-search-panel [length]="(page$ | async).totalDocs"
+                  [pageSize]="pageSize"
+                  [pageSizeOptions]="pageSizeOptions"
+                  (search)="search($event)"
+                  (page)="loadPage($event)">
+  <ng-content></ng-content>
+</app-search-panel>

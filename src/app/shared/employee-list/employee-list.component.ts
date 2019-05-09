@@ -77,7 +77,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit, Page {
   }
 
   loadPage() {
-    this.paginationModel.setOptionsFromMatPaginator(this.paginator);
+    Pagination.setPaginationOptionsFromMatPaginator(this.paginationModel, this.paginator);
     this.store.dispatch(new LoadEmployees(this.paginationModel));
   }
 }

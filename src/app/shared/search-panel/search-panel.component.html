@@ -1,0 +1,7 @@
+<app-search-form (search)="search.emit($event)"></app-search-form>
+<ng-content></ng-content>
+<mat-paginator #paginator [length]="length"
+               [pageSize]="pagination.pageSize"
+               [pageSizeOptions]="pagination.pageSizeOptions"
+               (page)="page.emit(paginator)"
+></mat-paginator>

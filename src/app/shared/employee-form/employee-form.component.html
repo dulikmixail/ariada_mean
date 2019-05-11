@@ -33,19 +33,19 @@
         <input matInput formControlName="employmentDate" placeholder="Дата працевлаштування"
                [matDatepicker]="dpEmploymentDate" (click)="dpEmploymentDate.open()" required>
         <mat-datepicker-toggle matSuffix [for]="dpEmploymentDate"></mat-datepicker-toggle>
-        <mat-datepicker #dpEmploymentDate startView="multi-year"></mat-datepicker>
+        <mat-datepicker touchUi #dpEmploymentDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="expirationDate" placeholder="Дата окончания" [matDatepicker]="dpExpirationDate"
                (click)="dpExpirationDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpExpirationDate"></mat-datepicker-toggle>
-        <mat-datepicker #dpExpirationDate startView="multi-year"></mat-datepicker>
+        <mat-datepicker touchUi #dpExpirationDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="dpBirthDate"
                (click)="dpBirthDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpBirthDate"></mat-datepicker-toggle>
-        <mat-datepicker #dpBirthDate startView="multi-year"></mat-datepicker>
+        <mat-datepicker touchUi #dpBirthDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="residencePlace" placeholder="Постійне місце проживання">
@@ -65,7 +65,7 @@
                placeholder="Дата проходження курсів підвищення кваліфікації " [matDatepicker]="dpRefresherCoursesDate"
                (click)="dpRefresherCoursesDate.open()">
         <mat-datepicker-toggle matSuffix [for]="dpRefresherCoursesDate"></mat-datepicker-toggle>
-        <mat-datepicker #dpRefresherCoursesDate startView="multi-year"></mat-datepicker>
+        <mat-datepicker touchUi #dpRefresherCoursesDate startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="placeRefresherCoursesFile"

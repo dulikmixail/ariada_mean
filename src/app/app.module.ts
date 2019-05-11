@@ -41,6 +41,7 @@ import {environment} from '../environments/environment';
 import {TestComponent} from './test/test.component';
 import {SharedModule} from './shared/shared.module';
 import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
+import {HistoryIncomingModule} from './shared/modules/history-incoming/history-incoming.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HistoryIncomingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     LayoutModule,
@@ -84,7 +86,7 @@ import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: environment.matSnackBar.duration}},
-    {provide: MatPaginatorIntl, useValue: new MatPaginatorIntlUk}
+    {provide: MatPaginatorIntl, useValue: new MatPaginatorIntlUk},
   ],
   bootstrap: [
     AppComponent

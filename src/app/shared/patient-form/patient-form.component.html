@@ -32,7 +32,7 @@
         <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker"
                (click)="datePicker.open()">
         <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-        <mat-datepicker #datePicker startView="multi-year"></mat-datepicker>
+        <mat-datepicker touchUi #datePicker startView="multi-year"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">

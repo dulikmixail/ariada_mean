@@ -12,7 +12,14 @@ import {
 } from '@angular/material';
 import {EmployeesComponent} from './employees/employees.component';
 import {PatientsComponent} from './patients/patients.component';
-import {SharedModule} from '../shared/shared.module';
+import {EmployeeListModule} from '../shared/modules/employee-list/employee-list.module';
+import {PatientListModule} from '../shared/modules/patient-list/patient-list.module';
+import {EmployeeFormModule} from '../shared/modules/employee-form/employee-form.module';
+import {PatientFormModule} from '../shared/modules/patient-form/patient-form.module';
+import {BranchFormModule} from '../shared/modules/branch-form/branch-form.module';
+import {BranchListModule} from '../shared/modules/branch-list/branch-list.module';
+import {PostFormModule} from '../shared/modules/post-form/post-form.module';
+import {PostListModule} from '../shared/modules/post-list/post-list.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +30,19 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     CommonModule,
     AdminPanelRoutingModule,
+    BranchListModule,
+    BranchFormModule,
+    EmployeeListModule,
+    EmployeeFormModule,
     MatButtonModule,
     MatExpansionModule,
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
-    SharedModule
+    PatientListModule,
+    PatientFormModule,
+    PostFormModule,
+    PostListModule
   ],
   bootstrap: [
     AdminPanelComponent

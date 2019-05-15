@@ -9,7 +9,6 @@ import {map, switchMap} from 'rxjs/operators';
 @Injectable()
 export class GenderServiceEffects {
 
-
   @Effect()
   loadGenders$ = this.actions$.pipe(
     ofType(GenderServiceActionTypes.LoadGenders),

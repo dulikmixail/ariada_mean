@@ -2,24 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {PatientsRoutingModule} from './patients-routing.module';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatChipsModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatSelectModule,
-  MatStepperModule,
-  MatTabsModule
-} from '@angular/material';
 import {AnamnesisComponent} from './anamnesis/anamnesis.component';
-import {PatientsComponent} from './patients.component';
+import {PatientsComponent} from './patients/patients.component';
 import {RehabilitationComponent} from './rehabilitation/rehabilitation.component';
 import {RouterTabModule} from '@zerohouse/router-tab';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ChipsListComponent} from '../shared/chips-list/chips-list.component';
 import {MassageComponent} from './rehabilitation/massage/massage.component';
 import {MedicalGymnasticsComponent} from './rehabilitation/medical-gymnastics/medical-gymnastics.component';
 import {MorningGymnasticsComponent} from './rehabilitation/morning-gymnastics/morning-gymnastics.component';
@@ -38,14 +25,18 @@ import {RuffieTestComponent} from './efficiency/ruffie-test/ruffie-test.componen
 import {SbpHrComponent} from './efficiency/sbp-hr/sbp-hr.component';
 import {SkibinskayaIndexComponent} from './efficiency/skibinskaya-index/skibinskaya-index.component';
 import {EmcPatientComponent} from './emc-patient/emc-patient.component';
-import {SharedModule} from '../shared/shared.module';
+import {ProgressSpinnerModule} from '../shared/modules/progress-spinner/progress-spinner.module';
+import {PatientSearchPanelModule} from '../shared/modules/patient-search-panel/patient-search-panel.module';
+import {ChipsListModule} from '../shared/modules/chips-list/chips-list.module';
+import {PatientCardInfoModule} from '../shared/modules/patient-card-info/patient-card-info.module';
+import {PatientCardInfoFullCompactModule} from '../shared/modules/patient-card-info-full-compact/patient-card-info-full-compact.module';
+import {MatButtonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatStepperModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     PatientsComponent,
     AnamnesisComponent,
     RehabilitationComponent,
-    ChipsListComponent,
     MassageComponent,
     MedicalGymnasticsComponent,
     MorningGymnasticsComponent,
@@ -71,17 +62,16 @@ import {SharedModule} from '../shared/shared.module';
     RouterTabModule,
     ReactiveFormsModule,
     FormsModule,
-    MatAutocompleteModule,
     MatButtonModule,
-    MatChipsModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
+    MatFormFieldModule,
+    MatOptionModule,
     MatSelectModule,
     MatStepperModule,
-    MatTabsModule,
-    SharedModule,
+    ProgressSpinnerModule,
+    PatientCardInfoModule,
+    PatientCardInfoFullCompactModule,
+    PatientSearchPanelModule,
+    ChipsListModule
   ],
   bootstrap: [
     PatientsComponent

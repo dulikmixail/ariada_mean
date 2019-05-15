@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AnamnesisComponent} from './anamnesis/anamnesis.component';
-import {PatientsComponent} from './patients.component';
+import {PatientsComponent} from './patients/patients.component';
 import {RehabilitationComponent} from './rehabilitation/rehabilitation.component';
 import {MassageComponent} from './rehabilitation/massage/massage.component';
 import {SelfExercisesComponent} from './rehabilitation/self-exercises/self-exercises.component';

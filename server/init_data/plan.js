@@ -16,6 +16,7 @@ module.exports = new Promise((resolve, reject) => {
       require('./models/self_service'),
       require('./models/psychological_status'),
       require('./models/gender'),
+      require('./models/how_incoming'),
       new Promise((resolve, reject) => {
         Promise.all(
           [

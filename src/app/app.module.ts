@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {LayoutModule} from '@angular/cdk/layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
@@ -10,75 +9,54 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {EffectsModule} from '@ngrx/effects';
 
 import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatDialogModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatFormFieldModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatSnackBarModule,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MatPaginatorIntl
+  MAT_SNACK_BAR_DEFAULT_OPTIONS, MatNativeDateModule,
+  MatPaginatorIntl, MatSnackBarModule
 } from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {TopNavigationComponent} from './shared/top-navigation/top-navigation.component';
 import {JwtInterceptor, ErrorInterceptor} from './_helpers';
 import {reducers, metaReducers} from './store';
 import {PatientServiceEffects} from './store/services/patient-service/patient-service.effects';
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
-import {ImageModalComponent} from './shared/image-modal/image-modal.component';
 import {BranchServiceEffects} from './store/services/branch-service/branch-service.effects';
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
 import {environment} from '../environments/environment';
 import {TestComponent} from './test/test.component';
-import {SharedModule} from './shared/shared.module';
 import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
 import {HistoryIncomingModule} from './shared/modules/history-incoming/history-incoming.module';
+import {HistoryIncomingServiceEffects} from './store/services/history-incoming-service/history-incoming-service.effects';
+import {HowIncomingServiceEffects} from './store/services/how-incoming-service/how-incoming-service.effects';
+import {TopNavigationModule} from './shared/modules/top-navigation/top-navigation.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImageModalComponent,
-    TopNavigationComponent,
-    TestComponent
+    TestComponent,
   ],
   imports: [
-    BrowserModule,
+    !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
     AppRoutingModule,
-    SharedModule,
-    HistoryIncomingModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    HistoryIncomingModule,
     HttpClientModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatDialogModule,
+    MatNativeDateModule,
     MatSnackBarModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
     PatientsNavLinkModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
+    TopNavigationModule,
     EffectsModule.forRoot(
       [
         BranchServiceEffects,
         EmployeeServiceEffects,
         GenderServiceEffects,
         PatientServiceEffects,
-        PostServiceEffects
+        PostServiceEffects,
+        HistoryIncomingServiceEffects,
+        HowIncomingServiceEffects
       ]),
     StoreRouterConnectingModule
   ],
@@ -90,9 +68,6 @@ import {HistoryIncomingModule} from './shared/modules/history-incoming/history-i
   ],
   bootstrap: [
     AppComponent
-  ],
-  entryComponents: [
-    ImageModalComponent
   ]
 })
 export class AppModule {

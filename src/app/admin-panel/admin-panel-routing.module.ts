@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {AdminPanelComponent} from './admin-panel.component';
-import {EmployeeFormComponent} from '../shared/employee-form/employee-form.component';
-import {PatientFormComponent} from '../shared/patient-form/patient-form.component';
-import {PatientListComponent} from '../shared/patient-list/patient-list.component';
-import {BranchFormComponent} from '../shared/branch-form/branch-form.component';
-import {PostFormComponent} from '../shared/post-form/post-form.component';
-import {BranchListComponent} from '../shared/branch-list/branch-list.component';
-import {EmployeeListComponent} from '../shared/employee-list/employee-list.component';
-import {PostListComponent} from '../shared/post-list/post-list.component';
+import {EmployeeFormComponent} from '../shared/modules/employee-form/employee-form/employee-form.component';
+import {PatientFormComponent} from '../shared/modules/patient-form/patient-form/patient-form.component';
+import {PatientListComponent} from '../shared/modules/patient-list/patient-list/patient-list.component';
+import {BranchFormComponent} from '../shared/modules/branch-form/branch-form/branch-form.component';
+import {PostFormComponent} from '../shared/modules/post-form/post-form/post-form.component';
+import {BranchListComponent} from '../shared/modules/branch-list/branch-list/branch-list.component';
+import {EmployeeListComponent} from '../shared/modules/employee-list/employee-list/employee-list.component';
+import {PostListComponent} from '../shared/modules/post-list/post-list/post-list.component';
 
 const routes: Routes = [
   {

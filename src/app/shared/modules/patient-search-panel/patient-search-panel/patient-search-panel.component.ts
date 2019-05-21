@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PatientModel} from '../../../../_models/api/patient.model';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
@@ -24,6 +24,8 @@ export class PatientSearchPanelComponent implements OnInit, Page {
   page$: Observable<PageModel<PatientModel>>;
   paginationModel: PaginationModel<PatientModel> = new PaginationModel<PatientModel>();
 
+  @Output() search = new EventEmitter<string>();
+
   constructor(private store: Store<AppState>) {
   }
 
@@ -36,7 +38,8 @@ export class PatientSearchPanelComponent implements OnInit, Page {
     this.store.dispatch(new LoadPatientPage(this.paginationModel));
   }
 
-  search($event: string) {
+  searchPatient($event: string) {
+    this.search.emit($event);
     this.paginationModel.query = new SearchTextQuery($event);
     this.store.dispatch(new SearchPatients(this.paginationModel));
   }

@@ -1,4 +1,4 @@
-<app-patient-search-panel [pageSize]="3" [pageSizeOptions]="[3,5,10]">
+<app-patient-search-panel [pageSize]="3" [pageSizeOptions]="[3,5,10]" (search)="resetSelectPatient()">
   <div class="loading-container">
     <app-progress-spinner *ngIf="loadingPage$ | async" size="big"></app-progress-spinner>
     <mat-option *ngFor="let patient of searchPatient$ | async" [value]="patient.name">
@@ -7,3 +7,4 @@
   </div>
 </app-patient-search-panel>
 <app-patient-card-info-full-compact [patient]="patient"></app-patient-card-info-full-compact>
+<app-history-incoming-form></app-history-incoming-form>

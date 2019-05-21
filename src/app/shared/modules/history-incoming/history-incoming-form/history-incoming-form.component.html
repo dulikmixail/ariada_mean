@@ -1,8 +1,6 @@
-<!--<app-patient-search-panel></app-patient-search-panel>-->
-
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="form">
+    <form [formGroup]="form" class="form">
       <mat-form-field>
         <input matInput formControlName="hospitalizationDate" placeholder="Дата госпіталізації"
                [max]="maxDate"
@@ -14,7 +12,7 @@
       <mat-form-field>
         <input matInput [ngxTimepicker]="timePicker" [format]="24" placeholder="і час" required>
         <ngx-material-timepicker #timePicker></ngx-material-timepicker>
-        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <!--        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>-->
       </mat-form-field>
       <mat-form-field>
         <input matInput formControlName="senderMedicalFacility" placeholder="Яким закладом направлений" required>

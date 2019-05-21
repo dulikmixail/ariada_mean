@@ -9,7 +9,7 @@ module.exports = new Promise((resolve, reject) => {
         let employees = [];
         console.log(posts);
         console.log(branches);
-        for (let i = 20000; i < 30000; i++) {
+        for (let i = 2000; i < 3000; i++) {
           employees.push(
             {
               itemNo: i,

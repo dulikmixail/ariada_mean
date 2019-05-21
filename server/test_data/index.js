@@ -3,8 +3,8 @@ const mongoose = require('../mongoose-connection');
 mongoose.connect.then(() => {
   Promise.all(
     [
-      // require('./models/employee'),
-      // require('./models/patient'),
+      require('./models/employee'),
+      require('./models/patient'),
       require('./models/user')
     ]
   ).then(() => {

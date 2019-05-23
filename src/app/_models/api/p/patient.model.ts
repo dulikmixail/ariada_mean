@@ -1,4 +1,5 @@
-import {GenderModel, StaticFields} from '../..';
+import {GenderModel} from '../g/gender.model';
+import {StaticFields} from '../../static-fields';
 
 export class PatientModel extends StaticFields {
   surname: string;

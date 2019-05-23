@@ -1,4 +1,5 @@
-import {CTypeOfReactionModel, StaticFields} from '../..';
+import {CTypeOfReactionModel} from '../c/c-type-of-reaction.model';
+import {StaticFields} from '../../static-fields';
 
 export class CalculationModel extends StaticFields {
   signal: string;

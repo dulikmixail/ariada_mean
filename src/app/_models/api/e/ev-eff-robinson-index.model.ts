@@ -1,4 +1,4 @@
-import {StaticFields} from '../..';
+import {StaticFields} from '../../static-fields';
 
 export class EvEffRobinsonIndexModel extends StaticFields {
 }

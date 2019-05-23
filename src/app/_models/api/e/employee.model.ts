@@ -1,4 +1,7 @@
-import {BranchModel, PostModel, ReviewsModel, StaticFields} from '../..';
+import {StaticFields} from '../../static-fields';
+import {BranchModel} from '../b/branch.model';
+import {PostModel} from '../p/post.model';
+import {ReviewsModel} from '../r/reviews.model';
 
 export class EmployeeModel extends StaticFields {
   itemNo: number;

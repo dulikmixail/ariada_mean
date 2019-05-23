@@ -1,4 +1,4 @@
-import {TitleModel} from '../..';
+import {TitleModel} from '../t/title.model';
 
 export class BalneologicalProcedureModel extends TitleModel {
 }

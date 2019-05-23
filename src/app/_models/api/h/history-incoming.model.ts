@@ -1,4 +1,8 @@
-import {ExaminationModel, HowIncomingModel, PlacementModel, StaticFields, TypeIncomingModel} from '../..';
+import {ExaminationModel} from '../e/examination.model';
+import {HowIncomingModel} from '../h/how-incoming.model';
+import {PlacementModel} from '../p/placement.model';
+import {StaticFields} from '../../static-fields';
+import {TypeIncomingModel} from '../t/type-incoming.model';
 
 export class HistoryIncomingModel extends StaticFields {
   hospitalizationDate: Date;

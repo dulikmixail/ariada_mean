@@ -6,11 +6,9 @@ import {Observable, Subject} from 'rxjs';
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
 
-import {BranchModel} from '../../../../_models/api/branch.model';
-import {PostModel} from '../../../../_models/api/post.model';
+import {BranchModel, EmployeeModel, PostModel} from '../../../../_models';
 import {FormFile, FormFiles, FormGroupConverter, FormHelper, SnackBar} from '../../../../_helpers';
-import {EmployeeModel} from '../../../../_models/api/employee.model';
-import {EmployeeFormModalComponent} from '../../employee-form-modal/employee-form-modal/employee-form-modal.component';
+import {EmployeeFormModalComponent, ImageModalComponent} from '../../..';
 import {AppState} from '../../../../store';
 import {environment} from '../../../../../environments/environment';
 import {selectBranchList} from '../../../../store/services/branch-service/branch-service.selector';
@@ -18,7 +16,6 @@ import {LoadBranches} from '../../../../store/services/branch-service/branch-ser
 import {selectPostList} from '../../../../store/services/post-service/post-service.selector';
 import {LoadPosts} from '../../../../store/services/post-service/post-service.actions';
 import {AddEmployee, EmployeeServiceActionTypes} from '../../../../store/services/employee-service/employee-service.actions';
-import {ImageModalComponent} from '../../image-modal/image-modal/image-modal.component';
 
 @Component({
   selector: 'app-employee-form',

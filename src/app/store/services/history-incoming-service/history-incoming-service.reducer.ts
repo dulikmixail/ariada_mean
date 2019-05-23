@@ -1,5 +1,5 @@
 import {HistoryIncomingServiceActions, HistoryIncomingServiceActionTypes} from './history-incoming-service.actions';
-import {HistoryIncomingModel} from '../../../_models/api/history-incoming.model';
+import {HistoryIncomingModel} from '../../../_models';
 
 export interface State {
   historyIncomingModels: HistoryIncomingModel[];

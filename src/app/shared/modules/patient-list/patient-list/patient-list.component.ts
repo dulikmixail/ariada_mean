@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 
 import {MatPaginator} from '@angular/material';
-import {PatientModel} from '../../../../_models/api/patient.model';
+import {PatientModel} from '../../../../_models';
 import {AppState} from '../../../../store';
 import {selectPatientDocs, selectPatientLoadingPage} from '../../../../store/services/patient-service/patient-service.selector';
 

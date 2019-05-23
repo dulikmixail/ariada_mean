@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {HowIncomingModel} from '../../../../_models/api/how-incoming.model';
+import {HowIncomingModel} from '../../../../_models';
 import {AppState} from '../../../../store';
 import {Store} from '@ngrx/store';
 import {selectHowIncomingModels} from '../../../../store/services/how-incoming-service/how-incoming-service.selector';

@@ -1,5 +1,5 @@
 import {BranchServiceActions, BranchServiceActionTypes} from './branch-service.actions';
-import {BranchModel} from '../../../_models/api/branch.model';
+import {BranchModel} from '../../../_models';
 
 export interface State {
   branches: BranchModel[];

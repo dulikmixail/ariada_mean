@@ -1,7 +1,5 @@
 import {Action} from '@ngrx/store';
-import {PatientModel} from '../../../_models/api/patient.model';
-import {PaginationModel} from '../../../_models/api/pagination.model';
-import {PageModel} from '../../../_models/api/page.model';
+import {PageModel, PaginationModel, PatientModel} from '../../../_models';
 
 export enum PatientServiceActionTypes {
   SearchPatients = '[PatientService] Search Patients',

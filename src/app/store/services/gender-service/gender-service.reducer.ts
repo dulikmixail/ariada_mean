@@ -1,6 +1,5 @@
-
-import { GenderServiceActions, GenderServiceActionTypes } from './gender-service.actions';
-import {GenderModel} from '../../../_models/api/gender.model';
+import {GenderServiceActions, GenderServiceActionTypes} from './gender-service.actions';
+import {GenderModel} from '../../../_models';
 
 export interface State {
   genders: GenderModel[];

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {MatPaginator} from '@angular/material';
-import {PaginationModel} from '../_models/api/pagination.model';
+import {PaginationModel} from '../_models';
 
 export interface Page {
   loadPage($event: MatPaginator);

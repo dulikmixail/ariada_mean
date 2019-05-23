@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../crud/crud.service';
-import {CriterionModel} from '../../../_models/api/criterion.model';
+import {CriterionModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import {PatientSearchPanelComponentActions, PatientSearchPanelComponentActionTypes} from './patient-search-panel-component.actions';
-import {PatientModel} from '../../../_models/api/patient.model';
+import {PatientModel} from '../../../_models';
 
 export interface State {
   selectPatient: PatientModel;

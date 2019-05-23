@@ -1,0 +1,17 @@
+import {StaticFields} from '../..';
+
+export class RufyeMeasurementModel extends StaticFields {
+}
+
+// export class rufyeMeasurement
+//     heartRate:
+//     typeOfLoad:
+//     signal:
+//     date:
+//     age:
+//     afterLoadPulseRate:
+//     beforeLoadPulseRate:
+//     someTimeLoadPulseRate:
+//     indexRufye:
+//     evaluationOfFunctionalReservesOfTheHeart:
+//     loadValue:{    }

@@ -1,6 +1,5 @@
 import {EmcPatientComponentActions, EmcPatientComponentActionTypes} from './emc-patient-component.actions';
-import {PatientModel} from '../../../_models/api/patient.model';
-import {PaginationModel} from '../../../_models/api/pagination.model';
+import {PaginationModel, PatientModel} from '../../../_models';
 
 export interface State {
   patient: PatientModel;

@@ -1,15 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PatientModel} from '../../../../_models/api/patient.model';
+import {PageModel, PaginationModel, PatientModel, SearchTextQuery} from '../../../../_models';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../../../store';
 import {LoadPatientPage, SearchPatients} from '../../../../store/services/patient-service/patient-service.actions';
-import {
-  selectPatientPage
-} from '../../../../store/services/patient-service/patient-service.selector';
-import {PageModel} from '../../../../_models/api/page.model';
+import {selectPatientPage} from '../../../../store/services/patient-service/patient-service.selector';
 import {Page, Pagination} from '../../../../_helpers';
-import {PaginationModel, SearchTextQuery} from '../../../../_models/api/pagination.model';
 import {MatPaginator} from '@angular/material';
 
 @Component({

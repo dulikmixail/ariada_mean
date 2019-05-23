@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PatientModel} from '../_models/api/patient.model';
+import {PatientModel} from '../_models';
 
 @Component({
   selector: 'app-test',

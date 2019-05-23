@@ -1,6 +1,5 @@
 import {Action} from '@ngrx/store';
-import {PatientModel} from '../../../_models/api/patient.model';
-import {PaginationModel} from '../../../_models/api/pagination.model';
+import {PaginationModel, PatientModel} from '../../../_models';
 
 export enum EmcPatientComponentActionTypes {
   LoadPatient = '[EmcPatientComponent] Load Patient',

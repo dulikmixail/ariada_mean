@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CrudService} from '../../crud/crud.service';
 import {HttpClient} from '@angular/common/http';
-import {PhRAllowedModel} from '../../../_models/api/ph-r-allowed.model';
+import {PhRAllowedModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

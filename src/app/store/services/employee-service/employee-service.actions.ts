@@ -1,7 +1,5 @@
 import {Action} from '@ngrx/store';
-import {EmployeeModel} from '../../../_models/api/employee.model';
-import {PageModel} from '../../../_models/api/page.model';
-import {PaginationModel} from '../../../_models/api/pagination.model';
+import {EmployeeModel, PageModel, PaginationModel} from '../../../_models';
 
 export enum EmployeeServiceActionTypes {
   LoadEmployees = '[EmployeeService] Load Employees',

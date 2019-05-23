@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CrudService} from '../../crud/crud.service';
 import {HttpClient} from '@angular/common/http';
-import {HistoryIncomingModel} from '../../../_models/api/history-incoming.model';
+import {HistoryIncomingModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

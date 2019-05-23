@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {HowIncomingModel} from '../../../_models/api/how-incoming.model';
+import {HowIncomingModel} from '../../../_models';
 
 export enum HowIncomingServiceActionTypes {
   LoadHowIncoming = '[HowIncomingService] Load HowIncoming',

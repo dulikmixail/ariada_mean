@@ -3,9 +3,7 @@ import {Observable} from 'rxjs';
 import {MatDialog, MatPaginator} from '@angular/material';
 import {select, Store} from '@ngrx/store';
 import {Page, Pagination} from '../../../../_helpers';
-import {EmployeeModel} from '../../../../_models/api/employee.model';
-import {PageModel} from '../../../../_models/api/page.model';
-import {PaginationModel} from '../../../../_models/api/pagination.model';
+import {EmployeeModel, PageModel, PaginationModel} from '../../../../_models';
 import {AppState} from '../../../../store';
 import {environment} from '../../../../../environments/environment';
 import {
@@ -13,9 +11,8 @@ import {
   selectEmployeePage,
   selectLoadingEmployeePage
 } from '../../../../store/services/employee-service/employee-service.selector';
-import {ImageModalComponent} from '../../image-modal/image-modal/image-modal.component';
+import {ImageModalComponent, EmployeeFormModalComponent} from '../../..';
 import {DeleteEmployee, LoadEmployees} from '../../../../store/services/employee-service/employee-service.actions';
-import {EmployeeFormModalComponent} from '../../employee-form-modal/employee-form-modal/employee-form-modal.component';
 
 @Component({
   selector: 'app-employee-list',

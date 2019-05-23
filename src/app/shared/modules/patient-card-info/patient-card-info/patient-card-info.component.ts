@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material';
 
-import {PatientModel} from '../../../../_models/api/patient.model';
-import {PatientCardInfoFullModalComponent} from '../../patient-card-info-full-modal/patient-card-info-full-modal/patient-card-info-full-modal.component';
+import {PatientModel} from '../../../../_models';
+import {PatientCardInfoFullModalComponent} from '../../patient-card-info-full-modal';
 
 @Component({
   selector: 'app-patient-card-info',

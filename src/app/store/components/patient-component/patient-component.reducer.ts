@@ -1,5 +1,5 @@
 import {PatientComponentActions, PatientComponentActionTypes} from './patient-component.actions';
-import {PatientModel} from '../../../_models/api/patient.model';
+import {PatientModel} from '../../../_models';
 
 export interface State {
   patient: PatientModel;

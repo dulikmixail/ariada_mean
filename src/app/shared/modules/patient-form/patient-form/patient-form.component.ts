@@ -1,20 +1,17 @@
 import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {Observable, Subject} from 'rxjs';
-import {GenderModel} from '../../../../_models/api/gender.model';
-import {FormFile, FormFiles, SnackBar} from '../../../../_helpers';
+import {GenderModel, PatientModel} from '../../../../_models';
+import {FormFile, FormFiles, FormGroupConverter, SnackBar} from '../../../../_helpers';
 import {MatChipInputEvent, MatChipList, MatDialog, MatDialogRef} from '@angular/material';
-import {FormGroupConverter} from '../../../../_helpers';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../../../store';
 import {environment} from '../../../../../environments/environment';
 import {selectGenderList} from '../../../../store/services/gender-service/gender-service.selector';
-import {ImageModalComponent} from '../../image-modal/image-modal/image-modal.component';
+import {ImageModalComponent, PatientFormModalComponent} from '../../..';
 import {AddPatient, PatientServiceActionTypes} from '../../../../store/services/patient-service/patient-service.actions';
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
-import {PatientModel} from '../../../../_models/api/patient.model';
-import {PatientFormModalComponent} from '../../patient-form-modal/patient-form-modal/patient-form-modal.component';
 import {ENTER, MAC_ENTER, SPACE} from '@angular/cdk/keycodes';
 
 @Component({
@@ -59,7 +56,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    const p  = !this.editPatient ? new PatientModel() : this.editPatient;
+    const p = !this.editPatient ? new PatientModel() : this.editPatient;
     if (p.photo) {
       this.avatarFile.src = `${environment.srcImages}/${p.photo}`;
     }

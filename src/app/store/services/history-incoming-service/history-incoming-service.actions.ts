@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {HistoryIncomingModel} from '../../../_models/api/history-incoming.model';
+import {HistoryIncomingModel} from '../../../_models';
 
 export enum HistoryIncomingServiceActionTypes {
   LoadHistoryIncoming = '[HistoryIncomingService] Load HistoryIncoming',

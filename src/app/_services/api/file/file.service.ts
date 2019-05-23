@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {FileModel} from '../../../_models/api/file.model';
-import {UploadFileModel} from '../../../_models/api/upload-file.model';
 import {Observable} from 'rxjs';
+import {environment} from '../../../../environments/environment';
+import {FileModel, UploadFileModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {EmployeeModel} from '../../../../_models/api/employee.model';
+import {EmployeeModel} from '../../../../_models';
 
 @Component({
   selector: 'app-employee-form-modal',

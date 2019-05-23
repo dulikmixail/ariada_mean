@@ -1,5 +1,5 @@
 import {PostServiceActions, PostServiceActionTypes} from './post-service.actions';
-import {PostModel} from '../../../_models/api/post.model';
+import {PostModel} from '../../../_models';
 
 export interface State {
   posts: PostModel[];

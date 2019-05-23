@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {PostModel} from '../../../../_models/api/post.model';
+import {PostModel} from '../../../../_models';
 import {AppState} from '../../../../store';
 import {DeletePost, LoadPosts} from '../../../../store/services/post-service/post-service.actions';
 import {selectPostList} from '../../../../store/services/post-service/post-service.selector';

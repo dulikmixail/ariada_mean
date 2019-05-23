@@ -1,6 +1,5 @@
 import {EmployeeServiceActions, EmployeeServiceActionTypes} from './employee-service.actions';
-import {EmployeeModel} from '../../../_models/api/employee.model';
-import {PageModel} from '../../../_models/api/page.model';
+import {EmployeeModel, PageModel} from '../../../_models';
 
 export interface State {
   page: PageModel<EmployeeModel>;

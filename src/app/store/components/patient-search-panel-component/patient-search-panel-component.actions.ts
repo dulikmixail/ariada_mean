@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {PatientModel} from '../../../_models/api/patient.model';
+import {PatientModel} from '../../../_models/';
 
 export enum PatientSearchPanelComponentActionTypes {
   // SelectPatient = '[PatientSearchPanelComponent] Select Patient',

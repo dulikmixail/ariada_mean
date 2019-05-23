@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PatientModel} from '../../../../_models/api/patient.model';
+import {PatientModel} from '../../../../_models';
 import {FormHelper} from '../../../../_helpers';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CrudService} from '../../crud/crud.service';
-import {PostModel} from '../../../_models/api/post.model';
+import {PostModel} from '../../../_models';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

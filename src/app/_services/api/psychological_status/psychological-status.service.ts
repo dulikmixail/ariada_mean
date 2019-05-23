@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../crud/crud.service';
-import {PsychologicalStatusModel} from '../../../_models/api/psychological-status.model';
+import {PsychologicalStatusModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {PaginationModel, SearchTextQuery} from '../../_models/api/pagination.model';
-import {PageModel} from '../../_models/api/page.model';
+import {PageModel, PaginationModel, SearchTextQuery} from '../../_models';
 
 // @Injectable({
 //   providedIn: 'root'

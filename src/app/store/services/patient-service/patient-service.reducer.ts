@@ -1,7 +1,5 @@
 import {PatientServiceActions, PatientServiceActionTypes} from './patient-service.actions';
-import {PatientModel} from '../../../_models/api/patient.model';
-import {PageModel} from '../../../_models/api/page.model';
-import {PaginationModel} from '../../../_models/api/pagination.model';
+import {PageModel, PaginationModel, PatientModel} from '../../../_models';
 
 export interface State {
   page: PageModel<PatientModel>;

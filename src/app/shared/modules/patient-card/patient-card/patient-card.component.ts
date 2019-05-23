@@ -1,9 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {environment} from '../../../../../environments/environment';
-import {PatientModel} from '../../../../_models/api/patient.model';
-import {ImageModalComponent} from '../../image-modal/image-modal/image-modal.component';
+import {PatientModel} from '../../../../_models';
+import {ImageModalComponent, PatientFormModalComponent} from '../../..';
 import {DeletePatient} from '../../../../store/services/patient-service/patient-service.actions';
-import {PatientFormModalComponent} from '../../patient-form-modal/patient-form-modal/patient-form-modal.component';
 import {MatDialog} from '@angular/material';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../store';

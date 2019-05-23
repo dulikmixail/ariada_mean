@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {PhRSubGroupModel} from '../../../_models/api/ph-r-sub-group.model';
+import {PhRSubGroupModel} from '../../../_models';
 import {CrudService} from '../../crud/crud.service';
 
 @Injectable({

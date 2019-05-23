@@ -1,10 +1,10 @@
 import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
-import {SnackBar, CustomValidators} from '../../../../_helpers';
+import {CustomValidators, SnackBar} from '../../../../_helpers';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../store';
 import {Subject} from 'rxjs';
-import {TitleModel} from '../../../../_models/api/title.model';
+import {TitleModel} from '../../../../_models';
 import {Actions, ofType} from '@ngrx/effects';
 import {takeUntil} from 'rxjs/operators';
 import {environment} from '../../../../../environments/environment';

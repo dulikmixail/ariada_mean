@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {BranchModel} from '../../../_models/api/branch.model';
+import {BranchModel} from '../../../_models';
 
 export enum BranchServiceActionTypes {
   LoadBranches = '[BranchService] Load Branches',

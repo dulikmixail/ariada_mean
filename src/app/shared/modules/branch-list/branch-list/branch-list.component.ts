@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../../../store';
 import {selectBranchList} from '../../../../store/services/branch-service/branch-service.selector';
-import {BranchModel} from '../../../../_models/api/branch.model';
+import {BranchModel} from '../../../../_models';
 import {DeleteBranch, LoadBranches} from '../../../../store/services/branch-service/branch-service.actions';
 
 @Component({

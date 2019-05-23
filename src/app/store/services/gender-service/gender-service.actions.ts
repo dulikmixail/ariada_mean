@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {GenderModel} from '../../../_models/api/gender.model';
+import {GenderModel} from '../../../_models';
 
 export enum GenderServiceActionTypes {
   LoadGenders = '[GenderService] Load Genders',

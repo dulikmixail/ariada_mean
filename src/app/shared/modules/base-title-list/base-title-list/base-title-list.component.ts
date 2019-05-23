@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../../store';
-import {TitleModel} from '../../../../_models/api/title.model';
+import {TitleModel} from '../../../../_models';
 import {CustomValidators} from '../../../../_helpers';
 
 @Component({

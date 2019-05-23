@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PatientModel} from '../../../../_models/api/patient.model';
+import {PatientModel} from '../../../../_models';
 import {AvatarHelper} from '../../../../_helpers/avatar-helper';
-import {ImageModalComponent} from '../../image-modal/image-modal/image-modal.component';
+import {ImageModalComponent} from '../../..';
 import {MatDialog} from '@angular/material';
 
 @Component({

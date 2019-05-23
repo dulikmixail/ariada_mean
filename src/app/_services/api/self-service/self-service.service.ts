@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../crud/crud.service';
-import {SelfServiceModel} from '../../../_models/api/self-service.model';
+import {SelfServiceModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

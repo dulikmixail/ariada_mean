@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CrudService} from '../../crud/crud.service';
-import {AssessmentOfFunctionalCapabilityModel} from '../../../_models/api/assessment-of-functional-capability.model';
+import {AssessmentOfFunctionalCapabilityModel} from '../../../_models';
 
 @Injectable({
   providedIn: 'root'

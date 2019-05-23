@@ -1,5 +1,5 @@
 import {HowIncomingServiceActions, HowIncomingServiceActionTypes} from './how-incoming-service.actions';
-import {HowIncomingModel} from '../../../_models/api/how-incoming.model';
+import {HowIncomingModel} from '../../../_models';
 
 export interface State {
   howIncomingModels: HowIncomingModel[];

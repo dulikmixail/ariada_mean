@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PatientModel} from '../../_models/api/patient.model';
+import {PatientModel} from '../../_models';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {selectPatientDocs, selectPatientLoadingPage} from '../../store/services/patient-service/patient-service.selector';

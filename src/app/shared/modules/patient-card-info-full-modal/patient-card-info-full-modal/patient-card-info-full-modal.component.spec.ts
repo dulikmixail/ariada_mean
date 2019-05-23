@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PatientCardInfoFullModalComponent } from './patient-card-info-full-modal.component';
+import {PatientCardInfoFullModalComponent} from './patient-card-info-full-modal.component';
 
 describe('PatientCardInfoFullModalComponent', () => {
   let component: PatientCardInfoFullModalComponent;
@@ -8,9 +8,9 @@ describe('PatientCardInfoFullModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PatientCardInfoFullModalComponent ]
+      declarations: [PatientCardInfoFullModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

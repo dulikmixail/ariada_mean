@@ -16,6 +16,7 @@ export class PatientCardComponent implements OnInit {
   @Input() patient: PatientModel;
   srcImages: string;
   srcNotHaveAvatar: string;
+
   constructor(private dialog: MatDialog,
               private store: Store<AppState>) {
   }

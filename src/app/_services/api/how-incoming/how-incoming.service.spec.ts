@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { HowIncomingService } from './how-incoming.service';
+import {HowIncomingService} from './how-incoming.service';
 
 describe('HowIncomingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

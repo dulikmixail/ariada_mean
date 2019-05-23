@@ -5,7 +5,8 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {
   AddPost,
   AddPostSuccess,
-  DeletePost, DeletePostSuccess,
+  DeletePost,
+  DeletePostSuccess,
   LoadPosts,
   LoadPostsSuccess,
   PostServiceActionTypes,

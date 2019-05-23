@@ -11,13 +11,13 @@ import {
   TreatmentModel
 } from '../../_models';
 import {
-  PhRSubGroupService,
-  PhRAllowedService,
-  TreatmentService,
-  SelfServiceService,
-  PsychologicalStatusService,
+  AssessmentOfFunctionalCapabilityService,
   CriterionService,
-  AssessmentOfFunctionalCapabilityService
+  PhRAllowedService,
+  PhRSubGroupService,
+  PsychologicalStatusService,
+  SelfServiceService,
+  TreatmentService
 } from '../../_services/api';
 
 @Component({

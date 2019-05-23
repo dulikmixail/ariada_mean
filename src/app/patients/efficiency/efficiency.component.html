@@ -2,26 +2,26 @@
   <p *ngFor="let item of DB.tasks; let i=index;"><i>{{DB.defaultTask}} {{i + 1}}: </i>{{item}}</p>
   <div #efficiencynav>
     <div>
-      <div id="efficiencynav" fragment="efficiencynav" class="efficiencynav">
-        <p><a routerLink="./robinson-index" fragment="robinson-index"
+      <div class="efficiencynav" fragment="efficiencynav" id="efficiencynav">
+        <p><a fragment="robinson-index" routerLink="./robinson-index"
               routerLinkActive="active">{{DB.robinsonIndexNav}}</a></p>
-        <p><a routerLink="./baevsky-test" fragment="baevsky-test" routerLinkActive="active">{{DB.baevskyTestNav}}</a>
+        <p><a fragment="baevsky-test" routerLink="./baevsky-test" routerLinkActive="active">{{DB.baevskyTestNav}}</a>
         </p>
-        <p><a routerLink="./sbp-hr" fragment="sbp-hr" routerLinkActive="active">{{DB.sbpHrNav}}</a></p>
-        <p><a routerLink="./orthostatic-test" fragment="orthostatic-test"
+        <p><a fragment="sbp-hr" routerLink="./sbp-hr" routerLinkActive="active">{{DB.sbpHrNav}}</a></p>
+        <p><a fragment="orthostatic-test" routerLink="./orthostatic-test"
               routerLinkActive="active">{{DB.orthostaticTestNav}}</a></p>
-        <p><a routerLink="./kerdo-index" fragment="kerdo-index" routerLinkActive="active">{{DB.kerdoIndexNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./physical-capacity" fragment="physical-capacity"
+        <p><a fragment="kerdo-index" routerLink="./kerdo-index" routerLinkActive="active">{{DB.kerdoIndexNav}}</a></p>
+        <p *ngIf="this.DB.isHealth.value"><a fragment="physical-capacity" routerLink="./physical-capacity"
                                              routerLinkActive="active">{{DB.physicalCapacityNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./martine-kushelevsky-test" fragment="martine-kushelevsky-test"
+        <p *ngIf="this.DB.isHealth.value"><a fragment="martine-kushelevsky-test" routerLink="./martine-kushelevsky-test"
                                              routerLinkActive="active">{{DB.martineKushelevskyTestNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./ruffie-test" fragment="ruffie-test"
+        <p *ngIf="this.DB.isHealth.value"><a fragment="ruffie-test" routerLink="./ruffie-test"
                                              routerLinkActive="active">{{DB.ruffieTestNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./apanasenko-test" fragment="apanasenko-test"
+        <p *ngIf="this.DB.isHealth.value"><a fragment="apanasenko-test" routerLink="./apanasenko-test"
                                              routerLinkActive="active">{{DB.apanasenkoTestNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./skibinskaya-index" fragment="skibinskaya-index"
+        <p *ngIf="this.DB.isHealth.value"><a fragment="skibinskaya-index" routerLink="./skibinskaya-index"
                                              routerLinkActive="active">{{DB.skibinskayaIndexNav}}</a></p>
-        <p *ngIf="this.DB.isHealth.value"><a routerLink="./klabchuk-index" fragment="klabchuk-index"
+        <p *ngIf="this.DB.isHealth.value"><a fragment="klabchuk-index" routerLink="./klabchuk-index"
                                              routerLinkActive="active">{{DB.klabchukIndexNav}}</a></p>
       </div>
     </div>

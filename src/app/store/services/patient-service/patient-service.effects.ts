@@ -4,8 +4,16 @@ import {map, switchMap, withLatestFrom} from 'rxjs/operators';
 
 import {
   AddPatient,
-  AddPatientSuccess, DeletePatient, DeletePatientSuccess, LoadPatientPage, LoadPatientPageSuccess,
-  PatientServiceActionTypes, SearchPatients, SearchPatientsSuccess, UpdatePatient, UpdatePatientSuccess
+  AddPatientSuccess,
+  DeletePatient,
+  DeletePatientSuccess,
+  LoadPatientPage,
+  LoadPatientPageSuccess,
+  PatientServiceActionTypes,
+  SearchPatients,
+  SearchPatientsSuccess,
+  UpdatePatient,
+  UpdatePatientSuccess
 } from './patient-service.actions';
 import {PatientService} from '../../../_services/api/patient/patient.service';
 import {AppState} from '../../index';

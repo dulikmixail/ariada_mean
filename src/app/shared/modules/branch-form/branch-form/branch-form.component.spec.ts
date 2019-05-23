@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BranchFormComponent } from './branch-form.component';
+import {BranchFormComponent} from './branch-form.component';
 
 describe('BranchFormComponent', () => {
   let component: BranchFormComponent;
@@ -8,9 +8,9 @@ describe('BranchFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BranchFormComponent ]
+      declarations: [BranchFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

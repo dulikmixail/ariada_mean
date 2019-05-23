@@ -8,7 +8,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class CloseButtonComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

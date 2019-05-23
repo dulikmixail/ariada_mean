@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CloseButtonComponent } from './close-button.component';
+import {CloseButtonComponent} from './close-button.component';
 
 describe('CloseButtonComponent', () => {
   let component: CloseButtonComponent;
@@ -8,9 +8,9 @@ describe('CloseButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CloseButtonComponent ]
+      declarations: [CloseButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

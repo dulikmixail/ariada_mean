@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { KlabchukIndexComponent } from './klabchuk-index.component';
+import {KlabchukIndexComponent} from './klabchuk-index.component';
 
 describe('KlabchukIndexComponent', () => {
   let component: KlabchukIndexComponent;
@@ -8,9 +8,9 @@ describe('KlabchukIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KlabchukIndexComponent ]
+      declarations: [KlabchukIndexComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

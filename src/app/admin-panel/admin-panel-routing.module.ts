@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AdminPanelComponent} from './admin-panel.component';
 import {EmployeeFormComponent} from '../shared/modules/employee-form/employee-form/employee-form.component';
 import {PatientFormComponent} from '../shared/modules/patient-form/patient-form/patient-form.component';

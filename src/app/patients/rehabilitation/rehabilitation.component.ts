@@ -9,11 +9,11 @@ import {PatientsService} from '../patients.service';
 })
 export class RehabilitationComponent implements OnInit {
 
-  @ViewChild('rehabilitationnav') private rehabilitationnav: ElementRef;
   // @ViewChild('rehabilitationnav') private rehabilitationnav: any;
   public DB;
   public isSamosiukVisible = undefined;
   public isPeriodsSequence = undefined;
+  @ViewChild('rehabilitationnav') private rehabilitationnav: ElementRef;
   private rehabilitationnavElement;
 
   constructor(private patientsService: PatientsService, private router: Router) {

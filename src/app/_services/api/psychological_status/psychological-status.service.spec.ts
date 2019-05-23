@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PsychologicalStatusService } from './psychological-status.service';
+import {PsychologicalStatusService} from './psychological-status.service';
 
 describe('PsychologicalStatusService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -1,4 +1,4 @@
-<mat-vertical-stepper linear #stepper>
+<mat-vertical-stepper #stepper linear>
   <mat-step [stepControl]="formGroupOne">
     <form [formGroup]="formGroupOne" class="full-width">
       <ng-template matStepLabel>Ознаки хворого</ng-template>
@@ -11,8 +11,8 @@
           НГ-неврологічна. ОТіХГ-Ортопедо-травматологічна і хірургічна.</em></p>
       </div>
       <mat-form-field *ngIf="(phRSubGroups$ | async) as phRSubGroups; else loadingPhRSubGroups">
-        <mat-select placeholder="Виберіте одну або більше ознак ..." multiple required
-                    formControlName="phRSubGroupsSelected">
+        <mat-select formControlName="phRSubGroupsSelected" multiple placeholder="Виберіте одну або більше ознак ..."
+                    required>
           <mat-option *ngFor="let phRSubGroup of phRSubGroups" [value]="phRSubGroup">
             {{phRSubGroup.title}}
           </mat-option>
@@ -31,8 +31,8 @@
     <form [formGroup]="formGroupTwo" class="full-width">
       <ng-template matStepLabel>Протипоказання</ng-template>
       <mat-form-field *ngIf="(phRAlloweds$ | async) as phRAlloweds; else loadingPhRAlloweds">
-        <mat-select placeholder="Виберіте одну або більше ознак ..." formControlName="phRAllowedsSelected"
-                    (ngModelChange)="calcAllowPhysicalRahabilitation()" multiple required>
+        <mat-select (ngModelChange)="calcAllowPhysicalRahabilitation()" formControlName="phRAllowedsSelected"
+                    multiple placeholder="Виберіте одну або більше ознак ..." required>
           <mat-option *ngFor="let phRAllowed of phRAlloweds" [value]="phRAllowed">
             {{phRAllowed.description}}
           </mat-option>
@@ -55,7 +55,7 @@
     <form [formGroup]="formGroupThree" class="full-width">
       <ng-template matStepLabel>Вихідний стан хворого</ng-template>
       <mat-form-field *ngIf="(treatments$ | async) as treatments; else loadingTreatments">
-        <mat-select placeholder="Режим лікування:" formControlName="treatmentsSelected" required>
+        <mat-select formControlName="treatmentsSelected" placeholder="Режим лікування:" required>
           <mat-option *ngFor="let treatment of treatments" [value]="treatment.title">
             {{treatment.title}}
           </mat-option>
@@ -66,7 +66,7 @@
       </ng-template>
       <h4>Основні категорії життєдіяльності:</h4>
       <mat-form-field *ngIf="(selfServices$ | async) as selfServices; else loadingSelfServices">
-        <mat-select placeholder="Здатність до самообслуговування:" formControlName="selfServicesSelected" required>
+        <mat-select formControlName="selfServicesSelected" placeholder="Здатність до самообслуговування:" required>
           <mat-option *ngFor="let selfService of selfServices" [value]="selfService.title">
             {{selfService.title}}
           </mat-option>
@@ -78,8 +78,8 @@
 
       <mat-form-field
         *ngIf="(psychologicalStatuses$ | async) as psychologicalStatuses; else loadingPsychologicalStatuses">
-        <mat-select placeholder="Психоемоціний статус та мотивація щодо участі в реабілітаційній програмі:"
-                    formControlName="psychologicalStatusesSelected" required>
+        <mat-select formControlName="psychologicalStatusesSelected"
+                    placeholder="Психоемоціний статус та мотивація щодо участі в реабілітаційній програмі:" required>
           <mat-option *ngFor="let psychologicalStatus of psychologicalStatuses"
                       [value]="psychologicalStatus.title">
             {{psychologicalStatus.title}}
@@ -91,7 +91,8 @@
       </ng-template>
 
       <mat-form-field *ngIf="(criteria$ | async) as criteria; else loadingCriteria">
-        <mat-select placeholder="Критерій для призначення реабілітаційних програм:" formControlName="criteriaSelected" required>
+        <mat-select formControlName="criteriaSelected" placeholder="Критерій для призначення реабілітаційних програм:"
+                    required>
           <mat-option *ngFor="let criterion of criteria" [value]="criterion.title">
             {{criterion.title}}
           </mat-option>
@@ -103,8 +104,8 @@
 
       <mat-form-field
         *ngIf="(assessmentOfFunctionalCapabilities$ | async) as assessmentOfFunctionalCapabilities; else loadingAssessmentOfFunctionalCapabilities">
-        <mat-select placeholder="Оцінка хворим функціональних можливостей організму:"
-                    formControlName="assessmentOfFunctionalCapabilitiesSelected" required>
+        <mat-select formControlName="assessmentOfFunctionalCapabilitiesSelected"
+                    placeholder="Оцінка хворим функціональних можливостей організму:" required>
           <mat-option *ngFor="let assessmentOfFunctionalCapability of assessmentOfFunctionalCapabilities"
                       [value]="assessmentOfFunctionalCapability.title">
             {{assessmentOfFunctionalCapability.title}}
@@ -117,7 +118,7 @@
 
       <div class="button-row">
         <button mat-stroked-button matStepperPrevious>Назад</button>
-        <button mat-stroked-button (click)="stepper.reset()">Скинути</button>
+        <button (click)="stepper.reset()" mat-stroked-button>Скинути</button>
       </div>
     </form>
   </mat-step>

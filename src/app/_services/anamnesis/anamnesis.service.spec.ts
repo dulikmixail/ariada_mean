@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AnamnesisService } from './anamnesis.service';
+import {AnamnesisService} from './anamnesis.service';
 
 describe('AnamnesisService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -1,7 +1,4 @@
-import {
-  ActionReducerMap,
-  MetaReducer
-} from '@ngrx/store';
+import {ActionReducerMap, MetaReducer} from '@ngrx/store';
 import * as fromGenderService from './services/gender-service/gender-service.reducer';
 import * as fromPatientService from './services/patient-service/patient-service.reducer';
 import * as fromEmcPatientComponent from './components/emc-patient-component/emc-patient-component.reducer';

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { ApiResourcePreloaderService } from './api-resource-preloader.service';
+import {ApiResourcePreloaderService} from './api-resource-preloader.service';
 
 describe('ApiResourcePreloaderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

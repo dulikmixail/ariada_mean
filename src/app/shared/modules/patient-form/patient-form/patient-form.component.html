@@ -3,75 +3,75 @@
   <mat-card-header>
     <mat-card-title class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
-    <img *ngIf="avatarFile.src" mat-card-avatar [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
-         (click)="openDialog()"/>
-    <img *ngIf="!avatarFile.src" mat-card-avatar [src]="avatarFile.srcNotHave" alt="Avatar"
-         class="avatar"/>
+    <img (click)="openDialog()" *ngIf="avatarFile.src" [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
+         mat-card-avatar/>
+    <img *ngIf="!avatarFile.src" [src]="avatarFile.srcNotHave" alt="Avatar" class="avatar"
+         mat-card-avatar/>
 
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()" class="full-width">
+    <form (reset)="resetForm()" (submit)="onSubmit()" [formGroup]="form" class="full-width">
       <mat-form-field>
-        <input matInput formControlName="photo" placeholder="Фото" readonly value="{{avatarFile.selectedName}}"
-               (click)="fileInput.click()">
-        <input #fileInput type="file" accept="image/jpeg, image/png" (change)="onFileChange($event)"
-               style="display:none;"/>
-        <app-form-upload-button matSuffix [fileInput]="fileInput" matIconName="add_a_photo" textButton="Додати фото">
+        <input (click)="fileInput.click()" formControlName="photo" matInput placeholder="Фото" readonly
+               value="{{avatarFile.selectedName}}">
+        <input #fileInput (change)="onFileChange($event)" accept="image/jpeg, image/png" style="display:none;"
+               type="file"/>
+        <app-form-upload-button [fileInput]="fileInput" matIconName="add_a_photo" matSuffix textButton="Додати фото">
         </app-form-upload-button>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="surname" placeholder="Прізвище" required>
+        <input formControlName="surname" matInput placeholder="Прізвище" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="name" placeholder="Ім'я" required>
+        <input formControlName="name" matInput placeholder="Ім'я" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="middleName" placeholder="По батькові" required>
+        <input formControlName="middleName" matInput placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="datePicker"
-               (click)="datePicker.open()">
-        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #datePicker startView="multi-year"></mat-datepicker>
+        <input (click)="datePicker.open()" [matDatepicker]="datePicker" formControlName="birthDate" matInput
+               placeholder="Дата народження">
+        <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #datePicker startView="multi-year" touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="permanentResidence" placeholder="Постійне місце проживання">
+        <input formControlName="permanentResidence" matInput placeholder="Постійне місце проживання">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="addressOfRelativesAndFamily" placeholder="Адреса родичів і сім'ї">
+        <input formControlName="addressOfRelativesAndFamily" matInput placeholder="Адреса родичів і сім'ї">
       </mat-form-field>
       <mat-form-field>
         <mat-chip-list #phoneNumberChipList required>
-          <mat-chip *ngFor="let phoneNumber of form.get('phoneNumbers').value" removable
-                    (removed)="removePhoneNumberChip(phoneNumber)">
+          <mat-chip (removed)="removePhoneNumberChip(phoneNumber)" *ngFor="let phoneNumber of form.get('phoneNumbers').value"
+                    removable>
             {{phoneNumber}}
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip>
-          <input matInput
-                 placeholder="Телефоны"
+          <input (matChipInputTokenEnd)="addPhoneNumberChip($event)"
                  [matChipInputAddOnBlur]="true"
                  [matChipInputFor]="phoneNumberChipList"
                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 (matChipInputTokenEnd)="addPhoneNumberChip($event)">
+                 matInput
+                 placeholder="Телефоны">
         </mat-chip-list>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="medicalCardNumber" placeholder="№ карти стац. хворого">
+        <input formControlName="medicalCardNumber" matInput placeholder="№ карти стац. хворого">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="workplace" placeholder="Місце роботи">
+        <input formControlName="workplace" matInput placeholder="Місце роботи">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="workPost" placeholder="Посада">
+        <input formControlName="workPost" matInput placeholder="Посада">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Стать" formControlName="gender" required>
+        <mat-select formControlName="gender" placeholder="Стать" required>
           <mat-option *ngFor="let gender of genders$ | async" [value]="gender._id">
             {{gender.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <app-form-card-actions [isUpdate]="!!editPatient" [dialogRef]="dialogRef"></app-form-card-actions>
+      <app-form-card-actions [dialogRef]="dialogRef" [isUpdate]="!!editPatient"></app-form-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

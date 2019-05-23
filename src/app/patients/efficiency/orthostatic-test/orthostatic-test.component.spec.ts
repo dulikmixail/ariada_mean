@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OrthostaticTestComponent } from './orthostatic-test.component';
+import {OrthostaticTestComponent} from './orthostatic-test.component';
 
 describe('OrthostaticTestComponent', () => {
   let component: OrthostaticTestComponent;
@@ -8,9 +8,9 @@ describe('OrthostaticTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrthostaticTestComponent ]
+      declarations: [OrthostaticTestComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

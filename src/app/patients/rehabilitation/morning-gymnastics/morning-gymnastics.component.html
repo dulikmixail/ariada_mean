@@ -1,4 +1,5 @@
-<div id="morning-gymnastics" class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+<div class="col-md-12" id="morning-gymnastics"
+     style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
   <div *ngIf="DB.modeOfMotionActivityChecked && DB.LFK[1]">
     <div class="gwt-HTML">
       <!-- <p class="gwt-Label"><b>{{DB.stepThreeStep}}</b>{{DB.stepThreeTitle}}</p> -->
@@ -47,7 +48,8 @@
   </div> -->
     <!-- {{DB.modeOfMotionActivityChecked>4}}
     {{DB.formsOfProcedureHealthTableActive}} -->
-    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML"><!-- && DB.formsOfProcedureHealthTableActive-->
+    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML">
+      <!-- && DB.formsOfProcedureHealthTableActive-->
       <p class="gwt-Label gwt-Label-Centered">{{DB.formsOfProcedureHealthSubTitle}}</p>
       <div class="gwt-Table-Wrapper">
         <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">

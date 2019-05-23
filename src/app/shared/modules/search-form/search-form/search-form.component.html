@@ -1,6 +1,6 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form (ngSubmit)="submit()" [formGroup]="form">
   <mat-form-field>
-    <input matInput formControlName="searchText" placeholder="Пошук" required>
-    <mat-icon matSuffix color="primary">search</mat-icon>
+    <input formControlName="searchText" matInput placeholder="Пошук" required>
+    <mat-icon color="primary" matSuffix>search</mat-icon>
   </mat-form-field>
 </form>

@@ -5,23 +5,23 @@
 </mat-toolbar>
 
 <app-loading-container [loading]="loadingPage$">
-  <mat-card class="card-mini pointer hover" *ngFor="let employee of employees$ | async" matRipple>
+  <mat-card *ngFor="let employee of employees$ | async" class="card-mini pointer hover" matRipple>
     <mat-card-header>
-      <img mat-card-avatar *ngIf="employee.photo" [src]="buildSrcAvatar(employee)" alt="Avatar" class="pointer"
-           (click)="openDialog(employee)"/>
-      <img mat-card-avatar *ngIf="!employee.photo" [src]="srcNotHaveAvatar" alt="Not have avatar">
+      <img (click)="openDialog(employee)" *ngIf="employee.photo" [src]="buildSrcAvatar(employee)" alt="Avatar" class="pointer"
+           mat-card-avatar/>
+      <img *ngIf="!employee.photo" [src]="srcNotHaveAvatar" alt="Not have avatar" mat-card-avatar>
       <mat-card-title class="mat-card-title">{{employee.surname}} {{employee.name}}</mat-card-title>
       <mat-card-subtitle class="mat-card-subtitle">{{employee.middleName}}</mat-card-subtitle>
     </mat-card-header>
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="more-vert-button">
+    <button [matMenuTriggerFor]="menu" class="more-vert-button" mat-icon-button>
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu>
-      <button mat-menu-item (click)="editEmployee(employee)">
+      <button (click)="editEmployee(employee)" mat-menu-item>
         <mat-icon>edit</mat-icon>
         <span>Редагувати</span>
       </button>
-      <button mat-menu-item (click)="deleteEmployee(employee)">
+      <button (click)="deleteEmployee(employee)" mat-menu-item>
         <mat-icon>delete</mat-icon>
         <span>Видалити</span>
       </button>
@@ -29,10 +29,10 @@
   </mat-card>
 </app-loading-container>
 
-<mat-paginator [length]="(page$ | async).totalDocs"
-               [pageSize]=""
+<mat-paginator (page)="loadPage()"
+               [length]="(page$ | async).totalDocs"
                [pageSizeOptions]=""
-               (page)="loadPage()"
+               [pageSize]=""
                showFirstLastButtons
 ></mat-paginator>
 

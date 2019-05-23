@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SkibinskayaIndexComponent } from './skibinskaya-index.component';
+import {SkibinskayaIndexComponent} from './skibinskaya-index.component';
 
 describe('SkibinskayaIndexComponent', () => {
   let component: SkibinskayaIndexComponent;
@@ -8,9 +8,9 @@ describe('SkibinskayaIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkibinskayaIndexComponent ]
+      declarations: [SkibinskayaIndexComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -56,19 +56,19 @@ export class ChipsListComponent implements OnInit {
     this._filter();
   }
 
+  ngOnInit() {
+    this.filteredItems = this.source.pipe(map(values => this.allItems = values));
+    if (!this.selectableName) {
+      throw new Error(`${ChipsListComponent.name}. Attribute 'selectableName' is required`);
+    }
+  }
+
   private _filter() {
     this.filteredItems = from([this.allItems]).pipe(
       map(arr => arr.filter((item) => {
         return this.items.indexOf(item) === -1;
       }))
     );
-  }
-
-  ngOnInit() {
-    this.filteredItems = this.source.pipe(map(values => this.allItems = values));
-    if (!this.selectableName) {
-      throw new Error(`${ChipsListComponent.name}. Attribute 'selectableName' is required`);
-    }
   }
 
 }

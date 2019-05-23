@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MultimediaComponent } from './multimedia.component';
+import {MultimediaComponent} from './multimedia.component';
 
 describe('MultimediaComponent', () => {
   let component: MultimediaComponent;
@@ -8,9 +8,9 @@ describe('MultimediaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MultimediaComponent ]
+      declarations: [MultimediaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

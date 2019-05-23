@@ -1,5 +1,5 @@
 <app-search-form (search)="searchEmit($event)"></app-search-form>
 <ng-content></ng-content>
-<mat-paginator [length]="length"
-               (page)="pageEmit(paginator)"
+<mat-paginator (page)="pageEmit(paginator)"
+               [length]="length"
 ></mat-paginator>

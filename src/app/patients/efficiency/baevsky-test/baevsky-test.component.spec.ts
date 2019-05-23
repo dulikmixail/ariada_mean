@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BaevskyTestComponent } from './baevsky-test.component';
+import {BaevskyTestComponent} from './baevsky-test.component';
 
 describe('BaevskyTestComponent', () => {
   let component: BaevskyTestComponent;
@@ -8,9 +8,9 @@ describe('BaevskyTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaevskyTestComponent ]
+      declarations: [BaevskyTestComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

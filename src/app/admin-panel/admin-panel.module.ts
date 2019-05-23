@@ -3,13 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {AdminPanelRoutingModule} from './admin-panel-routing.module';
 import {AdminPanelComponent} from './admin-panel.component';
-import {
-  MatButtonModule,
-  MatExpansionModule,
-  MatIconModule,
-  MatMenuModule,
-  MatSidenavModule,
-} from '@angular/material';
+import {MatButtonModule, MatExpansionModule, MatIconModule, MatMenuModule, MatSidenavModule,} from '@angular/material';
 import {EmployeesComponent} from './employees/employees.component';
 import {PatientsComponent} from './patients/patients.component';
 import {EmployeeListModule} from '../shared/modules/employee-list/employee-list.module';

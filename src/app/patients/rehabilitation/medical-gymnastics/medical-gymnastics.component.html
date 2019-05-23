@@ -1,4 +1,5 @@
-<div class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+<div class="col-md-12"
+     style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
   <div *ngIf="DB.modeOfMotionActivityChecked && DB.LFK[2]">
     <div class="gwt-HTML">
       <!-- <p class="gwt-Label"><b>{{DB.stepThreeStep}}</b>{{DB.stepThreeTitle}}</p> -->
@@ -26,7 +27,8 @@
     </div>
 
     <button (click)="addMedicalGymnasticsPatientCardTableRow()">{{DB.medicalGymnastics.patientCardTableAddRow}}</button>
-    <button (click)="removeMedicalGymnasticsPatientCardTableRow()">{{DB.medicalGymnastics.patientCardTableRemoveRow}}</button>
+    <button
+      (click)="removeMedicalGymnasticsPatientCardTableRow()">{{DB.medicalGymnastics.patientCardTableRemoveRow}}</button>
     <div class="gwt-Table-Wrapper" style="margin:0 0 15px 0;">
       <table class="gwt-Table table table-bordered">
         <tbody>
@@ -34,10 +36,10 @@
           <ng-container *ngFor="let td of item.td; let j=index;">
             <td *ngIf="2>j">{{td}}</td>
             <td *ngIf="j>=2 && i==0">
-              <input type="date" [(ngModel)]="item.td[j]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[j]" class="gwt-Table-Input" type="date">
             </td>
             <td *ngIf="j>=2 && i!=0">
-              <input type="edit" [(ngModel)]="item.td[j]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[j]" class="gwt-Table-Input" type="edit">
             </td>
             <!-- <td *ngIf="j>=2"><input type="edit" [(ngModel)]="item.td[0]" style="width: 100%;"></td> -->
             <!-- <td><input type="edit" [(ngModel)]="item.td[1]" style="width: 100%;"></td>
@@ -73,7 +75,8 @@
       <b>{{item[0]}}</b>{{item[1]}}</p>
     <p><i>{{DB.defaultNote}}</i>{{DB.medicalGymnastics.note}}</p>
 
-    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML"><!-- && DB.formsOfProcedureHealthTableActive-->
+    <div *ngIf="DB.modeOfMotionActivityChecked>4 && DB.formsOfProcedureHealthTableActive" class="gwt-HTML">
+      <!-- && DB.formsOfProcedureHealthTableActive-->
       <p class="gwt-Label gwt-Label-Centered">{{DB.formsOfProcedureHealthSubTitle}}</p>
       <div class="gwt-Table-Wrapper">
         <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
@@ -94,24 +97,27 @@
 
     <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.medicalGymnastics.chooseExercisesTitle}}</p>
     <div class="gwt-HTML gwt-Label-Centered">
-      <img src="./assets/images/p1.png" class="gwt-Image" style="width: 800px;">
-      <div class="gwt-HTML gwt-Label-Centered" style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
-        <span class="gwt-CheckBox" *ngFor="let item of DB.medicalGymnastics.chooseExercisesP1; let i=index">
-          <input type="checkbox" [(ngModel)]="item.checked">
+      <img class="gwt-Image" src="./assets/images/p1.png" style="width: 800px;">
+      <div class="gwt-HTML gwt-Label-Centered"
+           style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
+        <span *ngFor="let item of DB.medicalGymnastics.chooseExercisesP1; let i=index" class="gwt-CheckBox">
+          <input [(ngModel)]="item.checked" type="checkbox">
         </span>
       </div>
 
-      <img src="./assets/images/p2.png" class="gwt-Image" style="width: 800px;">
-      <div class="gwt-HTML gwt-Label-Centered" style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
-        <span class="gwt-CheckBox" *ngFor="let item of DB.medicalGymnastics.chooseExercisesP2; let i=index">
-          <input type="checkbox" [(ngModel)]="item.checked">
+      <img class="gwt-Image" src="./assets/images/p2.png" style="width: 800px;">
+      <div class="gwt-HTML gwt-Label-Centered"
+           style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
+        <span *ngFor="let item of DB.medicalGymnastics.chooseExercisesP2; let i=index" class="gwt-CheckBox">
+          <input [(ngModel)]="item.checked" type="checkbox">
         </span>
       </div>
 
-      <img src="./assets/images/p3.png" class="gwt-Image" style="width: 800px;">
-      <div class="gwt-HTML gwt-Label-Centered" style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
-        <span class="gwt-CheckBox" *ngFor="let item of DB.medicalGymnastics.chooseExercisesP3; let i=index">
-          <input type="checkbox" [(ngModel)]="item.checked">
+      <img class="gwt-Image" src="./assets/images/p3.png" style="width: 800px;">
+      <div class="gwt-HTML gwt-Label-Centered"
+           style="width: 100px; text-align: center; display: flex; justify-content: space-around; width: 800px; margin: auto;">
+        <span *ngFor="let item of DB.medicalGymnastics.chooseExercisesP3; let i=index" class="gwt-CheckBox">
+          <input [(ngModel)]="item.checked" type="checkbox">
         </span>
       </div>
 

@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./efficiency.component.css']
 })
 export class EfficiencyComponent implements OnInit {
-  @ViewChild('efficiencynav') private efficiencynav: ElementRef;
   public DB;
+  @ViewChild('efficiencynav') private efficiencynav: ElementRef;
   private efficiencynavElement;
 
   constructor(private patientsService: PatientsService, private router: Router) {

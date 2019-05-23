@@ -1,7 +1,7 @@
-<app-search-panel [length]="(page$ | async).totalDocs"
-                  [pageSize]="pageSize"
-                  [pageSizeOptions]="pageSizeOptions"
+<app-search-panel (page)="loadPage($event)"
                   (search)="searchPatient($event)"
-                  (page)="loadPage($event)">
+                  [length]="(page$ | async).totalDocs"
+                  [pageSizeOptions]="pageSizeOptions"
+                  [pageSize]="pageSize">
   <ng-content></ng-content>
 </app-search-panel>

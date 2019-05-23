@@ -15,6 +15,7 @@ export class EmcPatientComponent implements OnInit {
   searchPatient$: Observable<PatientModel[]>;
   loadingPage$: Observable<boolean>;
   patient: PatientModel;
+
   constructor(private store: Store<AppState>) {
   }
 

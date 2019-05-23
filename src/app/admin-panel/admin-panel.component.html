@@ -8,12 +8,12 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
-                (click)="setAddSearchSubMenuRouterLink('./employees')">
+        <button (click)="setAddSearchSubMenuRouterLink('./employees')" [matMenuTriggerFor]="addSearchSubMenu"
+                mat-menu-item>
           Співробітники
         </button>
-        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
-                (click)="setAddSearchSubMenuRouterLink('./patients')">
+        <button (click)="setAddSearchSubMenuRouterLink('./patients')" [matMenuTriggerFor]="addSearchSubMenu"
+                mat-menu-item>
           Пациенты
         </button>
       </mat-expansion-panel>
@@ -24,12 +24,12 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
-                (click)="setAddSearchSubMenuRouterLink('./branches')">
+        <button (click)="setAddSearchSubMenuRouterLink('./branches')" [matMenuTriggerFor]="addSearchSubMenu"
+                mat-menu-item>
           Відділення
         </button>
-        <button mat-menu-item [matMenuTriggerFor]="addSearchSubMenu"
-                (click)="setAddSearchSubMenuRouterLink('./posts')">
+        <button (click)="setAddSearchSubMenuRouterLink('./posts')" [matMenuTriggerFor]="addSearchSubMenu"
+                mat-menu-item>
           Посада
         </button>
       </mat-expansion-panel>

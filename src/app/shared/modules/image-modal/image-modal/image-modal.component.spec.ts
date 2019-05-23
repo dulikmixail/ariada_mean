@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ImageModalComponent } from './image-modal.component';
+import {ImageModalComponent} from './image-modal.component';
 
 describe('ImageModalComponent', () => {
   let component: ImageModalComponent;
@@ -8,9 +8,9 @@ describe('ImageModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageModalComponent ]
+      declarations: [ImageModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

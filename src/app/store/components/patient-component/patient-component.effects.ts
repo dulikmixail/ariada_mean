@@ -2,11 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 
-import {
-  LoadPatient,
-  LoadPatientSuccess,
-  PatientComponentActionTypes
-} from './patient-component.actions';
+import {LoadPatient, LoadPatientSuccess, PatientComponentActionTypes} from './patient-component.actions';
 import {map, switchMap} from 'rxjs/operators';
 import {PatientService} from '../../../_services/api/patient/patient.service';
 

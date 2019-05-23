@@ -1,6 +1,7 @@
-<div class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+<div class="col-md-12"
+     style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
 
-  <p *ngFor="let item of DB.physicalCapacity.tasks; let i=index;"><i>{{DB.defaultTask}} {{i+1}}: </i>{{item}}</p>
+  <p *ngFor="let item of DB.physicalCapacity.tasks; let i=index;"><i>{{DB.defaultTask}} {{i + 1}}: </i>{{item}}</p>
 
   <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.physicalCapacity.title}}</p>
   <div class="gwt-Table-Wrapper">
@@ -11,7 +12,7 @@
           <ng-container *ngFor="let td of item.td; let j=index">
             <td *ngIf="j==item.td.length-1 && i!=0">
                 <span class="gwt-CheckBox">
-                  <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked">
+                  <input [(ngModel)]="item.checked" [checked]="item.checked" type="checkbox">
                 </span>
             </td>
             <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>

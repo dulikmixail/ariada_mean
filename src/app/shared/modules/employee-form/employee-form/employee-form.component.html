@@ -1,80 +1,82 @@
 <mat-card class="card-component">
   <h1>Новий співробітник</h1>
   <mat-card-header>
-    <img *ngIf="photoFile.src" mat-card-avatar [src]="photoFile.src" alt="Avatar" class="avatar pointer"
-         (click)="openDialog()"/>
-    <img *ngIf="!photoFile.src" mat-card-avatar [src]="photoFile.srcNotHave" alt="Avatar"
-         class="avatar"/>
+    <img (click)="openDialog()" *ngIf="photoFile.src" [src]="photoFile.src" alt="Avatar" class="avatar pointer"
+         mat-card-avatar/>
+    <img *ngIf="!photoFile.src" [src]="photoFile.srcNotHave" alt="Avatar" class="avatar"
+         mat-card-avatar/>
     <mat-card-title class="mat-card-title">{{form.get('surname').value}} {{form.get('name').value}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{form.get('middleName').value}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form" (submit)="onSubmit()" (reset)="resetForm()" class="full-width">
+    <form (reset)="resetForm()" (submit)="onSubmit()" [formGroup]="form" class="full-width">
       <mat-form-field>
-        <input matInput formControlName="photo" placeholder="Фото" readonly value="{{photoFile.selectedName}}" (click)="fileInputPhoto.click()">
-        <input #fileInputPhoto type="file" accept="image/*" (change)="onFileChange($event,'photo', photoFile, true)"
-               style="display:none;"/>
-        <app-form-upload-button matSuffix [fileInput]="fileInputPhoto" matIconName="add_a_photo" textButton="Додати фото">
+        <input (click)="fileInputPhoto.click()" formControlName="photo" matInput placeholder="Фото" readonly
+               value="{{photoFile.selectedName}}">
+        <input #fileInputPhoto (change)="onFileChange($event,'photo', photoFile, true)" accept="image/*" style="display:none;"
+               type="file"/>
+        <app-form-upload-button [fileInput]="fileInputPhoto" matIconName="add_a_photo" matSuffix
+                                textButton="Додати фото">
         </app-form-upload-button>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="surname" placeholder="Прізвище" required>
+        <input formControlName="surname" matInput placeholder="Прізвище" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="name" placeholder="Ім'я" required>
+        <input formControlName="name" matInput placeholder="Ім'я" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="middleName" placeholder="По батькові" required>
+        <input formControlName="middleName" matInput placeholder="По батькові" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="itemNo" type="number" placeholder="№ п/п" required>
+        <input formControlName="itemNo" matInput placeholder="№ п/п" required type="number">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="employmentDate" placeholder="Дата працевлаштування"
-               [matDatepicker]="dpEmploymentDate" (click)="dpEmploymentDate.open()" required>
-        <mat-datepicker-toggle matSuffix [for]="dpEmploymentDate"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #dpEmploymentDate startView="multi-year"></mat-datepicker>
+        <input (click)="dpEmploymentDate.open()" [matDatepicker]="dpEmploymentDate" formControlName="employmentDate"
+               matInput placeholder="Дата працевлаштування" required>
+        <mat-datepicker-toggle [for]="dpEmploymentDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dpEmploymentDate startView="multi-year" touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="expirationDate" placeholder="Дата окончания" [matDatepicker]="dpExpirationDate"
-               (click)="dpExpirationDate.open()">
-        <mat-datepicker-toggle matSuffix [for]="dpExpirationDate"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #dpExpirationDate startView="multi-year"></mat-datepicker>
+        <input (click)="dpExpirationDate.open()" [matDatepicker]="dpExpirationDate" formControlName="expirationDate" matInput
+               placeholder="Дата окончания">
+        <mat-datepicker-toggle [for]="dpExpirationDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dpExpirationDate startView="multi-year" touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="birthDate" placeholder="Дата народження" [matDatepicker]="dpBirthDate"
-               (click)="dpBirthDate.open()">
-        <mat-datepicker-toggle matSuffix [for]="dpBirthDate"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #dpBirthDate startView="multi-year"></mat-datepicker>
+        <input (click)="dpBirthDate.open()" [matDatepicker]="dpBirthDate" formControlName="birthDate" matInput
+               placeholder="Дата народження">
+        <mat-datepicker-toggle [for]="dpBirthDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dpBirthDate startView="multi-year" touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="residencePlace" placeholder="Постійне місце проживання">
+        <input formControlName="residencePlace" matInput placeholder="Постійне місце проживання">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="educationFile" placeholder="Освіта (завантажити копію)" readonly
+        <input formControlName="educationFile" matInput placeholder="Освіта (завантажити копію)" readonly
                value="{{educationFile.selectedName}}">
-        <input #fileInputEducationFile type="file" accept="image/*"
-               (change)="onFileChange($event,'educationFile', educationFile, false)"
-               style="display:none;"/>
-        <app-form-upload-button matSuffix [fileInput]="fileInputEducationFile" matIconName="add_a_photo"
+        <input #fileInputEducationFile (change)="onFileChange($event,'educationFile', educationFile, false)" accept="image/*"
+               style="display:none;"
+               type="file"/>
+        <app-form-upload-button [fileInput]="fileInputEducationFile" matIconName="add_a_photo" matSuffix
                                 textButton="Завантажити копію">
         </app-form-upload-button>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="refresherCoursesDate"
-               placeholder="Дата проходження курсів підвищення кваліфікації " [matDatepicker]="dpRefresherCoursesDate"
-               (click)="dpRefresherCoursesDate.open()">
-        <mat-datepicker-toggle matSuffix [for]="dpRefresherCoursesDate"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #dpRefresherCoursesDate startView="multi-year"></mat-datepicker>
+        <input (click)="dpRefresherCoursesDate.open()" [matDatepicker]="dpRefresherCoursesDate"
+               formControlName="refresherCoursesDate" matInput
+               placeholder="Дата проходження курсів підвищення кваліфікації ">
+        <mat-datepicker-toggle [for]="dpRefresherCoursesDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #dpRefresherCoursesDate startView="multi-year" touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="placeRefresherCoursesFile"
+        <input formControlName="placeRefresherCoursesFile" matInput
                placeholder="Місце проходження курсів підвищення кваліфікації (завантажити копію)" readonly
                value="{{placeRefresherCoursesFile.selectedName}}">
-        <input #fileInputPlaceRefresherCoursesFile type="file" accept="image/*"
-               (change)="onFileChange($event,'placeRefresherCoursesFile', placeRefresherCoursesFile, false)"
-               style="display:none;"/>
-        <app-form-upload-button matSuffix [fileInput]="fileInputPlaceRefresherCoursesFile" matIconName="add_a_photo"
+        <input #fileInputPlaceRefresherCoursesFile (change)="onFileChange($event,'placeRefresherCoursesFile', placeRefresherCoursesFile, false)" accept="image/*"
+               style="display:none;"
+               type="file"/>
+        <app-form-upload-button [fileInput]="fileInputPlaceRefresherCoursesFile" matIconName="add_a_photo" matSuffix
                                 textButton="Завантажити копію">
         </app-form-upload-button>
       </mat-form-field>
@@ -92,7 +94,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <app-form-card-actions [isUpdate]="!!editEmployee" [dialogRef]="dialogRef"></app-form-card-actions>
+      <app-form-card-actions [dialogRef]="dialogRef" [isUpdate]="!!editEmployee"></app-form-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

@@ -10,7 +10,8 @@ import {EmployeeModel} from '../../../../_models';
 export class EmployeeFormModalComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EmployeeFormModalComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: EmployeeModel) { }
+              @Inject(MAT_DIALOG_DATA) public data: EmployeeModel) {
+  }
 
   ngOnInit() {
   }

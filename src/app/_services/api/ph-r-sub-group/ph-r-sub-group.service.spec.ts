@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PhRSubGroupService } from './ph-r-sub-group.service';
+import {PhRSubGroupService} from './ph-r-sub-group.service';
 
 describe('PhRSubGroupService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

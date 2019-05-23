@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { GenderService } from './gender.service';
+import {GenderService} from './gender.service';
 
 describe('GenderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

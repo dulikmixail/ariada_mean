@@ -2,6 +2,6 @@
   <img *ngIf="data.srcImage" [src]="data.srcImage" alt="big-avatar" class="mhVh60">
   <img *ngIf="!data.srcImage" [src]="srcNotHaveAvatar" alt="big-avatar" class="hVh60">
 </div>
-<div mat-dialog-actions align="center">
-  <button mat-stroked-button [mat-dialog-close] color="warn">Закрити</button>
+<div align="center" mat-dialog-actions>
+  <button [mat-dialog-close] color="warn" mat-stroked-button>Закрити</button>
 </div>

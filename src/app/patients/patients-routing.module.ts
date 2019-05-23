@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AnamnesisComponent} from './anamnesis/anamnesis.component';
 import {PatientsComponent} from './patients/patients.component';
 import {RehabilitationComponent} from './rehabilitation/rehabilitation.component';

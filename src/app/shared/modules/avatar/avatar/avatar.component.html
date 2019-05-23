@@ -1,2 +1,2 @@
-<img alt="Avatar" [src]="avatar" [style.width.px]="size" class="photo" [ngClass]="{'pointer': patient.photo}"
-     (click)="preview()">
+<img (click)="preview()" [ngClass]="{'pointer': patient.photo}" [src]="avatar" [style.width.px]="size" alt="Avatar"
+     class="photo">

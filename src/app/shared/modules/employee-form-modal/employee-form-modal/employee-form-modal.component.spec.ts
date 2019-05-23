@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmployeeFormModalComponent } from './employee-form-modal.component';
+import {EmployeeFormModalComponent} from './employee-form-modal.component';
 
 describe('EmployeeFormModalComponent', () => {
   let component: EmployeeFormModalComponent;
@@ -8,9 +8,9 @@ describe('EmployeeFormModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmployeeFormModalComponent ]
+      declarations: [EmployeeFormModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

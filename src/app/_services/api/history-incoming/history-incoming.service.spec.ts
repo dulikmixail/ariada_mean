@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { HistoryIncomingService } from './history-incoming.service';
+import {HistoryIncomingService} from './history-incoming.service';
 
 describe('HistoryIncomingService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

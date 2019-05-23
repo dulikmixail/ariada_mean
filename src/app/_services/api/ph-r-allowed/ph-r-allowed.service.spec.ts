@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { PhRAllowedService } from './ph-r-allowed.service';
+import {PhRAllowedService} from './ph-r-allowed.service';
 
 describe('PhRAllowedService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

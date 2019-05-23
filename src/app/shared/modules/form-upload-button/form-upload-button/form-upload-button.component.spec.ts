@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormUploadButtonComponent } from './form-upload-button.component';
+import {FormUploadButtonComponent} from './form-upload-button.component';
 
 describe('FormUploadButtonComponent', () => {
   let component: FormUploadButtonComponent;
@@ -8,9 +8,9 @@ describe('FormUploadButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormUploadButtonComponent ]
+      declarations: [FormUploadButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

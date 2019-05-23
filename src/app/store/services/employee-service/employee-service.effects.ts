@@ -5,9 +5,13 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {
   AddEmployee,
   AddEmployeeSuccess,
-  DeleteEmployee, DeleteEmployeeSuccess,
-  EmployeeServiceActionTypes, LoadEmployees,
-  LoadEmployeesSuccess, SearchEmployees, SearchEmployeesSuccess
+  DeleteEmployee,
+  DeleteEmployeeSuccess,
+  EmployeeServiceActionTypes,
+  LoadEmployees,
+  LoadEmployeesSuccess,
+  SearchEmployees,
+  SearchEmployeesSuccess
 } from './employee-service.actions';
 import {map, switchMap} from 'rxjs/operators';
 import {EmployeeService} from '../../../_services/api/employee/employee.service';

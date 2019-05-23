@@ -1,6 +1,8 @@
-<div class="col-md-12" style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+<div class="col-md-12"
+     style="margin: 15px 0px; background: #f8f8f8; border: 1px solid rgba(0, 0, 0, 0.2); padding: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
 
-  <p *ngFor="let item of DB.martineKushelevskyTest.tasks; let i=index;"><i>{{DB.defaultTask}} {{i+1}}: </i>{{item}}</p>
+  <p *ngFor="let item of DB.martineKushelevskyTest.tasks; let i=index;"><i>{{DB.defaultTask}} {{i + 1}}: </i>{{item}}
+  </p>
 
   <p class="gwt-Label gwt-Label-Centered gwt-Big-Label">{{DB.martineKushelevskyTest.title}}</p>
 
@@ -11,7 +13,7 @@
         <tr>
           <ng-container *ngFor="let td of item.td; let j=index">
             <td *ngIf="td.type==='text'">{{td.value}}</td>
-            <td *ngIf="td.type==='edit'"><input type="{{td.type}}" [(ngModel)]="td.value" class="gwt-Table-Input"></td>
+            <td *ngIf="td.type==='edit'"><input [(ngModel)]="td.value" class="gwt-Table-Input" type="{{td.type}}"></td>
           </ng-container>
         </tr>
       </ng-container>
@@ -29,9 +31,10 @@
         <tr>
           <ng-container *ngFor="let td of item.td; let j=index">
             <td *ngIf="td.type=='text' && td.type!='select'">{{td.value}}</td>
-            <td *ngIf="td.type!='text' && td.type!='select'"><input type="{{td.type}}" [(ngModel)]="td.value" class="gwt-Table-Input"></td>
+            <td *ngIf="td.type!='text' && td.type!='select'"><input [(ngModel)]="td.value" class="gwt-Table-Input"
+                                                                    type="{{td.type}}"></td>
             <td *ngIf="td.type=='select'">
-              <select class="gwt-ListBox" [(ngModel)]="td.value">
+              <select [(ngModel)]="td.value" class="gwt-ListBox">
                 <option *ngFor="let o of td.values; let j=index" [ngValue]="o.value">{{o.value}}</option>
               </select>
             </td>

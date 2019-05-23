@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormCardActionsComponent } from './form-card-actions.component';
+import {FormCardActionsComponent} from './form-card-actions.component';
 
 describe('FormCardActionsComponent', () => {
   let component: FormCardActionsComponent;
@@ -8,9 +8,9 @@ describe('FormCardActionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormCardActionsComponent ]
+      declarations: [FormCardActionsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

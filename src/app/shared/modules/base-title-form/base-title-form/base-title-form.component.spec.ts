@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BaseTitleFormComponent } from './base-title-form.component';
+import {BaseTitleFormComponent} from './base-title-form.component';
 
 describe('BaseTitleFormComponent', () => {
   let component: BaseTitleFormComponent;
@@ -8,9 +8,9 @@ describe('BaseTitleFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseTitleFormComponent ]
+      declarations: [BaseTitleFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

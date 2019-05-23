@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PhysicalCapacityComponent } from './physical-capacity.component';
+import {PhysicalCapacityComponent} from './physical-capacity.component';
 
 describe('PhysicalCapacityComponent', () => {
   let component: PhysicalCapacityComponent;
@@ -8,9 +8,9 @@ describe('PhysicalCapacityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhysicalCapacityComponent ]
+      declarations: [PhysicalCapacityComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

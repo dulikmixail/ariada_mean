@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HistoryIncomingFormComponent } from './history-incoming-form.component';
+import {HistoryIncomingFormComponent} from './history-incoming-form.component';
 
 describe('HistoryIncomingFormComponent', () => {
   let component: HistoryIncomingFormComponent;
@@ -8,9 +8,9 @@ describe('HistoryIncomingFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HistoryIncomingFormComponent ]
+      declarations: [HistoryIncomingFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

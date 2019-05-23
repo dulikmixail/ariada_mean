@@ -8,15 +8,12 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
 import {EffectsModule} from '@ngrx/effects';
 
-import {
-  MAT_SNACK_BAR_DEFAULT_OPTIONS, MatNativeDateModule,
-  MatPaginatorIntl, MatSnackBarModule
-} from '@angular/material';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatNativeDateModule, MatPaginatorIntl, MatSnackBarModule} from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {JwtInterceptor, ErrorInterceptor} from './_helpers';
-import {reducers, metaReducers} from './store';
+import {ErrorInterceptor, JwtInterceptor} from './_helpers';
+import {metaReducers, reducers} from './store';
 import {PatientServiceEffects} from './store/services/patient-service/patient-service.effects';
 import {GenderServiceEffects} from './store/services/gender-service/gender-service.effects';
 import {PatientsNavLinkModule} from './patients/patients-nav-link.module';

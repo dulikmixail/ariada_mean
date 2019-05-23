@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
-import {delay, mergeMap, materialize, dematerialize} from 'rxjs/operators';
+import {delay, dematerialize, materialize, mergeMap} from 'rxjs/operators';
 
-import {User, Role} from '../_models';
+import {Role, User} from '../_models';
 
 
 @Injectable()
@@ -25,7 +25,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       // authenticate - public
       if (request.url.endsWith('/auth/login') && request.method === 'POST') {
         const user = users.find(x => x.login === request.body.login && x.password === request.body.password);
-        if (!user) { return error('Login or password is incorrect'); }
+        if (!user) {
+          return error('Login or password is incorrect');
+        }
         return ok({
           id: user.id,
           login: user.login,

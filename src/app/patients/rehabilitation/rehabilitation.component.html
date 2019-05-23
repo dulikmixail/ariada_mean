@@ -1,24 +1,29 @@
 <div class="col-md-12">
 
   <div class="gwt-HTML">
-    <div class="gwt-Label gwt-Big-Label gwt-Label-Centered gwt-Pointer gwt-Like-Link" (click)="isSamosiukVisible=!isSamosiukVisible;">
+    <div (click)="isSamosiukVisible=!isSamosiukVisible;"
+         class="gwt-Label gwt-Big-Label gwt-Label-Centered gwt-Pointer gwt-Like-Link">
       <p>{{DB.samosiukTitle}}
-        <span class="glyphicon" [class.glyphicon-menu-up]="!isSamosiukVisible" [class.glyphicon-menu-down]="isSamosiukVisible" aria-hidden="true"
+        <span [class.glyphicon-menu-down]="isSamosiukVisible" [class.glyphicon-menu-up]="!isSamosiukVisible"
+              aria-hidden="true" class="glyphicon"
               title="show"></span>
       </p>
     </div>
-    <div *ngIf="isSamosiukVisible" style="background:#f8f8f8;margin:0 0 15px 0;overflow: auto;height: 500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin:0 0 15px 0;padding: 10px;">
+    <div *ngIf="isSamosiukVisible"
+         style="background:#f8f8f8;margin:0 0 15px 0;overflow: auto;height: 500px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin:0 0 15px 0;padding: 10px;">
       <span class="gwt-RadioButton gwt-RadioButton-disabled">
-        <input type="radio" name="radioGroup1" value="on" id="gwt-uid-17" disabled [checked]="DB.therapeuticGroupChecked">
+        <input [checked]="DB.therapeuticGroupChecked" disabled id="gwt-uid-17" name="radioGroup1" type="radio"
+               value="on">
         <label for="gwt-uid-17">{{DB.therapeuticGroup}}</label>
       </span>
       <div class="gwt-Table-Wrapper">
         <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
           <tbody>
-          <tr *ngFor="let item of DB.therapeuticGroupTable; let i=index" (click)="therapeuticGroupChange(item)" class="gwt-Pointer">
+          <tr (click)="therapeuticGroupChange(item)" *ngFor="let item of DB.therapeuticGroupTable; let i=index"
+              class="gwt-Pointer">
             <td *ngIf="i!=0">
                 <span class="gwt-CheckBox" style="pointer-events:none;">
-                  <input type="checkbox" [checked]="item.checked">
+                  <input [checked]="item.checked" type="checkbox">
                 </span>
             </td>
             <td *ngIf="i==0">
@@ -34,16 +39,18 @@
       </div>
 
       <span class="gwt-RadioButton gwt-RadioButton-disabled">
-        <input type="radio" name="radioGroup1" value="on" id="gwt-uid-29" disabled [checked]="DB.neurologicalGroupChecked">
+        <input [checked]="DB.neurologicalGroupChecked" disabled id="gwt-uid-29" name="radioGroup1" type="radio"
+               value="on">
         <label for="gwt-uid-29">{{DB.neurologicalGroup}}</label>
       </span>
       <div class="gwt-Table-Wrapper">
         <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
           <tbody>
-          <tr *ngFor="let item of DB.neurologicalGroupTable; let i=index" (click)="neurologicalGroupChange(item)" class="gwt-Pointer">
+          <tr (click)="neurologicalGroupChange(item)" *ngFor="let item of DB.neurologicalGroupTable; let i=index"
+              class="gwt-Pointer">
             <td *ngIf="i!=0">
                 <span class="gwt-CheckBox" style="pointer-events:none;">
-                  <input type="checkbox" [checked]="item.checked">
+                  <input [checked]="item.checked" type="checkbox">
                 </span>
             </td>
             <td *ngIf="i==0">
@@ -59,17 +66,19 @@
       </div>
 
       <span class="gwt-RadioButton gwt-RadioButton-disabled">
-        <input type="radio" name="radioGroup3" value="on" id="gwt-uid-38" disabled [checked]="DB.orthopedicTraumatologicAndSurgicalGroupChecked">
+        <input [checked]="DB.orthopedicTraumatologicAndSurgicalGroupChecked" disabled id="gwt-uid-38" name="radioGroup3" type="radio"
+               value="on">
         <label for="gwt-uid-38">{{DB.orthopedicTraumatologicAndSurgicalGroup}}</label>
       </span>
       <div class="gwt-Table-Wrapper">
         <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
           <tbody>
-          <tr *ngFor="let item of DB.orthopedicTraumatologicAndSurgicalGroupTable; let i=index" (click)="orthopedicTraumatologicAndSurgicalGroupChange(item)"
+          <tr (click)="orthopedicTraumatologicAndSurgicalGroupChange(item)"
+              *ngFor="let item of DB.orthopedicTraumatologicAndSurgicalGroupTable; let i=index"
               class="gwt-Pointer">
             <td *ngIf="i!=0">
                 <span class="gwt-CheckBox" style="pointer-events:none;">
-                  <input type="checkbox" [checked]="item.checked">
+                  <input [checked]="item.checked" type="checkbox">
                 </span>
             </td>
             <td *ngIf="i==0">
@@ -87,13 +96,15 @@
   </div>
 
   <div class="gwt-HTML">
-    <div class="gwt-Label gwt-Pointer gwt-Like-Link" (click)="isPeriodsSequence=!isPeriodsSequence;">
+    <div (click)="isPeriodsSequence=!isPeriodsSequence;" class="gwt-Label gwt-Pointer gwt-Like-Link">
       <p>{{DB.periodsSequenceTitle}}
-        <span class="glyphicon" [class.glyphicon-menu-up]="!isPeriodsSequence" [class.glyphicon-menu-down]="isPeriodsSequence" aria-hidden="true"
+        <span [class.glyphicon-menu-down]="isPeriodsSequence" [class.glyphicon-menu-up]="!isPeriodsSequence"
+              aria-hidden="true" class="glyphicon"
               title="show"></span>
       </p>
     </div>
-    <div *ngIf="isPeriodsSequence" class="gwt-Table-Wrapper" style="background:#f8f8f8; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin:0 0 15px 0;padding: 10px;">
+    <div *ngIf="isPeriodsSequence" class="gwt-Table-Wrapper"
+         style="background:#f8f8f8; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin:0 0 15px 0;padding: 10px;">
       <table class="gwt-Table gwt-Table-Bold table table-bordered">
         <tbody>
         <tr *ngFor="let item of DB.periodsSequenceTable">
@@ -126,10 +137,11 @@
     <!-- {{DB.modeOfMotionActivityChecked | json}} -->
     <table class="gwt-Table gwt-Table-Bold table table-hover table-bordered">
       <tbody>
-      <tr *ngFor="let item of DB.modeOfMotionActivity; let i=index" (click)="nodeOfMotionChange(item, i)" class="gwt-Pointer">
+      <tr (click)="nodeOfMotionChange(item, i)" *ngFor="let item of DB.modeOfMotionActivity; let i=index"
+          class="gwt-Pointer">
         <td *ngIf="i!=0">
             <span class="gwt-RadioButton">
-              <input type="radio" name="radioGroup2" value="on" [checked]="DB.modeOfMotionActivityChecked==i">
+              <input [checked]="DB.modeOfMotionActivityChecked==i" name="radioGroup2" type="radio" value="on">
             </span>
         </td>
         <td *ngIf="i==0">{{item.td[0]}}</td>
@@ -193,7 +205,7 @@
                   <ng-container *ngIf="j!=0">
                       <span class="gwt-CheckBox">
                         <!-- style="pointer-events:none;"-->
-                        <input type="checkbox" [checked]="DB.LFK[j]" [(ngModel)]="DB.LFK[j]" (change)="redirectTo(j);">
+                        <input (change)="redirectTo(j);" [(ngModel)]="DB.LFK[j]" [checked]="DB.LFK[j]" type="checkbox">
                       </span>
                   </ng-container>
                 </td>
@@ -211,7 +223,8 @@
                 <td *ngFor="let td of item.td; let j=index">
                   <ng-container *ngIf="j!=0">
                       <span class="gwt-CheckBox">
-                        <input type="checkbox" [checked]="DB.LFK[j]" [(ngModel)]="DB.LFK[j]" (change)="updateFormsOfProcedureHealthTable(j);redirectTo(j);">
+                        <input (change)="updateFormsOfProcedureHealthTable(j);redirectTo(j);" [(ngModel)]="DB.LFK[j]" [checked]="DB.LFK[j]"
+                               type="checkbox">
                       </span>
                   </ng-container>
                 </td>
@@ -255,7 +268,7 @@
         <tr *ngFor="let item of DB.formsOfProcedureHealthTable; let i=index">
           <ng-container *ngIf="(item.edit)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[0]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[0]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit)">
@@ -264,7 +277,7 @@
 
           <ng-container *ngIf="(item.edit)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[1]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[1]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit)">
@@ -273,7 +286,7 @@
 
           <ng-container *ngIf="(item.edit && (DB.modeOfMotionActivityChecked-4)==1)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[2]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[2]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit && (DB.modeOfMotionActivityChecked-4)==1)">
@@ -281,14 +294,15 @@
           </ng-container>
           <td>
               <span class="gwt-CheckBox">
-                <input type="checkbox" [checked]="(DB.modeOfMotionActivityChecked-4)==1 && item.td[3]" [disabled]="!(((DB.modeOfMotionActivityChecked-4)==1))"
-                       [(ngModel)]="item.td[3]" (change)="changeFormsOfProcedureHealthTable();">
+                <input (change)="changeFormsOfProcedureHealthTable();" [(ngModel)]="item.td[3]"
+                       [checked]="(DB.modeOfMotionActivityChecked-4)==1 && item.td[3]"
+                       [disabled]="!(((DB.modeOfMotionActivityChecked-4)==1))" type="checkbox">
                 <!--&& (DB.LFK[9] && i>=19 && i<=23)-->
               </span>
           </td>
           <ng-container *ngIf="(item.edit && (DB.modeOfMotionActivityChecked-4)==2)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[4]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[4]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit && (DB.modeOfMotionActivityChecked-4)==2)">
@@ -296,13 +310,14 @@
           </ng-container>
           <td>
               <span class="gwt-CheckBox">
-                <input type="checkbox" [checked]="(DB.modeOfMotionActivityChecked-4)==2 && item.td[5]" [disabled]="!((DB.modeOfMotionActivityChecked-4)==2)"
-                       [(ngModel)]="item.td[5]" (change)="changeFormsOfProcedureHealthTable();">
+                <input (change)="changeFormsOfProcedureHealthTable();" [(ngModel)]="item.td[5]"
+                       [checked]="(DB.modeOfMotionActivityChecked-4)==2 && item.td[5]"
+                       [disabled]="!((DB.modeOfMotionActivityChecked-4)==2)" type="checkbox">
               </span>
           </td>
           <ng-container *ngIf="(item.edit && (DB.modeOfMotionActivityChecked-4)==3)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[6]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[6]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit && (DB.modeOfMotionActivityChecked-4)==3)">
@@ -310,13 +325,14 @@
           </ng-container>
           <td>
               <span class="gwt-CheckBox">
-                <input type="checkbox" [checked]="(DB.modeOfMotionActivityChecked-4)==3 && item.td[7]" [disabled]="!((DB.modeOfMotionActivityChecked-4)==3)"
-                       [(ngModel)]="item.td[7]" (change)="changeFormsOfProcedureHealthTable();">
+                <input (change)="changeFormsOfProcedureHealthTable();" [(ngModel)]="item.td[7]"
+                       [checked]="(DB.modeOfMotionActivityChecked-4)==3 && item.td[7]"
+                       [disabled]="!((DB.modeOfMotionActivityChecked-4)==3)" type="checkbox">
               </span>
           </td>
           <ng-container *ngIf="(item.edit && (DB.modeOfMotionActivityChecked-4)==4)">
             <td>
-              <input type="edit" [(ngModel)]="item.td[8]" class="gwt-Table-Input">
+              <input [(ngModel)]="item.td[8]" class="gwt-Table-Input" type="edit">
             </td>
           </ng-container>
           <ng-container *ngIf="!(item.edit && (DB.modeOfMotionActivityChecked-4)==4)">
@@ -324,8 +340,9 @@
           </ng-container>
           <td>
               <span class="gwt-CheckBox">
-                <input type="checkbox" [checked]="(DB.modeOfMotionActivityChecked-4)==4 && item.td[9]" [disabled]="!((DB.modeOfMotionActivityChecked-4)==4)"
-                       [(ngModel)]="item.td[9]" (change)="changeFormsOfProcedureHealthTable();">
+                <input (change)="changeFormsOfProcedureHealthTable();" [(ngModel)]="item.td[9]"
+                       [checked]="(DB.modeOfMotionActivityChecked-4)==4 && item.td[9]"
+                       [disabled]="!((DB.modeOfMotionActivityChecked-4)==4)" type="checkbox">
               </span>
           </td>
         </tr>
@@ -333,28 +350,32 @@
       </table>
     </div>
     <button (click)="addFormsOfProcedureHealthTableRow()">{{DB.addFormsOfProcedureHealthTableRow}}</button>
-    <p *ngFor="let item of DB.formsOfProcedureHealthNote; let i=index;"><i *ngIf="i==0">{{DB.defaultNote}}</i>{{item}}</p>
+    <p *ngFor="let item of DB.formsOfProcedureHealthNote; let i=index;"><i *ngIf="i==0">{{DB.defaultNote}}</i>{{item}}
+    </p>
   </div>
 
 
   <!-- <app-ui-rehabilitation-navigation></app-ui-rehabilitation-navigation> -->
   <div #rehabilitationnav>
     <div *ngIf="DB.modeOfMotionActivityChecked && (DB.LFK[1] || DB.LFK[2] || DB.LFK[3] || DB.LFK[4] || DB.LFK[8])">
-      <div id="rehabilitationnav" fragment="rehabilitationnav" class="rehabilitationnav">
+      <div class="rehabilitationnav" fragment="rehabilitationnav" id="rehabilitationnav">
         <p *ngIf="DB.LFK[1]">
-          <a routerLink="./morning-gymnastics" fragment="morning-gymnastics" routerLinkActive="active">{{DB.morningGymnasticsNav}}</a>
+          <a fragment="morning-gymnastics" routerLink="./morning-gymnastics"
+             routerLinkActive="active">{{DB.morningGymnasticsNav}}</a>
         </p>
         <p *ngIf="DB.LFK[2]">
-          <a routerLink="./medical-gymnastics" fragment="medical-gymnastics" routerLinkActive="active">{{DB.medicalGymnasticsNav}}</a>
+          <a fragment="medical-gymnastics" routerLink="./medical-gymnastics"
+             routerLinkActive="active">{{DB.medicalGymnasticsNav}}</a>
         </p>
         <p *ngIf="DB.LFK[3]">
-          <a routerLink="./self-exercises" fragment="self-exercises" routerLinkActive="active">{{DB.selfExercisesNav}}</a>
+          <a fragment="self-exercises" routerLink="./self-exercises"
+             routerLinkActive="active">{{DB.selfExercisesNav}}</a>
         </p>
         <p *ngIf="DB.LFK[4]">
-          <a routerLink="./massage" fragment="massage" routerLinkActive="active">{{DB.massageNav}}</a>
+          <a fragment="massage" routerLink="./massage" routerLinkActive="active">{{DB.massageNav}}</a>
         </p>
         <p *ngIf="DB.LFK[8]">
-          <a routerLink="./multimedia" fragment="multimedia" routerLinkActive="active">{{DB.multimediaNav}}</a>
+          <a fragment="multimedia" routerLink="./multimedia" routerLinkActive="active">{{DB.multimediaNav}}</a>
         </p>
       </div>
     </div>

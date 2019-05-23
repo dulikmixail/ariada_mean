@@ -1,5 +1,5 @@
 <mat-card-actions align="center" class="button-row">
-  <button type="submit" mat-stroked-button color="primary">{{isUpdate ? 'Оновити' : 'Зберегти'}}</button>
-  <button type="reset" mat-stroked-button>Скинути</button>
-  <button type="button" mat-stroked-button color="warn" *ngIf="dialogRef" (click)="dialogRef.close()">Закрити</button>
+  <button color="primary" mat-stroked-button type="submit">{{isUpdate ? 'Оновити' : 'Зберегти'}}</button>
+  <button mat-stroked-button type="reset">Скинути</button>
+  <button (click)="dialogRef.close()" *ngIf="dialogRef" color="warn" mat-stroked-button type="button">Закрити</button>
 </mat-card-actions>

@@ -2,34 +2,34 @@
   <mat-card-header>
     <mat-card-title class="mat-card-title">{{patient.surname}} {{patient.name}}</mat-card-title>
     <mat-card-subtitle class="mat-card-subtitle">{{patient.middleName}}</mat-card-subtitle>
-    <img *ngIf="avatarFile.src" mat-card-avatar [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
-         (click)="openDialog()"/>
-    <img *ngIf="!avatarFile.src" mat-card-avatar [src]="avatarFile.srcNotHave" alt="Avatar"
-         class="avatar"/>
+    <img (click)="openDialog()" *ngIf="avatarFile.src" [src]="avatarFile.src" alt="Avatar" class="avatar pointer"
+         mat-card-avatar/>
+    <img *ngIf="!avatarFile.src" [src]="avatarFile.srcNotHave" alt="Avatar" class="avatar"
+         mat-card-avatar/>
 
   </mat-card-header>
   <mat-card-content>
     <form class="full-width">
       <mat-form-field>
-        <input matInput placeholder="Прізвище" [value]="formHelper.fixEmpty(patient.surname)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.surname)" matInput placeholder="Прізвище" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Ім'я" [value]="formHelper.fixEmpty(patient.name)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.name)" matInput placeholder="Ім'я" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="По батькові" [value]="formHelper.fixEmpty(patient.middleName)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.middleName)" matInput placeholder="По батькові" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Дата народження"
-               [value]="patient.birthDate ? patient.birthDate.toLocaleString() : ''" readonly>
+        <input [value]="patient.birthDate ? patient.birthDate.toLocaleString() : ''" matInput
+               placeholder="Дата народження" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Постійне місце проживання"
-               [value]="formHelper.fixEmpty(patient.permanentResidence)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.permanentResidence)" matInput
+               placeholder="Постійне місце проживання" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Адреса родичів і сім'ї"
-               [value]="formHelper.fixEmpty(patient.addressOfRelativesAndFamily)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.addressOfRelativesAndFamily)" matInput
+               placeholder="Адреса родичів і сім'ї" readonly>
       </mat-form-field>
       <mat-form-field>
         <mat-chip-list>
@@ -39,14 +39,14 @@
         </mat-chip-list>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="№ карти стац. хворого"
-               [value]="formHelper.fixEmpty(patient.medicalCardNumber)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.medicalCardNumber)" matInput
+               placeholder="№ карти стац. хворого" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Місце роботи" [value]="formHelper.fixEmpty(patient.workplace)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.workplace)" matInput placeholder="Місце роботи" readonly>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Посада" [value]="formHelper.fixEmpty(patient.workPost)" readonly>
+        <input [value]="formHelper.fixEmpty(patient.workPost)" matInput placeholder="Посада" readonly>
       </mat-form-field>
       <!--      <mat-form-field>-->
       <!--        <mat-select placeholder="Стать" formControlName="gender" required>-->

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BranchListComponent } from './branch-list.component';
+import {BranchListComponent} from './branch-list.component';
 
 describe('BranchListComponent', () => {
   let component: BranchListComponent;
@@ -8,9 +8,9 @@ describe('BranchListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BranchListComponent ]
+      declarations: [BranchListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

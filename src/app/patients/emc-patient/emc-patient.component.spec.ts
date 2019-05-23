@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmcPatientComponent } from './emc-patient.component';
+import {EmcPatientComponent} from './emc-patient.component';
 
 describe('EmcPatientComponent', () => {
   let component: EmcPatientComponent;
@@ -8,9 +8,9 @@ describe('EmcPatientComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmcPatientComponent ]
+      declarations: [EmcPatientComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,15 +2,17 @@
   <mat-card>
     <mat-card-title class="text-center">Авторизація</mat-card-title>
     <mat-card-content>
-      <form class="login-form full-width" [formGroup]="form" (submit)="login()">
+      <form (submit)="login()" [formGroup]="form" class="login-form full-width">
         <mat-form-field>
-          <input matInput placeholder="Логін" formControlName="login" required/>
+          <input formControlName="login" matInput placeholder="Логін" required/>
         </mat-form-field>
         <mat-form-field>
-          <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Пароль" formControlName="password" required/>
-          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input [type]="hidePassword ? 'password' : 'text'" formControlName="password" matInput placeholder="Пароль"
+                 required/>
+          <mat-icon (click)="hidePassword = !hidePassword"
+                    matSuffix>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
-        <button type="submit" mat-stroked-button color="primary">Увійти</button>
+        <button color="primary" mat-stroked-button type="submit">Увійти</button>
       </form>
     </mat-card-content>
   </mat-card>

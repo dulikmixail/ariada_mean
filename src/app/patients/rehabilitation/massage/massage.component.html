@@ -13,7 +13,7 @@
       <i>{{DB.massage.stepOneContraindicationsNote}}</i>
     </p>
 
-    <select #select class="gwt-ListBox" multiple="" size="5" (change)="updateContraindications($event.target.value)">
+    <select #select (change)="updateContraindications($event.target.value)" class="gwt-ListBox" multiple="" size="5">
       <!-- <select #select class="gwt-ListBox" [ngModel]="DB.massage.stepOneContraindications.selected" (ngModelChange)="updateContraindications($event.target)" multiple="" size="5"> -->
       <ng-container *ngFor="let item of DB.massage.stepOneContraindications.items; let j=index">
         <ng-container *ngIf="j==0">
@@ -26,9 +26,9 @@
     </select>
 
     <ng-container *ngFor="let item of DB.massage.stepOneContraindications.radiobuttons; let i=index">
-      <label class="radio-inline"><input name="options" ng-control="options" type="radio" [value]="item.value"
-                                         [(ngModel)]="DB.massage.stepOneContraindications.checked"
-                                         disabled>{{item.name}}</label>
+      <label class="radio-inline"><input [(ngModel)]="DB.massage.stepOneContraindications.checked" [value]="item.value" disabled name="options"
+                                         ng-control="options"
+                                         type="radio">{{item.name}}</label>
     </ng-container>
 
     <div class="gwt-HTML">
@@ -38,7 +38,7 @@
           <tr *ngFor="let tr of DB.massage.mainTable">
             <td>{{tr.label}}</td>
             <td>
-              <select class="gwt-ListBox selec-100" [(ngModel)]="tr.type.selected" (change)="setCalmingOrStimulating()">
+              <select (change)="setCalmingOrStimulating()" [(ngModel)]="tr.type.selected" class="gwt-ListBox selec-100">
                 <option *ngFor="let c of tr.type.values; let j=index" [ngValue]="c.value">{{c.name}}</option>
               </select>
             </td>
@@ -67,7 +67,7 @@
               <ng-container *ngFor="let td of tr.td; let j=index">
                 <td *ngIf="td.type=='text'">{{td.value}}</td>
                 <td *ngIf="td.type=='select'">
-                  <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected">
+                  <select [(ngModel)]="tr.selected" class="gwt-ListBox selec-100">
                     <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
                   </select>
                 </td>
@@ -80,16 +80,16 @@
           <i>{{DB.defaultTask}} 7. </i>
         </p>
         <label class="checkbox-inline">
-          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSeven.ckecked">{{DB.massage.checkboxSeven.name}}
+          <input [(ngModel)]="DB.massage.checkboxSeven.ckecked" type="checkbox">{{DB.massage.checkboxSeven.name}}
         </label>
         <div *ngIf="DB.massage.checkboxSeven.ckecked">
-          <img src="./assets/images/segmentInervation.jpg" class="gwt-Image" style="width: 50%;">
+          <img class="gwt-Image" src="./assets/images/segmentInervation.jpg" style="width: 50%;">
         </div>
         <p class="gwt-Label">
           <i>{{DB.defaultTask}} 7-1. </i>
         </p>
         <label class="checkbox-inline">
-          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSevenOne.ckecked">{{DB.massage.checkboxSevenOne.name}}
+          <input [(ngModel)]="DB.massage.checkboxSevenOne.ckecked" type="checkbox">{{DB.massage.checkboxSevenOne.name}}
         </label>
         <div *ngIf="DB.massage.checkboxSevenOne.ckecked">
           <p class="gwt-Label gwt-Label-Centered">{{DB.massage.titleSevenOne}}</p>
@@ -101,7 +101,7 @@
                   <ng-container *ngFor="let td of item.td; let j=index">
                     <td *ngIf="j==item.td.length-1 && i!=0">
                         <span class="gwt-CheckBox">
-                          <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked">
+                          <input [(ngModel)]="item.checked" [checked]="item.checked" type="checkbox">
                         </span>
                     </td>
                     <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
@@ -118,7 +118,7 @@
           <i>{{DB.defaultTask}} 7-2. </i>
         </p>
         <label class="checkbox-inline">
-          <input type="checkbox" [(ngModel)]="DB.massage.checkboxSevenTwo.ckecked">{{DB.massage.checkboxSevenTwo.name}}
+          <input [(ngModel)]="DB.massage.checkboxSevenTwo.ckecked" type="checkbox">{{DB.massage.checkboxSevenTwo.name}}
         </label>
         <div *ngIf="DB.massage.checkboxSevenTwo.ckecked">
           <p class="gwt-Label gwt-Label-Centered">{{DB.massage.titleSevenTwo}}</p>
@@ -130,7 +130,7 @@
                   <ng-container *ngFor="let td of item.td; let j=index">
                     <td *ngIf="j==item.td.length-1 && i!=0">
                         <span class="gwt-CheckBox">
-                          <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked">
+                          <input [(ngModel)]="item.checked" [checked]="item.checked" type="checkbox">
                         </span>
                     </td>
                     <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
@@ -158,8 +158,8 @@
             <ng-container *ngFor="let td of tr.td; let j=index">
               <td *ngIf="td.type=='text'">{{td.value}}</td>
               <td *ngIf="td.type=='select'">
-                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
-                        (change)="updateCalmingOrStimulatingCount()">
+                <select (change)="updateCalmingOrStimulatingCount()" [(ngModel)]="tr.selected"
+                        class="gwt-ListBox selec-100">
                   <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
                 </select>
               </td>
@@ -177,8 +177,8 @@
             <ng-container *ngFor="let td of tr.td; let j=index">
               <td *ngIf="td.type=='text'">{{td.value}}</td>
               <td *ngIf="td.type=='select'">
-                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
-                        (change)="updateCalmingOrStimulatingCount()">
+                <select (change)="updateCalmingOrStimulatingCount()" [(ngModel)]="tr.selected"
+                        class="gwt-ListBox selec-100">
                   <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
                 </select>
               </td>
@@ -202,8 +202,8 @@
               <ng-container *ngFor="let td of item.td; let j=index">
                 <td *ngIf="j==item.td.length-1 && i!=0">
                     <span class="gwt-CheckBox">
-                      <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked"
-                             (change)="calculateTableTenSelectedItems()">
+                      <input (change)="calculateTableTenSelectedItems()" [(ngModel)]="item.checked" [checked]="item.checked"
+                             type="checkbox">
                     </span>
                 </td>
                 <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
@@ -225,8 +225,8 @@
               <ng-container *ngFor="let td of item.td; let j=index">
                 <td *ngIf="j==item.td.length-1 && i!=0">
                     <span class="gwt-CheckBox">
-                      <input type="checkbox" [checked]="item.checked" [(ngModel)]="item.checked"
-                             (change)="calculateTableTenSelectedItems()">
+                      <input (change)="calculateTableTenSelectedItems()" [(ngModel)]="item.checked" [checked]="item.checked"
+                             type="checkbox">
                     </span>
                 </td>
                 <td *ngIf="j!=item.td.length-1 || i==0">{{td}}</td>
@@ -257,8 +257,8 @@
             <ng-container *ngFor="let td of tr.td; let j=index">
               <td *ngIf="td.type=='text'">{{td.value}}</td>
               <td *ngIf="td.type=='select'">
-                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
-                        (change)="updateCalmingOrStimulatingCount()">
+                <select (change)="updateCalmingOrStimulatingCount()" [(ngModel)]="tr.selected"
+                        class="gwt-ListBox selec-100">
                   <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
                 </select>
               </td>
@@ -276,8 +276,8 @@
             <ng-container *ngFor="let td of tr.td; let j=index">
               <td *ngIf="td.type=='text'">{{td.value}}</td>
               <td *ngIf="td.type=='select'">
-                <select class="gwt-ListBox selec-100" [(ngModel)]="tr.selected"
-                        (change)="updateCalmingOrStimulatingCount()">
+                <select (change)="updateCalmingOrStimulatingCount()" [(ngModel)]="tr.selected"
+                        class="gwt-ListBox selec-100">
                   <option *ngFor="let c of td.values" [ngValue]="c">{{c}}</option>
                 </select>
               </td>
@@ -314,9 +314,9 @@
         <i>{{DB.defaultTask}} 16: </i>{{DB.massage.taskSixteen}}</p>
       <ng-container *ngFor="let item of DB.massage.radiogroupSixteen.radiobuttons; let i=index">
         <label class="radio-inline">
-          <input name="options" ng-control="options" type="radio" [value]="item.value"
-                 [(ngModel)]="DB.massage.radiogroupSixteen.checked"
-                 disabled>{{item.name}}</label>
+          <input [(ngModel)]="DB.massage.radiogroupSixteen.checked" [value]="item.value" disabled name="options"
+                 ng-control="options"
+                 type="radio">{{item.name}}</label>
       </ng-container>
       <p>
         <i>{{DB.defaultNote}}</i>{{DB.massage.noteSixteen}}</p>

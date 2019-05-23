@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { AssessmentOfFunctionalCapabilityService } from './assessment-of-functional-capability.service';
+import {AssessmentOfFunctionalCapabilityService} from './assessment-of-functional-capability.service';
 
 describe('AssessmentOfFunctionalCapabilityService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

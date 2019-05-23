@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { KerdoIndexComponent } from './kerdo-index.component';
+import {KerdoIndexComponent} from './kerdo-index.component';
 
 describe('KerdoIndexComponent', () => {
   let component: KerdoIndexComponent;
@@ -8,9 +8,9 @@ describe('KerdoIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KerdoIndexComponent ]
+      declarations: [KerdoIndexComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

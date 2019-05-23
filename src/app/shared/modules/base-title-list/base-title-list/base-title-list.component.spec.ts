@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BaseTitleListComponent } from './base-title-list.component';
+import {BaseTitleListComponent} from './base-title-list.component';
 
 describe('BaseTitleListComponent', () => {
   let component: BaseTitleListComponent;
@@ -8,9 +8,9 @@ describe('BaseTitleListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseTitleListComponent ]
+      declarations: [BaseTitleListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

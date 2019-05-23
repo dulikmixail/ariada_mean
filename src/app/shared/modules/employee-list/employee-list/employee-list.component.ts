@@ -11,7 +11,7 @@ import {
   selectEmployeePage,
   selectLoadingEmployeePage
 } from '../../../../store/services/employee-service/employee-service.selector';
-import {ImageModalComponent, EmployeeFormModalComponent} from '../../..';
+import {EmployeeFormModalComponent, ImageModalComponent} from '../../..';
 import {DeleteEmployee, LoadEmployees} from '../../../../store/services/employee-service/employee-service.actions';
 
 @Component({

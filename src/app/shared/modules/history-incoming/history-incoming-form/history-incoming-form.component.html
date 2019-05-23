@@ -2,29 +2,29 @@
   <mat-card-content>
     <form [formGroup]="form" class="form">
       <mat-form-field>
-        <input matInput formControlName="hospitalizationDate" placeholder="Дата госпіталізації"
+        <input (click)="datePicker.open()" (dateChange)="timePicker.open()" [matDatepicker]="datePicker"
                [max]="maxDate"
-               [matDatepicker]="datePicker"
-               (click)="datePicker.open()"
-               (dateChange)="timePicker.open()" required>
-        <mat-datepicker touchUi #datePicker></mat-datepicker>
+               formControlName="hospitalizationDate"
+               matInput
+               placeholder="Дата госпіталізації" required>
+        <mat-datepicker #datePicker touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [ngxTimepicker]="timePicker" [format]="24" placeholder="і час" required>
+        <input [format]="24" [ngxTimepicker]="timePicker" matInput placeholder="і час" required>
         <ngx-material-timepicker #timePicker></ngx-material-timepicker>
         <!--        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>-->
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="senderMedicalFacility" placeholder="Яким закладом направлений" required>
+        <input formControlName="senderMedicalFacility" matInput placeholder="Яким закладом направлений" required>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput formControlName="diagnosis" placeholder="Діагноз" required></textarea>
+        <textarea formControlName="diagnosis" matInput placeholder="Діагноз" required></textarea>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="finalDiagnosis" placeholder="Заключний діагноз">
+        <input formControlName="finalDiagnosis" matInput placeholder="Заключний діагноз">
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Вперше / повторно" formControlName="howIncoming" required>
+        <mat-select formControlName="howIncoming" placeholder="Вперше / повторно" required>
           <mat-option *ngFor="let howIncomingModel of howIncomingModels$ | async" [value]="howIncomingModel._id">
             {{howIncomingModel.title}}
           </mat-option>
@@ -32,25 +32,25 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput formControlName="issuanceDate" placeholder="Дата виписки">
+        <input formControlName="issuanceDate" matInput placeholder="Дата виписки">
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput formControlName="note" placeholder="Примітка"></textarea>
+        <textarea formControlName="note" matInput placeholder="Примітка"></textarea>
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="examination" placeholder="Обследование">
+        <input formControlName="examination" matInput placeholder="Обследование">
       </mat-form-field>
       <mat-form-field>
-        <input matInput formControlName="placement" placeholder="Палата">
+        <input formControlName="placement" matInput placeholder="Палата">
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">
+    <button color="primary" mat-raised-button>
       <mat-icon>meeting_room</mat-icon>
       <span class="text-i-button">Закріпити місце</span>
     </button>
-    <button mat-raised-button color="primary">
+    <button color="primary" mat-raised-button>
       <mat-icon>assignment</mat-icon>
       <span class="text-i-button">Почати обстеженняе</span>
     </button>

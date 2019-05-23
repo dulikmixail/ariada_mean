@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RobinsonIndexComponent } from './robinson-index.component';
+import {RobinsonIndexComponent} from './robinson-index.component';
 
 describe('RobinsonIndexComponent', () => {
   let component: RobinsonIndexComponent;
@@ -8,9 +8,9 @@ describe('RobinsonIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RobinsonIndexComponent ]
+      declarations: [RobinsonIndexComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

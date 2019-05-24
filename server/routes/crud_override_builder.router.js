@@ -1,8 +1,8 @@
 const overrideCrudRouters = [
   {
-    service: 'patient.service',
+    service: 'patient.testdata.js.service',
     path: '/patients',
-    router: 'patient.router'
+    router: 'patient.testdata.js.router'
   },
   {
     service: 'employee.service',

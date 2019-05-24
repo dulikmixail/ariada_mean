@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PatientModel} from '../../../../_models';
 import {FormFile, FormHelper} from '../../../../_helpers';
 import {environment} from '../../../../../environments/environment';
-import {ImageModalComponent} from '../../..';
+import {ImageModalComponent} from '../../image-modal';
 import {MatDialog} from '@angular/material';
 
 @Component({

@@ -188,7 +188,7 @@ const crudRouters = [
     path: '/nutritionists'
   },
   {
-    service: 'patient.service',
+    service: 'patient.testdata.js.service',
     path: '/patients',
   },
   {
@@ -296,7 +296,7 @@ const crudRouters = [
     path: '/unit_of_measures'
   },
   {
-    service: 'user.service',
+    service: 'user.testdata.js.service',
     path: '/users'
   },
   {

@@ -47,7 +47,7 @@ describe('Authorization', function () {
         });
       })
     ]).then(() => {
-      require('../test_data/models/user').then(() => {
+      require('../test_data/models/user.testdata').then(() => {
         done()
       })
     });

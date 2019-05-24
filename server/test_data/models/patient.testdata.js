@@ -5,7 +5,7 @@ module.exports = new Promise((resolve, reject) => {
   genderService.find({}, (err1, genders) => {
       if (!err1) {
         let employees = [];
-        for (let i = 0; i < 10000; i++) {
+        for (let i = 0; i < 1000; i++) {
           employees.push(
             {
               surname: 'Фамилия' + i,

@@ -1,1 +1,1 @@
-module.exports = require('../../test_data/models/user');
+module.exports = require('../../test_data/models/user.testdata');

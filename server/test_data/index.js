@@ -3,9 +3,9 @@ const mongoose = require('../mongoose-connection');
 mongoose.connect.then(() => {
   Promise.all(
     [
-      require('./models/employee'),
-      require('./models/patient'),
-      require('./models/user')
+      // require('./models/employee.testdata'),
+      require('./models/patient.testdata'),
+      require('./models/user.testdata')
     ]
   ).then(() => {
     console.log('Test data load successfully!');

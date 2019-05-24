@@ -8,7 +8,8 @@ import {takeUntil} from 'rxjs/operators';
 
 import {BranchModel, EmployeeModel, PostModel} from '../../../../_models';
 import {FormFile, FormFiles, FormGroupConverter, FormHelper, SnackBar} from '../../../../_helpers';
-import {EmployeeFormModalComponent, ImageModalComponent} from '../../..';
+import {EmployeeFormModalComponent} from '../../employee-form-modal';
+import {ImageModalComponent} from '../../image-modal';
 import {AppState} from '../../../../store';
 import {environment} from '../../../../../environments/environment';
 import {selectBranchList} from '../../../../store/services/branch-service/branch-service.selector';

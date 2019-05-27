@@ -1,3 +1,20 @@
-<p>
-  placement-form works!
-</p>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-select formControlName="departments" placeholder="Виберіть відділення" required>
+      <mat-option value="option">Option</mat-option>
+      <mat-option value="option1">Option1</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="chambers" placeholder="Виберіть палату" required>
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="beds" placeholder="Виберіть ліжко" required>
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

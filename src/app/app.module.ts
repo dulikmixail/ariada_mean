@@ -21,24 +21,23 @@ import {BranchServiceEffects} from './store/services/branch-service/branch-servi
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
 import {environment} from '../environments/environment';
-import {TestComponent} from './test/test.component';
 import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
-import {HistoryIncomingModule} from './shared/modules/history-incoming/history-incoming.module';
+import {HistoryIncomingFormModule} from './shared/modules/history-incoming-form/history-incoming-form.module';
 import {HistoryIncomingServiceEffects} from './store/services/history-incoming-service/history-incoming-service.effects';
 import {HowIncomingServiceEffects} from './store/services/how-incoming-service/how-incoming-service.effects';
 import {TopNavigationModule} from './shared/modules/top-navigation/top-navigation.module';
+import {TestModule} from './test/test.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
   ],
   imports: [
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    HistoryIncomingModule,
+    HistoryIncomingFormModule,
     HttpClientModule,
     MatNativeDateModule,
     MatSnackBarModule,
@@ -55,7 +54,9 @@ import {TopNavigationModule} from './shared/modules/top-navigation/top-navigatio
         HistoryIncomingServiceEffects,
         HowIncomingServiceEffects
       ]),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+
+    TestModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

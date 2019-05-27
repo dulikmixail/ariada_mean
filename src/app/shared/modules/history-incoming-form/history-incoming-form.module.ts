@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HistoryIncomingComponent} from './history-incoming/history-incoming.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -16,11 +15,9 @@ import {HistoryIncomingFormComponent} from './history-incoming-form/history-inco
 
 @NgModule({
   declarations: [
-    HistoryIncomingComponent,
     HistoryIncomingFormComponent
   ],
   exports: [
-    HistoryIncomingComponent,
     HistoryIncomingFormComponent
   ],
   imports: [
@@ -36,5 +33,5 @@ import {HistoryIncomingFormComponent} from './history-incoming-form/history-inco
     ReactiveFormsModule
   ]
 })
-export class HistoryIncomingModule {
+export class HistoryIncomingFormModule {
 }

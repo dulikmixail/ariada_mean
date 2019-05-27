@@ -31,7 +31,7 @@ import {ChipsListModule} from '../shared/modules/chips-list/chips-list.module';
 import {PatientCardInfoModule} from '../shared/modules/patient-card-info/patient-card-info.module';
 import {PatientCardInfoFullCompactModule} from '../shared/modules/patient-card-info-full-compact/patient-card-info-full-compact.module';
 import {MatButtonModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatStepperModule} from '@angular/material';
-import {HistoryIncomingModule} from '../shared/modules/history-incoming/history-incoming.module';
+import {HistoryIncomingFormModule} from '../shared/modules/history-incoming-form/history-incoming-form.module';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import {HistoryIncomingModule} from '../shared/modules/history-incoming/history-
     MatOptionModule,
     MatSelectModule,
     MatStepperModule,
-    HistoryIncomingModule,
+    HistoryIncomingFormModule,
     ProgressSpinnerModule,
     PatientCardInfoModule,
     PatientCardInfoFullCompactModule,

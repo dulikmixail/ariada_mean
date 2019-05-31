@@ -1,4 +1,5 @@
 export * from './assessment-of-functional-capability/assessment-of-functional-capability.service';
+export * from './bed/bed.service';
 export * from './branch/branch.service';
 export * from './criterion/criterion.service';
 export * from './employee/employee.service';

@@ -10,6 +10,10 @@ let chamberSchema = new Schema({
   beds: {
     type: [Schema.Types.ObjectId],
     ref: 'Bed'
+  },
+  full: {
+    type: Boolean,
+    default: false
   }
 }, {versionKey: false});
 

@@ -12,6 +12,10 @@ const crudRouters = [
     path: '/branches'
   },
   {
+    service: 'bed.service',
+    path: '/beds'
+  },
+  {
     service: 'calculation.service',
     path: '/calculations'
   },

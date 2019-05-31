@@ -6,6 +6,10 @@ let bedSchema = new Schema({
   title: {
     type: String,
     required: true
+  },
+  occupied: {
+    type: Boolean,
+    default: false
   }
 }, {versionKey: false});
 

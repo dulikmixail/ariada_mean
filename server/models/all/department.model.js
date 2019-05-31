@@ -10,6 +10,10 @@ let departmentSchema = new Schema({
   chambers: {
     type: [Schema.Types.ObjectId],
     ref: 'Chamber'
+  },
+  full: {
+    type: Boolean,
+    default: false
   }
 }, {versionKey: false});
 

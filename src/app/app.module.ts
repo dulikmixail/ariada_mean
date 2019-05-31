@@ -10,6 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatNativeDateModule, MatPaginatorIntl, MatSnackBarModule} from '@angular/material';
 
+import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ErrorInterceptor, JwtInterceptor} from './_helpers';
@@ -20,13 +21,13 @@ import {PatientsNavLinkModule} from './patients/patients-nav-link.module';
 import {BranchServiceEffects} from './store/services/branch-service/branch-service.effects';
 import {PostServiceEffects} from './store/services/post-service/post-service.effects';
 import {EmployeeServiceEffects} from './store/services/employee-service/employee-service.effects';
-import {environment} from '../environments/environment';
 import {MatPaginatorIntlUk} from './matPaginatorIntlUk';
 import {HistoryIncomingFormModule} from './shared/modules/history-incoming-form/history-incoming-form.module';
 import {HistoryIncomingServiceEffects} from './store/services/history-incoming-service/history-incoming-service.effects';
 import {HowIncomingServiceEffects} from './store/services/how-incoming-service/how-incoming-service.effects';
 import {TopNavigationModule} from './shared/modules/top-navigation/top-navigation.module';
 import {TestModule} from './test/test.module';
+import {BedServiceEffects} from './store/services/bed-service/bed-service.effects';
 
 @NgModule({
   declarations: [
@@ -52,11 +53,12 @@ import {TestModule} from './test/test.module';
         PatientServiceEffects,
         PostServiceEffects,
         HistoryIncomingServiceEffects,
-        HowIncomingServiceEffects
+        HowIncomingServiceEffects,
+        BedServiceEffects
       ]),
     StoreRouterConnectingModule,
 
-    TestModule
+    TestModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

@@ -1,19 +1,23 @@
-const bedService = require('../../services/crud_services/bed.service');
 const chamberService = require('../../services/crud_services/chamber.service');
+const departmentService = require('../../services/crud_services/department.service');
 
 module.exports = new Promise((resolve, reject) => {
-  bedService.find({}, (findErr, findBeds) => {
+  departmentService.find({}, (findErr, findDepartments) => {
     if (!findErr) {
-      const step = 20;
+      const countChambersInDepartment = 20;
       let chambers = [];
-      for (let i = 0, j = 1; i < findBeds.length; i += step, j++) {
-        chambers.push({
-          title: 'Палата' + j,
-          beds: findBeds.slice(i, i + step)
-        })
-      }
+
+      findDepartments.forEach(findDepartment => {
+        for (let i = 1; i <= countChambersInDepartment; i++) {
+          chambers.push({
+            title: 'Палата N' + i,
+            department: findDepartment._id
+          })
+        }
+      });
+
       chamberService.create(chambers, (createErr, createChambers) => {
-        !!createErr ? reject(createErr) : resolve(createChambers)
+        createErr ? reject(createErr) : resolve(createChambers)
       })
     } else {
       reject(findErr);

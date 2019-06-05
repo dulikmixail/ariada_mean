@@ -13,7 +13,7 @@ import {
   ResetPostForm
 } from './post-service.actions';
 import {concatMapTo, map, mapTo, switchMap} from 'rxjs/operators';
-import {PostService} from '../../../_services/api/post/post.service';
+import {PostService} from '../../../_services/api';
 
 @Injectable()
 export class PostServiceEffects {

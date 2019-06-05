@@ -15,7 +15,7 @@ import {
   UpdatePatient,
   UpdatePatientSuccess
 } from './patient-service.actions';
-import {PatientService} from '../../../_services/api/patient/patient.service';
+import {PatientService} from '../../../_services/api';
 import {AppState} from '../../index';
 import {Store} from '@ngrx/store';
 import {EMPTY} from 'rxjs';

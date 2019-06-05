@@ -6,12 +6,30 @@ mongoose.connect.then(() => {
       // require('./models/employee.testdata'),
       // require('./models/patient.testdata'),
       // require('./models/user.testdata'),
-      // require('./models/bed.testdata'),
-      // require('./models/chamber.testdata'),
-      // require('./models/department.testdata'),
+      // require('./models/department.testdata')
+      new Promise((resolveDepartment, rejectDepartment) => {
+        require('./models/department.testdata')
+          .catch(rejectDepartment)
+          .then(() => {
+            require('./models/chamber.testdata')
+              .catch(rejectDepartment)
+              .then(() => {
+                require('./models/bed.testdata')
+                  .catch(rejectDepartment)
+                  .then(() => {
+                    resolveDepartment();
+                  });
+              })
+          });
+      })
     ]
-  ).then(() => {
-    console.log('Test data load successfully!');
-    process.exit()
-  });
+  )
+    .catch(() => {
+      console.log('Load test data  FAIL!');
+      process.exit()
+    })
+    .then(() => {
+      console.log('Load test data load SUCCESS!');
+      process.exit()
+    });
 });

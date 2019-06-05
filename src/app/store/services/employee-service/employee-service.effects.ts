@@ -14,7 +14,7 @@ import {
   SearchEmployeesSuccess
 } from './employee-service.actions';
 import {map, switchMap} from 'rxjs/operators';
-import {EmployeeService} from '../../../_services/api/employee/employee.service';
+import {EmployeeService} from '../../../_services/api';
 
 @Injectable()
 export class EmployeeServiceEffects {

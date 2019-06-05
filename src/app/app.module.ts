@@ -28,6 +28,8 @@ import {HowIncomingServiceEffects} from './store/services/how-incoming-service/h
 import {TopNavigationModule} from './shared/modules/top-navigation/top-navigation.module';
 import {TestModule} from './test/test.module';
 import {BedServiceEffects} from './store/services/bed-service/bed-service.effects';
+import {ChamberServiceEffects} from './store/services/chamber-service/chamber-service.effects';
+import {DepartmentServiceEffects} from './store/services/department-service/department-service.effects';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import {BedServiceEffects} from './store/services/bed-service/bed-service.effect
         PostServiceEffects,
         HistoryIncomingServiceEffects,
         HowIncomingServiceEffects,
-        BedServiceEffects
+        BedServiceEffects,
+        ChamberServiceEffects,
+        DepartmentServiceEffects
       ]),
     StoreRouterConnectingModule,
 

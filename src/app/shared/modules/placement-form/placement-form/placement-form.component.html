@@ -1,20 +1,32 @@
 <form [formGroup]="form">
   <mat-form-field>
     <mat-select formControlName="departments" placeholder="Виберіть відділення" required>
-      <mat-option value="option">Option</mat-option>
-      <mat-option value="option1">Option1</mat-option>
+      <mat-option (click)="selectDepartment(department)"
+                  *ngFor="let department of departments$ | async"
+                  [disabled]="department.full"
+                  [value]="department._id">
+        {{department.title}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-select formControlName="chambers" placeholder="Виберіть палату" required>
-      <mat-option value="option">Option</mat-option>
+      <mat-option *ngFor="let chamber of chambers$ | async"
+                  [disabled]="chamber.full"
+                  [value]="chamber._id">
+        {{chamber.title}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-select formControlName="beds" placeholder="Виберіть ліжко" required>
-      <mat-option value="option">Option</mat-option>
+      <mat-option *ngFor="let bed of beds$ | async"
+                  [disabled]="bed.occupied"
+                  [value]="bed._id">
+        {{bed.title}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </form>

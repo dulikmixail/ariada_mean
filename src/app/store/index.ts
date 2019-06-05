@@ -11,6 +11,8 @@ import * as fromPatientSearchPanelComponent from './components/patient-search-pa
 import * as fromHistoryIncomingService from './services/history-incoming-service/history-incoming-service.reducer';
 import * as fromHowIncomingService from './services/how-incoming-service/how-incoming-service.reducer';
 import * as fromBedService from './services/bed-service/bed-service.reducer';
+import * as fromChamberService from './services/chamber-service/chamber-service.reducer';
+import * as fromDepartmentService from './services/department-service/department-service.reducer';
 
 export interface AppState {
   genderService: fromGenderService.State;
@@ -24,6 +26,8 @@ export interface AppState {
   howIncomingService: fromHowIncomingService.State;
   patientSearchPanelComponent: fromPatientSearchPanelComponent.State;
   bedService: fromBedService.State;
+  chamberService: fromChamberService.State;
+  departmentService: fromDepartmentService.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -37,7 +41,9 @@ export const reducers: ActionReducerMap<AppState> = {
   historyIncomingService: fromHistoryIncomingService.reducer,
   howIncomingService: fromHowIncomingService.reducer,
   patientSearchPanelComponent: fromPatientSearchPanelComponent.reducer,
-    bedService: fromBedService.reducer
+  bedService: fromBedService.reducer,
+  chamberService: fromChamberService.reducer,
+  departmentService: fromDepartmentService.reducer
   }
 ;
 

@@ -7,6 +7,11 @@ let bedSchema = new Schema({
     type: String,
     required: true
   },
+  chamber: {
+    type: Schema.Types.ObjectId,
+    ref: 'Chamber',
+    required: true
+  },
   occupied: {
     type: Boolean,
     default: false

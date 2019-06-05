@@ -7,9 +7,10 @@ let chamberSchema = new Schema({
     type: String,
     required: true
   },
-  beds: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Bed'
+  department: {
+    type: Schema.Types.ObjectId,
+    ref: 'Department',
+    required: true
   },
   full: {
     type: Boolean,

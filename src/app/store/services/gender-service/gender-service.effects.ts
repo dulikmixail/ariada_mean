@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 
 
 import {GenderServiceActionTypes, LoadGendersSuccess} from './gender-service.actions';
-import {GenderService} from '../../../_services/api/gender/gender.service';
+import {GenderService} from '../../../_services/api';
 import {map, switchMap} from 'rxjs/operators';
 
 @Injectable()

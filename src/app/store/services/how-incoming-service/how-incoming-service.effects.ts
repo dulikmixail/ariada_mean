@@ -21,9 +21,7 @@ export class HowIncomingServiceEffects {
     switchMap(([, howIncomingModels]) => {
       if (howIncomingModels.length === 0) {
         return this.howIncomingService.getAll().pipe(
-          map(hims => {
-            return new LoadHowIncomingSuccess(hims);
-          })
+          map(hims => new LoadHowIncomingSuccess(hims))
         );
       } else {
         this.store.dispatch(new HowIncomingEmptySuccess());

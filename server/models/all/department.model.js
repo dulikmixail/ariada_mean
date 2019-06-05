@@ -7,10 +7,6 @@ let departmentSchema = new Schema({
     type: String,
     required: true
   },
-  chambers: {
-    type: [Schema.Types.ObjectId],
-    ref: 'Chamber'
-  },
   full: {
     type: Boolean,
     default: false
